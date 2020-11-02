@@ -10,7 +10,7 @@ export const LOGIN_COMPONENTS = [
 //Se construyen las rutas para acceder a cada uno de los componentes
 const loginRoutes:Routes = [
     {
-      path: '',
+      path: 'login',
       component: LoginComponent
     }
 ];
