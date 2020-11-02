@@ -31,9 +31,85 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpService } from './services/http.service';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
-import { ContainerComponent } from './components/container-inside/container/container.component';
 import { AlertService } from './services/alert.service';
 import { TokenService } from './services/token.service';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// se importa los modulos de angular para material y
+//se hace exports para que sea usado en diferentes componentes del sistema
+@NgModule({
+	declarations: [
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		FormsModule,
+		HttpClientModule,
+		RouterModule,
+		MatSnackBarModule,
+		ReactiveFormsModule,
+		ScrollingModule,
+		MaterialFileInputModule,
+		MatProgressBarModule,
+		MatButtonModule,
+		MatCheckboxModule,
+		MatNativeDateModule,
+		MatToolbarModule,
+		MatRadioModule,
+		MatSidenavModule,
+		MatIconModule,
+		MatListModule,
+		MatFormFieldModule,
+		MatSelectModule,
+		MatInputModule,
+		MatDialogModule,
+		MatDatepickerModule,
+		MatExpansionModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatCardModule,
+		MatSliderModule,
+		MatDividerModule,
+		MatTabsModule,
+		MatGridListModule,
+		MatMenuModule,
+		MatSortModule,
+		MatSnackBarModule
+	],
+	exports: [
+		ReactiveFormsModule,
+		MaterialFileInputModule,
+		MatProgressBarModule,
+		MatButtonModule,
+		MatCheckboxModule,
+		MatNativeDateModule,
+		MatToolbarModule,
+		MatRadioModule,
+		MatSidenavModule,
+		MatIconModule,
+		MatListModule,
+		MatFormFieldModule,
+		MatSelectModule,
+		MatInputModule,
+		MatDialogModule,
+		MatDatepickerModule,
+		MatExpansionModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatCardModule,
+		MatSliderModule,
+		MatDividerModule,
+		MatTabsModule,
+		MatGridListModule,
+		MatMenuModule,
+		MatSortModule,
+		MatSnackBarModule
+	],
+	providers: [
+		AlertService,
+		HttpService,
+		TokenService
+	]
+})
+export class SharedModule {}
