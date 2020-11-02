@@ -31,8 +31,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpService } from './services/http.service';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
-import { AlertService } from './services/alert.service';
-import { TokenService } from './services/token.service';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -107,9 +105,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		MatSnackBarModule
 	],
 	providers: [
-		AlertService,
 		HttpService,
-		TokenService
 	]
 })
 export class SharedModule {}
