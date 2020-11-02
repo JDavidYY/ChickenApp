@@ -1,11 +1,11 @@
 <div class="container animated fadeIn" style="overflow: hidden;">
   <div class="col-md-4" style="justify-content: center;margin: auto;padding-top: 200px;">
-      <img class="logo1" src="assets/logo/adrenalinLogo2.png" alt="" style="max-width: 100%;">
-      <p style="font-weight: lighter;font-size: 24px;text-align: center;margin-bottom: 50px;">La Salud es primero</p>
+      <!--<img class="logo1" src="" alt="" style="max-width: 100%;">-->
+      <p style="font-weight: lighter;font-size: 24px;text-align: center;margin-bottom: 50px;">Iniciar Sesión</p>
       <div style="background-color: rgba(243, 243, 243, 0.671);border-radius: 10px;border: 1px solid;">
 
           <form style="padding: 20px;">
-              <p class="animated fadeIn" style="font-size: 25px;text-align: center;color: black;"><strong>Bienvenido a SSP</strong></p>
+              <p class="animated fadeIn" style="font-size: 25px;text-align: center;color: black;"><strong>ChickenAPP</strong></p>
               <div class="form-row" style="justify-content: center">
                   <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                       <mat-label>Correo</mat-label>
@@ -22,8 +22,8 @@
               <div class="form-row" style="justify-content: center">
                   <mat-form-field class="col-md-12" appearance="outline" style="width: 100%" autocomplete="off">
                       <mat-label>Contraseña</mat-label>
-                      <input matInput [(ngModel)]="user.password" [formControl]="passwordFormControl" [type]="hide ? 'password' : 'text'" autocomplete="off" required>
-                      <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      <input matInput [(ngModel)]="user.password" [formControl]="passwordFormControl" autocomplete="off" required>
+                      <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
                       <mat-error *ngIf="passwordFormControl.hasError('required')">
                           Este campo es <strong>requerido</strong>
                       </mat-error>
