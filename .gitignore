@@ -8,7 +8,7 @@
 /bazel-out
 
 # dependencies
-/node_modules
+/ChickenApp-auth/node_modules
 /chickenAppFront/node_modules
 
 # profiling files
