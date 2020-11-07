@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appVersion: "1.0.0",
-  apiUrl: ""
+  apiUrl: "https://localhost:5000/routes/api"
 };
 
 /*

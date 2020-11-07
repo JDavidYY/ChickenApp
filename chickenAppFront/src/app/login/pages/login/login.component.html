@@ -22,7 +22,7 @@
               <div class="form-row" style="justify-content: center">
                   <mat-form-field class="col-md-12" appearance="outline" style="width: 100%" autocomplete="off">
                       <mat-label>Contraseña</mat-label>
-                      <input matInput [(ngModel)]="user.password" [formControl]="passwordFormControl" autocomplete="off" required>
+                      <input matInput [(ngModel)]="user.password" type="password" [formControl]="passwordFormControl" autocomplete="off" required>
                       <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
                       <mat-error *ngIf="passwordFormControl.hasError('required')">
                           Este campo es <strong>requerido</strong>
