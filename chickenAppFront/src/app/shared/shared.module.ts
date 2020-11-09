@@ -33,11 +33,12 @@ import { HttpService } from './services/http.service';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContainerComponent } from './components/container/container.component';
 
 //Se importan los modulos de angular para material y se hace exports para que sea usado en diferentes componentes del sistema
 @NgModule({
 	declarations: [
-	],
+	ContainerComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -101,7 +102,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		MatGridListModule,
 		MatMenuModule,
 		MatSortModule,
-		MatSnackBarModule
+		MatSnackBarModule,
+		ContainerComponent
 	],
 	providers: [
 		HttpService,
