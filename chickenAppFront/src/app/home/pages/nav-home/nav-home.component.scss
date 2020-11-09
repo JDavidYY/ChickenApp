@@ -87,13 +87,24 @@
 }
 .plato-1:hover .plato-hover,
 .plato-2:hover .plato-hover,
-.plato-3:hover .plato-hover,
+.plato-3:hover .plato-hover2,
 .plato-4:hover .plato-hover,
 .plato-5:hover .plato-hover
 {
     opacity: 0.75;
 }
 .plato-hover{
+    transition: all 0.9s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #030303bf;
+    opacity: 0;
+}
+.plato-hover2{
     transition: all 0.9s;
     position: absolute;
     top: 0;
