@@ -41,3 +41,21 @@
             line-height: 50px;
             text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, .6);
         }
+
+.pollo-wallpaper{
+    background-image: linear-gradient( #0000004d, #00000080 ),url("../../../../assets/images/backgrounds/portada-pollo-brasa.jpg");
+    width: 100%;
+    height: 540px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.hs1-titulo{
+    font-size: 50px;
+    color: white;
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 50px;
+}
