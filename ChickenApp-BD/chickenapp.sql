@@ -1,163 +1,174 @@
+-- MySQL Workbench Forward Engineering
 
-CREATE SCHEMA IF NOT EXISTS `chickenapp` DEFAULT CHARACTER SET utf8 ;
-USE `chickenapp` ;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`User`
+-- Schema Chickenapp
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`User` (
-  `idUser` INT NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `date` DATETIME NOT NULL,
-  PRIMARY KEY (`idUser`))
+
+-- -----------------------------------------------------
+-- Schema Chickenapp
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `Chickenapp` DEFAULT CHARACTER SET utf8 ;
+USE `Chickenapp` ;
+
+-- -----------------------------------------------------
+-- Table `Chickenapp`.`Users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Users` (
+  `idUsers` INT NOT NULL,
+  `nameUsers` VARCHAR(45) NOT NULL,
+  `passwordUsers` VARCHAR(45) NOT NULL,
+  `dateUsers` DATETIME NOT NULL,
+  PRIMARY KEY (`idUsers`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Employee`
+-- Table `Chickenapp`.`Employees`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Employee` (
-  `idEmployee` INT NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
-  `work_time` VARCHAR(45) NOT NULL,
-  `dni` INT NOT NULL,
-  `age` VARCHAR(45) NOT NULL,
-  `adress` VARCHAR(100) NOT NULL,
-  `date_creation` DATETIME NULL,
-  `User_idUser` INT NOT NULL,
-  PRIMARY KEY (`idEmployee`, `User_idUser`),
-  INDEX `fk_Employee_User1_idx` (`User_idUser` ASC) VISIBLE,
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
+  `idEmployees` INT NOT NULL,
+  `estadoEmployees` INT NOT NULL,
+  `firstnameEmployees` VARCHAR(45) NOT NULL,
+  `lastnameEmployees` VARCHAR(45) NOT NULL,
+  `phoneEmployees` VARCHAR(45) NOT NULL,
+  `worktimeEmployees` VARCHAR(45) NOT NULL,
+  `dniEmployees` INT NOT NULL,
+  `ageEmployees` VARCHAR(45) NOT NULL,
+  `adressEmployees` VARCHAR(100) NOT NULL,
+  `datecreationEmployees` DATETIME NULL,
+  `Users_idUsers` INT NOT NULL,
+  PRIMARY KEY (`idEmployees`, `Users_idUsers`),
   CONSTRAINT `fk_Employee_User1`
-    FOREIGN KEY (`User_idUser`)
-    REFERENCES `chickenapp`.`User` (`idUser`)
+    FOREIGN KEY (`Users_idUsers`)
+    REFERENCES `Chickenapp`.`Users` (`idUsers`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Categories`
+-- Table `Chickenapp`.`Categories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Categories` (
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Categories` (
   `idCategories` INT NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(200) NOT NULL,
-  `image` BLOB NULL,
+  `nameCategories` VARCHAR(45) NOT NULL,
+  `descriptionCategories` VARCHAR(200) NOT NULL,
+  `imageCategories` BLOB NULL,
   PRIMARY KEY (`idCategories`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Products`
+-- Table `Chickenapp`.`Products`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Products` (
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Products` (
   `idProducts` INT NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(200) NOT NULL,
-  `price` FLOAT NOT NULL,
-  `stock` VARCHAR(45) NOT NULL,
-  `size` VARCHAR(45) NOT NULL,
-  `image` BLOB NULL,
+  `nameProducts` VARCHAR(45) NOT NULL,
+  `descriptionProducts` VARCHAR(200) NOT NULL,
+  `priceProducts` FLOAT NOT NULL,
+  `stockProducts` VARCHAR(45) NOT NULL,
+  `sizeProducts` VARCHAR(45) NOT NULL,
+  `imageProducts` BLOB NULL,
   `Categories_idCategories` INT NOT NULL,
   PRIMARY KEY (`idProducts`, `Categories_idCategories`),
-  INDEX `fk_Products_Categories1_idx` (`Categories_idCategories` ASC) VISIBLE,
   CONSTRAINT `fk_Products_Categories1`
     FOREIGN KEY (`Categories_idCategories`)
-    REFERENCES `chickenapp`.`Categories` (`idCategories`)
+    REFERENCES `Chickenapp`.`Categories` (`idCategories`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Customers`
+-- Table `Chickenapp`.`Customers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Customers` (
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Customers` (
   `idCustomers` INT NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `adress` VARCHAR(100) NOT NULL,
-  `date_creation` DATETIME NULL,
-  `last_update` TIMESTAMP NULL,
-  `User_idUser` INT NOT NULL,
-  PRIMARY KEY (`idCustomers`, `User_idUser`),
-  INDEX `fk_Customers_User1_idx` (`User_idUser` ASC) VISIBLE,
+  `firstnameCustomers` VARCHAR(45) NOT NULL,
+  `lastnameCustomers` VARCHAR(45) NOT NULL,
+  `phoneCustomers` VARCHAR(45) NOT NULL,
+  `emailCustomers` VARCHAR(45) NOT NULL,
+  `adressCustomers` VARCHAR(100) NOT NULL,
+  `datecreationCustomers` DATETIME NULL,
+  `lastupdateCustomers` TIMESTAMP NULL,
+  `Users_idUsers` INT NOT NULL,
+  PRIMARY KEY (`idCustomers`, `Users_idUsers`),
   CONSTRAINT `fk_Customers_User1`
-    FOREIGN KEY (`User_idUser`)
-    REFERENCES `chickenapp`.`User` (`idUser`)
+    FOREIGN KEY (`Users_idUsers`)
+    REFERENCES `Chickenapp`.`Users` (`idUsers`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`company`
+-- Table `Chickenapp`.`Company`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`company` (
-  `idCompany` INT NOT NULL,
-  `information` VARCHAR(250) NOT NULL,
-  `time_attention` VARCHAR(45) NULL,
-  `fechaLocal` DATETIME NULL,
-  `adress` VARCHAR(45) NULL,
-  `phone` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  PRIMARY KEY (`idCompany`))
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Company` (
+  `idCompanys` INT NOT NULL,
+  `informationCompany` VARCHAR(250) NOT NULL,
+  `timeattentionCompany` VARCHAR(45) NULL,
+  `adressCompany` VARCHAR(45) NULL,
+  `phoneCompany` VARCHAR(45) NULL,
+  `emailCompany` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCompanys`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Departaments`
+-- Table `Chickenapp`.`Departaments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Departaments` (
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Departaments` (
   `idDepartaments` INT NOT NULL,
-  `name_dept` VARCHAR(45) NOT NULL,
-  `description_dept` VARCHAR(200) NOT NULL,
+  `nameDepartaments` VARCHAR(45) NOT NULL,
+  `descriptionDepartaments` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idDepartaments`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Salaries`
+-- Table `Chickenapp`.`Salaries`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Salaries` (
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Salaries` (
   `idSalaries` INT NOT NULL,
-  `salary` INT NOT NULL,
-  `to_date` DATE NULL,
-  `Employee_idEmployee` INT NOT NULL,
-  PRIMARY KEY (`idSalaries`, `Employee_idEmployee`),
-  INDEX `fk_Salaries_Employee1_idx` (`Employee_idEmployee` ASC) VISIBLE,
+  `salarySalaries` INT NOT NULL,
+  `todateSalaries` DATE NULL,
+  `Employees_idEmployees` INT NOT NULL,
+  PRIMARY KEY (`idSalaries`, `Employees_idEmployees`),
   CONSTRAINT `fk_Salaries_Employee1`
-    FOREIGN KEY (`Employee_idEmployee`)
-    REFERENCES `chickenapp`.`Employee` (`idEmployee`)
+    FOREIGN KEY (`Employees_idEmployees`)
+    REFERENCES `Chickenapp`.`Employees` (`idEmployees`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `chickenapp`.`Manager_Departament`
+-- Table `Chickenapp`.`Manager_Departament`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `chickenapp`.`Manager_Departament` (
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Manager_Departament` (
   `Departaments_idDepartaments` INT NOT NULL,
-  `Employee_idEmployee` INT NOT NULL,
-  `from_date` DATE NULL,
-  `to_date` DATE NULL,
-  PRIMARY KEY (`Departaments_idDepartaments`, `Employee_idEmployee`),
-  INDEX `fk_Departaments_has_Employee_Employee1_idx` (`Employee_idEmployee` ASC) VISIBLE,
-  INDEX `fk_Departaments_has_Employee_Departaments1_idx` (`Departaments_idDepartaments` ASC) VISIBLE,
+  `Employees_idEmployees` INT NOT NULL,
+  `fromdateManager_Departament` DATE NULL,
+  `todateManager_Departament` DATE NULL,
+  PRIMARY KEY (`Departaments_idDepartaments`, `Employees_idEmployees`),
   CONSTRAINT `fk_Departaments_has_Employee_Departaments1`
     FOREIGN KEY (`Departaments_idDepartaments`)
-    REFERENCES `chickenapp`.`Departaments` (`idDepartaments`)
+    REFERENCES `Chickenapp`.`Departaments` (`idDepartaments`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Departaments_has_Employee_Employee1`
-    FOREIGN KEY (`Employee_idEmployee`)
-    REFERENCES `chickenapp`.`Employee` (`idEmployee`)
+    FOREIGN KEY (`Employees_idEmployees`)
+    REFERENCES `Chickenapp`.`Employees` (`idEmployees`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
