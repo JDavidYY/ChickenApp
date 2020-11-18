@@ -13,13 +13,13 @@ export const HOME_COMPONENTS = [
 // se arma el path segun el componente que queremos mostrar
 const homeRoutes:Routes = [
 	{
-        path: "",
+        path: '',
         component: NavHomeComponent,
         children: [
           {
             path: '',
             component: MenuHomeComponent
-          }    
+          }
         ]
   }
 ];
