@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 import { FormControl, Validators } from '@angular/forms';
 import { ChefModel } from '../../models/chef-info.model';
+import { ChefService } from '../../services/chef.service';
 
 @Component({
   selector: 'app-chef-list',
@@ -45,7 +46,7 @@ export class ChefListComponent implements OnInit {
             (response) => {
                 console.log(response);
                 if ( response.status && response.message != ""){
-                    const chef = response.chef;
+                    const chef = response.listChef;
                     this.dataSourceOne.data = chef;
                     this.dataSourceOne.paginator = this.tableOnePaginator;
                     this.dataSourceOne.sort = this.tableOneSort;

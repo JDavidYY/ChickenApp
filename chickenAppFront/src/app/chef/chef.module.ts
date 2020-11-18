@@ -25,4 +25,4 @@ import { ChefService } from './services/chef.service';
     ]
   })
   // se hace un module propio del modulo que vamos a trabajar y se exportara en el app.module.ts de la raiz
-  export class PersonalModule {}
+  export class ChefModule {}

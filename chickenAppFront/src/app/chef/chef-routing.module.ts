@@ -13,7 +13,7 @@ export const CHEF_COMPONENTS = [
 // se arma el path segun el componente que queremos mostrar
 const chefRoutes:Routes = [
 	{
-        path: 'personal',
+        path: 'chef',
         component: ContainerComponent,
         children: [
           {
@@ -25,7 +25,7 @@ const chefRoutes:Routes = [
             component: ChefEditComponent
           },
           {
-            path: 'editar/:personal_id',
+            path: 'editar/:chef_id',
             component: ChefEditComponent
           }     
         ]
