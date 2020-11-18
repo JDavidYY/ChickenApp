@@ -6,11 +6,19 @@ import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ChefListComponent } from './chef/chef-list/chef-list.component';
+import { ChefEditComponent } from './chef/chef-edit/chef-edit.component';
+import { DeliveryboyListComponent } from './deliveryboy/pages/deliveryboy-list/deliveryboy-list.component';
+import { DeliveryboyEditComponent } from './deliveryboy/pages/deliveryboy-edit/deliveryboy-edit.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChefListComponent,
+    ChefEditComponent,
+    DeliveryboyListComponent,
+    DeliveryboyEditComponent
   ],
   imports: [
     BrowserModule,
