@@ -57,4 +57,16 @@ $app->group('/api/chef', function (RouteCollectorProxy $group) {
     $group->post('/add', ChefHandler::class . ':addChef');
 });
 
+$app->group('/api/chef', function (RouteCollectorProxy $group) {
+    $group->get('/gets', ChefHandler::class . ':getChefs');
+});
+
+$app->group('/api/chef', function (RouteCollectorProxy $group) {
+    $group->post('/edit/{chefid}', ChefHandler::class . ':editChef');
+});
+
+$app->group('/api/chef', function (RouteCollectorProxy $group) {
+    $group->post('/delete/{chefid}', ChefHandler::class . ':deleteChef');
+});
+
 ?>

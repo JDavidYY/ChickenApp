@@ -6,17 +6,14 @@ import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { DeliveryboyListComponent } from './deliveryboy/pages/deliveryboy-list/deliveryboy-list.component';
-import { DeliveryboyEditComponent } from './deliveryboy/pages/deliveryboy-edit/deliveryboy-edit.component';
 import { ChefModule } from './chef/chef.module';
-import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
+//import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ChefModule,
-    DeliveryboyModule
+    AppComponent
+    //DeliveryboyModule
   ],
   imports: [
     BrowserModule,
@@ -24,6 +21,7 @@ import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
     HomeModule,
     LoginModule,
     DashboardModule,
+    ChefModule,
     SharedModule
   ],
   providers: [],

@@ -17,14 +17,24 @@ class ChefHandler
 	
 	public function getChefs(Request $request, Response $response, array $args) {
         /*$client_id=$args['clientid'];
-        $customer_id=$args['customerid'];*/
-		$result=ChefController::getChefs();
+		$customer_id=$args['customerid'];*/
+		$data = array(
+			'ok' => 'true',
+			'result' => 'servicio conectado'
+		);
+		$payload = json_encode($data);
+		$response->getBody()->write($payload);
+		return $response
+			->withHeader('Content-Type', 'application/json')
+			->withStatus(201);
+		/*$result=ChefController::getChefs();
 		$response=self::response($response,TRUE,$result);
-		return $response;
+		return $response;*/
 	}
 
     public function addChef(Request $request, Response $response, array $args)
 	{
+		
 		/*$data = array(
 			'ok' => 'true',
 			'result' => 'servicio conectado'
