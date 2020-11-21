@@ -7,10 +7,15 @@
     position: fixed;
     z-index: 100;
 }
+.toolbar-menu{
+    width: 90%;
+    margin: auto;
+}
 .menu{
     display: flex;
     text-align: left;
     margin-top: 20px;
+    font-size: 16px;
 }
 .lista{
     list-style: none;
@@ -195,6 +200,11 @@
       }
   }
 
+@media(max-width: 1024px){
+    .lista{
+        margin-left: 25px;
+    }
+}
 @media (max-width: 768px) {
     .hidden-xs {
       display: none !important;
