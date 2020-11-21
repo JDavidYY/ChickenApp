@@ -7,6 +7,16 @@
     position: fixed;
     z-index: 100;
 }
+.menu{
+    display: flex;
+    text-align: left;
+    margin-top: 20px;
+}
+.lista{
+    list-style: none;
+    margin-left: 55px;
+}
+
 .toolbar3 {
     height: auto;
     background-color: white;
@@ -173,6 +183,21 @@
 .logo-pollo{
     padding-left: 10px;
 }
+
+@media (min-width: 992px) {
+    .espacio {
+      padding-top: 70px;
+    }
+    .hidden-lg {
+        display: none !important;
+      }
+  }
+
+@media (max-width: 768px) {
+    .hidden-xs {
+      display: none !important;
+    }
+  }
 @media(max-width: 425px){
     .hs1-titulo{
         font-size: 30px;
