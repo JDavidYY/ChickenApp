@@ -46,7 +46,15 @@ export class LoginComponent implements OnInit {
     if( this.emailFormControl.invalid || this.passwordFormControl.invalid )
     {
 			return;
-		}
-	}
+    }
+
+    this.loginService.login(this.user)
+				.subscribe(
+				  (response) => {
+					console.log(response);
+
+    });
+
+    }
 
 }

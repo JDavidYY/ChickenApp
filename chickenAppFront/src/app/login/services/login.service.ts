@@ -7,7 +7,7 @@ import { UserLoginModel } from '../models/userlogin.model';
 @Injectable()
 export class LoginService {
   //Construcción de la ruta hacia el método del back
-	private api_url: string = environment.apiUrl + 'login/';
+	private api_url: string = environment.apiUrl + '/users';
     constructor
     (private http:HttpClient,private httpService:HttpService)
   		{ }
@@ -15,7 +15,7 @@ export class LoginService {
   //Api de login que enviar contraseña y correo para loguear al back
   login(user:UserLoginModel)
   {
-    const url = this.api_url;
+    const url = this.api_url+'/login';
     const httpOptions = this.httpService.headerOptionsJson(true, true);
     return this.http.post<any>(url, user, httpOptions);
   }
