@@ -34,12 +34,12 @@ include __DIR__.'/common/v1/controller/CustomerController.class.php';*/
 
 $app = AppFactory::create();
 
-//$app->setBasePath('/titalab');
+//$app->setBasePath('/api');
 
 //$app->addBodyParsingMiddleware(); // JSON body
 require __DIR__.'/config/middleware.php';
-require __DIR__.'/config/routes-api.php';
 require __DIR__.'/config/routes.php';
+require __DIR__.'/config/routes-api.php';
 
 //require __DIR__.'/config/routes-webhook.php';
 

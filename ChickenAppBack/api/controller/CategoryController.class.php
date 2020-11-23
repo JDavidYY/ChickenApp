@@ -10,12 +10,12 @@ abstract class CategoryController{
         return CategoryData::getCategories();
     }
     
-    public static function addCategory($name,$description,$content){
-        return CategoryData::addCategory($name,$description,$content);
+    public static function addCategory($name,$description){
+        return CategoryData::addCategory($name,$description);
     }
 
-    public static function editCategory($categoryid,$name,$description,$content){
-        return CategoryData::editCategory($categoryid,$name,$description,$content);
+    public static function editCategory($categoryid,$name,$description){
+        return CategoryData::editCategory($categoryid,$name,$description);
     }
 
     public static function deleteCategory($categoryid){

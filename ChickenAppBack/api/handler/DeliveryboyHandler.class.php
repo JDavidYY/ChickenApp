@@ -4,9 +4,9 @@ namespace Chicken\Handler;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-use Chicken\Controller\ChefController;
+use Chicken\Controller\DeliveryboyController;
 
-class ChefHandler
+class DeliveryboyHandler
 {
     private $responder;
 
@@ -15,7 +15,7 @@ class ChefHandler
 		$this->responder = $responder;
     }
 	
-	public function getChefs(Request $request, Response $response, array $args) {
+	public function getDeliveryboys(Request $request, Response $response, array $args) {
         /*$client_id=$args['clientid'];
 		$customer_id=$args['customerid'];*/
 		$data = array(
@@ -32,7 +32,7 @@ class ChefHandler
 		return $response;*/
 	}
 
-    public function addChef(Request $request, Response $response, array $args)
+    public function addDeliveryboy(Request $request, Response $response, array $args)
 	{
 		
 		/*$data = array(
@@ -57,19 +57,19 @@ class ChefHandler
 		$workshift=$data['workshift'];
 		$age=$data['age'];
 
-        $result="Error al agregar al cocinero";
+        $result="Error al agregar al deliveryboy";
         if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
         }
-        ChefController::addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
+        DeliveryboyController::addDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
        
-		 $result="Chef agregado";
+		 $result="Delivery Boy agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 
-	public function editChef(Request $request, Response $response, array $args){
+	public function editDeliveryboy(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
 
@@ -81,19 +81,18 @@ class ChefHandler
 		$dni=$data['dni'];
 		$workshift=$data['workshift'];
 		$age=$data['age'];
-		$chefid=$data['chefid'];
 	
-		$result=ChefController::editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age,$chefid);
-		$result='Chef actualizado correctamente';
+		$result=DeliveryboyController::editDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
+		$result='Deliveryboy actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 		
 	}
 
-	public function deleteChef(Request $request, Response $response, array $args){
+	public function deleteDeliveryboy(Request $request, Response $response, array $args){
         $dni=$args["dni"];
-		$result=ChefController::deleteChef($dni);
-		$result='Chef eliminado correctamente';
+		$result=DeliveryboyController::deleteDeliveryboy($dni);
+		$result='Deliveryboy eliminado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}

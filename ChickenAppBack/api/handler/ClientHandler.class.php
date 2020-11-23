@@ -4,9 +4,9 @@ namespace Chicken\Handler;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-use Chicken\Controller\ChefController;
+use Chicken\Controller\ClientController;
 
-class ChefHandler
+class ClientHandler
 {
     private $responder;
 
@@ -15,7 +15,7 @@ class ChefHandler
 		$this->responder = $responder;
     }
 	
-	public function getChefs(Request $request, Response $response, array $args) {
+	public function getClients(Request $request, Response $response, array $args) {
         /*$client_id=$args['clientid'];
 		$customer_id=$args['customerid'];*/
 		$data = array(
@@ -32,68 +32,52 @@ class ChefHandler
 		return $response;*/
 	}
 
-    public function addChef(Request $request, Response $response, array $args)
+    public function addClient(Request $request, Response $response, array $args)
 	{
-		
-		/*$data = array(
-			'ok' => 'true',
-			'result' => 'servicio conectado'
-		);
-		$payload = json_encode($data);
-		$response->getBody()->write($payload);
-		return $response
-			->withHeader('Content-Type', 'application/json')
-			->withStatus(201);*/
 
 		$data = (array)$request->getParsedBody();
-		
+		//$client=$data['client'];
 		//$content = $request->getBody();
 		$firstname=$data['firstname'];
-		$lastname=$data['lastname'];
-		$phone=$data['phone'];
-		$email=$data['email'];
+        $lastname=$data['lastname'];
+        $phone=$data['phone'];
+        $email=$data['email'];
+        $adress=$data['adress'];
 		$password=$data['password'];
-		$dni=$data['dni'];
-		$workshift=$data['workshift'];
-		$age=$data['age'];
-
-        $result="Error al agregar al cocinero";
+		
+        $result="Error al agregar al cliente";
         if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
         }
-        ChefController::addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
+        ClientController::addClient($firstname,$lastname,$phone,$email,$adress,$password);
        
-		 $result="Chef agregado";
+		 $result="Cliente agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 
-	public function editChef(Request $request, Response $response, array $args){
+	public function editClient(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
+		$content = $data['content'];
 
-		$firstname=$data['firstname'];
-		$lastname=$data['lastname'];
-		$phone=$data['phone'];
-		$email=$data['email'];
-		$password=$data['password'];
-		$dni=$data['dni'];
-		$workshift=$data['workshift'];
-		$age=$data['age'];
-		$chefid=$data['chefid'];
+		$firstname=$args['firstname'];
+		$lastname=$args['lastname'];
+		$phone=$args['phone'];
+		$email=$args['email'];
 	
-		$result=ChefController::editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age,$chefid);
-		$result='Chef actualizado correctamente';
+		$result=ClientController::editClient($firstname,$lastname,$phone,$email,$content);
+		$result='Cliente actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 		
 	}
 
-	public function deleteChef(Request $request, Response $response, array $args){
-        $dni=$args["dni"];
-		$result=ChefController::deleteChef($dni);
-		$result='Chef eliminado correctamente';
+	public function deleteClient(Request $request, Response $response, array $args){
+        $id=$args["id"];
+		$result=ClientController::deleteClient($id);
+		$result='Cliente eliminado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}

@@ -28,13 +28,13 @@ class DataAccessLayer
     private $_region 			= DataAccessCredentials::ConnectionRegion; //private $_region = 'us-central1';
 	private $_instancename 		= DataAccessCredentials::ConnectionInstancename; //private $_instancename = 'itland'; */
 	
-	private $_server 			= '108.59.83.154';
-    private $_username 			= 'root';
-    private $_password 			= '7PnxAKeF3FiAp9IB';
-    private $_database 			= 'chatbot_centrum';
-    private $_projectid 		= 'titalab-centrum';
-    private $_region 			= 'us-central1';
-	private $_instancename 		= 'titalab-centrum';
+	private $_server 			= 'chickenbd.cnbkvdycd5ib.us-east-2.rds.amazonaws.com';
+    private $_username 			= 'admin';
+    private $_password 			= '14200186';
+    private $_database 			= 'Chickenapp';
+    private $_projectid 		= NULL;
+    private $_region 			= NULL;
+	private $_instancename 		= NULL;
 	
     private $_connectionstring 	= '';
     //public  $debug = false;

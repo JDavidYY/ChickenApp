@@ -10,12 +10,14 @@ abstract class ChefController{
         return ChefData::getChefs();
     }
     
-    public static function addChef($firstname,$lastname,$email,$dni,$phone,$content){
-        return ChefData::addChef($firstname,$lastname,$email,$dni,$phone,$content);
+    public static function addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age){
+        $password_encrypted = SecurityExtensions::encrypt($password);
+        return ChefData::addChef($firstname,$lastname,$phone,$email,$password_encrypted,$dni,$workshift,$age);
     }
 
-    public static function editChef($dni,$firstname,$lastname,$email,$phone,$content){
-        return ChefData::editChef($dni,$firstname,$lastname,$email,$phone,$content);
+    public static function editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age){
+        $password_encrypted = SecurityExtensions::encrypt($password);
+        return ChefData::editChef($firstname,$lastname,$phone,$email,$password_encrypted,$dni,$workshift,$age);
     }
 
     public static function deleteChef($dni){
