@@ -26,7 +26,7 @@ export class CategoryService {
 	guardarCategory(category:CategoryModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
-		let url = this.apiurl + "/save";
+		let url = this.apiurl + "/add";
 		return this.httpClient.post<CategoryPostResponse>(url, category, options);
 	}
 // api para obtener el listado de todoS los chef por GET

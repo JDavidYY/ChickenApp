@@ -15,43 +15,14 @@ export class CategoryEditComponent implements OnInit {
 
  
   category: CategoryModel = new CategoryModel();
-  nacimiento: string;
 
-  dniFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(8)
-  ]);
-
-  apellidoPatFormControl = new FormControl('', [
+  nameFormControl = new FormControl('', [
   Validators.required,
   ]);
 
-  apellidoMatFormControl = new FormControl('', [
+  descriptionFormControl = new FormControl('', [
   Validators.required,
   ]);
-
-  nombresFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  fechaNacimientoFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  celularFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(9)
-  ]);
-
-  emailFormControl = new FormControl('', [
-  Validators.required,
-  Validators.email
-  ]);
-
-  direccionFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
 
   constructor(private router:Router, private datePipe: DatePipe, private categoryservice: CategoryService) { }
 
@@ -60,21 +31,13 @@ export class CategoryEditComponent implements OnInit {
 
   guardarCategory(){
 
-    let selectedDate = this.datePipe.transform(this.nacimiento, 'yyyy/MM/dd');
-    this.category.nacimiento=selectedDate;
-
     // validacion de campos para que no sean vacios
-    if ( !this.category.nombre || !this.category.apellidoPat || !this.category.apellidoMat || 
-        !this.category.celular || !this.category.direccion || !this.category.dni ||
-      !this.category.email  || !this.category.nacimiento ) {
+    if ( !this.category.name || !this.category.description) {
 
       return;
     }
    // validacion de campos para que no sean incorrectos mediante FormControl
-    if ( this.dniFormControl.invalid || this.nombresFormControl.invalid || this.apellidoPatFormControl.invalid 
-      || this.apellidoMatFormControl.invalid || this.celularFormControl.invalid
-      || this.direccionFormControl.invalid || this.dniFormControl.invalid || this.emailFormControl.invalid
-       || this.fechaNacimientoFormControl.invalid ) {
+    if ( this.nameFormControl.invalid || this.descriptionFormControl.invalid ) {
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del categiry mientras se hace el servicio
