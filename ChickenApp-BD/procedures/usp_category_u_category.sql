@@ -1,9 +1,9 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_categoria_u_categoria`(inout id int,in nombre varchar(45),in descripcion varchar(200),in imagen varchar(150))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_category_u_category`(in pcategoryid int,in pname varchar(45),in pdescription varchar(200),out oresult int)
 BEGIN
-	if (SELECT EXISTS(select * from categories where idCategories=id and estateCategories=1)) then
-		update categories set nameCategories=nombre,descriptionCategories=descripcion,imageCategories=imagen where idCategories=id;
-        if (SELECT EXISTS(select * from categories where idCategories=id and nameCategories=nombre and descriptionCategories=descripcion)) then
-            select idCategories into id from categories where idCategories=id and nameCategories=nombre and descriptionCategories=descripcion;
+	if (SELECT EXISTS(select * from categories where idCategories=pcategoryid and estateCategories=1)) then
+		update categories set nameCategories=pname,descriptionCategories=pdescription where idCategories=pcategoryid;
+        if (SELECT EXISTS(select * from categories where idCategories=pcategoryid and nameCategories=pname and descriptionCategories=pdescription)) then
+            set oresult = 1;
         end if;
 	end if;
 END
