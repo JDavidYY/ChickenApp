@@ -46,9 +46,9 @@ export class ProductEditComponent implements OnInit {
 			.subscribe(
 				(response) => {
 					console.log(response);
-					if (response != null && response.status && response.listCategory != null){
+					if (response != null && response.ok && response.result != null){
 						//response = JSON.parse(response['_body'])
-						this.categories = response.listCategory;
+						this.categories = response.result;
 					}
 				},
 				(err) => {
