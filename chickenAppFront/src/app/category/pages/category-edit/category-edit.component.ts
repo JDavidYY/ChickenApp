@@ -13,7 +13,7 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoryEditComponent implements OnInit {
 
- 
+
   category: CategoryModel = new CategoryModel();
 
   nameFormControl = new FormControl('', [
@@ -64,7 +64,7 @@ export class CategoryEditComponent implements OnInit {
                 'El category ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/category/list']);
+              this.router.navigate(['/category/listado']);
           },
           (err) => {
             console.log(err);
@@ -92,6 +92,6 @@ export class CategoryEditComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
-    }   
+    }
 
 }

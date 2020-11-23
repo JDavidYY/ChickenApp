@@ -14,19 +14,18 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoryListComponent implements OnInit {
 
-  
+
   categorySeleccionado:CategoryModel = null;
   dataSourceOne: MatTableDataSource<CategoryModel>;
   displayedColumnsOne: string[] = [
-    'dni',
-	  'fullnombre',
-    'celular',
-    'email'];
+    'categoryid',
+	  'name',
+    'description'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private categoryservice:CategoryService) { 
+    constructor(private router:Router, private categoryservice:CategoryService) {
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -44,8 +43,8 @@ export class CategoryListComponent implements OnInit {
         .subscribe(
             (response) => {
                 console.log(response);
-                if ( response.status && response.message != ""){
-                    const category = response.listCategory;
+                if (response != null && response.ok && response.result != null){
+                    const category = response.result;
                     this.dataSourceOne.data = category;
                     this.dataSourceOne.paginator = this.tableOnePaginator;
                     this.dataSourceOne.sort = this.tableOneSort;
@@ -62,12 +61,12 @@ export class CategoryListComponent implements OnInit {
     {
       this.router.navigate(['/category/agregar']);
     }
-    
+
     //Método para eliminar categories
     eliminarCategory()
     {
       if (this.categorySeleccionado == null) return;
-	
+
       Swal.fire({
         title: 'Estas seguro?',
         text: "El registro seleccionado se eliminará!",
@@ -91,7 +90,7 @@ export class CategoryListComponent implements OnInit {
                 'success'
                 );
               this.listarCategory();
-              this.categorySeleccionado = null;			
+              this.categorySeleccionado = null;
             }
           },
           (err) => {
@@ -108,5 +107,5 @@ export class CategoryListComponent implements OnInit {
         let category = this.categorySeleccionado;
         this.router.navigate(['/category/editar', category.idCategory ]);
     }
-  
+
 }
