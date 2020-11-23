@@ -15,8 +15,7 @@ export class DeliveryboyEditComponent implements OnInit {
 
 
   deliveryboy: DeliveryboyModel = new DeliveryboyModel();
-  nacimiento: string;
-
+  
   dniFormControl = new FormControl('', [
   Validators.required,
   Validators.minLength(8)
