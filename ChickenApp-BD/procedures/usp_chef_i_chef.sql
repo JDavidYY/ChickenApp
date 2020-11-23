@@ -6,7 +6,7 @@ BEGIN
         
 		SET oresult = MAX(Users.idUsers);
         
-		INSERT INTO Employees (idEmployees,activityEmployees,firstnameEmployees,lastnameEmployees,phoneEmployees,workshiftEmployees,dniEmployees,ageEmployees,adressEmployees,TypeEmployees_idDepartaments,Users_idUsers,estateCustomers,estateEmployees,emailEmployees)
+		INSERT INTO Employees (idEmployees,activityEmployees,firstnameEmployees,lastnameEmployees,phoneEmployees,workshiftEmployees,dniEmployees,ageEmployees,adressEmployees,TypeEmployees_idDepartaments,Users_idUsers,estateEmployees,emailEmployees)
 		VALUES(NULL,1,'pfristname','plastname','pphone','pworkshift','pdni','pages',NULL,2,@oresult,1,pemail);
 		
         SET oresult = 1;
