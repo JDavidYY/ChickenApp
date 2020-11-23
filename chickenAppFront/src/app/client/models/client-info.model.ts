@@ -6,4 +6,5 @@ export class ClientModel
     phone:string = "";
     adress:string = "";
     email:string = "";
+    password: string = "";
 }
