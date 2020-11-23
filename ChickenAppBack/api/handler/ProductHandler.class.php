@@ -43,7 +43,7 @@ class ProductHandler
         $description=$args['description'];
         $price=$args['price'];
         $categoryid=$args['categoryid'];
-
+		
         $result="Error al agregar el producto";
         if(!isset($content)){
             $response=self::response($response,FALSE,$result);

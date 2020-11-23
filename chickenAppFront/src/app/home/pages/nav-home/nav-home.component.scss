@@ -191,6 +191,21 @@
     padding-left: 10px;
 }
 
+/*móvil*/
+.bg-dark{
+    background-color:  darkorange !important;
+}
+.tit-m{
+    text-decoration: none;
+}
+.titulo-m{
+    color: #fff;
+    font-size: 25px;
+    margin: auto;
+    text-decoration: none;
+}
+/*fin móvil*/
+
 @media (min-width: 992px) {
     .espacio {
       padding-top: 70px;
