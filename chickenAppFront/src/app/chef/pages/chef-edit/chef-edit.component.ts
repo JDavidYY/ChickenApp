@@ -93,7 +93,7 @@ export class ChefEditComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            if ( response.status && response.statusCode == 200 && response.message != "" )
+            if ( response && response.ok && response.result != 0 )
               Swal.fire(
                 'Enhorabuena!',
                 'El chef ha sido guardado.',

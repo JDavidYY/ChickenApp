@@ -42,9 +42,10 @@ export class ChefService {
 		return this.httpClient.get<ChefGetResponse>(url, options);
 	}
 	// api para eliminar a Chef por GET
-  	eliminarChef(idChef:string):Observable<ChefGetResponse> {
-		const url = this.apiurl + "/delete/" + idChef;
+  	eliminarChef(idChef:string):Observable<ChefPostResponse> {
+		const url = this.apiurl + "/delete/";
+		var data = { idChef: idChef }
 		const options = this.httpService.headerOptionsJson(true, true);
-		return this.httpClient.delete<ChefGetResponse>(url, options);
+		return this.httpClient.post<ChefPostResponse>(url,data, options);
 	}	
 }
