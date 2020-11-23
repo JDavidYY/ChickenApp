@@ -3,20 +3,20 @@ BEGIN
 	IF (SELECT exists(SELECT * FROM Users WHERE emailUsers = pemail)) = TRUE THEN
 		UPDATE Employees
         SET
-			firstnameEmployees = 'pfristname' ,
-            lastnameEmployees = 'plastname',
-            phoneEmployees = 'pphone',
-            workshiftEmployees = 'pworkshift' ,
-            dniEmployees = 'pdni',
-            ageEmployees = 'pages'
+			firstnameEmployees = pfristname ,
+            lastnameEmployees = plastname,
+            phoneEmployees = pphone,
+            workshiftEmployees = pworkshift ,
+            dniEmployees = pdni,
+            ageEmployees = pages
             
         WHERE    
             Employees.dniEmployees =  pdni ;
 		SET oresult = (SELECT idUsers FROM Users WHERE emailUsers = pemail);
         UPDATE Users
         SET
-			emailUsers = 'pemail' ,
-            passwordUsers = 'ppassword'
+			emailUsers = pemail ,
+            passwordUsers = ppassword
         WHERE    
             idUsers =  oresult ;
         
