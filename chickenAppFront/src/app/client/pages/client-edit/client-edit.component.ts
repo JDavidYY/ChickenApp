@@ -19,6 +19,10 @@ export class ClientEditComponent implements OnInit {
   Validators.required,
   ]);
 
+  passwordFormControl = new FormControl('', [
+  Validators.required,
+  ]);
+
   firstnameFormControl = new FormControl('', [
   Validators.required
   ]);
@@ -48,7 +52,7 @@ export class ClientEditComponent implements OnInit {
 
     // validacion de campos para que no sean vacios
     if ( !this.client.firstname || !this.client.lastname || 
-        !this.client.phone || !this.client.adress ||
+        !this.client.phone || !this.client.adress || !this.client.password ||
       !this.client.email ) {
 
       return;
@@ -56,7 +60,7 @@ export class ClientEditComponent implements OnInit {
    // validacion de campos para que no sean incorrectos mediante FormControl
     if ( this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
       || this.phoneFormControl.invalid
-      || this.adressFormControl.invalid || this.emailFormControl.invalid) {
+      || this.adressFormControl.invalid || this.emailFormControl.invalid || this.passwordFormControl.invalid) {
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del categiry mientras se hace el servicio

@@ -17,7 +17,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class ChefService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "datos-chef";
+  apiurl:string = environment.apiUrl + "chef";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
@@ -26,7 +26,7 @@ export class ChefService {
 	guardarChef(chef:ChefModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
-		let url = this.apiurl + "/save";
+		let url = this.apiurl + "/add";
 		return this.httpClient.post<ChefPostResponse>(url, chef, options);
 	}
 // api para obtener el listado de todoS los chef por GET
