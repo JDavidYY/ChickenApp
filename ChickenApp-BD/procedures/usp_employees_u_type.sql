@@ -2,9 +2,9 @@ CREATE PROCEDURE `usp_employees_u_type`(IN IdtE INT,nameTypeE VARCHAR(45),descri
 BEGIN
 	IF (SELECT exists(SELECT * FROM TypeEmployees WHERE idTypeEmployees=IdtE)) = TRUE THEN
 		UPDATE TypeEmployees
-		SET nameTypeEmployees= 'nameTypeE',
-			descriptionTypeEmployees = 'descriptionTypeEmployees',
-			estateTypeEmployees = 'estateTypeEmployees' 
+		SET nameTypeEmployees= nameTypeE,
+			descriptionTypeEmployees = descriptionTypeEmployees,
+			estateTypeEmployees = estateTypeEmployees 
 		WHERE idTypeEmployees=IdtE;
         SET outResult = 1 ;
 	END IF;
