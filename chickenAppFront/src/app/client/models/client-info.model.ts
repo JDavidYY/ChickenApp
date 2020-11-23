@@ -1,12 +1,10 @@
-export class ChefModel
+export class ClientModel
 {
-    idChef:string = "";
+    idClient:string = "";
     firstname:string = "";
     lastname:string = "";
-    dni: string = "";
     phone:string = "";
-    workshift: string = "";
-    age: string = "";
+    adress:string = "";
     email:string = "";
     password: string = "";
 }

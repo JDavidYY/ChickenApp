@@ -18,11 +18,29 @@
                       </mat-panel-title>
                   </mat-expansion-panel-header>
                   <!-- <a mat-list-item  (click)="goto('/plan/listado')" *ngIf=" role_id == 1 || role_id == 2" > -->
-                  <a mat-list-item (click)="goto('/cocinero/listado')" >
+                  <a mat-list-item (click)="goto('/chef/listado')" >
                       <span class="material-icons" style="margin-right: 10px;font-size: 18px;">
                           check
                       </span>
-                      <span>Cocineros</span>
+                      <span>Chef</span>
+                  </a>
+                  <a mat-list-item (click)="goto('/deliveryboy/listado')" >
+                      <span class="material-icons" style="margin-right: 10px;font-size: 18px;">
+                          check
+                      </span>
+                      <span>Deliveryboys</span>
+                  </a>
+                  <a mat-list-item (click)="goto('/category/listado')" >
+                      <span class="material-icons" style="margin-right: 10px;font-size: 18px;">
+                          check
+                      </span>
+                      <span>Categorías</span>
+                  </a>
+                  <a mat-list-item (click)="goto('/product/listado')" >
+                      <span class="material-icons" style="margin-right: 10px;font-size: 18px;">
+                          check
+                      </span>
+                      <span>Productos</span>
                   </a>
               </mat-expansion-panel>
           </mat-accordion>

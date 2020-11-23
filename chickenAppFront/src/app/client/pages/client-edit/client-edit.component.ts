@@ -1,45 +1,33 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
-import { DatePipe} from '@angular/common';
 import { FormControl, Validators } from '@angular/forms';
-import { ChefModel } from '../../models/chef-info.model';
-import { ChefService } from '../../services/chef.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ClientModel } from '../../models/client-info.model';
+import { ClientService } from '../../services/client.service';
 
 @Component({
-  selector: 'app-chef-edit',
-  templateUrl: './chef-edit.component.html',
-  styleUrls: ['./chef-edit.component.scss']
+  selector: 'app-client-edit',
+  templateUrl: './client-edit.component.html',
+  styleUrls: ['./client-edit.component.scss']
 })
-export class ChefEditComponent implements OnInit {
-
- 
-  chef: ChefModel = new ChefModel();
+export class ClientEditComponent implements OnInit {
+  client: ClientModel = new ClientModel();
   nacimiento: string;
-
-  dniFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(8)
-  ]);
 
   lastnameFormControl = new FormControl('', [
   Validators.required,
   ]);
 
+  passwordFormControl = new FormControl('', [
+  Validators.required,
+  ]);
+
   firstnameFormControl = new FormControl('', [
-  Validators.required,
-  ]);
-
-  phoneFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(9)
-  ]);
-
-  ageFormControl = new FormControl('', [
   Validators.required
   ]);
 
-  workshiftFormControl = new FormControl('', [
+  phoneFormControl = new FormControl('', [
   Validators.required,
   Validators.minLength(9)
   ]);
@@ -49,36 +37,36 @@ export class ChefEditComponent implements OnInit {
   Validators.email
   ]);
 
-  passwordFormControl = new FormControl('', [
+  adressFormControl = new FormControl('', [
   Validators.required
   ]);
 
 
-  constructor(private router:Router, private datePipe: DatePipe, private chefservice: ChefService) { }
+  constructor(private router:Router, private datePipe: DatePipe, private clientservice: ClientService) { }
 
   ngOnInit(): void {
   }
 
-  guardarChef(){
+  guardarClient(){
 
 
     // validacion de campos para que no sean vacios
-    if ( !this.chef.firstname || !this.chef.lastname || !this.chef.phone || 
-        !this.chef.workshift || !this.chef.age || !this.chef.dni ||
-      !this.chef.email  || !this.chef.password ) {
+    if ( !this.client.firstname || !this.client.lastname || 
+        !this.client.phone || !this.client.adress || !this.client.password ||
+      !this.client.email ) {
 
       return;
     }
    // validacion de campos para que no sean incorrectos mediante FormControl
-    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
-      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
-      || this.ageFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
+    if ( this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+      || this.phoneFormControl.invalid
+      || this.adressFormControl.invalid || this.emailFormControl.invalid || this.passwordFormControl.invalid) {
       return;
     }
-  //modal para que muestre el mensaje para confirmación de guardado del chef mientras se hace el servicio
+  //modal para que muestre el mensaje para confirmación de guardado del categiry mientras se hace el servicio
       Swal.fire({
       title: 'Aviso',
-      text: "¿Estás seguro que deseas guardar el chef?",
+      text: "Confirmar registro",
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -87,19 +75,19 @@ export class ChefEditComponent implements OnInit {
       confirmButtonText: 'Si, guardar!' ,
 
       }).then((result) => {
-      // llamado sel servicio guardarChef desde chef.service.ts y se le pasa 2 parametros
+      // llamado sel servicio guardarClientclient desde client.service.ts y se le pasa 2 parametros
       if (result.value) {
-        this.chefservice.guardarChef(this.chef)
+        this.clientservice.guardarClient(this.client)
         .subscribe(
           (response) => {
             console.log(response);
             if ( response.status && response.statusCode == 200 && response.message != "" )
               Swal.fire(
                 'Enhorabuena!',
-                'El chef ha sido guardado.',
+                'El cliente ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/chef/list']);
+              this.router.navigate(['/login']);
           },
           (err) => {
             console.log(err);
@@ -110,7 +98,7 @@ export class ChefEditComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/chef/list']);
+    this.router.navigate(['/login']);
   }
 
   keypressNumbers(event: any) {
@@ -128,5 +116,6 @@ export class ChefEditComponent implements OnInit {
       event.preventDefault();
     }
     }   
+
 
 }

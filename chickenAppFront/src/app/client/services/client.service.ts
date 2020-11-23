@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { ClientModel } from '../models/client-info.model';
+import { ClientPostResponse } from '../models/client-post-response.model';
+import { ClientListResponse } from '../models/client-list-response.model';
+import { ClientGetResponse } from '../models/client-get-response.model';
 
-import { ChefModel } from '../models/chef-info.model';
-import { ChefGetResponse } from '../models/chef-get-response.model';
-import { ChefListResponse } from '../models/chef-list-response.model';
-import { ChefPostResponse } from '../models/chef-post-response.model';
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
 
@@ -15,36 +15,36 @@ const EXCEL_EXTENSION = '.xlsx';
 @Injectable({
   providedIn: 'root'
 })
-export class ChefService {
+export class ClientService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "chef";
+  apiurl:string = environment.apiUrl + "client";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
 	}
 	//api para guardar los datos del chef por POST
-	guardarChef(chef:ChefModel)
+	guardarClient(client:ClientModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
 		let url = this.apiurl + "/add";
-		return this.httpClient.post<ChefPostResponse>(url, chef, options);
+		return this.httpClient.post<ClientPostResponse>(url, client, options);
 	}
 // api para obtener el listado de todoS los chef por GET
-	seleccionarChefs():Observable<ChefListResponse> {
+	seleccionarClients():Observable<ClientListResponse> {
 		const url = this.apiurl + "/select";
 		const options = this.httpService.headerOptionsJson(true, true);
-		return this.httpClient.get<ChefListResponse>(url, options);
+		return this.httpClient.get<ClientListResponse>(url, options);
 	}
 	// api para obtener los datos de un Chef por GET
-  	getChef(idChef:string):Observable<ChefGetResponse> {
-		const url = this.apiurl + "/get/" + idChef;
+  	getClient(idClient:string):Observable<ClientGetResponse> {
+		const url = this.apiurl + "/get/" + idClient;
 		const options = this.httpService.headerOptionsJson(true, true);
-		return this.httpClient.get<ChefGetResponse>(url, options);
+		return this.httpClient.get<ClientGetResponse>(url, options);
 	}
 	// api para eliminar a Chef por GET
-  	eliminarChef(idChef:string):Observable<ChefGetResponse> {
-		const url = this.apiurl + "/delete/" + idChef;
+  	eliminarClient(idClient:string):Observable<ClientGetResponse> {
+		const url = this.apiurl + "/delete/" + idClient;
 		const options = this.httpService.headerOptionsJson(true, true);
-		return this.httpClient.delete<ChefGetResponse>(url, options);
+		return this.httpClient.delete<ClientGetResponse>(url, options);
 	}	
 }
