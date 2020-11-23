@@ -25,14 +25,13 @@ abstract class CategoryData{
 
     }
     
-    public static function addCategory($name,$description,$content) {
+    public static function addCategory($name,$description) {
         $rtn = null;
 
         $procedureName = "usp_category_i_category"; 
         $params = array(
                 new MySqlParameter("pname", $name, 1),
                 new MySqlParameter("pdescription", $description, 1),
-                new MySqlParameter("pcontent", $content, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
@@ -46,7 +45,7 @@ abstract class CategoryData{
         return $rtn;
     }
 
-    public static function editCategory($categoryid,$name,$description,$content) {
+    public static function editCategory($categoryid,$name,$description) {
         $rtn = null;
 
         $procedureName = "usp_category_u_category"; 
@@ -54,7 +53,6 @@ abstract class CategoryData{
             new MySqlParameter("pcategoryid", $categoryid, 1),
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
-            new MySqlParameter("pcontent", $content, 1),
              new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -73,7 +71,7 @@ abstract class CategoryData{
 
         $procedureName = "usp_category_d_category"; 
         $params = array(
-                new MySqlParameter("pcategory", $categoryid, 1),
+                new MySqlParameter("pcategoryid", $categoryid, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();

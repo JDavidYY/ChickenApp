@@ -2,12 +2,12 @@
 namespace Chicken\Data;
 use Common\Data\DataAccessLayer;
 use Common\Data\MySqlParameter;
-abstract class ChefData{
+abstract class DeliveryboyData{
 
-    public static function getChefs(){
+    public static function getDeliveryboys(){
         $rtn = null;
 
-        $procedure_name = "usp_chefs_s_chefs";
+        $procedure_name = "usp_deliveryboys_s_deliveryboys";
         $params = NULL;
 
         $db = new DataAccessLayer();
@@ -25,10 +25,10 @@ abstract class ChefData{
 
     }
     
-    public static function addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
+    public static function addDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
         $rtn = null;
 
-        $procedureName = "usp_chef_i_chef"; 
+        $procedureName = "usp_deliveryboy_i_deliveryboy"; 
         $params = array(
                 new MySqlParameter("pfirstname", $firstname, 1),
                 new MySqlParameter("plastname", $lastname, 1),
@@ -51,10 +51,10 @@ abstract class ChefData{
         return $rtn;
     }
 
-    public static function editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
+    public static function editDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
         $rtn = null;
 
-        $procedureName = "usp_chef_u_chef"; 
+        $procedureName = "usp_deliveryboy_u_deliveryboy"; 
         $params = array(
             new MySqlParameter("pfirstname", $firstname, 1),
             new MySqlParameter("plastname", $lastname, 1),
@@ -77,10 +77,10 @@ abstract class ChefData{
         return $rtn;
     }
 
-    public static function deleteChef($dni) {
+    public static function deleteDeliveryboy($dni) {
         $rtn = null;
 
-        $procedureName = "usp_chef_d_chef"; 
+        $procedureName = "usp_deliveryboy_d_deliveryboy"; 
         $params = array(
                 new MySqlParameter("pdni", $dni, 1),
                 new MySqlParameter("oresult", 0, 2)
