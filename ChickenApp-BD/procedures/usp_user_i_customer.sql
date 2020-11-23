@@ -2,12 +2,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_user_i_customer`(pfristname VAR
 BEGIN
 	IF (SELECT exists(SELECT * FROM Users WHERE emailUsers=pemail)) = FALSE THEN
 		INSERT INTO Users (idUsers,emailUsers,passwordUsers,typeUser,estateUser)
-		VALUES (NULL,'pemail','ppassword','1',1);
+		VALUES (NULL,pemail,ppassword,'1',1);
         
-		SET oresult = MAX(Users.idUsers);
+		SET oresult = (SELECT MAX(Users.idUsers));
         
 		INSERT INTO Customers (idCustomers,firstnameCustomers,lastnameCustomers,phoneCustomers,emailCustomers,adressCustomers,Users_idUsers,estateCustomers)
-		VALUES(NULL,'pfristname','plastname','pphone','pemail','padress',@oresult,1);
+		VALUES(NULL,pfristname,plastname,pphone,pemail,padress-,@oresult,1);
 		
         SET oresult = 1;
 	END IF;
