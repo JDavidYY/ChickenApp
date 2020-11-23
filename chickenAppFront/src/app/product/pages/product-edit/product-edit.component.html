@@ -1,0 +1,71 @@
+<div class="container pt-5">
+    <div class="pt-5">
+        <h1>Registro de Product</h1>
+    </div>
+    <!-- Form para guardar los datos del product y se captura con [(ngModel)] -->
+    <form>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Nomber del producto</mat-label>
+                <input matInput [(ngModel)]="product.name" [formControl]="nameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="nameFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Descripción del producto</mat-label>
+                <input matInput [(ngModel)]="product.description" [formControl]="description    FormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field clsas="col-sm-6">
+                <mat-select name="txtCategory" [(ngModel)]="product.categoryid">
+                  <mat-option>-- Seleccione una categoría --</mat-option>
+                  <mat-option *ngFor="let category of categories" value="{{category.idCategory}}">{{category.name}}</mat-option>
+                </mat-select>
+                <mat-label>Categoría</mat-label>
+              </mat-form-field>
+              <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Precio</mat-label>
+                <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <mat-error *ngIf="priceFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput [(ngModel)]="product.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Por favor ingresa una <strong>dirección de correo válida</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Dirección</mat-label>
+                <input matInput [(ngModel)]="product.direccion" [formControl]="direccionFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-error *ngIf="direccionFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <!-- Div de botones para regresar o guardar los datos de los campos -->
+        <div class="form-row pt-2">
+            <div class="col-sm-12 text-right">     
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>   
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarProduct()">Guardar</button> 
+            </div>
+        </div>
+    </form> 
+</div>
