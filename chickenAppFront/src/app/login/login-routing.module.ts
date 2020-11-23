@@ -10,8 +10,17 @@ export const LOGIN_COMPONENTS = [
 //Se construyen las rutas para acceder a cada uno de los componentes
 const loginRoutes:Routes = [
     {
-      path: 'login',
-      component: LoginComponent
+      path: '',
+      children: [
+        {
+          path: 'login',
+          component: LoginComponent
+        }/*,
+        {
+          path: 'password-recovery',
+          component: PasswordRecoveryPage
+        }*/
+      ]
     }
 ];
 

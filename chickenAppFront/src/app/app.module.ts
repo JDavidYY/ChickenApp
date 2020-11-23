@@ -6,11 +6,14 @@ import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ChefModule } from './chef/chef.module';
+//import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
 
 
 @NgModule({
   declarations: [
     AppComponent
+    //DeliveryboyModule
   ],
   imports: [
     BrowserModule,
@@ -18,6 +21,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     HomeModule,
     LoginModule,
     DashboardModule,
+    ChefModule,
     SharedModule
   ],
   providers: [],

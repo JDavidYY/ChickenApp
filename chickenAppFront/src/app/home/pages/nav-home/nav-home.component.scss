@@ -7,6 +7,23 @@
     position: fixed;
     z-index: 100;
 }
+.toolbar-menu{
+    width: 90%;
+    margin: auto;
+}
+.menu{
+    display: flex;
+    text-align: left;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.lista{
+    list-style: none;
+    margin-left: 55px;
+}
+.lista a{
+    color: black;
+}
 .toolbar3 {
     height: auto;
     background-color: white;
@@ -41,3 +58,187 @@
             line-height: 50px;
             text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, .6);
         }
+
+.pollo-wallpaper{
+    background-image: linear-gradient( #0000004d, #00000080 ),url("../../../../assets/images/backgrounds/pollo-brasa.jpg");
+    width: 100%;
+    height: 600px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.hs1-titulo{
+    font-size: 50px;
+    color: white;
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 50px;
+}
+.hs1-subtitulos{
+    color: white;
+    padding-left: 50px;
+    font-size: 30px;
+}
+
+.home-section-2{
+    padding-top: 60px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #f4976a;
+    font-size: 30px;
+}
+.menu{
+    padding-bottom: 100px;
+}
+.plato-1{
+    background-image: url("../../../../assets/images/backgrounds/cuarto-parrillero.jpg");
+    width: 100%;
+    height: 250px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+.plato-1:hover .plato-hover,
+.plato-2:hover .plato-hover,
+.plato-3:hover .plato-hover2,
+.plato-4:hover .plato-hover,
+.plato-5:hover .plato-hover
+{
+    opacity: 0.75;
+}
+.plato-hover{
+    transition: all 0.9s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #030303bf;
+    opacity: 0;
+}
+.plato-hover2{
+    transition: all 0.9s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #030303bf;
+    opacity: 0;
+}
+
+.plato-2{
+    background-image: url("../../../../assets/images/backgrounds/ensalada-cocida.jpg");
+    width: 100%;
+    height: 250px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+.plato-3{
+    background-image: url("../../../../assets/images/backgrounds/kachito-final.jpg");
+    width: 100%;
+    height: 250px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+.plato-4{
+    background-image: url("../../../../assets/images/backgrounds/combo-familiar.jpg");
+    width: 100%;
+    height: 250px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+.plato-5{
+    background-image: url("../../../../assets/images/backgrounds/ensalada-california.jpg");
+    width: 100%;
+    height: 250px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+}
+
+.plato-desc{
+    padding-left: 20px;
+    padding-top: 200px;
+    font-size: 24px;
+    color: white;
+}
+.plato-desc2{
+    padding-left: 20px;
+    padding-top: 200px;
+    font-size: 24px;
+    color: white;
+}
+
+.logo-pollo{
+    padding-left: 10px;
+}
+
+@media (min-width: 992px) {
+    .espacio {
+      padding-top: 70px;
+    }
+    .hidden-lg {
+        display: none !important;
+      }
+  }
+
+@media(max-width: 1024px){
+    .lista{
+        margin-left: 25px;
+    }
+}
+@media (max-width: 768px) {
+    .hidden-xs {
+      display: none !important;
+    }
+  }
+@media(max-width: 425px){
+    .hs1-titulo{
+        font-size: 30px;
+        padding-top: 20px;
+        padding-right: 0px;
+        text-align: center;
+    }
+    .hs1-subtitulos{
+        padding-left: 30px;
+        font-size: 20px;
+        padding-top: 70px;
+    }
+    .plato-desc2{
+        padding-left: 20px;
+        padding-top: 160px;
+        font-size: 24px;
+    }
+}
+@media(max-width: 375px){
+    .hs1-subtitulos{
+        padding-left: 30px;
+        font-size: 20px;
+        padding-top: 50px;
+    }
+}
+@media(max-width: 320px){
+    .hs1-subtitulos{
+        padding-top: 20px;
+        padding-left: 30px;
+        font-size: 20px;
+    }
+}
