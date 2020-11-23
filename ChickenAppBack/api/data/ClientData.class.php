@@ -49,7 +49,7 @@ abstract class ClientData{
         return $rtn;
     }
 
-    public static function editChef($dni,$firstname,$lastname,$email,$phone,$content) {
+    public static function editClient($dni,$firstname,$lastname,$email,$phone,$content) {
         $rtn = null;
 
         $procedureName = "usp_chef_u_chef"; 

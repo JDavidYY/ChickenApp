@@ -81,7 +81,7 @@ $app->group('/api/category', function (RouteCollectorProxy $group) {
     $group->post('/add', CategoryHandler::class . ':addCategory');
     $group->get('/select', CategoryHandler::class . ':getCategories');
     $group->post('/edit/{categoryid}', CategoryHandler::class . ':editCategory');
-    $group->post('/delete/{categoryid}', CategoryHandler::class . ':deleteCategory');
+    $group->post('/delete', CategoryHandler::class . ':deleteCategory');
 });
 
 ?>

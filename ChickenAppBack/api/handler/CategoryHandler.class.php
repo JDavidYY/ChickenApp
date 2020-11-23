@@ -69,7 +69,9 @@ class CategoryHandler
 	}
 
 	public function deleteCategory(Request $request, Response $response, array $args){
-        $categoryid=$args["categoryid"];
+		$data = (array)$request->getParsedBody();
+
+        $categoryid=$data['idCategory'];
 		$result=CategoryController::deleteCategory($categoryid);
 		$result='Categoría eliminada correctamente';
 		$response=self::response($response,TRUE,$result);

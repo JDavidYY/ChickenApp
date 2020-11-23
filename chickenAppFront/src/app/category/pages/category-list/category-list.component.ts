@@ -83,7 +83,7 @@ export class CategoryListComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            if (response.status){
+            if (response.ok){
               Swal.fire(
                 'Eliminado!',
                 'El registro a sido removido.',

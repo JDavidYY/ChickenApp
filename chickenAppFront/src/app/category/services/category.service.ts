@@ -41,10 +41,11 @@ export class CategoryService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<CategoryGetResponse>(url, options);
 	}
-	// api para eliminar a Chef por GET
-  	eliminarCategory(idCategory:string):Observable<CategoryGetResponse> {
-		const url = this.apiurl + "/delete/" + idCategory;
+	// api para eliminar a Chef por POST
+  	eliminarCategory(idCategory:string):Observable<CategoryPostResponse> {
+    const url = this.apiurl + "/delete";
+    var data = { idCategory: idCategory }
 		const options = this.httpService.headerOptionsJson(true, true);
-		return this.httpClient.delete<CategoryGetResponse>(url, options);
+		return this.httpClient.post<CategoryPostResponse>(url, data, options);
 	}
 }
