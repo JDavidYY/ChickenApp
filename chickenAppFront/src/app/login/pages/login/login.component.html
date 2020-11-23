@@ -1,42 +1,45 @@
-<div class="animated fadeIn" style="height: 100vh; background-size: cover; background-image: url('https://elcomercio.pe/resizer/ua00-pKIHyni03FmS3-aIyl5z9g=/1200x900/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/EBSUHQIQ7NF43G2JIBA5F6JRXA.jpg')">
-  <div class="col-md-4" style="justify-content: center;margin: auto;padding-top: 0px;">
-      <img class="logo1" src="assets/imagenlogo.png" alt="logo chicken app" style="max-width: 100%;">
-      <p style="font-weight: lighter;font-size: 40px;text-align: center;margin-bottom: 50px; margin-top: 50px; color: red; font-style: oblique;">"De la brasa a tu casa"</p>
-      <div style="background-color: rgba(243, 243, 243, 0.671);border-radius: 10px;border: 1px solid;">
-
-          <form style="padding: 20px;">
-              <p class="animated fadeIn" style="font-size: 25px;text-align: center;color: black;"><strong>Iniciar Sesión</strong></p>
-              <div class="form-row" style="justify-content: center">
-                  <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                      <mat-label>Correo</mat-label>
-                      <input matInput [(ngModel)]="user.email" [formControl]="emailFormControl" autocomplete="off" type="text" required>
-                      <mat-icon matSuffix>email</mat-icon>
-                      <mat-error *ngIf="emailFormControl.hasError('required')">
-                          Este campo es <strong>requerido</strong>
-                      </mat-error>
-                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                          Por favor ingresa una <strong>dirección de correo válida</strong>
-                      </mat-error>
-                  </mat-form-field>
-              </div>
-              <div class="form-row" style="justify-content: center">
-                  <mat-form-field class="col-md-12" appearance="outline" style="width: 100%" autocomplete="off">
-                      <mat-label>Contraseña</mat-label>
-                      <input matInput [(ngModel)]="user.password" type="password" [formControl]="passwordFormControl" autocomplete="off" required>
-                      <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
-                      <mat-error *ngIf="passwordFormControl.hasError('required')">
-                          Este campo es <strong>requerido</strong>
-                      </mat-error>
-                  </mat-form-field>
-              </div>
-              <div class="form-row" style="margin-bottom: 4px;margin-top: 10px;">
-                  <div class="col-md-12 animated fadeIn" style="text-align: center;">
-                      <button class="iniciar" mat-raised-button (click)="login()" style="background-color: #70412B;color: white;margin-right: 5px;">Iniciar Sesión</button>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
+<div class="animated fadeIn fondo-login" >
+  <section class="login-sect">
+    <div class="col-md-6 col-sm-4" style="justify-content: center;margin: auto;padding-top: 0px;">
+        <img class="logo1" src="assets/imagenlogo.png" alt="logo chicken app" style="max-width: 100%;padding-left: 10px;">
+        <p class="slogan">"De la brasa a tu casa"</p>
+        <div style="background-color: rgba(243, 243, 243, 0.671);border-radius: 10px;border: 1px solid;">
+  
+            <form style="padding: 20px;">
+                <p class="animated fadeIn" style="font-size: 25px;text-align: center;color: black;"><strong>Iniciar Sesión</strong></p>
+                <div class="form-row" style="justify-content: center">
+                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                        <mat-label>Correo</mat-label>
+                        <input matInput [(ngModel)]="user.email" [formControl]="emailFormControl" autocomplete="off" type="text" required>
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Este campo es <strong>requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Por favor ingresa una <strong>dirección de correo válida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row" style="justify-content: center">
+                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%" autocomplete="off">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput [(ngModel)]="user.password" type="password" [formControl]="passwordFormControl" autocomplete="off" required>
+                        <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Este campo es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row" style="margin-bottom: 4px;margin-top: 10px;">
+                    <div class="col-md-12 animated fadeIn" style="text-align: center;">
+                        <button class="iniciar" mat-raised-button (click)="login()" style="background-color: #70412B;color: white;margin-right: 5px;">Iniciar Sesión</button>
+                        <button class="iniciar" mat-raised-button (click)="newClient()" style="background-color: rgb(135, 170, 235);color: white;margin-right: 5px;">Registrarse</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </section>
 </div>
 
 

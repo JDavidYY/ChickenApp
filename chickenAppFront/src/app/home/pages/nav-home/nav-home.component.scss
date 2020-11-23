@@ -7,6 +7,23 @@
     position: fixed;
     z-index: 100;
 }
+.toolbar-menu{
+    width: 90%;
+    margin: auto;
+}
+.menu{
+    display: flex;
+    text-align: left;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.lista{
+    list-style: none;
+    margin-left: 55px;
+}
+.lista a{
+    color: black;
+}
 .toolbar3 {
     height: auto;
     background-color: white;
@@ -173,6 +190,26 @@
 .logo-pollo{
     padding-left: 10px;
 }
+
+@media (min-width: 992px) {
+    .espacio {
+      padding-top: 70px;
+    }
+    .hidden-lg {
+        display: none !important;
+      }
+  }
+
+@media(max-width: 1024px){
+    .lista{
+        margin-left: 25px;
+    }
+}
+@media (max-width: 768px) {
+    .hidden-xs {
+      display: none !important;
+    }
+  }
 @media(max-width: 425px){
     .hs1-titulo{
         font-size: 30px;
