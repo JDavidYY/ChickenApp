@@ -22,36 +22,37 @@ export class DeliveryboyEditComponent implements OnInit {
   Validators.minLength(8)
   ]);
 
-  apellidoPatFormControl = new FormControl('', [
-  Validators.required,
-  ]);
-
-  apellidoMatFormControl = new FormControl('', [
-  Validators.required,
-  ]);
-
-  nombresFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  fechaNacimientoFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  celularFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(9)
-  ]);
-
-  emailFormControl = new FormControl('', [
-  Validators.required,
-  Validators.email
-  ]);
-
-  direccionFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
+  lastnameFormControl = new FormControl('', [
+    Validators.required,
+    ]);
+  
+    firstnameFormControl = new FormControl('', [
+    Validators.required,
+    ]);
+  
+    phoneFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(9)
+    ]);
+  
+    ageFormControl = new FormControl('', [
+    Validators.required
+    ]);
+  
+    workshiftFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(9)
+    ]);
+  
+    emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+    ]);
+  
+    passwordFormControl = new FormControl('', [
+    Validators.required
+    ]);
+  
 
   constructor(private router:Router, private datePipe: DatePipe, private deliveryboyservice: DeliveryboyService) { }
 
@@ -60,23 +61,19 @@ export class DeliveryboyEditComponent implements OnInit {
 
   guardarDeliveryboy(){
 
-    let selectedDate = this.datePipe.transform(this.nacimiento, 'yyyy/MM/dd');
-    this.deliveryboy.nacimiento=selectedDate;
-
     // validacion de campos para que no sean vacios
-    if ( !this.deliveryboy.nombre || !this.deliveryboy.apellidoPat || !this.deliveryboy.apellidoMat || 
-        !this.deliveryboy.celular || !this.deliveryboy.direccion || !this.deliveryboy.dni ||
-      !this.deliveryboy.email  || !this.deliveryboy.nacimiento ) {
+    if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
+      !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
+    !this.deliveryboy.email  || !this.deliveryboy.password ) {
 
-      return;
-    }
-   // validacion de campos para que no sean incorrectos mediante FormControl
-    if ( this.dniFormControl.invalid || this.nombresFormControl.invalid || this.apellidoPatFormControl.invalid 
-      || this.apellidoMatFormControl.invalid || this.celularFormControl.invalid
-      || this.direccionFormControl.invalid || this.dniFormControl.invalid || this.emailFormControl.invalid
-       || this.fechaNacimientoFormControl.invalid ) {
-      return;
-    }
+    return;
+  }
+ // validacion de campos para que no sean incorrectos mediante FormControl
+  if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+    || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
+    || this.ageFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
+    return;
+  }
   //modal para que muestre el mensaje para confirmación de guardado del deliveryboy mientras se hace el servicio
       Swal.fire({
       title: 'Aviso',

@@ -17,7 +17,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class DeliveryboyService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "datos-deliveryboy";
+  apiurl:string = environment.apiUrl + "deliveryboy";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
@@ -26,7 +26,7 @@ export class DeliveryboyService {
 	guardarDeliveryboy(deliveryboy:DeliveryboyModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
-		let url = this.apiurl + "/save";
+		let url = this.apiurl + "/add";
 		return this.httpClient.post<DeliveryboyPostResponse>(url, deliveryboy, options);
 	}
 // api para obtener el listado de todo el persona por GET
