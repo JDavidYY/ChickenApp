@@ -1,7 +1,7 @@
 <?php 
 namespace Chicken\Data;
-use Common\Data\DataAccessLayer;
-use Common\Data\MySqlParameter;
+use Chicken\Library\DataAccessLayer;
+use Chicken\Library\MySqlParameter;
 abstract class ChefData{
 
     public static function getChefs(){
@@ -37,7 +37,7 @@ abstract class ChefData{
                 new MySqlParameter("ppassword", $password, 1),
                 new MySqlParameter("pdni", $dni, 1),
                 new MySqlParameter("pworkshift", $workshift, 1),
-                new MySqlParameter("page", $age, 1),
+                new MySqlParameter("pages", $age, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
@@ -63,7 +63,7 @@ abstract class ChefData{
             new MySqlParameter("ppassword", $password, 1),
             new MySqlParameter("pdni", $dni, 1),
             new MySqlParameter("pworkshift", $workshift, 1),
-            new MySqlParameter("page", $age, 1),
+            new MySqlParameter("pages", $age, 1),
             new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();

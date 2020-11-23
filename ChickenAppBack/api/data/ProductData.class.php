@@ -1,7 +1,7 @@
 <?php 
 namespace Chicken\Data;
-use Common\Data\DataAccessLayer;
-use Common\Data\MySqlParameter;
+use Chicken\Library\DataAccessLayer;
+use Chicken\Library\MySqlParameter;
 abstract class ProductData{
 
     public static function getProducts(){
@@ -56,7 +56,7 @@ abstract class ProductData{
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
             new MySqlParameter("price", $price, 1),
-            new MySqlParameter("categoryid", $categoryid, 1),
+            new MySqlParameter("pcategoryid", $categoryid, 1),
              new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();

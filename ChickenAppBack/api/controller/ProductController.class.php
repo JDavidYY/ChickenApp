@@ -10,12 +10,12 @@ abstract class ProductController{
         return ProductData::getProducts();
     }
     
-    public static function addProduct($name,$description,$price,$categoryid,$content){
-        return ProductData::addProduct($name,$description,$price,$categoryid,$content);
+    public static function addProduct($name,$description,$price,$categoryid){
+        return ProductData::addProduct($name,$description,$price,$categoryid);
     }
 
-    public static function editProduct($productid,$name,$description,$price,$categoryid,$content){
-        return ProductData::editProduct($productid,$name,$description,$price,$categoryid,$content);
+    public static function editProduct($productid,$name,$description,$price,$categoryid){
+        return ProductData::editProduct($productid,$name,$description,$price,$categoryid);
     }
 
     public static function deleteProduct($productid){

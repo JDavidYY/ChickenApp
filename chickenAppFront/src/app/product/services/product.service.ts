@@ -17,7 +17,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class ProductService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "datos-product";
+  apiurl:string = environment.apiUrl + "product";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
@@ -46,5 +46,5 @@ export class ProductService {
 		const url = this.apiurl + "/delete/" + idProduct;
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.delete<ProductGetResponse>(url, options);
-	}	
+	}
 }

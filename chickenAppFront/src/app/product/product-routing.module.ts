@@ -12,7 +12,7 @@ export const PRODUCT_COMPONENTS = [
 // se arma el path segun el componente que queremos mostrar
 const productRoutes:Routes = [
 	{
-        path: 'category',
+        path: 'product',
         component: ContainerComponent,
         children: [
           {
@@ -24,9 +24,9 @@ const productRoutes:Routes = [
             component: ProductEditComponent
           },
           {
-            path: 'editar/:category_id',
+            path: 'editar/:product_id',
             component: ProductEditComponent
-          }     
+          }
         ]
   }
 ];

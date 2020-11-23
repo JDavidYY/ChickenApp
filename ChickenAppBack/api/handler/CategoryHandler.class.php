@@ -42,10 +42,10 @@ class CategoryHandler
         $description=$data['description'];
 
         $result="Error al agregar la categoría";
-        if(!isset($content)){
+        /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }
+        }*/
         CategoryController::addCategory($name,$description);
        
 		$result="Categoría agregada";

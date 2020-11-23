@@ -1,7 +1,7 @@
 <?php 
 namespace Chicken\Data;
-use Common\Data\DataAccessLayer;
-use Common\Data\MySqlParameter;
+use Chicken\Library\DataAccessLayer;
+use Chicken\Library\MySqlParameter;
 abstract class ClientData{
 
     public static function getClients(){
