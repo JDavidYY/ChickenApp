@@ -7,7 +7,7 @@ BEGIN
 		SET oresult = (SELECT MAX(Users.idUsers));
         
 		INSERT INTO Customers (idCustomers,firstnameCustomers,lastnameCustomers,phoneCustomers,emailCustomers,adressCustomers,Users_idUsers,estateCustomers)
-		VALUES(NULL,pfristname,plastname,pphone,pemail,padress-,@oresult,1);
+		VALUES(NULL,pfristname,plastname,pphone,pemail,padress,@oresult,1);
 		
         SET oresult = 1;
 	END IF;
