@@ -2,12 +2,12 @@ CREATE PROCEDURE `usp_deliveryboy_i_deliveryboy`(pfristname VARCHAR(45),plastnam
 BEGIN
 	IF (SELECT exists(SELECT * FROM Users WHERE emailUsers=pemail)) = FALSE THEN
 		INSERT INTO Users (idUsers,emailUsers,passwordUsers,typeUser,estateUser)
-		VALUES (NULL,'pemail','ppassword','2',1);
+		VALUES (NULL,pemail,ppassword,'2',1);
         
-		SET oresult = MAX(Users.idUsers);
+		SET oresult = (SELECT MAX(Users.idUsers));
         
 		INSERT INTO Employees (idEmployees,activityEmployees,firstnameEmployees,lastnameEmployees,phoneEmployees,workshiftEmployees,dniEmployees,ageEmployees,adressEmployees,TypeEmployees_idDepartaments,Users_idUsers,estateEmployees,emailEmployees)
-		VALUES(NULL,1,'pfristname','plastname','pphone','pworkshift','pdni','pages',NULL,3,@oresult,1,pemail);
+		VALUES(NULL,1,pfristname,plastname,pphone,pworkshift,pdni,pages,NULL,3,oresult,1,pemail);
 		
         SET oresult = 1;
 	END IF;
