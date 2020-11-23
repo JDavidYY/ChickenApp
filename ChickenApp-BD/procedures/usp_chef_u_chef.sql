@@ -1,22 +1,22 @@
-CREATE PROCEDURE `usp_chef_u_chef`(pfristname VARCHAR(45),plastname VARCHAR(45),pphone VARCHAR(45),pemail VARCHAR(45), ppassword VARCHAR(45),pdni VARCHAR(20),pworkshift VARCHAR(45),pages VARCHAR(45),OUT oresult INT)
+CREATE PROCEDURE `usp_chef_u_chef`(pfirstname VARCHAR(45),plastname VARCHAR(45),pphone VARCHAR(45),pemail VARCHAR(45), ppassword VARCHAR(45),pdni VARCHAR(20),pworkshift VARCHAR(45),pages VARCHAR(45),OUT oresult INT)
 BEGIN
 	IF (SELECT exists(SELECT * FROM Users WHERE emailUsers = pemail)) = FALSE THEN
 		UPDATE Employees
         SET
-			firstnameEmployees = 'pfristname' ,
-            lastnameEmployees = 'plastname',
-            phoneEmployees = 'pphone',
-            workshiftEmployees = 'pworkshift' ,
-            dniEmployees = 'pdni',
-            ageEmployees = 'pages'
+			firstnameEmployees = pfristname ,
+            lastnameEmployees = plastname,
+            phoneEmployees = pphone,
+            workshiftEmployees = pworkshift ,
+            dniEmployees = pdni,
+            ageEmployees = pages
             
         WHERE    
             Employees.dniEmployees =  pdni ;
 		SET oresult = (SELECT idUsers FROM Users WHERE emailUsers = pemail);
         UPDATE Users
         SET
-			emailUsers = 'pemail' ,
-            passwordUsers = 'ppassword'
+			emailUsers = pemail ,
+            passwordUsers = ppassword
         WHERE    
             idUsers =  oresult ;
         
