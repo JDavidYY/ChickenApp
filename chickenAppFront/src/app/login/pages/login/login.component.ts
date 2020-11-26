@@ -33,7 +33,13 @@ export class LoginComponent implements OnInit {
 	goto(url):void
 	{
 		this.router.navigate([url]);
-	}
+  }
+  
+  // Método para ir al registro de un nuevo cliente
+  newClient():void
+  {
+    this.router.navigate(['/newClient/']);
+  }
 
   //Método para iniciar sesión
 	login()

@@ -36,18 +36,17 @@ class CategoryHandler
 			->withStatus(201);*/
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
 		
 		//$content = $request->getBody();
-        $name=$args['name'];
-        $description=$args['description'];
+        $name=$data['name'];
+        $description=$data['description'];
 
         $result="Error al agregar la categoría";
-        if(!isset($content)){
+        /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }
-        CategoryController::addCategory($name,$description,$content);
+        }*/
+        CategoryController::addCategory($name,$description);
        
 		$result="Categoría agregada";
 		$response=self::response($response,TRUE,$result);
@@ -57,13 +56,12 @@ class CategoryHandler
     public function editCategory(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
 
-        $categoryid=$args['categoryid'];
-        $name=$args['name'];
-        $description=$args['description'];
+        $categoryid=$data['categoryid'];
+        $name=$data['name'];
+        $description=$data['description'];
 	
-		$result=CategoryController::editCategory($categoryid,$name,$description,$content);
+		$result=CategoryController::editCategory($categoryid,$name,$description);
 		$result='Categoría actualizada correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
@@ -71,7 +69,9 @@ class CategoryHandler
 	}
 
 	public function deleteCategory(Request $request, Response $response, array $args){
-        $categoryid=$args["categoryid"];
+		$data = (array)$request->getParsedBody();
+
+        $categoryid=$data['idCategory'];
 		$result=CategoryController::deleteCategory($categoryid);
 		$result='Categoría eliminada correctamente';
 		$response=self::response($response,TRUE,$result);

@@ -22,23 +22,24 @@ export class ChefEditComponent implements OnInit {
   Validators.minLength(8)
   ]);
 
-  apellidoPatFormControl = new FormControl('', [
+  lastnameFormControl = new FormControl('', [
   Validators.required,
   ]);
 
-  apellidoMatFormControl = new FormControl('', [
+  firstnameFormControl = new FormControl('', [
   Validators.required,
   ]);
 
-  nombresFormControl = new FormControl('', [
+  phoneFormControl = new FormControl('', [
+  Validators.required,
+  Validators.minLength(9)
+  ]);
+
+  ageFormControl = new FormControl('', [
   Validators.required
   ]);
 
-  fechaNacimientoFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  celularFormControl = new FormControl('', [
+  workshiftFormControl = new FormControl('', [
   Validators.required,
   Validators.minLength(9)
   ]);
@@ -48,7 +49,7 @@ export class ChefEditComponent implements OnInit {
   Validators.email
   ]);
 
-  direccionFormControl = new FormControl('', [
+  passwordFormControl = new FormControl('', [
   Validators.required
   ]);
 
@@ -60,21 +61,18 @@ export class ChefEditComponent implements OnInit {
 
   guardarChef(){
 
-    let selectedDate = this.datePipe.transform(this.nacimiento, 'yyyy/MM/dd');
-    this.chef.nacimiento=selectedDate;
 
     // validacion de campos para que no sean vacios
-    if ( !this.chef.nombre || !this.chef.apellidoPat || !this.chef.apellidoMat || 
-        !this.chef.celular || !this.chef.direccion || !this.chef.dni ||
-      !this.chef.email  || !this.chef.nacimiento ) {
+    if ( !this.chef.firstname || !this.chef.lastname || !this.chef.phone || 
+        !this.chef.workshift || !this.chef.age || !this.chef.dni ||
+      !this.chef.email  || !this.chef.password ) {
 
       return;
     }
    // validacion de campos para que no sean incorrectos mediante FormControl
-    if ( this.dniFormControl.invalid || this.nombresFormControl.invalid || this.apellidoPatFormControl.invalid 
-      || this.apellidoMatFormControl.invalid || this.celularFormControl.invalid
-      || this.direccionFormControl.invalid || this.dniFormControl.invalid || this.emailFormControl.invalid
-       || this.fechaNacimientoFormControl.invalid ) {
+    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
+      || this.ageFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del chef mientras se hace el servicio
@@ -95,7 +93,7 @@ export class ChefEditComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            if ( response.status && response.statusCode == 200 && response.message != "" )
+            if ( response && response.ok && response.result != 0 )
               Swal.fire(
                 'Enhorabuena!',
                 'El chef ha sido guardado.',

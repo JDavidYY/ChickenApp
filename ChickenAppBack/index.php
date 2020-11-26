@@ -16,7 +16,7 @@ include __DIR__."/library/Enumerators.module.php";
 include __DIR__."/library/SecurityExtensions.module.php";
 //include __DIR__."/library/EmailExtensions.module.php";
 include __DIR__."/library/CommonExtensions.module.php";
-include __DIR__."/library/DataAccessCredentials.module.php";
+include __DIR__."/library/MySqlExtensions.module.php";
 
 /*include __DIR__."/common/v1/data/DataAccessLayer.class.php";
 include __DIR__."/common/v1/data/ChatData.class.php";
@@ -34,12 +34,12 @@ include __DIR__.'/common/v1/controller/CustomerController.class.php';*/
 
 $app = AppFactory::create();
 
-//$app->setBasePath('/titalab');
+//$app->setBasePath('/api');
 
 //$app->addBodyParsingMiddleware(); // JSON body
 require __DIR__.'/config/middleware.php';
-require __DIR__.'/config/routes-api.php';
 require __DIR__.'/config/routes.php';
+require __DIR__.'/config/routes-api.php';
 
 //require __DIR__.'/config/routes-webhook.php';
 

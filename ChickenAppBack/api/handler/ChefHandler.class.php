@@ -46,21 +46,23 @@ class ChefHandler
 			->withStatus(201);*/
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
 		
 		//$content = $request->getBody();
-		$firstname=$args['firstname'];
-		$lastname=$args['lastname'];
-		$email=$args['email'];
-		$dni=$args['dni'];
-		$phone=$args['phone'];
+		$firstname=$data['firstname'];
+		$lastname=$data['lastname'];
+		$phone=$data['phone'];
+		$email=$data['email'];
+		$password=$data['password'];
+		$dni=$data['dni'];
+		$workshift=$data['workshift'];
+		$age=$data['age'];
 
         $result="Error al agregar al cocinero";
         if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
         }
-        ChefController::addChef($firstname,$lastname,$email,$dni,$phone,$content);
+        ChefController::addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
        
 		 $result="Chef agregado";
 		$response=self::response($response,TRUE,$result);
@@ -70,15 +72,18 @@ class ChefHandler
 	public function editChef(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
 
-		$dni=$args['dni'];
-		$firstname=$args['firstname'];
-		$lastname=$args['lastname'];
-		$email=$args['email'];
-		$phone=$args['phone'];
+		$firstname=$data['firstname'];
+		$lastname=$data['lastname'];
+		$phone=$data['phone'];
+		$email=$data['email'];
+		$password=$data['password'];
+		$dni=$data['dni'];
+		$workshift=$data['workshift'];
+		$age=$data['age'];
+		$chefid=$data['chefid'];
 	
-		$result=ChefController::editChef($dni,$firstname,$lastname,$email,$phone,$content);
+		$result=ChefController::editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age,$chefid);
 		$result='Chef actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;

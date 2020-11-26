@@ -1,7 +1,7 @@
 <?php 
 namespace Chicken\Data;
-use Common\Data\DataAccessLayer;
-use Common\Data\MySqlParameter;
+use Chicken\Library\DataAccessLayer;
+use Chicken\Library\MySqlParameter;
 abstract class ProductData{
 
     public static function getProducts(){
@@ -25,16 +25,15 @@ abstract class ProductData{
 
     }
     
-    public static function addProduct($name,$description,$price,$categoryid,$content) {
+    public static function addProduct($name,$description,$price,$categoryid) {
         $rtn = null;
 
         $procedureName = "usp_product_i_product"; 
         $params = array(
                 new MySqlParameter("pname", $name, 1),
                 new MySqlParameter("pdescription", $description, 1),
-                new MySqlParameter("price", $price, 1),
-                new MySqlParameter("categoryid", $categoryid, 1),
-                new MySqlParameter("pcontent", $content, 1),
+                new MySqlParameter("pprice", $price, 1),
+                new MySqlParameter("pcategoryid", $categoryid, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
@@ -48,7 +47,7 @@ abstract class ProductData{
         return $rtn;
     }
 
-    public static function editProduct($productid,$name,$description,$price,$categoryid,$content) {
+    public static function editProduct($productid,$name,$description,$price,$categoryid) {
         $rtn = null;
 
         $procedureName = "usp_product_u_product"; 
@@ -57,8 +56,7 @@ abstract class ProductData{
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
             new MySqlParameter("price", $price, 1),
-            new MySqlParameter("categoryid", $categoryid, 1),
-            new MySqlParameter("pcontent", $content, 1),
+            new MySqlParameter("pcategoryid", $categoryid, 1),
              new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -77,7 +75,7 @@ abstract class ProductData{
 
         $procedureName = "usp_product_d_product"; 
         $params = array(
-                new MySqlParameter("pproduct", $productid, 1),
+                new MySqlParameter("pproductid", $productid, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();

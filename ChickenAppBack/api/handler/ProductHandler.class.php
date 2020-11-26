@@ -36,20 +36,19 @@ class ProductHandler
 			->withStatus(201);*/
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
 		
 		//$content = $request->getBody();
-        $name=$args['name'];
-        $description=$args['description'];
-        $price=$args['price'];
-        $categoryid=$args['categoryid'];
-		
+        $name=$data['name'];
+        $description=$data['description'];
+        $price=$data['price'];
+        $categoryid=$data['categoryid'];
+
         $result="Error al agregar el producto";
-        if(!isset($content)){
+        /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }
-        ProductController::addProduct($name,$description,$price,$categoryid,$content);
+        }*/
+        ProductController::addProduct($name,$description,$price,$categoryid);
        
 		 $result="Producto agregado";
 		$response=self::response($response,TRUE,$result);
@@ -59,15 +58,15 @@ class ProductHandler
     public function editProduct(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
+		//$content = $data['content'];
 
-        $productid=$args['productid'];
-        $name=$args['name'];
-        $description=$args['description'];
-        $price=$args['price'];
-        $categoryid=$args['categoryid'];
+        $productid=$data['productid'];
+        $name=$data['name'];
+        $description=$data['description'];
+        $price=$data['price'];
+        $categoryid=$data['categoryid'];
 	
-		$result=ProductController::editProduct($productid,$name,$description,$price,$categoryid,$content);
+		$result=ProductController::editProduct($productid,$name,$description,$price,$categoryid);
 		$result='Producto actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;

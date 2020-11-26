@@ -1,7 +1,7 @@
 <?php 
 namespace Chicken\Data;
-use Common\Data\DataAccessLayer;
-use Common\Data\MySqlParameter;
+use Chicken\Library\DataAccessLayer;
+use Chicken\Library\MySqlParameter;
 abstract class ChefData{
 
     public static function getChefs(){
@@ -25,17 +25,19 @@ abstract class ChefData{
 
     }
     
-    public static function addChef($firstname,$lastname,$email,$dni,$phone,$content) {
+    public static function addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
         $rtn = null;
 
         $procedureName = "usp_chef_i_chef"; 
         $params = array(
                 new MySqlParameter("pfirstname", $firstname, 1),
-               new MySqlParameter("plastname", $lastname, 1),
-               new MySqlParameter("email", $email, 1),
-               new MySqlParameter("dni", $dni, 1),
-               new MySqlParameter("phone", $phone, 1),
-               new MySqlParameter("pcontent", $content, 1),
+                new MySqlParameter("plastname", $lastname, 1),
+                new MySqlParameter("pphone", $phone, 1),
+                new MySqlParameter("pemail", $email, 1),
+                new MySqlParameter("ppassword", $password, 1),
+                new MySqlParameter("pdni", $dni, 1),
+                new MySqlParameter("pworkshift", $workshift, 1),
+                new MySqlParameter("pages", $age, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
@@ -49,18 +51,20 @@ abstract class ChefData{
         return $rtn;
     }
 
-    public static function editChef($dni,$firstname,$lastname,$email,$phone,$content) {
+    public static function editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
         $rtn = null;
 
         $procedureName = "usp_chef_u_chef"; 
         $params = array(
-            new MySqlParameter("dni", $dni, 1),
             new MySqlParameter("pfirstname", $firstname, 1),
             new MySqlParameter("plastname", $lastname, 1),
-            new MySqlParameter("email", $email, 1),
-            new MySqlParameter("phone", $phone, 1),
-            new MySqlParameter("pcontent", $content, 1),
-             new MySqlParameter("oresult", 0, 2)
+            new MySqlParameter("pphone", $phone, 1),
+            new MySqlParameter("pemail", $email, 1),
+            new MySqlParameter("ppassword", $password, 1),
+            new MySqlParameter("pdni", $dni, 1),
+            new MySqlParameter("pworkshift", $workshift, 1),
+            new MySqlParameter("pages", $age, 1),
+            new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
         $db->connect();
