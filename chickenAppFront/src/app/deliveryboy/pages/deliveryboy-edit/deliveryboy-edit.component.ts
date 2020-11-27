@@ -35,7 +35,8 @@ export class DeliveryboyEditComponent implements OnInit {
     ]);
   
     ageFormControl = new FormControl('', [
-    Validators.required
+    Validators.required,
+    Validators.minLength(2)
     ]);
   
     workshiftFormControl = new FormControl('', [

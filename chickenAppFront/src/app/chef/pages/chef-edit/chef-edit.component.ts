@@ -36,7 +36,8 @@ export class ChefEditComponent implements OnInit {
   ]);
 
   ageFormControl = new FormControl('', [
-  Validators.required
+  Validators.required,
+  Validators.minLength(2)
   ]);
 
   workshiftFormControl = new FormControl('', [
