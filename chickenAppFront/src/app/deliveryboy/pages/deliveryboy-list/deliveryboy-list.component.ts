@@ -21,7 +21,8 @@ export class DeliveryboyListComponent implements OnInit {
     'dni',
 	  'fullnombre',
     'celular',
-    'email'];
+    'email',
+    'turno'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
