@@ -11,9 +11,9 @@ abstract class ClientController{
         return ClientData::getClients();
     }*/
     
-    public static function addClient($firstname,$lastname,$phone,$email,$adress,$password,$content){
+    public static function addClient($firstname,$lastname,$phone,$email,$adress,$password){
         $password_encrypted = SecurityExtensions::encrypt($password);
-        return ClientData::addClient($firstname,$lastname,$phone,$email,$adress,$password_encrypted,$content);
+        return ClientData::addClient($firstname,$lastname,$phone,$email,$adress,$password_encrypted);
     }
 
     /*public static function editClient($firstname,$lastname,$phone,$email,$content){

@@ -25,7 +25,7 @@ abstract class ChefData{
 
     }
     
-    public static function addChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
+    public static function addChef($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age) {
         $rtn = null;
 
         $procedureName = "usp_chef_i_chef"; 
@@ -34,6 +34,7 @@ abstract class ChefData{
                 new MySqlParameter("plastname", $lastname, 1),
                 new MySqlParameter("pphone", $phone, 1),
                 new MySqlParameter("pemail", $email, 1),
+                new MySqlParameter("padress", $adress, 1),
                 new MySqlParameter("ppassword", $password, 1),
                 new MySqlParameter("pdni", $dni, 1),
                 new MySqlParameter("pworkshift", $workshift, 1),
@@ -51,7 +52,7 @@ abstract class ChefData{
         return $rtn;
     }
 
-    public static function editChef($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
+    public static function editChef($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age) {
         $rtn = null;
 
         $procedureName = "usp_chef_u_chef"; 
@@ -60,6 +61,7 @@ abstract class ChefData{
             new MySqlParameter("plastname", $lastname, 1),
             new MySqlParameter("pphone", $phone, 1),
             new MySqlParameter("pemail", $email, 1),
+            new MySqlParameter("padress", $adress, 1),
             new MySqlParameter("ppassword", $password, 1),
             new MySqlParameter("pdni", $dni, 1),
             new MySqlParameter("pworkshift", $workshift, 1),
