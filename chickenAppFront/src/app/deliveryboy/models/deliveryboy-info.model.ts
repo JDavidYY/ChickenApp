@@ -9,4 +9,5 @@ export class DeliveryboyModel
     age: string = "";
     email:string = "";
     password: string = "";
+    adress:string = "";
 }

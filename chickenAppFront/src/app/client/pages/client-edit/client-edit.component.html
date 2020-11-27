@@ -47,7 +47,15 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="client.password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="client.password"  type="password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%" autocomplete="off">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [(ngModel)]="user.password" type="password" [formControl]="passwordFormControl" autocomplete="off" required>
+                <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
                 <mat-error *ngIf="passwordFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>

@@ -9,4 +9,5 @@ export class ChefModel
     age: string = "";
     email:string = "";
     password: string = "";
+    adress:string = "";
 }

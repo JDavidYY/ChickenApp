@@ -66,7 +66,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="deliveryboy.password" type="password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                 <mat-error *ngIf="passwordFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -74,9 +74,22 @@
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Turno</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.workshift" [formControl]="workshiftFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-label>Turno</mat-label> 
+                <mat-select [(ngModel)]="personal.cargo" [formControl]="workshiftFormControl" required>
+                    <mat-option value="M">Mañana</mat-option>
+                    <mat-option value="T">Tarde</mat-option>
+                    <mat-option value="N">Noche</mat-option>
+                </mat-select>
                 <mat-error *ngIf="workshiftFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Dirección</mat-label>
+                <input matInput [(ngModel)]="client.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-error *ngIf="adressFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
