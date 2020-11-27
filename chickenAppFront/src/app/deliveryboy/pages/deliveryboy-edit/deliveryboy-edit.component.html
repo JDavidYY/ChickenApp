@@ -75,7 +75,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Turno</mat-label> 
-                <mat-select [(ngModel)]="personal.cargo" [formControl]="workshiftFormControl" required>
+                <mat-select [(ngModel)]="deliveryboy.workshift" [formControl]="workshiftFormControl" required>
                     <mat-option value="M">Mañana</mat-option>
                     <mat-option value="T">Tarde</mat-option>
                     <mat-option value="N">Noche</mat-option>
@@ -88,7 +88,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Dirección</mat-label>
-                <input matInput [(ngModel)]="client.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="deliveryboy.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                 <mat-error *ngIf="adressFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
