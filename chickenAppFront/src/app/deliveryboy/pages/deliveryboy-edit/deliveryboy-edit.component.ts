@@ -99,7 +99,7 @@ export class DeliveryboyEditComponent implements OnInit {
                 'El deliveryboy ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/deliveryboy/list']);
+              this.router.navigate(['/deliveryboy/listado']);
           },
           (err) => {
             console.log(err);

@@ -40,8 +40,7 @@ export class ChefEditComponent implements OnInit {
   ]);
 
   workshiftFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(9)
+  Validators.required
   ]);
 
   emailFormControl = new FormControl('', [
@@ -102,7 +101,7 @@ export class ChefEditComponent implements OnInit {
                 'El chef ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/chef/list']);
+              this.router.navigate(['/chef/listado']);
           },
           (err) => {
             console.log(err);
