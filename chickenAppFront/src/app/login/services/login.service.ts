@@ -7,7 +7,7 @@ import { UserLoginModel } from '../models/userlogin.model';
 @Injectable()
 export class LoginService {
   //Construcción de la ruta hacia el método del back
-	private api_url: string = environment.apiUrl + '/users';
+	private api_url: string = environment.apiUrl + '/user';
     constructor
     (private http:HttpClient,private httpService:HttpService)
   		{ }

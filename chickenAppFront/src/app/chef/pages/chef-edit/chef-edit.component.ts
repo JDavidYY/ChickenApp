@@ -36,12 +36,12 @@ export class ChefEditComponent implements OnInit {
   ]);
 
   ageFormControl = new FormControl('', [
-  Validators.required
+  Validators.required,
+  Validators.minLength(2)
   ]);
 
   workshiftFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(9)
+  Validators.required
   ]);
 
   emailFormControl = new FormControl('', [
@@ -53,6 +53,9 @@ export class ChefEditComponent implements OnInit {
   Validators.required
   ]);
 
+  adressFormControl = new FormControl('', [
+    Validators.required
+    ]);
 
   constructor(private router:Router, private datePipe: DatePipe, private chefservice: ChefService) { }
 
@@ -65,14 +68,14 @@ export class ChefEditComponent implements OnInit {
     // validacion de campos para que no sean vacios
     if ( !this.chef.firstname || !this.chef.lastname || !this.chef.phone || 
         !this.chef.workshift || !this.chef.age || !this.chef.dni ||
-      !this.chef.email  || !this.chef.password ) {
+      !this.chef.email  || !this.chef.adress ||  !this.chef.password ) {
 
       return;
     }
    // validacion de campos para que no sean incorrectos mediante FormControl
     if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
       || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
-      || this.ageFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
+      || this.ageFormControl.invalid  || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del chef mientras se hace el servicio
@@ -93,13 +96,13 @@ export class ChefEditComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            if ( response.status && response.statusCode == 200 && response.message != "" )
+            if ( response && response.ok && response.result != 0 )
               Swal.fire(
                 'Enhorabuena!',
                 'El chef ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/chef/list']);
+              this.router.navigate(['/chef/listado']);
           },
           (err) => {
             console.log(err);

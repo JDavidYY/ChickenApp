@@ -87,7 +87,7 @@ export class ProductEditComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            if ( response.status && response.statusCode == 200 && response.message != "" )
+            if ( response && response.ok && response.result != 0 )
               Swal.fire(
                 'Enhorabuena!',
                 'El product ha sido guardado.',

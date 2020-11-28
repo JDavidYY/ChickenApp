@@ -25,7 +25,7 @@ abstract class DeliveryboyData{
 
     }
     
-    public static function addDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
+    public static function addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age) {
         $rtn = null;
 
         $procedureName = "usp_deliveryboy_i_deliveryboy"; 
@@ -34,6 +34,7 @@ abstract class DeliveryboyData{
                 new MySqlParameter("plastname", $lastname, 1),
                 new MySqlParameter("pphone", $phone, 1),
                 new MySqlParameter("pemail", $email, 1),
+                new MySqlParameter("padress", $adress, 1),
                 new MySqlParameter("ppassword", $password, 1),
                 new MySqlParameter("pdni", $dni, 1),
                 new MySqlParameter("pworkshift", $workshift, 1),
@@ -51,7 +52,7 @@ abstract class DeliveryboyData{
         return $rtn;
     }
 
-    public static function editDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age) {
+    public static function editDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age) {
         $rtn = null;
 
         $procedureName = "usp_deliveryboy_u_deliveryboy"; 
@@ -60,6 +61,7 @@ abstract class DeliveryboyData{
             new MySqlParameter("plastname", $lastname, 1),
             new MySqlParameter("pphone", $phone, 1),
             new MySqlParameter("pemail", $email, 1),
+            new MySqlParameter("padress", $adress, 1),
             new MySqlParameter("ppassword", $password, 1),
             new MySqlParameter("pdni", $dni, 1),
             new MySqlParameter("pworkshift", $workshift, 1),

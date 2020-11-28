@@ -42,9 +42,10 @@ export class ProductService {
 		return this.httpClient.get<ProductGetResponse>(url, options);
 	}
 	// api para eliminar a Product por GET
-  	eliminarProduct(idProduct:string):Observable<ProductGetResponse> {
-		const url = this.apiurl + "/delete/" + idProduct;
+  	eliminarProduct(idProduct:string):Observable<ProductPostResponse> {
+		const url = this.apiurl + "/delete/";
+		var data = { idProduct: idProduct }
 		const options = this.httpService.headerOptionsJson(true, true);
-		return this.httpClient.delete<ProductGetResponse>(url, options);
+		return this.httpClient.post<ProductPostResponse>(url,data, options);
 	}
 }

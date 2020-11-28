@@ -39,6 +39,9 @@
                 <mat-error *ngIf="ageFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
+                <mat-error *ngIf="ageFormControl.hasError('minlength')">
+                    La cantidad de digitos debe ser <strong>2</strong>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="form-row" >
@@ -66,7 +69,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="chef.password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="chef.password" type="password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                 <mat-error *ngIf="passwordFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -74,9 +77,22 @@
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Turno</mat-label>
-                <input matInput [(ngModel)]="chef.workshift" [formControl]="workshiftFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-label>Turno</mat-label> 
+                <mat-select [(ngModel)]="chef.workshift" [formControl]="workshiftFormControl" required>
+                    <mat-option value="M">Mañana</mat-option>
+                    <mat-option value="T">Tarde</mat-option>
+                    <mat-option value="N">Noche</mat-option>
+                </mat-select>
                 <mat-error *ngIf="workshiftFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Dirección</mat-label>
+                <input matInput [(ngModel)]="chef.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-error *ngIf="adressFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>

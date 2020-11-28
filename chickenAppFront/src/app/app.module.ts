@@ -9,7 +9,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ChefModule } from './chef/chef.module';
 import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
 import { CategoryModule } from './category/category.module';
-import { ProductModule } from './product/product.module';
+//import { ProductModule } from './product/product.module';
 import { ClientModule } from './client/client.module';
 
 
@@ -26,7 +26,7 @@ import { ClientModule } from './client/client.module';
     ChefModule,
     DeliveryboyModule,
     CategoryModule,
-    ProductModule,
+    //ProductModule,
     ClientModule,
     LoginModule
   ],

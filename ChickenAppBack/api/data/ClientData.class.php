@@ -25,7 +25,7 @@ abstract class ClientData{
 
     }
     
-    public static function addClient($firstname,$lastname,$phone,$email,$adress,$password,$content) {
+    public static function addClient($firstname,$lastname,$phone,$email,$adress,$password) {
         $rtn = null;
 
         $procedureName = "usp_client_i_client"; 
@@ -49,7 +49,7 @@ abstract class ClientData{
         return $rtn;
     }
 
-    public static function editChef($dni,$firstname,$lastname,$email,$phone,$content) {
+    public static function editClient($dni,$firstname,$lastname,$email,$phone) {
         $rtn = null;
 
         $procedureName = "usp_chef_u_chef"; 
@@ -59,7 +59,6 @@ abstract class ClientData{
             new MySqlParameter("plastname", $lastname, 1),
             new MySqlParameter("email", $email, 1),
             new MySqlParameter("phone", $phone, 1),
-            new MySqlParameter("pcontent", $content, 1),
              new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
