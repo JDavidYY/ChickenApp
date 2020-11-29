@@ -46,10 +46,10 @@ class ClientHandler
 		$password=$data['password'];
 		
         $result="Error al agregar al cliente";
-        if(!isset($content)){
+        /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }
+        }*/
         ClientController::addClient($firstname,$lastname,$phone,$email,$adress,$password);
        
 		 $result="Cliente agregado";

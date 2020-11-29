@@ -81,13 +81,15 @@ export class ClientEditComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log(response);
-            if ( response.status && response.statusCode == 200 && response.message != "" )
+            // if ( response.status && response.statusCode == 200 && response.message != "" ){
+            if ( response && response.ok && response.result != 0 ){
               Swal.fire(
                 'Enhorabuena!',
                 'El cliente ha sido guardado.',
                 'success'
                 );
               this.router.navigate(['/login']);
+            }
           },
           (err) => {
             console.log(err);

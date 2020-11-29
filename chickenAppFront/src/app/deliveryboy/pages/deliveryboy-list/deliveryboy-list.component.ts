@@ -14,19 +14,20 @@ import { DeliveryboyService } from '../../services/deliveryboy.service';
 })
 export class DeliveryboyListComponent implements OnInit {
 
-  
+
   deliveryboySeleccionado:DeliveryboyModel = null;
   dataSourceOne: MatTableDataSource<DeliveryboyModel>;
   displayedColumnsOne: string[] = [
     'dni',
 	  'fullnombre',
     'celular',
-    'email'];
+    'email',
+    'turno'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private deliveryboyservice:DeliveryboyService) { 
+    constructor(private router:Router, private deliveryboyservice:DeliveryboyService) {
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -44,8 +45,8 @@ export class DeliveryboyListComponent implements OnInit {
         .subscribe(
             (response) => {
                 console.log(response);
-                if ( response.status && response.message != ""){
-                    const deliveryboy = response.listDeliveryboy;
+                if (response != null && response.ok && response.result != null){
+                    const deliveryboy = response.result;
                     this.dataSourceOne.data = deliveryboy;
                     this.dataSourceOne.paginator = this.tableOnePaginator;
                     this.dataSourceOne.sort = this.tableOneSort;
@@ -62,12 +63,12 @@ export class DeliveryboyListComponent implements OnInit {
     {
       this.router.navigate(['/deliveryboy/agregar']);
     }
-    
+
     //Método para eliminar deliveryboys
     eliminarDeliveryboy()
     {
       if (this.deliveryboySeleccionado == null) return;
-	
+
       Swal.fire({
         title: 'Estas seguro?',
         text: "El registro seleccionado se eliminará!",
@@ -91,7 +92,7 @@ export class DeliveryboyListComponent implements OnInit {
                 'success'
                 );
               this.listarDeliveryboy();
-              this.deliveryboySeleccionado = null;			
+              this.deliveryboySeleccionado = null;
             }
           },
           (err) => {
@@ -108,6 +109,6 @@ export class DeliveryboyListComponent implements OnInit {
         let deliveryboy = this.deliveryboySeleccionado;
         this.router.navigate(['/deliveryboy/editar', deliveryboy.idDeliveryboy ]);
     }
-  
+
 
 }

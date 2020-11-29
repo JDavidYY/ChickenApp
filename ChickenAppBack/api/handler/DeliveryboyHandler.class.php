@@ -18,18 +18,20 @@ class DeliveryboyHandler
 	public function getDeliveryboys(Request $request, Response $response, array $args) {
         /*$client_id=$args['clientid'];
 		$customer_id=$args['customerid'];*/
-		$data = array(
-			'ok' => 'true',
-			'result' => 'servicio conectado'
-		);
-		$payload = json_encode($data);
-		$response->getBody()->write($payload);
-		return $response
-			->withHeader('Content-Type', 'application/json')
-			->withStatus(201);
+		$result=DeliveryboyController::getDeliveryboys();
+		$response=self::response($response,TRUE,$result);
+		return $response;
 		/*$result=ChefController::getChefs();
 		$response=self::response($response,TRUE,$result);
 		return $response;*/
+	}
+
+	public function getDeliveryboy(Request $request, Response $response, array $args)
+	{
+		$iddeliveryboy = $args['idDeliveryboy'];
+		$result = DeliveryboyController::getDeliveryboy( $iddeliveryboy );
+		$response=self::response($response,TRUE,$result);
+		return $response;
 	}
 
     public function addDeliveryboy(Request $request, Response $response, array $args)
@@ -48,21 +50,30 @@ class DeliveryboyHandler
 		$data = (array)$request->getParsedBody();
 		
 		//$content = $request->getBody();
+		$iddeliveryboy=$data['idDeliveryboy'];
 		$firstname=$data['firstname'];
 		$lastname=$data['lastname'];
 		$phone=$data['phone'];
 		$email=$data['email'];
+		$adress=$data['adress'];
 		$password=$data['password'];
 		$dni=$data['dni'];
 		$workshift=$data['workshift'];
 		$age=$data['age'];
 
-        $result="Error al agregar al deliveryboy";
-        if(!isset($content)){
+        $result="Error al agregar el deliveryboy";
+        if(!isset($data)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }
-        DeliveryboyController::addDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
+		}
+		
+		if($iddeliveryboy>0)
+		{
+			DeliveryboyController::editDeliveryboy($iddeliveryboy,$firstname,$lastname,$phone,$email,$adress,$dni,$workshift,$age);
+		}else{
+			DeliveryboyController::addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age);
+		}
+        
        
 		 $result="Delivery Boy agregado";
 		$response=self::response($response,TRUE,$result);
@@ -77,12 +88,13 @@ class DeliveryboyHandler
 		$lastname=$data['lastname'];
 		$phone=$data['phone'];
 		$email=$data['email'];
+		$adress=$data['adress'];
 		$password=$data['password'];
 		$dni=$data['dni'];
 		$workshift=$data['workshift'];
 		$age=$data['age'];
 	
-		$result=DeliveryboyController::editDeliveryboy($firstname,$lastname,$phone,$email,$password,$dni,$workshift,$age);
+		$result=DeliveryboyController::editDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age);
 		$result='Deliveryboy actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
@@ -90,11 +102,13 @@ class DeliveryboyHandler
 	}
 
 	public function deleteDeliveryboy(Request $request, Response $response, array $args){
-        $dni=$args["dni"];
-		$result=DeliveryboyController::deleteDeliveryboy($dni);
-		$result='Deliveryboy eliminado correctamente';
-		$response=self::response($response,TRUE,$result);
-		return $response;
+			$data = (array)$request->getParsedBody();
+	
+			$iddeliveryboy=$data['idDeliveryboy'];
+			$result=DeliveryboyController::deleteDeliveryboy($iddeliveryboy);
+			$result='Delivery Boy eliminado correctamente';
+			$response=self::response($response,TRUE,$result);
+			return $response;
 	}
 
     public static function response(Response $response ,$ok,$result){

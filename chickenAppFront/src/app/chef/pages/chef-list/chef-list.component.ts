@@ -15,19 +15,20 @@ import { ChefService } from '../../services/chef.service';
   styleUrls: ['./chef-list.component.scss']
 })
 export class ChefListComponent implements OnInit {
-  
+
   chefSeleccionado:ChefModel = null;
   dataSourceOne: MatTableDataSource<ChefModel>;
   displayedColumnsOne: string[] = [
     'dni',
 	  'fullnombre',
     'celular',
-    'email'];
+    'email',
+    'turno'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private chefservice:ChefService) { 
+    constructor(private router:Router, private chefservice:ChefService) {
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -45,8 +46,8 @@ export class ChefListComponent implements OnInit {
         .subscribe(
             (response) => {
                 console.log(response);
-                if ( response.status && response.message != ""){
-                    const chef = response.listChef;
+                if (response != null && response.ok && response.result != null){
+                    const chef = response.result;
                     this.dataSourceOne.data = chef;
                     this.dataSourceOne.paginator = this.tableOnePaginator;
                     this.dataSourceOne.sort = this.tableOneSort;
@@ -63,12 +64,12 @@ export class ChefListComponent implements OnInit {
     {
       this.router.navigate(['/chef/agregar']);
     }
-    
+
     //Método para eliminar chefs
     eliminarChef()
     {
       if (this.chefSeleccionado == null) return;
-	
+
       Swal.fire({
         title: 'Estas seguro?',
         text: "El registro seleccionado se eliminará!",
@@ -92,7 +93,7 @@ export class ChefListComponent implements OnInit {
                 'success'
                 );
               this.listarChef();
-              this.chefSeleccionado = null;			
+              this.chefSeleccionado = null;
             }
           },
           (err) => {
@@ -109,6 +110,5 @@ export class ChefListComponent implements OnInit {
         let chef = this.chefSeleccionado;
         this.router.navigate(['/chef/editar', chef.idChef ]);
     }
-  
+
   }
-  

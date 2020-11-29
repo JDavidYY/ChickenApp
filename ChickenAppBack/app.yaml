@@ -25,13 +25,13 @@ handlers:
 #  static_files: \1
 #  upload: .+\.(gif|png|jpg)$
 
-- url: /web/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
-  static_files: content/web/\1
-  upload: content/web/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
+- url: /web/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2|jpg))
+  static_files: content/\1
+  upload: content/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2|jpg))
 
 - url: /web/.*
-  static_files: content/web/index.html
-  upload: content/web/index.html
+  static_files: content/index.html
+  upload: content/index.html
   secure: always
   
 # Serve your app through a front controller at index.php or public/index.php.  
