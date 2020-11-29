@@ -15,7 +15,9 @@ export class ChefEditComponent implements OnInit {
 
  
   chef: ChefModel = new ChefModel();
- 
+  chef_id: number = 0;
+  actualizarButton: boolean = false;
+  guardarButton: boolean = true;
 
   dniFormControl = new FormControl('', [
   Validators.required,
@@ -57,10 +59,44 @@ export class ChefEditComponent implements OnInit {
     Validators.required
     ]);
 
-  constructor(private router:Router, private datePipe: DatePipe, private chefservice: ChefService) { }
+  constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private chefservice: ChefService) { }
   
   ngOnInit(): void {   
+    this.chef_id = +this.route.snapshot.paramMap.get('deliveryboy_id');
+    if ( this.chef_id > 0) {
+      this.cargarChef( this.chef_id );
+      this.actualizarButton = true;
+		  this.guardarButton = false;
+    }
   }
+
+  cargarChef(idChef){
+    this.chefservice.getChef(idChef)
+    .subscribe(
+      (response) => {
+        console.log(response);
+        if ( response != null && response.ok && response.result != null){
+          console.log('Chef encontrado');
+          console.log(response.result);
+          // this.deliveryboy = response.deliveryboy;
+          this.chef.idChef= response.result["idChef"];
+          this.chef.firstname= response.result["firstname"];
+          this.chef.lastname= response.result["lastname"];
+          this.chef.dni= response.result["dni"];
+          this.chef.phone= response.result["phone"];
+          this.chef.workshift= response.result["workshift"];
+          this.chef.age= response.result["age"];
+          this.chef.email= response.result["email"];
+          this.chef.password= response.result["password"];
+          this.chef.adress= response.result["adress"];
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
 
   guardarChef(){
 
