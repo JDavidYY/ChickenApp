@@ -69,7 +69,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="chef.password" type="password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="chef.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
                 <mat-error *ngIf="passwordFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>

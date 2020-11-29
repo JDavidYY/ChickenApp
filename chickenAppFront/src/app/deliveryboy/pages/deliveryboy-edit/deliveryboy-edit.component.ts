@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { DeliveryboyModel } from '../../models/deliveryboy-info.model';
 import { DeliveryboyService } from '../../services/deliveryboy.service';
@@ -15,7 +15,10 @@ export class DeliveryboyEditComponent implements OnInit {
 
 
   deliveryboy: DeliveryboyModel = new DeliveryboyModel();
-  
+  deliveryboy_id: number = 0;
+  actualizarButton: boolean = false;
+  guardarButton: boolean = true;
+
   dniFormControl = new FormControl('', [
   Validators.required,
   Validators.minLength(8)
@@ -56,9 +59,40 @@ export class DeliveryboyEditComponent implements OnInit {
       Validators.required
       ]);
 
-  constructor(private router:Router, private datePipe: DatePipe, private deliveryboyservice: DeliveryboyService) { }
+  constructor(private route:ActivatedRoute, private router:Router, private datePipe: DatePipe, private deliveryboyservice: DeliveryboyService) { }
 
   ngOnInit(): void {
+    this.deliveryboy_id = +this.route.snapshot.paramMap.get('deliveryboy_id');
+    if ( this.deliveryboy_id > 0) {
+      this.cargarDeliveryboy( this.deliveryboy_id );
+      this.actualizarButton = true;
+		  this.guardarButton = false;
+    }
+  }
+  cargarDeliveryboy(idDeliveryboy){
+    this.deliveryboyservice.getDeliveryboy(idDeliveryboy)
+    .subscribe(
+      (response) => {
+        console.log(response);
+        if ( response != null && response.ok && response.result != null){
+          console.log('Deliveryboy encontrado');
+          console.log(response.result);
+          // this.deliveryboy = response.deliveryboy;
+          this.deliveryboy.firstname= response.result["firstname"];
+          this.deliveryboy.lastname= response.result["lastname"];
+          this.deliveryboy.dni= response.result["dni"];
+          this.deliveryboy.phone= response.result["phone"];
+          this.deliveryboy.workshift= response.result["workshift"];
+          this.deliveryboy.age= response.result["age"];
+          this.deliveryboy.email= response.result["email"];
+          this.deliveryboy.password= response.result["password"];
+          this.deliveryboy.adress= response.result["adress"];
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   guardarDeliveryboy(){

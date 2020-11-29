@@ -4,20 +4,21 @@
     </div>
     <!-- Form para guardar los datos del deliveryboy y se captura con [(ngModel)] -->
     <form>
+        
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Apellidos</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
-                <mat-error *ngIf="lastnameFormControl.hasError('required')">
+                <mat-label>Nombres</mat-label>
+                <input matInput [(ngModel)]="deliveryboy.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="firstnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Nombres</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
-                <mat-error *ngIf="firstnameFormControl.hasError('required')">
+                <mat-label>Apellidos</mat-label>
+                <input matInput [(ngModel)]="deliveryboy.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="lastnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
@@ -66,10 +67,11 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="form-row" >
+        <div class="form-row" *ngIf="deliveryboy_id==0">
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.password" type="password" [formControl]="passwordFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="deliveryboy.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
                 <mat-error *ngIf="passwordFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
