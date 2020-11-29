@@ -4,4 +4,3 @@ export class DeliveryboyGetResponse {
   result: number;
   deliveryboy: any ;
   }
-  

@@ -22,6 +22,15 @@ class CategoryHandler
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
+
+	public function getCategory(Request $request, Response $response, array $args)
+	{
+		$idcategory = $args['idCategory'];
+		$result = CategoryController::getCategory( $idcategory);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+	
     
     public function addCategory(Request $request, Response $response, array $args)
 	{
@@ -38,6 +47,7 @@ class CategoryHandler
 		$data = (array)$request->getParsedBody();
 		
 		//$content = $request->getBody();
+		$idcategory=$data['idCategory'];
         $name=$data['name'];
         $description=$data['description'];
 
@@ -45,9 +55,14 @@ class CategoryHandler
         /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }*/
-        CategoryController::addCategory($name,$description);
-       
+		}*/
+		if($idcategory=='')
+		{
+			CategoryController::addCategory($name,$description);
+		}else{
+			CategoryController::editCategory($idcategory,$name,$description);
+		}
+
 		$result="Categoría agregada";
 		$response=self::response($response,TRUE,$result);
 		return $response;
@@ -71,8 +86,8 @@ class CategoryHandler
 	public function deleteCategory(Request $request, Response $response, array $args){
 		$data = (array)$request->getParsedBody();
 
-        $categoryid=$data['idCategory'];
-		$result=CategoryController::deleteCategory($categoryid);
+        $idcategory=$data['idCategory'];
+		$result=CategoryController::deleteCategory($idcategory);
 		$result='Categoría eliminada correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;

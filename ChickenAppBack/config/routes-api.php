@@ -71,14 +71,14 @@ use Chicken\Handler\CategoryHandler;
 $app->group('/api/chef', function (RouteCollectorProxy $group) {
     $group->post('/add', ChefHandler::class . ':addChef');
     $group->get('/select', ChefHandler::class . ':getChefs');
-    $group->post('/edit', ChefHandler::class . ':editChef');
-    $group->post('/delete/{chefid}', ChefHandler::class . ':deleteChef');
+    $group->get('/get/{idChef}', ChefHandler::class . ':getChef');
+    $group->post('/delete', ChefHandler::class . ':deleteChef');
 });
 
 $app->group('/api/deliveryboy', function (RouteCollectorProxy $group) {
     $group->post('/add', DeliveryboyHandler::class . ':addDeliveryboy');
     $group->get('/select', DeliveryboyHandler::class . ':getDeliveryboys');
-    $group->post('/edit', DeliveryboyHandler::class . ':editDeliveryboy');
+    $group->get('/get/{idDeliveryboy}', DeliveryboyHandler::class . ':getDeliveryboy');
     $group->post('/delete', DeliveryboyHandler::class . ':deleteDeliveryboy');
 });
 
@@ -94,7 +94,8 @@ $app->group('/api/user', function (RouteCollectorProxy $group) {
 $app->group('/api/category', function (RouteCollectorProxy $group) {
     $group->post('/add', CategoryHandler::class . ':addCategory');
     $group->get('/select', CategoryHandler::class . ':getCategories');
-    $group->post('/edit/{categoryid}', CategoryHandler::class . ':editCategory');
+    $group->get('/get/{idCategory}', CategoryHandler::class . ':getCategory');
+    //$group->post('/edit/{categoryid}', CategoryHandler::class . ':editCategory');
     $group->post('/delete', CategoryHandler::class . ':deleteCategory');
 });
 

@@ -26,6 +26,14 @@ class ChefHandler
 		return $response;*/
 	}
 
+	public function getChef(Request $request, Response $response, array $args)
+	{
+		$idchef = $args['idChef'];
+		$result = ChefController::getChef( $idchef );
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
     public function addChef(Request $request, Response $response, array $args)
 	{
 		
@@ -42,6 +50,7 @@ class ChefHandler
 		$data = (array)$request->getParsedBody();
 		
 		//$content = $request->getBody();
+		$idchef=$data['idChef'];
 		$firstname=$data['firstname'];
 		$lastname=$data['lastname'];
 		$phone=$data['phone'];
@@ -56,8 +65,16 @@ class ChefHandler
         if(!isset($data)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }
-        ChefController::addChef($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age);
+		}
+		
+		if($idchef=='')
+		{
+			ChefController::addChef($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age);
+			
+		}else
+		{
+			ChefController::editChef($idchef,$firstname,$lastname,$phone,$email,$adress,$dni,$workshift,$age);
+		}
        
 		 $result="Chef agregado";
 		$response=self::response($response,TRUE,$result);
@@ -87,8 +104,10 @@ class ChefHandler
 	}
 
 	public function deleteChef(Request $request, Response $response, array $args){
-        $dni=$args["dni"];
-		$result=ChefController::deleteChef($dni);
+		$data = (array)$request->getParsedBody();
+
+        $idchef=$data['idChef'];
+		$result=ChefController::deleteChef($idchef);
 		$result='Chef eliminado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
