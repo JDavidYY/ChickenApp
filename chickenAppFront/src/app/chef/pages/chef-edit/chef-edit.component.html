@@ -1,11 +1,10 @@
-<div class="section-principal chef-bg" style="padding-bottom: 25px">
-    <div class="container pt-5 principal-cont">
-        <div class="">
+<div class="container pt-5">
+    <div class="pt-5">
         <h1>Registro de Chef</h1>
-        </div>
-        <!-- Form para guardar los datos del chef y se captura con [(ngModel)] -->
-        <form>
-            <div class="form-row" >
+    </div>
+    <!-- Form para guardar los datos del chef y se captura con [(ngModel)] -->
+    <form>
+        <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Apellidos</mat-label>
                 <input matInput [(ngModel)]="chef.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
@@ -13,8 +12,8 @@
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
-            </div>
-            <div class="form-row" >
+        </div>
+        <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Nombres</mat-label>
                 <input matInput [(ngModel)]="chef.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
@@ -22,8 +21,8 @@
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
-            </div>
-            <div class="form-row" >
+        </div>
+        <div class="form-row" >
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Número de documento de identidad</mat-label>
                 <input matInput [(ngModel)]="chef.dni" maxlength="8" [formControl]="dniFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
@@ -44,8 +43,8 @@
                     La cantidad de digitos debe ser <strong>2</strong>
                 </mat-error>
             </mat-form-field>
-            </div>
-            <div class="form-row" >
+        </div>
+        <div class="form-row" >
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Correo electrónico</mat-label>
                 <input matInput [(ngModel)]="chef.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
@@ -66,8 +65,8 @@
                     La cantidad de digitos debe ser <strong>9</strong>
                 </mat-error>
             </mat-form-field>
-            </div>
-            <div class="form-row" *ngIf="chef_id==0">
+        </div>
+        <div class="form-row" *ngIf="chef_id==0">
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
                 <input matInput [(ngModel)]="chef.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
@@ -75,10 +74,10 @@
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
-            </div>
-            <div class="form-row" >
+        </div>
+        <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Turno</mat-label>
+                <mat-label>Turno</mat-label> 
                 <mat-select [(ngModel)]="chef.workshift" [formControl]="workshiftFormControl" required>
                     <mat-option value="M">Mañana</mat-option>
                     <mat-option value="T">Tarde</mat-option>
@@ -88,8 +87,8 @@
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
-            </div>
-            <div class="form-row" >
+        </div>
+        <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Dirección</mat-label>
                 <input matInput [(ngModel)]="chef.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
@@ -97,15 +96,13 @@
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
+        </div>
+        <!-- Div de botones para regresar o guardar los datos de los campos -->
+        <div class="form-row pt-2">
+            <div class="col-sm-12 text-right">     
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>   
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarChef()">Guardar</button> 
             </div>
-            <!-- Div de botones para regresar o guardar los datos de los campos -->
-            <div class="form-row pt-2">
-            <div class="col-sm-12 text-right">
-                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarChef()">Guardar</button>
-            </div>
-
-            </div>
-        </form>
-    </div>
+        </div>
+    </form> 
 </div>
