@@ -99,17 +99,31 @@ export class DeliveryboyEditComponent implements OnInit {
   guardarDeliveryboy(){
 
     // validacion de campos para que no sean vacios
-    if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
-      !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
-    !this.deliveryboy.email  || !this.deliveryboy.adress || !this.deliveryboy.password ) {
-
-    return;
+    if(this.deliveryboy_id>0){
+      if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
+        !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
+      !this.deliveryboy.email  || !this.deliveryboy.adress ) {
+        return;
+    }else{
+      if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
+        !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
+      !this.deliveryboy.email  || !this.deliveryboy.adress || !this.deliveryboy.password ) {
+        return;
+    }
   }
  // validacion de campos para que no sean incorrectos mediante FormControl
-  if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
-    || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
-    || this.ageFormControl.invalid || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
-    return;
+  if(this.deliveryboy_id>0){
+    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
+      || this.ageFormControl.invalid || this.adressFormControl.invalid || this.emailFormControl.invalid) {
+      return;
+    }
+  }else{
+    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
+      || this.ageFormControl.invalid || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid){
+        return;
+      }
   }
   //modal para que muestre el mensaje para confirmación de guardado del deliveryboy mientras se hace el servicio
       Swal.fire({
@@ -144,7 +158,7 @@ export class DeliveryboyEditComponent implements OnInit {
       }
     });
   }
-
+  }
   regresar(){
     this.router.navigate(['/deliveryboy/listado']);
   }

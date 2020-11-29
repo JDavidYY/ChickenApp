@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe} from '@angular/common';
 import { FormControl, Validators } from '@angular/forms';
 import { ChefModel } from '../../models/chef-info.model';
@@ -15,7 +15,7 @@ export class ChefEditComponent implements OnInit {
 
  
   chef: ChefModel = new ChefModel();
-  nacimiento: string;
+ 
 
   dniFormControl = new FormControl('', [
   Validators.required,
@@ -58,8 +58,8 @@ export class ChefEditComponent implements OnInit {
     ]);
 
   constructor(private router:Router, private datePipe: DatePipe, private chefservice: ChefService) { }
-
-  ngOnInit(): void {
+  
+  ngOnInit(): void {   
   }
 
   guardarChef(){

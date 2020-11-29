@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CategoryModel } from '../../models/category-info.model';
 import { CategoryService } from '../../services/category.service';
@@ -15,6 +15,9 @@ export class CategoryEditComponent implements OnInit {
 
 
   category: CategoryModel = new CategoryModel();
+  category_id: number = 0;
+  actualizarButton: boolean = false;
+  guardarButton: boolean = true;
 
   nameFormControl = new FormControl('', [
   Validators.required,
@@ -24,9 +27,35 @@ export class CategoryEditComponent implements OnInit {
   Validators.required,
   ]);
 
-  constructor(private router:Router, private datePipe: DatePipe, private categoryservice: CategoryService) { }
+  constructor(private route:ActivatedRoute,  private router:Router, private datePipe: DatePipe, private categoryservice: CategoryService) { }
 
   ngOnInit(): void {
+    this.category_id = +this.route.snapshot.paramMap.get('category_id');
+    if ( this.category_id > 0) {
+      this.cargarCategory( this.category_id );
+      this.actualizarButton = true;
+		  this.guardarButton = false;
+    }
+  }
+
+  cargarCategory(idCategory){
+    this.categoryservice.getCategory(idCategory)
+    .subscribe(
+      (response) => {
+        console.log(response);
+        if ( response != null && response.ok && response.result != null){
+          console.log('Categoría encontrado');
+          console.log(response.result);
+          // this.deliveryboy = response.deliveryboy;
+          this.category.idCategory= response.result["idCategory"];
+          this.category.name= response.result["name"];
+          this.category.description= response.result["description"];
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   guardarCategory(){
