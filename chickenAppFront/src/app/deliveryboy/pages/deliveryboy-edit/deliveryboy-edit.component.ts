@@ -27,30 +27,30 @@ export class DeliveryboyEditComponent implements OnInit {
   lastnameFormControl = new FormControl('', [
     Validators.required,
     ]);
-  
+
     firstnameFormControl = new FormControl('', [
     Validators.required,
     ]);
-  
+
     phoneFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(9)
     ]);
-  
+
     ageFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(2)
     ]);
-  
+
     workshiftFormControl = new FormControl('', [
     Validators.required
     ]);
-  
+
     emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email
     ]);
-  
+
     passwordFormControl = new FormControl('', [
     Validators.required
     ]);
@@ -100,13 +100,13 @@ export class DeliveryboyEditComponent implements OnInit {
 
     // validacion de campos para que no sean vacios
     if(this.deliveryboy_id>0){
-      if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
+      if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone ||
         !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
       !this.deliveryboy.email  || !this.deliveryboy.adress ) {
         return;
     }
   }else{
-      if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
+      if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone ||
         !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
       !this.deliveryboy.email  || !this.deliveryboy.adress || !this.deliveryboy.password ) {
         return;
@@ -114,17 +114,17 @@ export class DeliveryboyEditComponent implements OnInit {
   }
  // validacion de campos para que no sean incorrectos mediante FormControl
   if(this.deliveryboy_id>0){
-    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid
       || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
       || this.ageFormControl.invalid || this.adressFormControl.invalid || this.emailFormControl.invalid) {
-   
+
       return;
     }
   }else{
-    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid
       || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
       || this.ageFormControl.invalid || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid){
-   
+
         return;
       }
   }
@@ -142,6 +142,7 @@ export class DeliveryboyEditComponent implements OnInit {
       }).then((result) => {
       // llamado sel servicio guardarDeliveryboy desde deliveryboy.service.ts y se le pasa 2 parametros
       if (result.value) {
+        console.log(this.deliveryboy);
         this.deliveryboyservice.guardarDeliveryboy(this.deliveryboy)
         .subscribe(
           (response) => {
@@ -161,7 +162,7 @@ export class DeliveryboyEditComponent implements OnInit {
       }
     });
   }
-  
+
   regresar(){
     this.router.navigate(['/deliveryboy/listado']);
   }
@@ -180,6 +181,6 @@ export class DeliveryboyEditComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
-    }   
+    }
 
 }

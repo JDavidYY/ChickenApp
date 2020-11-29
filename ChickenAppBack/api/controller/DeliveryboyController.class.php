@@ -21,9 +21,8 @@ abstract class DeliveryboyController{
         return DeliveryboyData::addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password_encrypted,$dni,$workshift,$age);
     }
 
-    public static function editDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age){
-        $password_encrypted = SecurityExtensions::encrypt($password);
-        return DeliveryboyData::editDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password_encrypted,$dni,$workshift,$age);
+    public static function editDeliveryboy($iddeliveryboy,$firstname,$lastname,$phone,$email,$adress,$dni,$workshift,$age){
+        return DeliveryboyData::editDeliveryboy($iddeliveryboy,$firstname,$lastname,$phone,$email,$adress,$dni,$workshift,$age);
     }
 
     public static function deleteDeliveryboy($iddeliveryboy){

@@ -67,11 +67,11 @@ class DeliveryboyHandler
             return $response; 
 		}
 		
-		if($iddeliveryboy=='')
+		if($iddeliveryboy>0)
 		{
-			DeliveryboyController::addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age);
+			DeliveryboyController::editDeliveryboy($iddeliveryboy,$firstname,$lastname,$phone,$email,$adress,$dni,$workshift,$age);
 		}else{
-			DeliveryboyController::editDeliveryboy($firstname,$lastname,$phone,$email,$adress,$dni,$workshift,$age);
+			DeliveryboyController::addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age);
 		}
         
        
