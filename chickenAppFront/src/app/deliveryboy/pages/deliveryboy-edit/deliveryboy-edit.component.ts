@@ -129,6 +129,39 @@ export class DeliveryboyEditComponent implements OnInit {
       }
   }
   //modal para que muestre el mensaje para confirmación de guardado del deliveryboy mientras se hace el servicio
+    if(this.deliveryboy_id>0){
+      Swal.fire({
+        title: 'Aviso',
+        text: "¿Estás seguro que deseas actualizar los datos del deliveryboy?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, actualziar!' ,
+
+        }).then((result) => {
+        // llamado sel servicio guardarDeliveryboy desde deliveryboy.service.ts y se le pasa 2 parametros
+        if (result.value) {
+          this.deliveryboyservice.guardarDeliveryboy(this.deliveryboy)
+          .subscribe(
+            (response) => {
+              console.log(response);
+              if ( response && response.ok && response.result != 0 )
+                Swal.fire(
+                  'Enhorabuena!',
+                  'El deliveryboy ha sido actualizado.',
+                  'success'
+                  );
+                this.router.navigate(['/deliveryboy/listado']);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        }
+      });
+    } else{
       Swal.fire({
       title: 'Aviso',
       text: "¿Estás seguro que deseas guardar el deliveryboy?",
@@ -161,6 +194,7 @@ export class DeliveryboyEditComponent implements OnInit {
         );
       }
     });
+  }
   }
 
   regresar(){

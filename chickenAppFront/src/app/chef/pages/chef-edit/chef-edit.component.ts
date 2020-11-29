@@ -132,6 +132,39 @@ export class ChefEditComponent implements OnInit {
       }
   }
   //modal para que muestre el mensaje para confirmación de guardado del chef mientras se hace el servicio
+    if(this.chef_id>0){
+      Swal.fire({
+        title: 'Aviso',
+        text: "¿Estás seguro que deseas actualizar los datos del chef?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, actualizar!' ,
+  
+        }).then((result) => {
+        // llamado sel servicio guardarChef desde chef.service.ts y se le pasa 2 parametros
+        if (result.value) {
+          this.chefservice.guardarChef(this.chef)
+          .subscribe(
+            (response) => {
+              console.log(response);
+              if ( response && response.ok && response.result != 0 )
+                Swal.fire(
+                  'Enhorabuena!',
+                  'El chef ha sido actualizado.',
+                  'success'
+                  );
+                this.router.navigate(['/chef/listado']);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        }
+      });
+    } else {
       Swal.fire({
       title: 'Aviso',
       text: "¿Estás seguro que deseas guardar el chef?",
@@ -163,6 +196,7 @@ export class ChefEditComponent implements OnInit {
         );
       }
     });
+    }
   }
 
   regresar(){
