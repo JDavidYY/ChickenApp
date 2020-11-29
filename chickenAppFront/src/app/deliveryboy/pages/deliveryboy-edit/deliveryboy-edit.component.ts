@@ -103,11 +103,14 @@ export class DeliveryboyEditComponent implements OnInit {
       if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
         !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
       !this.deliveryboy.email  || !this.deliveryboy.adress ) {
+        console.log("Aquí entra si es mayor que 0")
         return;
-    }else{
+    }
+  }else{
       if ( !this.deliveryboy.firstname || !this.deliveryboy.lastname || !this.deliveryboy.phone || 
         !this.deliveryboy.workshift || !this.deliveryboy.age || !this.deliveryboy.dni ||
       !this.deliveryboy.email  || !this.deliveryboy.adress || !this.deliveryboy.password ) {
+        console.log("Aquí entra si es mayor que 1")
         return;
     }
   }
@@ -116,12 +119,14 @@ export class DeliveryboyEditComponent implements OnInit {
     if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
       || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
       || this.ageFormControl.invalid || this.adressFormControl.invalid || this.emailFormControl.invalid) {
+        console.log("Aquí entra si es mayor que 2")
       return;
     }
   }else{
     if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
       || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
       || this.ageFormControl.invalid || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid){
+        console.log("Aquí entra si es mayor que 3")
         return;
       }
   }
@@ -158,7 +163,7 @@ export class DeliveryboyEditComponent implements OnInit {
       }
     });
   }
-  }
+  
   regresar(){
     this.router.navigate(['/deliveryboy/listado']);
   }
