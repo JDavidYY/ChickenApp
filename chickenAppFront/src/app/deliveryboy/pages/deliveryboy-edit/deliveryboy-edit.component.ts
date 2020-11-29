@@ -78,6 +78,7 @@ export class DeliveryboyEditComponent implements OnInit {
           console.log('Deliveryboy encontrado');
           console.log(response.result);
           // this.deliveryboy = response.deliveryboy;
+          this.deliveryboy.idDeliveryboy= response.result["idDeliveryboy"];
           this.deliveryboy.firstname= response.result["firstname"];
           this.deliveryboy.lastname= response.result["lastname"];
           this.deliveryboy.dni= response.result["dni"];
