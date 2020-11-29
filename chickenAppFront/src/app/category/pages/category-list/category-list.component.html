@@ -1,6 +1,6 @@
-<div class="container pt-5 animated fadeIn category-bg">
+<div class="container pt-5 animated fadeIn">
     <div class="pt-5">
-        <h1 style="color: white;">Listado de Categorias</h1>
+        <h1>Listado de Categorias</h1>
     </div>
      <!-- Tabla que muestra el listado de todos los Category que están registrado en el sistema -->
     <div class="tabla">
@@ -33,7 +33,7 @@
         <div class="col-12 text-right">
             <button mat-raised-button (click)="editarCategory()"  color="accent" style="margin-left: 5px;" [disabled]="categorySeleccionado == null">Editar</button>
             <button mat-raised-button (click)="eliminarCategory()" [disabled]="categorySeleccionado == null" color="warn"  style="margin-left: 5px;" disabled>Eliminar</button>
-            <button mat-raised-button  (click)="agregarCategory()" color="primary"  style="margin-left: 5px;background-color: #7a3e48;">Agregar</button>
+            <button mat-raised-button  (click)="agregarCategory()" color="primary"  style="margin-left: 5px;">Agregar</button>
         </div>
     </div>
   </div>
