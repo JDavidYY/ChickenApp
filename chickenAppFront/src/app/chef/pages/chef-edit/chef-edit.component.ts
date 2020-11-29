@@ -113,7 +113,7 @@ export class ChefEditComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/chef/list']);
+    this.router.navigate(['/chef/listado']);
   }
 
   keypressNumbers(event: any) {

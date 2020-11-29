@@ -54,12 +54,14 @@ export class LoginComponent implements OnInit {
 			return;
     }
 
-    this.loginService.login(this.user)
-				.subscribe(
-				  (response) => {
-					console.log(response);
+    this.router.navigate(['/principal/dashboard']);
 
-    });
+    // this.loginService.login(this.user)
+		// 		.subscribe(
+		// 		  (response) => {
+		// 			console.log(response);
+
+    // });
 
     }
 
