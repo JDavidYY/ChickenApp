@@ -66,7 +66,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="form-row" >
+        <div class="form-row" *ngIf="chef_id==0">
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
                 <input matInput [(ngModel)]="chef.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>

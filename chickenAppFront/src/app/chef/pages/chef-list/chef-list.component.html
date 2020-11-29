@@ -41,7 +41,7 @@
      <!-- Grupo de botones para manipular el listado de chefs -->
     <div class="row pt-2">
         <div class="col-12 text-right">
-            <button mat-raised-button (click)="editarChef()"  color="accent" style="margin-left: 5px;" disabled>Editar</button>
+            <button mat-raised-button (click)="editarChef()" [disabled]="chefSeleccionado == null" color="accent" style="margin-left: 5px;" disabled>Editar</button>
             <button mat-raised-button (click)="eliminarChef()" [disabled]="chefSeleccionado == null" color="warn"  style="margin-left: 5px;" disabled>Eliminar</button>
             <button mat-raised-button  (click)="agregarChef()" color="primary"  style="margin-left: 5px;">Agregar</button>
         </div>

@@ -62,7 +62,7 @@ export class ChefEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private chefservice: ChefService) { }
   
   ngOnInit(): void {   
-    this.chef_id = +this.route.snapshot.paramMap.get('deliveryboy_id');
+    this.chef_id = +this.route.snapshot.paramMap.get('chef_id');
     if ( this.chef_id > 0) {
       this.cargarChef( this.chef_id );
       this.actualizarButton = true;
@@ -87,7 +87,7 @@ export class ChefEditComponent implements OnInit {
           this.chef.workshift= response.result["workshift"];
           this.chef.age= response.result["age"];
           this.chef.email= response.result["email"];
-          this.chef.password= response.result["password"];
+          this.chef.password= "";
           this.chef.adress= response.result["adress"];
         }
       },
@@ -102,18 +102,35 @@ export class ChefEditComponent implements OnInit {
 
 
     // validacion de campos para que no sean vacios
-    if ( !this.chef.firstname || !this.chef.lastname || !this.chef.phone || 
+    if(this.chef_id>0){
+      if ( !this.chef.firstname || !this.chef.lastname || !this.chef.phone || 
         !this.chef.workshift || !this.chef.age || !this.chef.dni ||
-      !this.chef.email  || !this.chef.adress ||  !this.chef.password ) {
-
-      return;
+      !this.chef.email  || !this.chef.adress ) {
+        return;
     }
-   // validacion de campos para que no sean incorrectos mediante FormControl
+  }else{
+      if ( !this.chef.firstname || !this.chef.lastname || !this.chef.phone || 
+        !this.chef.workshift || !this.chef.age || !this.chef.dni ||
+      !this.chef.email  || !this.chef.adress || !this.chef.password ) {
+        return;
+    }
+  }
+ // validacion de campos para que no sean incorrectos mediante FormControl
+  if(this.chef_id>0){
     if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
       || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
-      || this.ageFormControl.invalid  || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid) {
+      || this.ageFormControl.invalid || this.adressFormControl.invalid || this.emailFormControl.invalid) {
+   
       return;
     }
+  }else{
+    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
+      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
+      || this.ageFormControl.invalid || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid){
+   
+        return;
+      }
+  }
   //modal para que muestre el mensaje para confirmación de guardado del chef mientras se hace el servicio
       Swal.fire({
       title: 'Aviso',
