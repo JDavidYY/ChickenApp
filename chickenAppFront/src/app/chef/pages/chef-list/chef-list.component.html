@@ -1,6 +1,6 @@
-<div class="container pt-5 animated fadeIn">
+<div class="container pt-5 animated fadeIn chef-bg">
     <div class="pt-5">
-        <h1>Listado de Chefs</h1>
+        <h1 style="color: white;">Listado de Chefs</h1>
     </div>
      <!-- Tabla que muestra el listado de todos los chefs que están registrado en el sistema -->
     <div class="tabla">
@@ -43,7 +43,7 @@
         <div class="col-12 text-right">
             <button mat-raised-button (click)="editarChef()" [disabled]="chefSeleccionado == null" color="accent" style="margin-left: 5px;" disabled>Editar</button>
             <button mat-raised-button (click)="eliminarChef()" [disabled]="chefSeleccionado == null" color="warn"  style="margin-left: 5px;" disabled>Eliminar</button>
-            <button mat-raised-button  (click)="agregarChef()" color="primary"  style="margin-left: 5px;">Agregar</button>
+            <button mat-raised-button  (click)="agregarChef()" color="primary"  style="margin-left: 5px;background-color: #7a3e48;">Agregar</button>
         </div>
     </div>
   </div>
