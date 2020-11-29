@@ -111,7 +111,7 @@ export class DeliveryboyEditComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/deliveryboy/list']);
+    this.router.navigate(['/deliveryboy/listado']);
   }
 
   keypressNumbers(event: any) {

@@ -75,7 +75,7 @@ export class CategoryEditComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/category/list']);
+    this.router.navigate(['/category/listado']);
   }
 
   keypressNumbers(event: any) {
