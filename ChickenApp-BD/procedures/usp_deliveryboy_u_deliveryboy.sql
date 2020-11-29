@@ -1,6 +1,6 @@
-CREATE DEFINER=`admin`@`%` PROCEDURE `usp_deliveryboy_u_deliveryboy`(piddeliveryboy  VARCHAR(45), pfirstname VARCHAR(45),plastname VARCHAR(45),pphone VARCHAR(45) ,pemail VARCHAR(50) ,padress VARCHAR(50),pdni VARCHAR(20),pworkshift VARCHAR(45),pages VARCHAR(45),OUT oresult INT)
+CREATE PROCEDURE `usp_deliveryboy_u_deliveryboy`(piddeliveryboy  VARCHAR(45), pfirstname VARCHAR(45),plastname VARCHAR(45),pphone VARCHAR(45) ,pemail VARCHAR(50) ,padress VARCHAR(50),pdni VARCHAR(20),pworkshift VARCHAR(45),pages VARCHAR(45),OUT oresult INT)
 BEGIN
-	IF (SELECT EXISTS(SELECT * FROM Employees WHERE idEmployees = piddeliveryboy)) = TRUE THEN
+	IF (SELECT exists(SELECT * FROM Employees WHERE idEmployees = piddeliveryboy)) = TRUE THEN
 		UPDATE Employees
         SET
 			firstnameEmployees = pfirstname ,
