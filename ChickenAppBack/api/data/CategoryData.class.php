@@ -24,6 +24,27 @@ abstract class CategoryData{
 		return $rtn;
 
     }
+
+    public static function getCategory($idcategory)
+	{
+		$rtn = NULL;
+
+		$procedureName = "usp_category_f_category";
+		$params =  array(
+			new MySqlParameter("pidcategory", $idcategory, 1)
+		);
+
+		$db = new DataAccessLayer();
+		$db->connect();
+		$result = $db->ExecuteSelect($procedureName, $params);
+		$db->disconnect();
+		
+		if (isset($result)) {
+			$rtn = $result[0];
+		}
+
+		return $rtn;
+	}
     
     public static function addCategory($name,$description) {
         $rtn = null;
@@ -45,12 +66,12 @@ abstract class CategoryData{
         return $rtn;
     }
 
-    public static function editCategory($categoryid,$name,$description) {
+    public static function editCategory($idcategory,$name,$description) {
         $rtn = null;
 
         $procedureName = "usp_category_u_category"; 
         $params = array(
-            new MySqlParameter("pcategoryid", $categoryid, 1),
+            new MySqlParameter("pidcategory", $idcategory, 1),
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
              new MySqlParameter("oresult", 0, 2)
@@ -66,12 +87,12 @@ abstract class CategoryData{
         return $rtn;
     }
 
-    public static function deleteCategory($categoryid) {
+    public static function deleteCategory($idcategory) {
         $rtn = null;
 
         $procedureName = "usp_category_d_category"; 
         $params = array(
-                new MySqlParameter("pcategoryid", $categoryid, 1),
+                new MySqlParameter("pidcategory", $idcategory, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();

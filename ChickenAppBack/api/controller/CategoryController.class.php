@@ -9,6 +9,11 @@ abstract class CategoryController{
     public static function getCategories(){
         return CategoryData::getCategories();
     }
+
+    public static function getCategory($idcategory)
+	{
+		return CategoryData::getCategory($idcategory);;
+	}
     
     public static function addCategory($name,$description){
         return CategoryData::addCategory($name,$description);
@@ -18,8 +23,8 @@ abstract class CategoryController{
         return CategoryData::editCategory($categoryid,$name,$description);
     }
 
-    public static function deleteCategory($categoryid){
-        return CategoryData::deleteCategory($categoryid);  
+    public static function deleteCategory($idcategory){
+        return CategoryData::deleteCategory($idcategory);  
     }
 	
 }

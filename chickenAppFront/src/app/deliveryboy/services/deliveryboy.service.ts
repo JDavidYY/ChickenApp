@@ -43,9 +43,9 @@ export class DeliveryboyService {
 	}
 	// api para eliminar a Chef por GET
   	eliminarDeliveryboy(idDeliveryboy:string):Observable<DeliveryboyPostResponse> {
-		const url = this.apiurl + "/delete/";
+		const url = this.apiurl + "/delete";
 		var data = { idDeliveryboy: idDeliveryboy }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<DeliveryboyPostResponse>(url,data, options);
-	}	
+	}
 }
