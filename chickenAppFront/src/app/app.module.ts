@@ -11,6 +11,12 @@ import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
 import { CategoryModule } from './category/category.module';
 //import { ProductModule } from './product/product.module';
 import { ClientModule } from './client/client.module';
+import { PromotionListComponent } from './promotion/pages/promotion-list/promotion-list.component';
+import { MenuComponent } from './purchase/pages/menu/menu.component';
+import { ComboEditComponent } from './combo/pages/combo-edit/combo-edit.component';
+import { ComboListComponent } from './combo/pages/combo-list/combo-list.component';
+import { PurchaseModule } from './purchase/purchase.module';
+import { PromotionModule } from './promotion/promotion.module';
 
 
 @NgModule({
@@ -25,6 +31,8 @@ import { ClientModule } from './client/client.module';
     HomeModule,
     ChefModule,
     DeliveryboyModule,
+    PurchaseModule,
+    PromotionModule,
     CategoryModule,
     //ProductModule,
     ClientModule,
