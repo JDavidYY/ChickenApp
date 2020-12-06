@@ -6,6 +6,7 @@ include __DIR__.'/../api/data/DeliveryboyData.class.php';
 include __DIR__.'/../api/data/ClientData.class.php';
 include __DIR__.'/../api/data/CategoryData.class.php';
 include __DIR__.'/../api/data/UserData.class.php';
+include __DIR__.'/../api/data/PlatoData.class.php';
 
 /* include __DIR__.'/../api/v3/data/MaintenanceData.class.php';
 include __DIR__.'/../api/v3/data/TagData.class.php'; */
@@ -31,6 +32,7 @@ include __DIR__.'/../api/controller/DeliveryboyController.class.php';
 include __DIR__.'/../api/controller/ClientController.class.php';
 include __DIR__.'/../api/controller/CategoryController.class.php';
 include __DIR__.'/../api/controller/UserController.class.php';
+include __DIR__.'/../api/controller/PlatoController.class.php';
 
 /* include __DIR__.'/../api/v3/controller/MaintenanceController.class.php';
 include __DIR__.'/../api/v3/controller/TagController.class.php'; */
@@ -43,6 +45,7 @@ include __DIR__.'/../api/handler/DeliveryboyHandler.class.php';
 include __DIR__.'/../api/handler/ClientHandler.class.php';
 include __DIR__.'/../api/handler/CategoryHandler.class.php';
 include __DIR__.'/../api/handler/UserHandler.class.php';
+include __DIR__.'/../api/handler/PlatoHandler.class.php';
 
 /* include __DIR__.'/../api/v3/handler/CustomerHandler.class.php';
 include __DIR__.'/../api/v3/handler/MaintenanceHandler.class.php';
@@ -66,6 +69,7 @@ use Chicken\Handler\ChefHandler;
 use Chicken\Handler\DeliveryboyHandler;
 use Chicken\Handler\ClientHandler;
 use Chicken\Handler\CategoryHandler;
+use Chicken\Handler\PlatoHandler;
 
 
 $app->group('/api/chef', function (RouteCollectorProxy $group) {
@@ -97,6 +101,14 @@ $app->group('/api/category', function (RouteCollectorProxy $group) {
     $group->get('/get/{idCategory}', CategoryHandler::class . ':getCategory');
     //$group->post('/edit/{categoryid}', CategoryHandler::class . ':editCategory');
     $group->post('/delete', CategoryHandler::class . ':deleteCategory');
+});
+
+$app->group('/api/plato', function (RouteCollectorProxy $group) {
+    $group->post('/add', PlatoHandler::class . ':addPlato');
+    $group->get('/select', PlatoHandler::class . ':getPlatos');
+    $group->get('/get/{idPlato}', PlatoHandler::class . ':getPlato');
+    //$group->post('/edit/{categoryid}', PlatoHandler::class . ':editPlato');
+    $group->post('/delete', PlatoHandler::class . ':deletePlato');
 });
 
 ?>
