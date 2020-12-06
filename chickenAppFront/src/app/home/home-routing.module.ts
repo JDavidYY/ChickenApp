@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MenuHomeComponent } from './pages/menu-home/menu-home.component';
 import { NavHomeComponent } from './pages/nav-home/nav-home.component';
 
 
 // se declara los componentes que se usaran en el modulo
 export const HOME_COMPONENTS = [
-    MenuHomeComponent,
+    // MenuHomeComponent,
     NavHomeComponent
 ];
 
@@ -16,10 +15,10 @@ const homeRoutes:Routes = [
         path: '',
         component: NavHomeComponent,
         children: [
-          {
-            path: '',
-            component: MenuHomeComponent
-          }
+          // {
+          //   path: '',
+          //   component: MenuHomeComponent
+          // }
         ]
   }
 ];
