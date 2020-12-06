@@ -15,24 +15,23 @@ class PlatoHandler
 		$this->responder = $responder;
     }
     
-    public function getCategories(Request $request, Response $response, array $args) {
+    public function getPlatos(Request $request, Response $response, array $args) {
         /*$client_id=$args['clientid'];
         $customer_id=$args['customerid'];*/
-		$result=CategoryController::getCategories();
+		$result=PlatoController::getPlatos();
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 
-	public function getCategory(Request $request, Response $response, array $args)
+	public function getPlato(Request $request, Response $response, array $args)
 	{
-		$idcategory = $args['idCategory'];
-		$result = CategoryController::getCategory( $idcategory);
+		$idplato = $args['idPlato'];
+		$result = PlatoController::getPlato( $idplato);
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 	
-    
-    public function addCategory(Request $request, Response $response, array $args)
+    public function addPlato(Request $request, Response $response, array $args)
 	{
 		/*$data = array(
 			'ok' => 'true',
@@ -47,48 +46,48 @@ class PlatoHandler
 		$data = (array)$request->getParsedBody();
 		
 		//$content = $request->getBody();
-		$idcategory=$data['idCategory'];
+		$idplato=$data['idPlato'];
         $name=$data['name'];
         $description=$data['description'];
 
-        $result="Error al agregar la categoría";
+        $result="Error al agregar la plato";
         /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
 		}*/
-		if($idcategory=='')
+		if($idplato=='')
 		{
-			CategoryController::addCategory($name,$description);
+			PlatoController::addPlato($name,$description);
 		}else{
-			CategoryController::editCategory($idcategory,$name,$description);
+			PlatoController::editPlato($idplato,$name,$description);
 		}
 
-		$result="Categoría agregada";
+		$result="Plato agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
     }
     
-    public function editCategory(Request $request, Response $response, array $args){
+    public function editPlato(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
 
-        $categoryid=$data['categoryid'];
+        $platoid=$data['platoid'];
         $name=$data['name'];
         $description=$data['description'];
 	
-		$result=CategoryController::editCategory($categoryid,$name,$description);
-		$result='Categoría actualizada correctamente';
+		$result=PlatoController::editPlato($platoid,$name,$description);
+		$result='Plato actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 		
 	}
 
-	public function deleteCategory(Request $request, Response $response, array $args){
+	public function deletePlato(Request $request, Response $response, array $args){
 		$data = (array)$request->getParsedBody();
 
-        $idcategory=$data['idCategory'];
-		$result=CategoryController::deleteCategory($idcategory);
-		$result='Categoría eliminada correctamente';
+        $idplato=$data['idPlato'];
+		$result=PlatoController::deletePlato($idplato);
+		$result='Plato eliminado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}

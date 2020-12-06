@@ -107,7 +107,6 @@ $app->group('/api/plato', function (RouteCollectorProxy $group) {
     $group->post('/add', PlatoHandler::class . ':addPlato');
     $group->get('/select', PlatoHandler::class . ':getPlatos');
     $group->get('/get/{idPlato}', PlatoHandler::class . ':getPlato');
-    //$group->post('/edit/{categoryid}', PlatoHandler::class . ':editPlato');
     $group->post('/delete', PlatoHandler::class . ':deletePlato');
 });
 
