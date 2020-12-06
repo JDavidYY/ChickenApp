@@ -32,7 +32,7 @@ import { PromotionModule } from './promotion/promotion.module';
     ChefModule,
     DeliveryboyModule,
     PurchaseModule,
-    // PromotionModule,
+    PromotionModule,
     CategoryModule,
     //ProductModule,
     ClientModule,

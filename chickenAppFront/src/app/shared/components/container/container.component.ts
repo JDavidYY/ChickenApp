@@ -39,7 +39,7 @@ export class ContainerComponent implements OnInit {
 	} 
 
 	logout(){
-	this.router.navigate(['']);
+	this.router.navigate(['/login']);
 	localStorage.clear();
 	}
 
