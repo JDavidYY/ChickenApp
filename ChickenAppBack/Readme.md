@@ -20,6 +20,3 @@ gcloud app deploy app.yaml --project chickenapp-dev --version alpha-001
 
 # Link pagina
 https://php73-dot-chickenapp-dev.uc.r.appspot.com
-
-# como se relacionan
-routes-api -> handler-> controller -> data -> "BD"
