@@ -3,9 +3,10 @@
         <div class="">
             <!--titulo-->
             <h1>Registro de deliveryboy</h1>
-        </div>    
+        </div>
     <!-- Form para guardar los datos del deliveryboy y se captura con [(ngModel)] -->
-    <form>        
+    <form>
+
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Nombres</mat-label>
@@ -80,7 +81,7 @@
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Turno</mat-label> 
+                <mat-label>Turno</mat-label>
                 <mat-select [(ngModel)]="deliveryboy.workshift" [formControl]="workshiftFormControl" required>
                     <mat-option value="M">Mañana</mat-option>
                     <mat-option value="T">Tarde</mat-option>
@@ -100,14 +101,12 @@
                 </mat-error>
             </mat-form-field>
         </div>
-            <!-- Div de botones para regresar o guardar los datos de los campos -->
+        <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
-            <div class="col-sm-12 text-right">     
-                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>   
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarDeliveryboy()">Guardar</button> 
+            <div class="col-sm-12 text-right">
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarDeliveryboy()">Guardar</button>
             </div>
-            
         </div>
-    </form> 
-    </div>
+    </form>
 </div>
