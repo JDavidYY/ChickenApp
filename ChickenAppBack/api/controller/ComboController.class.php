@@ -1,31 +1,34 @@
 <?php 
 namespace Chicken\Controller;
-/*
-use Chicken\Data\PlatoData;
 
-abstract class PlatoController{
+use Chicken\Data\ComboData;
 
-    public static function getPlatos()
+abstract class ComboController{
+
+    public static function getCombos()
     {
-        return PlatoData::getPlatos();
+        return ComboData::getCombos();
     }
 
-    public static function getPlato($idplato)
+    public static function getCombo($idcombo)
 	{
-		return PlatoData::getPlato($idplato);;
+		return ComboData::getCombo($idcombo);;
 	}
     
-    public static function addPlato($name,$description){
-        return PlatoData::addPlato($name,$description);
+    public static function addCombo($name,$description,$type)
+    {
+        return ComboData::addCombo($name,$description,$type);
     }
 
-    public static function editPlato($platoid,$name,$description){
-        return PlatoData::editPlato($platoid,$name,$description);
+    public static function editCombo($idcombo,$name,$description,$type)
+    {
+        return ComboData::editCombo($idcombo,$name,$description,$type);
     }
 
-    public static function deletePlato($idplato){
-        return PlatoData::deletePlato($idplato);  
+    public static function deleteCombo($idcombo)
+    {
+        return ComboData::deleteCombo($idcombo);  
     }
 }
-*/
+
 ?>

@@ -2,13 +2,13 @@
 namespace Chicken\Data;
 use Chicken\Library\DataAccessLayer;
 use Chicken\Library\MySqlParameter;
-/*
-abstract class PlatoData{
 
-    public static function getPlatos(){
+abstract class ComboData{
+
+    public static function getCombos(){
         $rtn = null;
 
-        $procedure_name = "usp_platos_s_platos";
+        $procedure_name = "usp_combos_s_combos";
         $params = NULL;
 
         $db = new DataAccessLayer();
@@ -26,13 +26,13 @@ abstract class PlatoData{
 
     }
 
-    public static function getPlato($idplato)
+    public static function getCombo($idcombo)
 	{
 		$rtn = NULL;
 
-		$procedureName = "usp_plato_f_plato";
+		$procedureName = "usp_combo_f_combo";
 		$params =  array(
-			new MySqlParameter("pidplato", $idplato, 1)
+			new MySqlParameter("pidcombo", $idcombo, 1)
 		);
 
 		$db = new DataAccessLayer();
@@ -47,19 +47,20 @@ abstract class PlatoData{
 		return $rtn;
 	}
     
-    public static function addPlato($name,$description) {
+    public static function addCombo($name,$description,$type) {
         $rtn = null;
 
-        $procedureName = "usp_plato_i_plato"; 
+        $procedureName = "usp_combo_i_combo"; 
         $params = array(
                 new MySqlParameter("pname", $name, 1),
                 new MySqlParameter("pdescription", $description, 1),
+                new MySqlParameter("ptype", $type, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
         $db->connect();
         $result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
-       $db->disconnect();
+        $db->disconnect();
         if (isset($result)) {
            $rtn = $result["oresult"];
         }
@@ -67,14 +68,15 @@ abstract class PlatoData{
         return $rtn;
     }
 
-    public static function editPlato($idplato,$name,$description) {
+    public static function editCombo($idcombo,$name,$description,$type) {
         $rtn = null;
 
-        $procedureName = "usp_plato_u_plato"; 
+        $procedureName = "usp_combo_u_combo"; 
         $params = array(
-            new MySqlParameter("pidplato", $idplato, 1),
+            new MySqlParameter("pidcombo", $idcombo, 1),
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
+            new MySqlParameter("ptype", $type, 1),
             new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -88,12 +90,12 @@ abstract class PlatoData{
         return $rtn;
     }
 
-    public static function deletePlato($idplato) {
+    public static function deleteCombo($idcombo) {
         $rtn = null;
 
-        $procedureName = "usp_plato_d_plato"; 
+        $procedureName = "usp_combo_d_combo"; 
         $params = array(
-                new MySqlParameter("pidplato", $idplato, 1),
+                new MySqlParameter("pidcombo", $idcombo, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -107,5 +109,5 @@ abstract class PlatoData{
         return $rtn;
    }
 }
-*/
+
 ?>

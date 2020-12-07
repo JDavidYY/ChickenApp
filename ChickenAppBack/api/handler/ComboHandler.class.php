@@ -4,9 +4,9 @@ namespace Chicken\Handler;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-use Chicken\Controller\PlatoController;
-/*
-class PlatoHandler
+use Chicken\Controller\ComboController;
+
+class ComboHandler
 {
     private $responder;
 
@@ -15,66 +15,67 @@ class PlatoHandler
 		$this->responder = $responder;
     }
     
-    public function getPlatos(Request $request, Response $response, array $args) {
+    public function getCombos(Request $request, Response $response, array $args) {
         
-		$result=PlatoController::getPlatos();
+		$result=ComboController::getCombos();
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 
-	public function getPlato(Request $request, Response $response, array $args)
+	public function getCombo(Request $request, Response $response, array $args)
 	{
-		$idplato = $args['idPlato'];
-		$result = PlatoController::getPlato( $idplato);
+		$idcombo = $args['idCombo'];
+		$result = ComboController::getCombo( $idcombo);
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 	
-    public function addPlato(Request $request, Response $response, array $args)
+    public function addCombo(Request $request, Response $response, array $args)
 	{
 		
 		$data = (array)$request->getParsedBody();
-		
-		
-		$idplato=$data['idPlato'];
+				
+		$idcombo=$data['idCombo'];
         $name=$data['name'];
-        $description=$data['description'];
+		$description=$data['description'];
+		$type=$data['type'];
 
-        $result="Error al agregar la plato";
+        $result="Error al agregar el combo";
         
-		if($idplato=='')
+		if($idcombo=='')
 		{
-			PlatoController::addPlato($name,$description);
+			ComboController::addCombo($name,$description,$type);
 		}else{
-			PlatoController::editPlato($idplato,$name,$description);
+			ComboController::editCombo($idcombo,$name,$description,$type);
 		}
 
-		$result="Plato agregado";
+		$result="Combo agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
     }
     
-    public function editPlato(Request $request, Response $response, array $args){
+    public function editCombo(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
 
-        $platoid=$data['platoid'];
+        $idcombo=$data['idCombo'];
         $name=$data['name'];
-        $description=$data['description'];
+		$description=$data['description'];
+		$type=$data['type'];
 	
-		$result=PlatoController::editPlato($platoid,$name,$description);
-		$result='Plato actualizado correctamente';
+		$result=ComboController::editCombo($idcombo,$name,$description,$type);
+		$result='Combo actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 		
 	}
 
-	public function deletePlato(Request $request, Response $response, array $args){
+	public function deleteCombo(Request $request, Response $response, array $args){
 		$data = (array)$request->getParsedBody();
 
-        $idplato=$data['idPlato'];
-		$result=PlatoController::deletePlato($idplato);
-		$result='Plato eliminado correctamente';
+        $idcombo=$data['idCombo'];
+		$result=ComboController::deleteCombo($idcombo);
+		$result='Combo eliminado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
@@ -91,5 +92,5 @@ class PlatoHandler
 			->withStatus(201);
 	}
 }
-*/
+
 ?>
