@@ -16,8 +16,8 @@ abstract class UserController{
         $rtn = NULL;
         
         $password_encrypt = UserData::getUserPassword($email);
-        $verify = password_verify($password_login, $password_encrypt);
-        if ($verify === TRUE)
+        $verify = password_verify($password, $password_encrypt);
+        if ($verify===TRUE)
 		{
 			$rtn = UserData::getRol($email);
 		}

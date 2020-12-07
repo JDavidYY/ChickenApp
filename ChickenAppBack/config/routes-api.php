@@ -64,7 +64,7 @@ use Psr\Http\Message\ResponseInterface as Response; //use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface as Request; //use Slim\Http\Request;
 use Slim\Routing\RouteCollectorProxy;
 
-
+use Chicken\Handler\UserHandler;
 use Chicken\Handler\ChefHandler;
 use Chicken\Handler\DeliveryboyHandler;
 use Chicken\Handler\ClientHandler;
