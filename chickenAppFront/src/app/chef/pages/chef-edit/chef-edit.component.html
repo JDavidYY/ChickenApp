@@ -7,18 +7,18 @@
     <form>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Apellidos</mat-label>
-                <input matInput [(ngModel)]="chef.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
-                <mat-error *ngIf="lastnameFormControl.hasError('required')">
+                <mat-label>Nombres</mat-label>
+                <input matInput [(ngModel)]="chef.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="firstnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Nombres</mat-label>
-                <input matInput [(ngModel)]="chef.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
-                <mat-error *ngIf="firstnameFormControl.hasError('required')">
+                <mat-label>Apellidos</mat-label>
+                <input matInput [(ngModel)]="chef.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="lastnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
