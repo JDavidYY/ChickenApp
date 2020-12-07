@@ -30,11 +30,42 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Schema Chickenapp
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `Chickenapp` DEFAULT CHARACTER SET utf8 ;
+USE `Chickenapp` ;
+
+-- -----------------------------------------------------
+-- Table `Chickenapp`.`TypeEmployees`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`TypeEmployees` (
+  `idTypeEmployees` INT NOT NULL AUTO_INCREMENT,
+  `nameTypeEmployees` VARCHAR(45) NOT NULL,
+  `descriptionTypeEmployees` VARCHAR(200) NOT NULL,
+  `estateTypeEmployees` VARCHAR(45) NULL,
+  PRIMARY KEY (`idTypeEmployees`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Chickenapp`.`Users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Users` (
+  `idUsers` INT NOT NULL AUTO_INCREMENT,
+  `emailUsers` VARCHAR(45) NULL,
+  `passwordUsers` VARCHAR(45) NOT NULL,
+  `typeUser` VARCHAR(45) NULL,
+  `estateUser` INT NULL,
+  PRIMARY KEY (`idUsers`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `Chickenapp`.`Employees`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `idEmployees` INT NOT NULL AUTO_INCREMENT,
-  `estadoEmployees` INT NOT NULL,
+  `activityEmployees` INT NOT NULL,
   `firstnameEmployees` VARCHAR(45) NOT NULL,
   `lastnameEmployees` VARCHAR(45) NOT NULL,
   `phoneEmployees` VARCHAR(45) NOT NULL,
@@ -45,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `TypeEmployees_idDepartaments` INT NOT NULL,
   `Users_idUsers` INT NOT NULL,
   `estateEmployees` INT NULL,
+  `emailEmployees` VARCHAR(45) NULL,
   PRIMARY KEY (`idEmployees`, `TypeEmployees_idDepartaments`, `Users_idUsers`),
   CONSTRAINT `fk_Employees_TypeEmployees1`
     FOREIGN KEY (`TypeEmployees_idDepartaments`)
@@ -83,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Products` (
   `imageProducts` VARCHAR(150) NULL,
   `Categories_idCategories` INT NOT NULL,
   `estateProducts` INT NULL,
+  `discountProducts` FLOAT NULL,
   PRIMARY KEY (`idProducts`, `Categories_idCategories`),
   CONSTRAINT `fk_Products_Categories1`
     FOREIGN KEY (`Categories_idCategories`)
@@ -125,4 +158,49 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Company` (
   `emailCompany` VARCHAR(45) NULL,
   `estateCompany` VARCHAR(45) NULL,
   PRIMARY KEY (`idCompanys`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Chickenapp`.`Images`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Images` (
+  `idImages` INT NOT NULL,
+  `typeImages` VARCHAR(45) NULL,
+  `filenameImages` VARCHAR(45) NULL,
+  `fileextensionImages` VARCHAR(45) NULL,
+  `tmpImages` VARCHAR(45) NULL,
+  PRIMARY KEY (`idImages`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Chickenapp`.`Combo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Combo` (
+  `idCombos` INT NOT NULL,
+  `nombreCombo` VARCHAR(45) NULL,
+  `descriptionCombo` VARCHAR(100) NULL,
+  `typeCombo` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCombos`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Chickenapp`.`Products_has_Combo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Chickenapp`.`Products_has_Combo` (
+  `Products_idProducts` INT NOT NULL,
+  `Combo_idCombos` INT NOT NULL,
+  PRIMARY KEY (`Products_idProducts`, `Combo_idCombos`),
+  CONSTRAINT `fk_Products_has_Combo_Products1`
+    FOREIGN KEY (`Products_idProducts`)
+    REFERENCES `Chickenapp`.`Products` (`idProducts`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Products_has_Combo_Combo1`
+    FOREIGN KEY (`Combo_idCombos`)
+    REFERENCES `Chickenapp`.`Combo` (`idCombos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
