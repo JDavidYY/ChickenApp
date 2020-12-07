@@ -32,7 +32,13 @@ class UserHandler
         $result=UserController::loginUser($email,$password);
        
 		 //$result="Inicio de sesión exitoso";
-		$response=self::response($response,TRUE,$result);
+		 if($result!=NULL)
+		 {
+			$response=self::response($response,TRUE,$result);
+		 }
+		 else {
+			$response=self::response($response,FALSE,$result);
+		 }
 		return $response;
     }
     
