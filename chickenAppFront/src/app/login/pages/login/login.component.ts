@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
         if( response.result["typeUser"] == 2 ){
           localStorage.clear();
           localStorage.setItem("name", "Admin");
-          localStorage.setItem("email", response.result["email"]);
+          localStorage.setItem("email", "admin@empresa.com");
           localStorage.setItem("rol", "Admin");
           localStorage.setItem("role_id", "2" );
           localStorage.setItem("usuario", "Admin");
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("usuario", response.result["nombre"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("rol", "Cliente");
-          localStorage.setItem("name", response.result["nombre"]);
+          localStorage.setItem("name", response.result["firstname"]);
           localStorage.setItem("idMaestro", response.result["idMaestro"]);
           localStorage.setItem("email", response.result["email"]);
           this.router.navigate(['/purchase/menu']);
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
           localStorage.setItem("rol", "Chef");
-          localStorage.setItem("name", response.result["nombre"]);
+          localStorage.setItem("name", response.result["firstname"]);
           localStorage.setItem("email", response.result["email"]);
           this.router.navigate(['/principal/dashboard']);
           // Delivery
@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
           localStorage.setItem("rol", "Chef");
-          localStorage.setItem("name", response.result["nombre"]);
+          localStorage.setItem("name", response.result["firstname"]);
           localStorage.setItem("email", response.result["email"]);
           this.router.navigate(['/principal/dashboard']);
           // Gerente
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
           localStorage.setItem("rol", "Chef");
-          localStorage.setItem("name", response.result["nombre"]);
+          localStorage.setItem("name", response.result["firstname"]);
           localStorage.setItem("email", response.result["email"]);
           this.router.navigate(['/principal/dashboard']);
         }else{
