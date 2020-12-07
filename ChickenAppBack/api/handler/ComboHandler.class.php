@@ -5,7 +5,7 @@ use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 use Chicken\Controller\PlatoController;
-
+/*
 class PlatoHandler
 {
     private $responder;
@@ -16,8 +16,7 @@ class PlatoHandler
     }
     
     public function getPlatos(Request $request, Response $response, array $args) {
-        /*$client_id=$args['clientid'];
-        $customer_id=$args['customerid'];*/
+        
 		$result=PlatoController::getPlatos();
 		$response=self::response($response,TRUE,$result);
 		return $response;
@@ -33,28 +32,16 @@ class PlatoHandler
 	
     public function addPlato(Request $request, Response $response, array $args)
 	{
-		/*$data = array(
-			'ok' => 'true',
-			'result' => 'servicio conectado'
-		);
-		$payload = json_encode($data);
-		$response->getBody()->write($payload);
-		return $response
-			->withHeader('Content-Type', 'application/json')
-			->withStatus(201);*/
-
+		
 		$data = (array)$request->getParsedBody();
 		
-		//$content = $request->getBody();
+		
 		$idplato=$data['idPlato'];
         $name=$data['name'];
         $description=$data['description'];
 
         $result="Error al agregar la plato";
-        /*if(!isset($content)){
-            $response=self::response($response,FALSE,$result);
-            return $response; 
-		}*/
+        
 		if($idplato=='')
 		{
 			PlatoController::addPlato($name,$description);
@@ -104,4 +91,5 @@ class PlatoHandler
 			->withStatus(201);
 	}
 }
+*/
 ?>

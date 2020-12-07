@@ -2,7 +2,7 @@
 namespace Chicken\Data;
 use Chicken\Library\DataAccessLayer;
 use Chicken\Library\MySqlParameter;
-
+/*
 abstract class PlatoData{
 
     public static function getPlatos(){
@@ -107,4 +107,5 @@ abstract class PlatoData{
         return $rtn;
    }
 }
+*/
 ?>

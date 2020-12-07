@@ -1,6 +1,6 @@
 <?php 
 namespace Chicken\Controller;
-
+/*
 use Chicken\Data\PlatoData;
 
 abstract class PlatoController{
@@ -26,6 +26,6 @@ abstract class PlatoController{
     public static function deletePlato($idplato){
         return PlatoData::deletePlato($idplato);  
     }
-	
 }
+*/
 ?>

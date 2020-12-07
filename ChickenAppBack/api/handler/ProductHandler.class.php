@@ -22,6 +22,14 @@ class ProductHandler
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
+
+	public function getProduct(Request $request, Response $response, array $args)
+	{
+		$idproduct = $args['idProduct'];
+		$result = ProductController::getProduct( $idproduct);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
     
     public function addProduct(Request $request, Response $response, array $args)
 	{
@@ -38,19 +46,26 @@ class ProductHandler
 		$data = (array)$request->getParsedBody();
 		
 		//$content = $request->getBody();
+		$idproduct=$data["idProduct"];
         $name=$data['name'];
         $description=$data['description'];
-        $price=$data['price'];
-        $categoryid=$data['categoryid'];
+		$price=$data['price'];
+		$idcategory=$data['idCategory'];
+        //$categoryid=$data['categoryid'];
 
         $result="Error al agregar el producto";
         /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
         }*/
-        ProductController::addProduct($name,$description,$price,$categoryid);
-       
-		 $result="Producto agregado";
+		if($idproduct=='')
+		{
+			ProductController::addProduct($name,$description,$price,$idcategory);
+		}else{
+			ProductController::editProduct($idproduct,$name,$description,$price,$idcategory);
+		}
+		       
+		$result="Producto agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
     }
@@ -58,15 +73,15 @@ class ProductHandler
     public function editProduct(Request $request, Response $response, array $args){
 
 		$data = (array)$request->getParsedBody();
-		//$content = $data['content'];
-
-        $productid=$data['productid'];
+		
+        $idproduct=$data["idProduct"];
         $name=$data['name'];
         $description=$data['description'];
-        $price=$data['price'];
-        $categoryid=$data['categoryid'];
+		$price=$data['price'];
+		$idcategory=$data['idCategory'];
+        //$categoryid=$data['categoryid'];
 	
-		$result=ProductController::editProduct($productid,$name,$description,$price,$categoryid);
+		$result=ProductController::editProduct($idproduct,$name,$description,$price,$idcategory);
 		$result='Producto actualizado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;
@@ -74,8 +89,10 @@ class ProductHandler
 	}
 
 	public function deleteProduct(Request $request, Response $response, array $args){
-        $productid=$args["productid"];
-		$result=ProductController::deleteProduct($productid);
+		$data = (array)$request->getParsedBody();
+		
+		$idproduct=$data["idProduct"];
+		$result=ProductController::deleteProduct($idproduct);
 		$result='Producto eliminado correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;

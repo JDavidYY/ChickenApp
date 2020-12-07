@@ -25,7 +25,29 @@ abstract class ProductData{
 
     }
     
-    public static function addProduct($name,$description,$price,$categoryid) {
+    public static function getProduct($idproduct)
+	{
+		$rtn = NULL;
+
+		$procedureName = "usp_product_f_product";
+		$params =  array(
+			new MySqlParameter("pidproduct", $idproduct, 1)
+		);
+
+		$db = new DataAccessLayer();
+		$db->connect();
+		$result = $db->ExecuteSelect($procedureName, $params);
+		$db->disconnect();
+		
+        if (isset($result))
+        {
+			$rtn = $result[0];
+		}
+
+		return $rtn;
+    }
+    
+    public static function addProduct($name,$description,$price,$idcategory) {
         $rtn = null;
 
         $procedureName = "usp_product_i_product"; 
@@ -33,7 +55,7 @@ abstract class ProductData{
                 new MySqlParameter("pname", $name, 1),
                 new MySqlParameter("pdescription", $description, 1),
                 new MySqlParameter("pprice", $price, 1),
-                new MySqlParameter("pcategoryid", $categoryid, 1),
+                new MySqlParameter("pcategoryid", $idcategory, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
@@ -47,16 +69,16 @@ abstract class ProductData{
         return $rtn;
     }
 
-    public static function editProduct($productid,$name,$description,$price,$categoryid) {
+    public static function editProduct($idproduct,$name,$description,$price,$idcategory) {
         $rtn = null;
 
         $procedureName = "usp_product_u_product"; 
         $params = array(
-            new MySqlParameter("pproductid", $productid, 1),
+            new MySqlParameter("pproductid", $idproduct, 1),
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
             new MySqlParameter("price", $price, 1),
-            new MySqlParameter("pcategoryid", $categoryid, 1),
+            new MySqlParameter("pcategoryid", $idcategory, 1),
              new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -70,12 +92,12 @@ abstract class ProductData{
         return $rtn;
     }
 
-    public static function deleteProduct($productid) {
+    public static function deleteProduct($idproduct) {
         $rtn = null;
 
         $procedureName = "usp_product_d_product"; 
         $params = array(
-                new MySqlParameter("pproductid", $productid, 1),
+                new MySqlParameter("pproductid", $idproduct, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
