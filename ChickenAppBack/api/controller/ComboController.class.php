@@ -12,7 +12,7 @@ abstract class ComboController{
 
     public static function getCombo($idcombo)
 	{
-		return ComboData::getCombo($idcombo);;
+		return ComboData::getCombo($idcombo);
 	}
     
     public static function addCombo($name,$description,$type)
