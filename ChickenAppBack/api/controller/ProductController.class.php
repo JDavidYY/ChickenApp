@@ -19,6 +19,11 @@ abstract class ProductController{
         return ProductData::addProduct($name,$description,$price,$idcategory);
     }
 
+    public static function saveImageProduct($idproduct , $filename, $fileextension, $tmpfile)
+	{
+		return MaintenanceData::saveImageProduct($idproduct , $filename, $fileextension, $tmpfile);
+    }
+
     public static function editProduct($idproduct,$name,$description,$price,$idcategory){
         return ProductData::editProduct($idproduct,$name,$description,$price,$idcategory);
     }

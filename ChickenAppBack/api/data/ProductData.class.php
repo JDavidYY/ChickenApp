@@ -69,6 +69,32 @@ abstract class ProductData{
         return $rtn;
     }
 
+    public static function saveImageProduct($idproduct , $filename, $fileextension, $tmpfile)
+	{
+		$rtn = null;
+
+		$procedureName = "usp_product_i_image";
+		$params = array(
+			new MySqlParameter("pidproduct", $idproduct, 1),
+			new MySqlParameter("pfilename", $filename, 1),
+			new MySqlParameter("pfileextension", $fileextension, 1),
+			new MySqlParameter("ptmpfile", $tmpfile, 1),
+			new MySqlParameter("oresult", 0, 2)
+		);
+
+		$db = new MySqlHelper();
+		$db->connect();
+		$result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
+		$db->disconnect();
+		$output = 0;
+		if (isset($result)) {
+			$output = $result["oresult"];
+		}
+		$rtn = $output;
+
+		return $rtn;
+	}
+
     public static function editProduct($idproduct,$name,$description,$price,$idcategory) {
         $rtn = null;
 

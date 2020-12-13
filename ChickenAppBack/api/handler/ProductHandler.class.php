@@ -68,7 +68,54 @@ class ProductHandler
 		$result="Producto agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
-    }
+	}
+	
+	public function uploadImage(Request $request, Response $response, array $args)
+	{
+		$rtn = NULL;
+
+		$data = (array)$request->getParsedBody();
+		$idproduct = $data['idProduct']; 
+		$files = $request->getUploadedFiles();
+		$result="La imagen no se pudo agregar";
+		if (!isset($files) || !is_array($files)) {
+			$response=self::response($response,FALSE,$result);
+			/*$rtn = array(
+				'ok' => FALSE,
+				'err' => array(
+					'code' => 100,
+					'message' => "no image"
+				)
+			);
+			//return $app->json($rtn);
+			$response->getBody()->write(json_encode($rtn));
+			return $response
+				->withHeader('Content-Type', 'application/json')
+				->withStatus(200);*/
+		}
+		$file = $files['image']; //$file = $request->files->get('image');
+		$filename = $file->getClientFilename(); //$filename = $file->getClientOriginalName();
+		$fileextension = substr($filename, strrpos($filename, '.') + 1);
+		$tmpfile = $lead_id . '.' . $fileextension; //$tmpfile = date('YmdHis') . '.' . $fileextension;
+		$path = __DIR__ .'/../images/product/';
+		$file->moveTo($path . $tmpfile); //$file->move($tmppath, $tmpfile);
+
+		$result = MaintenanceController::saveImageProduct( $idproduct , $filename, $fileextension, $tmpfile);
+
+		//$result="Imagen de producto agregada correctamente";
+		$response=self::response($response,TRUE,$result);
+		return $response;
+		/*$rtn = array(
+			'ok' => ($result > 0),
+			'result' => $result
+		);
+		
+		//return $app->json($rtn);
+		$response->getBody()->write(json_encode($rtn));
+		return $response
+			->withHeader('Content-Type', 'application/json')
+			->withStatus(200);*/
+	}
     
     public function editProduct(Request $request, Response $response, array $args){
 
