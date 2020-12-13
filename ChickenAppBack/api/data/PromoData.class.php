@@ -3,12 +3,12 @@ namespace Chicken\Data;
 use Chicken\Library\DataAccessLayer;
 use Chicken\Library\MySqlParameter;
 
-abstract class PlatoData{
+abstract class PromoData{
 
-    public static function getPlatos(){
+    public static function getPromos(){
         $rtn = null;
 
-        $procedure_name = "usp_platos_s_platos";
+        $procedure_name = "usp_promo_s_promo";
         $params = NULL;
 
         $db = new DataAccessLayer();
@@ -26,13 +26,13 @@ abstract class PlatoData{
 
     }
 
-    public static function getPlato($idplato)
+    public static function getPromo($idpromo)
 	{
 		$rtn = NULL;
 
-		$procedureName = "usp_plato_f_plato";
+		$procedureName = "usp_promo_f_promo";
 		$params =  array(
-			new MySqlParameter("pidplato", $idplato, 1)
+			new MySqlParameter("pidpromo", $idpromo, 1)
 		);
 
 		$db = new DataAccessLayer();
@@ -47,19 +47,19 @@ abstract class PlatoData{
 		return $rtn;
 	}
     
-    public static function addPlato($name,$description) {
+    public static function addPromo($idpromo,$descuento) {
         $rtn = null;
 
-        $procedureName = "usp_plato_i_plato"; 
+        $procedureName = "usp_promo_i_promo"; 
         $params = array(
-                new MySqlParameter("pname", $name, 1),
-                new MySqlParameter("pdescription", $description, 1),
+                new MySqlParameter("pidpromo", $idpromo, 1),
+                new MySqlParameter("pdescuento", $descuento, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
         $db->connect();
         $result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
-       $db->disconnect();
+        $db->disconnect();
         if (isset($result)) {
            $rtn = $result["oresult"];
         }
@@ -67,14 +67,13 @@ abstract class PlatoData{
         return $rtn;
     }
 
-    public static function editPlato($idplato,$name,$description) {
+    public static function editPromo($idpromo,$descuento) {
         $rtn = null;
 
-        $procedureName = "usp_plato_u_plato"; 
+        $procedureName = "usp_promo_u_promo"; 
         $params = array(
-            new MySqlParameter("pidplato", $idplato, 1),
-            new MySqlParameter("pname", $name, 1),
-            new MySqlParameter("pdescription", $description, 1),
+            new MySqlParameter("pidpromo", $idpromo, 1),
+            new MySqlParameter("pdescuento", $descuento, 1),
             new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -88,12 +87,12 @@ abstract class PlatoData{
         return $rtn;
     }
 
-    public static function deletePlato($idplato) {
+    public static function deletePromo($idpromo) {
         $rtn = null;
 
-        $procedureName = "usp_plato_d_plato"; 
+        $procedureName = "usp_promo_d_promo"; 
         $params = array(
-                new MySqlParameter("pidplato", $idplato, 1),
+                new MySqlParameter("pidpromo", $idpromo, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -107,4 +106,5 @@ abstract class PlatoData{
         return $rtn;
    }
 }
+
 ?>
