@@ -1,15 +1,14 @@
-<div class="section-principal chef-bg" style="padding-bottom: 25px">
-    <div class="container pt-5 principal-cont">
-        <div class="">
-        <h1>Registro de Chef</h1>
+<div class="container pt-5">
+    <div class="pt-5">
+        <h1>Registro de promoción</h1>
     </div>
-    <!-- Form para guardar los datos del chef y se captura con [(ngModel)] -->
+    <!-- Form para guardar los datos del promotion y se captura con [(ngModel)] -->
     <form>
         
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Nombres</mat-label>
-                <input matInput [(ngModel)]="chef.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <input matInput [(ngModel)]="promotion.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="firstnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -18,7 +17,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Apellidos</mat-label>
-                <input matInput [(ngModel)]="chef.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <input matInput [(ngModel)]="promotion.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="lastnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -27,7 +26,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Número de documento de identidad</mat-label>
-                <input matInput [(ngModel)]="chef.dni" maxlength="8" [formControl]="dniFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="promotion.dni" maxlength="8" [formControl]="dniFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="dniFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -37,7 +36,7 @@
             </mat-form-field>
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Edad</mat-label>
-                <input matInput [(ngModel)]="chef.age" maxlength="8" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="promotion.age" maxlength="8" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="ageFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -49,7 +48,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Correo electrónico</mat-label>
-                <input matInput [(ngModel)]="chef.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="promotion.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                 <mat-error *ngIf="emailFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -59,7 +58,7 @@
             </mat-form-field>
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Teléfono celular</mat-label>
-                <input matInput [(ngModel)]="chef.phone" maxlength="9" [formControl]="phoneFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="promotion.phone" maxlength="9" [formControl]="phoneFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="phoneFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -68,10 +67,11 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="form-row" *ngIf="chef_id==0">
+        <div class="form-row" *ngIf="promotion_id==0">
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="chef.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                <input matInput [(ngModel)]="promotion.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
                 <mat-error *ngIf="passwordFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -79,8 +79,8 @@
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Turno</mat-label>
-                <mat-select [(ngModel)]="chef.workshift" [formControl]="workshiftFormControl" required>
+                <mat-label>Turno</mat-label> 
+                <mat-select [(ngModel)]="promotion.workshift" [formControl]="workshiftFormControl" required>
                     <mat-option value="M">Mañana</mat-option>
                     <mat-option value="T">Tarde</mat-option>
                     <mat-option value="N">Noche</mat-option>
@@ -93,7 +93,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Dirección</mat-label>
-                <input matInput [(ngModel)]="chef.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="promotion.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                 <mat-error *ngIf="adressFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -101,10 +101,10 @@
         </div>
         <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
-            <div class="col-sm-12 text-right">
-                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarChef()">Guardar</button>
+            <div class="col-sm-12 text-right">     
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>   
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarPromotion()">Guardar</button> 
             </div>
         </div>
-    </form>
+    </form> 
 </div>

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { UserLoginModel } from '../../models/userlogin.model';
 import { Validators, FormControl } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -54,13 +55,95 @@ export class LoginComponent implements OnInit {
 			return;
     }
 
-    this.router.navigate(['/principal/dashboard']);
+    // this.router.navigate(['/principal/dashboard']);
+    this.loginService.login(this.user)
+    .subscribe(
+      (response) => {
+      console.log(response);
+      if ( response && response.ok && response.result != 0)	{
+        localStorage.setItem("role_id", response.result["typeUser"] );
+          Swal.fire(
+        'Enhorabuena!',
+        'Usuario verificado.',
+        'success'
+        );
 
+        setTimeout(() => {
+        if( response.result["typeUser"] == 2 ){
+          localStorage.clear();
+          localStorage.setItem("name", "Admin");
+          localStorage.setItem("email", "admin@empresa.com");
+          localStorage.setItem("rol", "Admin");
+          localStorage.setItem("role_id", "2" );
+          localStorage.setItem("usuario", "Admin");
+          this.router.navigate(['/principal/dashboard']);
+//  Cliente
+        }else if ( response.result["typeUser"] == 1){
+          localStorage.clear();
+          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("role_id", response.result["typeUser"]);
+          localStorage.setItem("rol", "Cliente");
+          localStorage.setItem("name", response.result["firstname"]);
+          localStorage.setItem("idMaestro", response.result["idMaestro"]);
+          localStorage.setItem("email", response.result["email"]);
+          this.router.navigate(['/purchase/menu']);
+          // Cocinero
+        }else if ( response.result["typeUser"] == "3" ){
+          localStorage.clear();
+          localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
+          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("role_id", response.result["typeUser"]);
+          localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
+          localStorage.setItem("rol", "Chef");
+          localStorage.setItem("name", response.result["firstname"]);
+          localStorage.setItem("email", response.result["email"]);
+          this.router.navigate(['/principal/dashboard']);
+          // Delivery
+        }else if ( response.result["typeUser"] == "4" ){
+          localStorage.clear();
+          localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
+          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("role_id", response.result["typeUser"]);
+          localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
+          localStorage.setItem("rol", "Chef");
+          localStorage.setItem("name", response.result["firstname"]);
+          localStorage.setItem("email", response.result["email"]);
+          this.router.navigate(['/principal/dashboard']);
+          // Gerente
+        }else if ( response.result["typeUser"] == "5" ){
+          localStorage.clear();
+          localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
+          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("role_id", response.result["typeUser"]);
+          localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
+          localStorage.setItem("rol", "Chef");
+          localStorage.setItem("name", response.result["firstname"]);
+          localStorage.setItem("email", response.result["email"]);
+          this.router.navigate(['/principal/dashboard']);
+        }else{
+          // localStorage.setItem("idMaestro", response.result["idMaestro"]);
+          console.log("Este rol no existe en el sistema");
+          this.router.navigate(['/login']);
+        }
+        }, 1500);
+      }else{
+        Swal.fire(
+          'Oops!',
+          'Usuario o contraseña ingresados son incorrectos.',
+          'error'
+          );
+      }
+      },
+      (err) => {
+      console.log(err);
+      }
+    );
     // this.loginService.login(this.user)
 		// 		.subscribe(
 		// 		  (response) => {
-		// 			console.log(response);
-
+    //       console.log(response);
+    //       if ( response && response.ok && response.result != 0 )
+    //         this.router.navigate(['/principal/dashboard']);
     // });
 
     }
