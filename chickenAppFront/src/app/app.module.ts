@@ -33,9 +33,9 @@ import { PurchaseModule } from './purchase/purchase.module';
     ChefModule,
     DeliveryboyModule,
     PurchaseModule,
-    PromotionModule,
+   // PromotionModule,
     CategoryModule,
-    ComboModule,
+   // ComboModule,
     //ProductModule,
     ClientModule,
     LoginModule
