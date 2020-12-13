@@ -35,16 +35,16 @@ class PromoHandler
 		
 		$data = (array)$request->getParsedBody();
 				
-		$idpromo=$data['idPromo'];
+		$idproduct=$data['idProduct'];
         $descuento=$data['descuento'];
 
         $result="Error al agregar la promoción";
         
-		if($idpromo=='')
+		if($idproduct=='')
 		{
-			PromoController::addPromo($idpromo,$descuento);
+			PromoController::addPromo($idproduct,$descuento);
 		}else{
-			PromoController::editPromo($idpromo,$descuento);
+			PromoController::editPromo($idproduct,$descuento);
 		}
 
 		$result="Promoción agregada";

@@ -60,12 +60,12 @@ class ProductHandler
         }*/
 		if($idproduct=='')
 		{
-			ProductController::addProduct($name,$description,$price,$idcategory);
+			$result = ProductController::addProduct($name,$description,$price,$idcategory);
 		}else{
-			ProductController::editProduct($idproduct,$name,$description,$price,$idcategory);
+			$result = ProductController::editProduct($idproduct,$name,$description,$price,$idcategory);
 		}
 		       
-		$result="Producto agregado";
+		//$result="Producto agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
