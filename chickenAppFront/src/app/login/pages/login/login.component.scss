@@ -138,19 +138,21 @@ h1 {
   width: 90%;
   margin: auto;
 }
-.menu{
+.menu-list{
   display: flex;
   text-align: left;
   margin-top: 20px;
   font-size: 16px;
+  justify-content: right;
+  margin-left: auto;
 }
 .lista{
   list-style: none;
   margin-left: 55px;
 }
-.lista a{
+.lista a, .lista a:focus{
   color: black;
-  position: relative;
+  text-decoration: none;
 }
 @media (min-width: 992px) {
   .espacio {
@@ -162,7 +164,7 @@ h1 {
 }
 @media(max-width: 1024px){
   .lista{
-      margin-left: 25px;
+      margin-left: 35px;
   }
 }
 @media (max-width: 768px) {

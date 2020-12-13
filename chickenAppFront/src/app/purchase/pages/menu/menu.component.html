@@ -1,1 +1,163 @@
-<p>menu works!</p>
+<div>
+    <mat-toolbar class="toolbar2 hidden-xs">
+        <div class="row toolbar-menu">
+            <div class="col-sm-12 col-lg-5 col-md-4">
+                <h1 class="h" style="color:white"><a style="text-decoration: none;">ChickenApp</a></h1>
+            </div>
+            <div class="col-sm-12 col-lg-7 col-md-8">
+                <nav class="menu-list">
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista">
+                        <a routerLink="/login">
+                            <div>
+                                <img class="" src="assets/images/backgrounds/iniciar-sesion.png" style="width: 25px; height: 25px;margin-right: 10px;">
+                                Iniciar Sesión
+                            </div>
+                        </a>
+                    </li>
+                </nav>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>
+<div class="espacio">
+    <nav class="navbar navbar-dark bg-dark hidden-lg">
+        <a class="tit-m" href="#">
+            <p class="titulo-m">ChickenApp</p>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!--<li class="nav-item active">
+            <a class="nav-link" href="#">Combos<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Parrilla</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Ensaladas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Promociones</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link disabled" href="#">Comming soon</a>
+            </li>-->
+            <li class="nav-item">
+                <a routerLink="/login">
+                    <div style="padding-top: 10px;color: black;">
+                        <img class="" src="assets/images/backgrounds/iniciar-sesion.png" style="width: 25px; height: 25px;margin-right: 10px;">
+                        Iniciar Sesión
+                    </div>
+                </a>
+            </li>
+        </ul>
+        </div>       
+    </nav>
+</div>
+
+<section class="menu-section">
+	<ul class="nav nav-tabs navs justify-content-center lista-menu" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active pest1" id="promociones-tab" data-toggle="tab" href="#promociones" role="tab" aria-controls="promociones" aria-selected="true">
+						<img class="tab-img" src="assets/images/backgrounds/promociones.png">Promociones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="combos-tab" data-toggle="tab" href="#combos" role="tab" aria-controls="combos" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/pierna-de-pollo.png">Combos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="parrila-tab" data-toggle="tab" href="#parrila" role="tab" aria-controls="parrila" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/barbacoa.png">Parrillas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="ensalada-tab" data-toggle="tab" href="#ensalada" role="tab" aria-controls="ensalada" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/ensalada.png">Ensaladas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="postres-tab" data-toggle="tab" href="#postres" role="tab" aria-controls="postres" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/pastel.png">Postres</a>
+				</li>
+	</ul>
+	<div class="col-12 col-lg-10 offset-lg-1">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="promociones" role="tabpanel" aria-labelledby="promociones-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="combos" role="tabpanel" aria-labelledby="combos-tab">
+				g
+			</div>
+			<div class="tab-pane fade" id="parrila" role="tabpanel" aria-labelledby="parrila-tab">
+				j
+			</div>
+			<div class="tab-pane fade" id="ensalada" role="tabpanel" aria-labelledby="ensalada-tab">
+				k
+			</div>
+			<div class="tab-pane fade" id="postres" role="tabpanel" aria-labelledby="postres-tab">
+				l
+			</div>
+		</div>
+	</div>
+</section>

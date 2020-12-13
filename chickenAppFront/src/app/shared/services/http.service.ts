@@ -40,4 +40,19 @@ export class HttpService {
 		return httpOptions;
 	}
 
+	// headersDownloadGET(sendToken:boolean):object {
+	// 	let httpOptions:object;
+		
+	// 	let headers = new HttpHeaders();
+
+	// 	if (sendToken) {
+	// 		let token = localStorage.getItem("token");
+	// 		if (token != null) headers = headers.set('Token', token);
+	// 	}
+		
+	// 	httpOptions = { responseType: 'blob', headers: headers };
+		
+	// 	return httpOptions;
+
+	// }
 }

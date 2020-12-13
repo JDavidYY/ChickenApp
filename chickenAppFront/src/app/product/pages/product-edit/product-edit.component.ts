@@ -14,10 +14,16 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
-  categories:CategoryModel = null;
   
- 
+  categories:CategoryModel = null;
   product: ProductModel = new ProductModel();
+
+  id: number = 0;
+	file: any;
+	lead_id: number = 0;
+	image_name: string = null;
+	progress = false;
+ 
 
   nameFormControl = new FormControl('', [
   Validators.required,
@@ -55,7 +61,30 @@ export class ProductEditComponent implements OnInit {
 					console.log(err);
 				}
 			);
-	}
+  }
+
+  cargarProduct(idProduct){
+    this.productservice.getProduct(idProduct)
+    .subscribe(
+      (response) => {
+        console.log(response);
+        if ( response != null && response.ok && response.result != null){
+          console.log('Product encontrado');
+          console.log(response.result);
+          // this.deliveryboy = response.deliveryboy;
+          this.product.idProduct= response.result["idProduct"];
+          this.product.name= response.result["name"];
+          this.product.description= response.result["description"];
+          this.product.price= response.result["price"];
+          this.categories.idCategory= response.result["idCategory"];
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   guardarProduct(){
 
     // validacion de campos para que no sean vacios
@@ -83,17 +112,23 @@ export class ProductEditComponent implements OnInit {
       }).then((result) => {
       // llamado sel servicio guardarProduct desde product.service.ts y se le pasa 2 parametros
       if (result.value) {
-        this.productservice.guardarProduct(this.product)
+        this.productservice.saveProduct(this.product)
         .subscribe(
           (response) => {
             console.log(response);
-            if ( response && response.ok && response.result != 0 )
-              Swal.fire(
-                'Enhorabuena!',
-                'El product ha sido guardado.',
-                'success'
-                );
-              this.router.navigate(['/product/list']);
+            if ( response && response.ok && response.result != 0 ){
+					  	this.id = response.result;
+                if (this.file != null) {
+                  this.saveImage();
+                } else {
+                  Swal.fire(
+                    'Enhorabuena!',
+                    'El product ha sido guardado.',
+                    'success'
+                    );
+                  this.router.navigate(['/product/listado']);
+                } 
+              }             
           },
           (err) => {
             console.log(err);
@@ -106,6 +141,61 @@ export class ProductEditComponent implements OnInit {
   regresar(){
     this.router.navigate(['/product/list']);
   }
+
+  saveImage() {
+		this.productservice.cargarImagen(this.file, this.id)
+			.subscribe(
+				(response) => {
+					//console.log(response);
+					if (response && response.ok) {
+						Swal.fire('Success!', 'Your event has been saved.', 'success');
+						this.regresar();
+					}
+				},
+				(err) => {
+					console.log("Error al guardar imagen");
+				}
+			);
+  }
+
+  deletenameImage() {
+		this.image_name = null;
+		//this.nombre_imagen = false;
+		//this.carga_imagen = true;
+  }
+  
+  showUploadImage() {
+		return (this.image_name != null);
+	}
+  // save() {
+		
+		// if (!this.product.name || !this.product.description || !this.product.price || 
+    //   !this.product.categoryid) {
+		// 	return;
+		// }
+
+		// //console.log(this.article);
+		// this.progress = true;
+		// this.productservice.saveProduct(this.product)
+			// .subscribe(
+			// 	(response) => {
+			// 		if (response && response.ok && response.result != 0) {
+						// this.progress = false;
+						// this.id = response.result;
+						// console.log(this.id);
+						// if (this.file != null) {
+						// 	this.saveImage();
+						// } else {
+						// 	Swal.fire('Success!', 'Your event has been saved.', 'success');
+						// 	this.back();
+						// }
+	// 				}
+	// 			},
+	// 			(err) => {
+	// 				console.log(err);
+	// 			}
+	// 		);
+	// }
 
   keypressNumbers(event: any) {
     const pattern = /[0-9]/;
