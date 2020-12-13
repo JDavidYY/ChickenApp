@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './pages/menu/menu.component';
 import { PurchaseRoutingModule, PURCHASE_COMPONENTS } from './purchase-routing.module';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
     declarations: [
         PURCHASE_COMPONENTS,
-        MenuComponent
+        MenuComponent,
+        ShoppingCartComponent
     ],
     imports: [
         CommonModule,
