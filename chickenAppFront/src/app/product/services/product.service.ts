@@ -7,6 +7,7 @@ import { ProductPostResponse } from '../models/product-post-response.model';
 import { ProductModel } from '../models/product-info.model';
 import { ProductListResponse } from '../models/product-list-response.model';
 import { ProductGetResponse } from '../models/product-get-response.model';
+import { FilePostResponse } from '../models/file-post-response';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -23,7 +24,7 @@ export class ProductService {
 
 	}
 	//api para guardar los datos del product por POST
-	guardarProduct(product:ProductModel)
+	saveProduct(product:ProductModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
 		let url = this.apiurl + "/save";
@@ -48,4 +49,28 @@ export class ProductService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<ProductPostResponse>(url,data, options);
 	}
+
+	// downloadfile(filename:string): Observable<any> {
+	// 	const url = this.apiurl + "download/" + filename;
+	// 	const headers = this.httpService.headersDownloadGET(true);
+	// 	return this.httpClient.get<any>(url, headers);
+	// }
+
+	// savedownloadFile(filename:string): Observable<any> {
+	// 	let url = this.apiurl + "save-downloadfile";
+	// 	var data = {filename: filename}
+	// 	return this.httpClient.post<any>(url, data, this.httpService.headerOptionsJson(true, true));
+	// }
+
+	cargarImagen(file: File, lead_id: any) {
+		const options = this.httpService.headerOptionsForm(true);
+		const formData: FormData = new FormData();
+		//console.log(file);
+		//console.log(file.name);
+		formData.append('image', file, file.name);
+		formData.append('lead_id', lead_id);
+		const url = this.apiurl + '/cargar-imagen';
+		return this.httpClient.post<FilePostResponse>(url, formData, options);
+	}
+
 }
