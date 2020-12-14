@@ -34,11 +34,13 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContainerComponent } from './components/container/container.component';
+// import { HeaderFooterComponent } from './components/header-footer/header-footer.component';
 
 //Se importan los modulos de angular para material y se hace exports para que sea usado en diferentes componentes del sistema
 @NgModule({
 	declarations: [
 	ContainerComponent],
+	// HeaderFooterComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,

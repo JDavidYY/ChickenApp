@@ -19,6 +19,7 @@ import { PurchaseModule } from './purchase/purchase.module';
 import { PromotionModule } from './promotion/promotion.module';
 // import { ComboModule } from './combo/combo.module';
 import { ProductModule } from './product/product.module';
+import { ComboModule } from './combo/combo.module';
 
 
 @NgModule({
@@ -34,9 +35,9 @@ import { ProductModule } from './product/product.module';
     ChefModule,
     DeliveryboyModule,
     PurchaseModule,
-    // PromotionModule,
+   PromotionModule,
     CategoryModule,
-    // ComboModule,
+    ComboModule,
     ProductModule,
     ClientModule,
     LoginModule

@@ -1,39 +1,24 @@
-<!-- <div class="container pt-5 animated fadeIn">
+<div class="container pt-5 animated fadeIn">
     <div class="pt-5">
-        <h1>Listado de Deliveryboys</h1>
+        <h1>Listado de promociones</h1>
     </div>
     
     <div class="tabla">
       <div class="mt-20 user-contenedor-table">
         <table mat-table matSort [dataSource]="dataSourceOne" class="mat-elevation-z8 user-table" #TableOneSort="matSort" style="width: 100%;">
   
-          <ng-container matColumnDef="dni">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">DNI</th>
-            <td mat-cell *matCellDef="let element">{{ element.dni }}</td>
+          <ng-container matColumnDef="idProduct">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">Id del producto</th>
+            <td mat-cell *matCellDef="let element">{{ element.idProduct }}</td>
           </ng-container>
   
-          <ng-container matColumnDef="fullnombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Nombres y apellidos</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.firstname }} {{ element.lastname }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="celular">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Celular</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.phone }}</td>
-          </ng-container>
-  
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Email</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.email }}</td>
-          </ng-container>
-          
-          <ng-container matColumnDef="turno">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Turno</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.workshift }}</td>
+          <ng-container matColumnDef="descuento">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Descuento</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.descuento }}</td>
           </ng-container>
   
           <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarDeliveryboy(row)" [style.background]="deliveryboySeleccionado == row ? 'lightblue' : ''"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarPromotion(row)" [style.background]="promotionSeleccionado == row ? 'lightblue' : ''"></tr>
         </table>
       </div>
     </div>
@@ -41,9 +26,9 @@
     
     <div class="row pt-2">
         <div class="col-12 text-right">
-            <button mat-raised-button (click)="editarDeliveryboy()"  [disabled]="deliveryboySeleccionado == null" color="accent" style="margin-left: 5px;" disabled>Editar</button>
-            <button mat-raised-button (click)="eliminarDeliveryboy()" [disabled]="deliveryboySeleccionado == null" color="warn"  style="margin-left: 5px;" disabled>Eliminar</button>
-            <button mat-raised-button  (click)="agregarDeliveryboy()" color="primary"  style="margin-left: 5px;">Agregar</button>
+            <!-- <button mat-raised-button (click)="editarPromotion()"  [disabled]="promotionSeleccionado == null" color="accent" style="margin-left: 5px;" disabled>Editar</button> -->
+            <button mat-raised-button (click)="eliminarPromotion()" [disabled]="promotionSeleccionado == null" color="warn"  style="margin-left: 5px;" disabled>Eliminar</button>
+            <button mat-raised-button  (click)="agregarPromotion()" color="primary"  style="margin-left: 5px;">Agregar</button>
         </div>
     </div>
-  </div> -->
+  </div>

@@ -1,7 +1,10 @@
-<div class="container pt-5">
-    <div class="pt-5">
-        <h1>Registro de Producto</h1>
-    </div>
+<div class="section-principal product-bg" style="padding-bottom: 25px">
+    <div class="container pt-5 principal-cont">
+        <div class="">
+            <!--titulooo-->
+            <h1>Registro de productos</h1>
+        </div>
+    
     <!-- Form para guardar los datos del product y se captura con [(ngModel)] -->
     <form>
         <div class="form-row" >
@@ -24,7 +27,7 @@
         </div>
         <div class="form-row" >
             <mat-form-field clsas="col-sm-6">
-                <mat-select name="txtCategory" [(ngModel)]="product.categoryid" [formControl]="categoryidFormControl">
+                <mat-select name="txtCategory" [(ngModel)]="categoryid" [formControl]="categoryidFormControl">
                   <mat-option>-- Seleccione una categoría --</mat-option>
                   <mat-option *ngFor="let category of categories" value="{{category.idCategory}}">{{category.name}}</mat-option>
                 </mat-select>
@@ -35,7 +38,7 @@
               </mat-form-field>
               <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Precio</mat-label>
-                <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;"  required>
                 <mat-error *ngIf="priceFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -67,4 +70,5 @@
             </div>
         </div>
     </form> 
+    </div>
 </div>
