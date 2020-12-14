@@ -40,11 +40,16 @@ export class ProductEditComponent implements OnInit {
   categoryidFormControl = new FormControl('', [
   Validators.required
   ]);
+ 
+  imageFormControl = new FormControl('', [
+  Validators.required
+  ]);
 
   constructor(private router:Router, private datePipe: DatePipe, private productservice: ProductService, private categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.populateCategory();
+    this.product.image_name = null;
   }
 
 	populateCategory() {
@@ -89,13 +94,18 @@ export class ProductEditComponent implements OnInit {
 
     // validacion de campos para que no sean vacios
     if ( !this.product.name || !this.product.description || !this.product.price || 
-        !this.product.categoryid) {
-
-      return;
+        !this.product.categoryid || !this.product.image_name) {
+          // if(this.product.price != null){
+          //   console.log("hay algo")
+          // }
+        console.log(this.product)
+        return;
     }
    // validacion de campos para que no sean incorrectos mediante FormControl
     if ( this.nameFormControl.invalid || this.descriptionFormControl.invalid || this.priceFormControl.invalid 
-      || this.categoryidFormControl.invalid) {
+      || this.categoryidFormControl.invalid ) {
+        console.log(this.product)
+        console.log("entro aqui")
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del product mientras se hace el servicio
@@ -159,7 +169,9 @@ export class ProductEditComponent implements OnInit {
   }
 
   deletenameImage() {
-		this.image_name = null;
+    this.image_name = null;
+
+		this.product.image_name = null;
 		//this.nombre_imagen = false;
 		//this.carga_imagen = true;
   }
@@ -174,7 +186,8 @@ export class ProductEditComponent implements OnInit {
   
   loadImage(event: any) {
 		this.file = event.target.files[0];
-		console.log(this.file);
+    console.log(this.file);
+    this.product.image_name = this.file
 	}
   // save() {
 		
