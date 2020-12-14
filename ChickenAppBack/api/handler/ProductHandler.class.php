@@ -15,10 +15,10 @@ class ProductHandler
 		$this->responder = $responder;
     }
     
-    public function getProducts(Request $request, Response $response, array $args) {
+    public function selectProduct(Request $request, Response $response, array $args) {
         /*$client_id=$args['clientid'];
         $customer_id=$args['customerid'];*/
-		$result=ProductController::getProducts();
+		$result=ProductController::selectProduct();
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
