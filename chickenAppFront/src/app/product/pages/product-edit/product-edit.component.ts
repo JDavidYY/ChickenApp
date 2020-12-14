@@ -166,6 +166,15 @@ export class ProductEditComponent implements OnInit {
   
   showUploadImage() {
 		return (this.image_name != null);
+  }
+
+  clearCarga() {
+		this.file = null;
+  }
+  
+  loadImage(event: any) {
+		this.file = event.target.files[0];
+		console.log(this.file);
 	}
   // save() {
 		
