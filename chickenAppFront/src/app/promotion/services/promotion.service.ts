@@ -17,7 +17,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class PromotionService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "promotion";
+  apiurl:string = environment.apiUrl + "promo";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
@@ -42,9 +42,9 @@ export class PromotionService {
 		return this.httpClient.get<PromotionGetResponse>(url, options);
 	}
 	// api para eliminar a Promotion por GET
-  	eliminarPromotion(idPromotion:string):Observable<PromotionPostResponse> {
+  	eliminarPromotion(idProduct:string):Observable<PromotionPostResponse> {
 		const url = this.apiurl + "/delete";
-		var data = { idPromotion: idPromotion }
+		var data = { idProduct: idProduct }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<PromotionPostResponse>(url,data, options);
 	}
