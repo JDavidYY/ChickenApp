@@ -17,7 +17,7 @@ import { ClientModule } from './client/client.module';
 //import { ComboListComponent } from './combo/pages/combo-list/combo-list.component';
 import { PurchaseModule } from './purchase/purchase.module';
 import { PromotionModule } from './promotion/promotion.module';
-import { ComboModule } from './combo/combo.module';
+//import { ComboModule } from './combo/combo.module';
 
 
 @NgModule({
