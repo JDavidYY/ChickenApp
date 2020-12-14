@@ -50,7 +50,7 @@ class ProductHandler
         $name=$data['name'];
         $description=$data['description'];
 		$price=$data['price'];
-		$idcategory=$data['idCategory'];
+		$idcategory=$data['categoryid'];
         //$categoryid=$data['categoryid'];
 
         $result="Error al agregar el producto";
