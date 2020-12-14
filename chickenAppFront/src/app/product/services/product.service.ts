@@ -27,7 +27,7 @@ export class ProductService {
 	saveProduct(product:ProductModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
-		let url = this.apiurl + "/save";
+		let url = this.apiurl + "/add";
 		return this.httpClient.post<ProductPostResponse>(url, product, options);
 	}
 // api para obtener el listado de todoS los product por GET
@@ -62,14 +62,14 @@ export class ProductService {
 	// 	return this.httpClient.post<any>(url, data, this.httpService.headerOptionsJson(true, true));
 	// }
 
-	cargarImagen(file: File, lead_id: any) {
+	cargarImagen(file: File, idProduct: any) {
 		const options = this.httpService.headerOptionsForm(true);
 		const formData: FormData = new FormData();
 		//console.log(file);
 		//console.log(file.name);
 		formData.append('image', file, file.name);
-		formData.append('lead_id', lead_id);
-		const url = this.apiurl + '/cargar-imagen';
+		formData.append('idProduct', idProduct);
+		const url = this.apiurl + '/uploading';
 		return this.httpClient.post<FilePostResponse>(url, formData, options);
 	}
 
