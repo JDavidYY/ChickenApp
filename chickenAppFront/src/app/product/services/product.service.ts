@@ -69,7 +69,7 @@ export class ProductService {
 		//console.log(file.name);
 		formData.append('image', file, file.name);
 		formData.append('idProduct', idProduct);
-		const url = this.apiurl + '/uploading';
+		const url = this.apiurl + '/uploadimg';
 		return this.httpClient.post<FilePostResponse>(url, formData, options);
 	}
 
