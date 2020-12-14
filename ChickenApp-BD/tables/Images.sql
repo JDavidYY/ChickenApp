@@ -3,6 +3,7 @@
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Chickenapp`.`Images` (
   `idImages` INT NOT NULL,
+  `imagereferencesImage` VARCHAR(45) NULL,
   `typeImages` VARCHAR(45) NULL,
   `filenameImages` VARCHAR(45) NULL,
   `fileextensionImages` VARCHAR(45) NULL,
