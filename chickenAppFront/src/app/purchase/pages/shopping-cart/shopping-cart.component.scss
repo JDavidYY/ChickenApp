@@ -101,6 +101,7 @@
 	background-size: cover;
 	background-position: center;
 }
+
 .listo{
 	color: #e85d1b;
 	font-size: 30px;
@@ -163,6 +164,19 @@ input[type=number],  input[type=number]:focus{
   padding-left: 20px;
 }
 
+@media(max-width: 768px){
+    .añadir{
+        width: 85%;
+    }
+}
+@media(max-width: 425px){
+    .menu-descripcion-section-1{
+        height: 900px;
+    }
+    .menu-desc-img{
+        padding-bottom: 20px;
+    }
+}
 /*fin body*/
 
 /*footer*/
