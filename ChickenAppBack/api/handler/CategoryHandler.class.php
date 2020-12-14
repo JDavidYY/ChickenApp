@@ -51,7 +51,12 @@ class CategoryHandler
         $name=$data['name'];
         $description=$data['description'];
 
-        $result="Error al agregar la categoría";
+		$result="Error al agregar la categoría";
+	
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
         /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 
