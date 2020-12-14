@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,15 +19,15 @@ export class ProductListComponent implements OnInit {
   productSeleccionado:ProductModel = null;
   dataSourceOne: MatTableDataSource<ProductModel>;
   displayedColumnsOne: string[] = [
-    'dni',
-	  'fullnombre',
-    'celular',
-    'email'];
+    'name',
+    'price',
+    'category'];
+    // 'image'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private productservice:ProductService) { 
+    constructor(private router:Router, private dialog: MatDialog, private productservice:ProductService) { 
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -44,8 +45,8 @@ export class ProductListComponent implements OnInit {
         .subscribe(
             (response) => {
                 console.log(response);
-                if ( response.status && response.message != ""){
-                    const product = response.listProduct;
+                if ( response != null && response.ok && response.result != null){
+                    const product = response.result;
                     this.dataSourceOne.data = product;
                     this.dataSourceOne.paginator = this.tableOnePaginator;
                     this.dataSourceOne.sort = this.tableOneSort;
@@ -109,4 +110,12 @@ export class ProductListComponent implements OnInit {
         this.router.navigate(['/product/editar', product.idProduct ]);
     }
 
+    // showImageArticle() {
+    // showImage(item: ProductModel) {
+    //   let dialogRef = this.dialog.open(ModalImageComponent, {
+    //     autoFocus: false
+    //   });
+    //   let instance = dialogRef.componentInstance;
+    //   instance.idProduct = item.idProduct;
+    // }
 }

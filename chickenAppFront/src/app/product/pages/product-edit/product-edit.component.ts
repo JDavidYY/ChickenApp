@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryModel } from 'src/app/category/models/category-info.model';
 import { CategoryService } from 'src/app/category/services/category.service';
 import Swal from 'sweetalert2';
@@ -17,6 +17,10 @@ export class ProductEditComponent implements OnInit {
   
   categories:CategoryModel = null;
   product: ProductModel = new ProductModel();
+
+  product_id: number = 0;
+  actualizarButton: boolean = false;
+  guardarButton: boolean = true;
 
   id: number = 0;
 	file: any;
@@ -45,11 +49,18 @@ export class ProductEditComponent implements OnInit {
   Validators.required
   ]);
 
-  constructor(private router:Router, private datePipe: DatePipe, private productservice: ProductService, private categoryService:CategoryService) { }
+  constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private productservice: ProductService, private categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.populateCategory();
     this.product.image_name = null;
+    this.product_id = +this.route.snapshot.paramMap.get('product_id');
+    if ( this.product_id > 0) {
+      this.cargarProduct( this.product_id );
+      this.actualizarButton = true;
+		  this.guardarButton = false;
+    }
+
   }
 
 	populateCategory() {
@@ -149,7 +160,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/product/list']);
+    this.router.navigate(['/product/listado']);
   }
 
   saveImage() {
