@@ -53,7 +53,11 @@ class ProductHandler
 		$idcategory=$data['categoryid'];
         //$categoryid=$data['categoryid'];
 
-        $result="Error al agregar el producto";
+		$result="Error al agregar el producto";
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
         /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 

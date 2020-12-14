@@ -38,16 +38,18 @@ class ComboHandler
 		$idcombo=$data['idCombo'];
         $name=$data['name'];
 		$description=$data['description'];
-		$type=$data['type'];
+		$products=$data['products'];
 
-        $result="Error al agregar el combo";
-        
-		if($idcombo=='')
-		{
-			ComboController::addCombo($name,$description,$type);
-		}else{
-			ComboController::editCombo($idcombo,$name,$description,$type);
+		$result="Error al agregar el combo";
+		
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
 		}
+        
+		ComboController::addCombo($name,$description,$type);
+
+		ComboController::editCombo($idcombo,$name,$description,$type);
 
 		$result="Combo agregado";
 		$response=self::response($response,TRUE,$result);
