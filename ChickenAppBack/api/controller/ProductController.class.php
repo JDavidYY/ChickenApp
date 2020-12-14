@@ -6,8 +6,8 @@ use Chicken\Data\ProductData;
 abstract class ProductController{
 
     
-    public static function getProducts(){
-        return ProductData::getProducts();
+    public static function selectProduct(){
+        return ProductData::selectProduct();
     }
     
     public static function getProduct($idproduct)

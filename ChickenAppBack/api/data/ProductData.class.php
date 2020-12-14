@@ -4,7 +4,7 @@ use Chicken\Library\DataAccessLayer;
 use Chicken\Library\MySqlParameter;
 abstract class ProductData{
 
-    public static function getProducts(){
+    public static function selectProduct(){
         $rtn = null;
 
         $procedure_name = "usp_products_s_products";
