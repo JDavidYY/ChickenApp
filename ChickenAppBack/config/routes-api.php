@@ -124,6 +124,7 @@ $app->group('/api/product', function (RouteCollectorProxy $group) {
 $app->group('/api/combo', function (RouteCollectorProxy $group) {
     $group->post('/add', ComboHandler::class . ':addCombo');
     $group->get('/select', ComboHandler::class . ':getCombos');
+    $group->get('/selectprods/{idCombo}', ComboHandler::class . ':selectProducts');
     $group->get('/get/{idCombo}', ComboHandler::class . ':getCombo');
     //$group->post('/edit/{idCombo}', ComboHandler::class . ':editCombo');
     $group->post('/delete', ComboHandler::class . ':deleteCombo');

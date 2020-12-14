@@ -14,7 +14,7 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
-  
+
   categories:CategoryModel = null;
   product: ProductModel = new ProductModel();
 
@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit {
 	lead_id: number = 0;
 	image_name: string = null;
 	progress = false;
- 
+
 
   nameFormControl = new FormControl('', [
   Validators.required,
@@ -45,7 +45,7 @@ export class ProductEditComponent implements OnInit {
   categoryidFormControl = new FormControl('', [
   Validators.required
   ]);
- 
+
   imageFormControl = new FormControl('', [
   Validators.required
   ]);
@@ -95,6 +95,7 @@ export class ProductEditComponent implements OnInit {
           this.product.price= response.result["price"];
           // this.product.categoryid= response.result["idCategory"];
           this.product.categoryid= response.result["categoryid"];
+          this.categoryid=this.product.categoryid;
         }
       },
       (err) => {
@@ -105,8 +106,11 @@ export class ProductEditComponent implements OnInit {
 
   guardarProduct(){
     // validacion de campos para que no sean vacios
-      if ( !this.product.name || !this.product.description || !this.product.price || 
-          !this.product.categoryid || !this.product.image_name) {
+    console.log(this.categoryid);
+    this.product.categoryid=this.categoryid;
+    console.log(this.product);
+      if ( !this.product.name || !this.product.description || !this.product.price ||
+          !this.product.categoryid) {
             // if(this.product.price != null){
             //   console.log("hay algo")
             // }
@@ -114,7 +118,7 @@ export class ProductEditComponent implements OnInit {
           return;
       }
    // validacion de campos para que no sean incorrectos mediante FormControl
-    if ( this.nameFormControl.invalid || this.descriptionFormControl.invalid || this.priceFormControl.invalid 
+    if ( this.nameFormControl.invalid || this.descriptionFormControl.invalid || this.priceFormControl.invalid
       || this.categoryidFormControl.invalid ) {
         console.log(this.product)
         console.log("entro aqui")
@@ -154,37 +158,40 @@ export class ProductEditComponent implements OnInit {
       }
     });
   } else {
-    Swal.fire({
-    title: 'Aviso',
-    text: "¿Estás seguro que deseas guardar el chef?",
-    icon: 'info',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    cancelButtonText: 'Cancelar',
-    confirmButtonText: 'Si, guardar!' ,
+    if(!this.product.image_name)
+    {
+      Swal.fire({
+        title: 'Aviso',
+        text: "¿Estás seguro que deseas guardar el producto?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, guardar!' ,
 
-    }).then((result) => {
-    // llamado sel servicio guardarChef desde chef.service.ts y se le pasa 2 parametros
-    if (result.value) {
-      this.productservice.saveProduct(this.product)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          if ( response && response.ok && response.result != 0 )
-            Swal.fire(
-              'Enhorabuena!',
-              'El chef ha sido guardado.',
-              'success'
-              );
-            this.router.navigate(['/chef/listado']);
-        },
-        (err) => {
-          console.log(err);
+        }).then((result) => {
+        // llamado sel servicio guardarChef desde chef.service.ts y se le pasa 2 parametros
+        if (result.value) {
+          this.productservice.saveProduct(this.product)
+          .subscribe(
+            (response) => {
+              console.log(response);
+              if ( response && response.ok && response.result != 0 )
+                Swal.fire(
+                  'Enhorabuena!',
+                  'El producto ha sido guardado.',
+                  'success'
+                  );
+                this.router.navigate(['/product/listado']);
+            },
+            (err) => {
+              console.log(err);
+              }
+            );
           }
-        );
-      }
-    });
+        });
+    }
   }
 }
 
@@ -215,7 +222,7 @@ export class ProductEditComponent implements OnInit {
 		//this.nombre_imagen = false;
 		//this.carga_imagen = true;
   }
-  
+
   showUploadImage() {
 		return (this.image_name != null);
   }
@@ -223,15 +230,15 @@ export class ProductEditComponent implements OnInit {
   clearCarga() {
 		this.file = null;
   }
-  
+
   loadImage(event: any) {
 		this.file = event.target.files[0];
     console.log(this.file);
     this.product.image_name = this.file
 	}
   // save() {
-		
-		// if (!this.product.name || !this.product.description || !this.product.price || 
+
+		// if (!this.product.name || !this.product.description || !this.product.price ||
     //   !this.product.categoryid) {
 		// 	return;
 		// }
@@ -273,7 +280,7 @@ export class ProductEditComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
-    }   
+    }
 
 
 }

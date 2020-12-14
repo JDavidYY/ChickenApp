@@ -100,11 +100,12 @@ class ProductHandler
 		$file = $files['image']; //$file = $request->files->get('image');
 		$filename = $file->getClientFilename(); //$filename = $file->getClientOriginalName();
 		$fileextension = substr($filename, strrpos($filename, '.') + 1);
-		$tmpfile = $lead_id . '.' . $fileextension; //$tmpfile = date('YmdHis') . '.' . $fileextension;
+		$tmpfile = $idproduct . '.' . $fileextension; //$tmpfile = date('YmdHis') . '.' . $fileextension;
 		$path = __DIR__ .'/../images/product/';
-		$file->moveTo($path . $tmpfile); //$file->move($tmppath, $tmpfile);
+		//$file->moveTo($path . $tmpfile); //$file->move($tmppath, $tmpfile);
 
-		$result = MaintenanceController::saveImageProduct( $idproduct , $filename, $fileextension, $tmpfile);
+		
+		$result = ProductController::saveImageProduct($idproduct,$filename,$fileextension,$tmpfile);
 
 		//$result="Imagen de producto agregada correctamente";
 		$response=self::response($response,TRUE,$result);

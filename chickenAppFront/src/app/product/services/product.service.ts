@@ -44,7 +44,7 @@ export class ProductService {
 	}
 	// api para eliminar a Product por GET
   	eliminarProduct(idProduct:string):Observable<ProductPostResponse> {
-		const url = this.apiurl + "/delete/";
+		const url = this.apiurl + "/delete";
 		var data = { idProduct: idProduct }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<ProductPostResponse>(url,data, options);

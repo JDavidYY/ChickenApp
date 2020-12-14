@@ -34,6 +34,12 @@ export class ComboService {
 		const url = this.apiurl + "/select";
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<ComboListResponse>(url, options);
+  }
+
+  selectProducts(idCombo:string):Observable<ComboListResponse> {
+		const url = this.apiurl + "/selectprods/"+idCombo;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<ComboListResponse>(url, options);
 	}
 	// api para obtener los datos de un Combo por GET
   	getCombo(idCombo:string):Observable<ComboGetResponse> {

@@ -82,7 +82,7 @@ abstract class ProductData{
 			new MySqlParameter("oresult", 0, 2)
 		);
 
-		$db = new MySqlHelper();
+		$db = new DataAccessLayer();
 		$db->connect();
 		$result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
 		$db->disconnect();
