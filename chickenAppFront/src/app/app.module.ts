@@ -34,7 +34,7 @@ import { ProductModule } from './product/product.module';
     ChefModule,
     DeliveryboyModule,
     PurchaseModule,
-    PromotionModule,
+   // PromotionModule,
     CategoryModule,
     // ComboModule,
     ProductModule,
