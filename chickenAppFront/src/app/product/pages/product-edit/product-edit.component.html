@@ -6,7 +6,7 @@
     <form>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Nomber del producto</mat-label>
+                <mat-label>Nombre del producto</mat-label>
                 <input matInput [(ngModel)]="product.name" [formControl]="nameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="nameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
@@ -24,18 +24,39 @@
         </div>
         <div class="form-row" >
             <mat-form-field clsas="col-sm-6">
-                <mat-select name="txtCategory" [(ngModel)]="product.categoryid">
+                <mat-select name="txtCategory" [(ngModel)]="product.categoryid" [formControl]="categoryidFormControl">
                   <mat-option>-- Seleccione una categoría --</mat-option>
                   <mat-option *ngFor="let category of categories" value="{{category.idCategory}}">{{category.name}}</mat-option>
                 </mat-select>
                 <mat-label>Categoría</mat-label>
+                <mat-error *ngIf="categoryidFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Precio</mat-label>
-                <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;"  required>
                 <mat-error *ngIf="priceFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-12" appearance="outline" *ngIf="showUploadImage()">
+                <mat-label style="color: black;">Imagen (.jpg, .png)</mat-label>
+                <input matInput type="text" [(ngModel)]="image_name"  readonly />
+                <button mat-button *ngIf="image_name" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="deletenameImage()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field class="col-12" appearance="outline" *ngIf="!showUploadImage()">
+                <mat-label style="color: black;">Imagen (.jpg, .png)</mat-label>
+                <ngx-mat-file-input #removableInput (change)="loadImage($event)" required></ngx-mat-file-input>
+                <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+                    <mat-icon>clear</mat-icon>
+                </button>
             </mat-form-field>
         </div>
         <!-- Div de botones para regresar o guardar los datos de los campos -->
