@@ -18,11 +18,8 @@ export class PromotionListComponent implements OnInit {
   promotionSeleccionado:PromotionModel = null;
   dataSourceOne: MatTableDataSource<PromotionModel>;
   displayedColumnsOne: string[] = [
-    'dni',
-	  'fullnombre',
-    'celular',
-    'email',
-    'turno'];
+    'idProduct',
+	  'descuento'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -81,7 +78,7 @@ export class PromotionListComponent implements OnInit {
         }).then((result) => {
           // llamados el servicio eliminarPromotion desde promotion.service.ts y se le pasa 1 parámetro
         if (result.value) {
-        this.promotionservice.eliminarPromotion(this.promotionSeleccionado.idPromotion)
+        this.promotionservice.eliminarPromotion(this.promotionSeleccionado.idProduct)
         .subscribe(
           (response) => {
             console.log(response);
@@ -103,12 +100,12 @@ export class PromotionListComponent implements OnInit {
         })
     }
     //Método para ir a la vista de un determinado Promotion
-    editarPromotion()
-    {
-      if (this.promotionSeleccionado == null) return;
-        let promotion = this.promotionSeleccionado;
-        this.router.navigate(['/promotion/editar', promotion.idPromotion ]);
-    }
+    // editarPromotion()
+    // {
+    //   if (this.promotionSeleccionado == null) return;
+    //     let promotion = this.promotionSeleccionado;
+    //     this.router.navigate(['/promotion/editar', promotion.idProduct ]);
+    // }
 
 
 
