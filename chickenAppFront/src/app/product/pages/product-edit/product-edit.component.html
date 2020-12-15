@@ -37,14 +37,14 @@
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Precio</mat-label>
+                <mat-label>Precio(Soles)</mat-label>
                 <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;"  required>
                 <mat-error *ngIf="priceFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="form-row" >
+        <!--<div class="form-row" >
             <mat-form-field class="col-12" appearance="outline" *ngIf="showUploadImage()">
                 <mat-label style="color: black;">Imagen (.jpg, .png)</mat-label>
                 <input matInput type="text" [(ngModel)]="image_name"  readonly />
@@ -61,7 +61,7 @@
                     <mat-icon>clear</mat-icon>
                 </button>
             </mat-form-field>
-        </div>
+        </div>-->
         <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
             <div class="col-sm-12 text-right">

@@ -158,8 +158,6 @@ export class ProductEditComponent implements OnInit {
       }
     });
   } else {
-    if(!this.product.image_name)
-    {
       Swal.fire({
         title: 'Aviso',
         text: "¿Estás seguro que deseas guardar el producto?",
@@ -191,7 +189,6 @@ export class ProductEditComponent implements OnInit {
             );
           }
         });
-    }
   }
 }
 
