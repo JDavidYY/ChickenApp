@@ -1,0 +1,74 @@
+.mat-form-field{
+    font-size: 12px;
+  }
+
+.client-sec-1{
+  background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+  width: 100%;
+  height: 100%;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+  background-position: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+.cliente-cont{
+  background-color: #f3f3f3ab;
+  border-radius: 10px;
+  border: 1px solid;
+}
+.client-subsec{
+  width: 85%;
+  margin: auto;
+}
+.cliente-img{
+  width: 90%;
+  height: auto;
+  display:block;
+  margin:auto;
+  padding-top: 20px;
+}
+
+@media(max-width:1024px){
+  .cliente-img{
+    width: 100%;
+    height: auto;
+    padding-top: 60px;
+  }
+}
+@media(max-width: 768px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: auto;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+  .titulo-registro{
+    font-size: 30px;
+    text-align: center;
+  }
+  .cliente-img{
+    width: 100%;
+    height: auto;
+    padding-top: 100px;
+  }
+}
+@media(max-width: 425px){
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media(max-width: 320px){
+  .hidden-xs {
+    display: none !important;
+  }
+  .titulo-registro{
+    font-size: 28px;
+  }
+}

@@ -6,6 +6,11 @@ import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ChefModule } from './chef/chef.module';
+import { DeliveryboyModule } from './deliveryboy/deliveryboy.module';
+import { CategoryModule } from './category/category.module';
+//import { ProductModule } from './product/product.module';
+import { ClientModule } from './client/client.module';
 
 
 @NgModule({
@@ -15,10 +20,15 @@ import { DashboardModule } from './dashboard/dashboard.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule,
-    LoginModule,
     DashboardModule,
-    SharedModule
+    SharedModule,
+    HomeModule,
+    ChefModule,
+    DeliveryboyModule,
+    CategoryModule,
+    //ProductModule,
+    ClientModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

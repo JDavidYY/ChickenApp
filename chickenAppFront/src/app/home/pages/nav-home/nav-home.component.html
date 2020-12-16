@@ -1,20 +1,38 @@
 <div>
-    <mat-toolbar class="toolbar2">
-        <h1 class="h" style="text-align: center;justify-content: center; color:white">ChickenApp</h1>
+    <mat-toolbar class="toolbar2 hidden-xs">
+        <div class="row toolbar-menu">
+            <div class="col-sm-12 col-lg-5 col-md-4">
+                <h1 class="h" style="color:white"><a style="text-decoration: none;">ChickenApp</a></h1>
+            </div>
+            <div class="col-sm-12 col-lg-7 col-md-8">
+                <nav class="menu">
+                    <li class="lista">Combos</li>
+                    <li class="lista">Parrillas</li>
+                    <li class="lista">Ensaladas</li>
+                    <li class="lista">Promociones</li>
+                    <li class="lista">
+                        <a routerLink="/login">Iniciar Sesión</a>
+                    </li>
+                </nav>
+            </div>
+        </div>
     </mat-toolbar>
 </div>
 <div>
-    <div style="padding-top: 70px;">
-        <nav class="navbar navbar-dark bg-dark">
-            <button mat-icon-button color="primary" routerLink="/">
+    <div class="espacio">
+        <nav class="navbar navbar-dark bg-dark hidden-lg">
+            <!--<button mat-icon-button color="primary" routerLink="/">
                 <mat-icon style="width: 30px; padding-left: 0px;">home</mat-icon>
-            </button>
+            </button>-->
+            <a class="tit-m" href="#">
+                <p class="titulo-m">ChickenApp</p>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-        
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <!-- <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                 <a class="nav-link" href="#">Combos<span class="sr-only">(current)</span></a>
                 </li>
@@ -30,94 +48,85 @@
                 <li class="nav-item">
                 <a class="nav-link disabled" href="#">Comming soon</a>
                 </li>
-            </ul>
+            </ul> -->
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
             </div>
+            <!--
             <button routerLink="/login" mat-button color="primary">
                 Iniciar Sesión
-            </button>
+            </button>-->
         </nav>
     </div>
-    <div class="" style="text-align:center;">
-        <div class="">
+    <div class="home-section-1" >
+        <div class="pollo-wallpaper">
             <div class="">
-                <mat-list>
-                    <div class="">
-                        <mat-list-item>
-                            <h3>Pollito directo a tu puerta</h3>
-                        </mat-list-item>
-                    </div>
-                    <div class="">
-                        <mat-divider></mat-divider>
-                        <mat-list-item>
-                            <mat-icon>alarm_on</mat-icon> Ahorra tiempo </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>
-                            <mat-icon>store_mall_directory</mat-icon> Selecciona entre una amplia variedad de platillos</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>
-                            <br>
-                            <p>
-                                <mat-icon>search</mat-icon> Mantente informado de tus pedidos</p>
-                        </mat-list-item>
-                    </div>
-                    <div class="">
+                    <div class="hs1-titulo">
+                        <p>Pollito directo a tu puerta</p>
                         <div>
-                            <img src="../../../../assets/images/backgrounds/logo.png" style="width: 200px; height: 200px;">
+                            <img class="logo-pollo" src="assets/imagenlogo.png" style="width: 250px; height: 200px;">
                         </div>
                     </div>
-                </mat-list>
-
+                    <div class="hs1-subtitulos">
+                        <p><mat-icon>alarm_on</mat-icon> Ahorra tiempo </p>
+                        <p><mat-icon>store_mall_directory</mat-icon> Selecciona entre una amplia variedad de platillos</p>
+                        <p><mat-icon>search</mat-icon> Mantente informado de tus pedidos</p>
+                    </div>
             </div>
-
         </div>
     </div>
-    <div class="container"
-    fxLayout="column"
-    fxLayoutGap="10px">
-    <div fxFlex>
-      <div>
-        <h3>Menú</h3>
-        <hr>
-      </div>
-    </div>
-    <div fxFlex>
-        <mat-grid-list cols="2" rowHeight="200px">
-          <mat-grid-tile>
-            <img height="200px" src="https://media-cdn.tripadvisor.com/media/photo-s/18/e7/cc/71/cuarto-de-pollo-parrillero.jpg" alt="CUARTO PARRILLERO">
-            <mat-grid-tile-footer>
-            <h2> CUARTO PARRILERO </h2>
-          </mat-grid-tile-footer>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <img height="200px" src="https://res.cloudinary.com/glovoapp/w_340,h_170,c_fit,f_auto,q_auto/Products/apxycbrch0f9tds8bxc3" alt="ENSALADA COCIDA">
-            <mat-grid-tile-footer>
-            <h2 style="margin-top: auto;" matLine> ENSALADA COCIDA </h2>
-            </mat-grid-tile-footer>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <img height="200px" src="https://cdn.cuponidad.pe/images/Deals/kachito-final.jpg" alt="2 POLLOS A LA BRASA + 2 PAPAS FAMILIARES">
-            <mat-grid-tile-footer>
-            <h2 matLine> 2 POLLOS A LA BRASA + 2 PAPAS FAMILIARES </h2>
-          </mat-grid-tile-footer>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <img height="200px" src="https://images.rappi.pe/products/65685-1549659069.png?d=200x200" alt="COMBO FAMILIAR">
-            <mat-grid-tile-footer>
-            <h2 matLine> COMBO FAMILIAR </h2>
-          </mat-grid-tile-footer>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <img height="200px" src="https://okdiario.com/img/2017/02/12/receta-de-ensalada-california.jpg" alt="ENSALADA CALIFORNIA">
-            <mat-grid-tile-footer>
-            <h2 matLine> ENSALADA CALIFORNIA </h2>
-          </mat-grid-tile-footer>
-          </mat-grid-tile>
-      </mat-grid-list>
-    </div>
-    
-</div>
+    <section class="fondo1">
+        <div class="home-section-2">
+            <p><strong>Elige tu platillo favorito</strong></p>
+            <div>
+                <img src="assets/imagenlogo.png" style="width: 250px; height: 200px;">
+            </div>
+        </div>
+        <div class="container menu" fxLayout="column" fxLayoutGap="10px">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="plato-1">
+                        <p class="plato-desc">Cuarto Parrillero</p>
+                        <div class="plato-hover">
+                            <p class="plato-desc">Cuarto Parrillero</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="plato-2">
+                        <p class="plato-desc">Ensalada Cocida</p>
+                        <div class="plato-hover">
+                            <p class="plato-desc">Ensalada Cocida</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="plato-3">
+                        <p class="plato-desc2">2 Pollos a la brasa + 2 ensaladas familiares</p>
+                        <div class="plato-hover2">
+                            <p class="plato-desc2">2 Pollos a la brasa + 2 ensaladas familiares</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="plato-4">
+                        <p class="plato-desc">Combo Familiar</p>
+                        <div class="plato-hover">
+                            <p class="plato-desc">Combo Familiar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="plato-5">
+                        <p class="plato-desc">Ensalada California</p>
+                        <div class="plato-hover">
+                            <p class="plato-desc">Ensalada California</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
