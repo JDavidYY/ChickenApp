@@ -101,7 +101,9 @@ class ProductHandler
 		$filename = $file->getClientFilename(); //$filename = $file->getClientOriginalName();
 		$fileextension = substr($filename, strrpos($filename, '.') + 1);
 		$tmpfile = $idproduct . '.' . $fileextension; //$tmpfile = date('YmdHis') . '.' . $fileextension;
-		$path = __DIR__ .'/../images/product/';
+		//$path = __DIR__ .'/../images/product/';
+		$storage= new Storage();
+		$storage->uploadObject('mainkra','xd/'.$tmpfile,$file);
 		//$file->moveTo($path . $tmpfile); //$file->move($tmppath, $tmpfile);
 
 		

@@ -17,6 +17,7 @@ include __DIR__."/library/SecurityExtensions.module.php";
 //include __DIR__."/library/EmailExtensions.module.php";
 include __DIR__."/library/CommonExtensions.module.php";
 include __DIR__."/library/MySqlExtensions.module.php";
+include __DIR__."/library/StorageExtensions.module.php";
 
 /*include __DIR__."/common/v1/data/DataAccessLayer.class.php";
 include __DIR__."/common/v1/data/ChatData.class.php";

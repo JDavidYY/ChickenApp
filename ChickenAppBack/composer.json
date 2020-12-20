@@ -2,6 +2,6 @@
     "require": {
         "slim/slim": "^4.5",
         "slim/psr7": "^1.2",
-        "google/cloud": "^0.72"
+        "google/cloud-storage": "^1.23"
     }
 }
