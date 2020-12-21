@@ -8,9 +8,7 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Products_Combo` (
   PRIMARY KEY (`Products_idProducts`, `Combo_idCombos`),
   CONSTRAINT `fk_Products_has_Combo_Products1`
     FOREIGN KEY (`Products_idProducts`)
-    REFERENCES `Chickenapp`.`Products` (`idProducts`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `Chickenapp`.`Products` (`idProducts`),
   CONSTRAINT `fk_Products_has_Combo_Combo1`
     FOREIGN KEY (`Combo_idCombos`)
     REFERENCES `Chickenapp`.`Combo` (`idCombos`)
