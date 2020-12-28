@@ -12,7 +12,7 @@ abstract class CategoryController{
 
     public static function getCategory($idcategory)
 	{
-		return CategoryData::getCategory($idcategory);;
+		return CategoryData::getCategory($idcategory);
 	}
     
     public static function addCategory($name,$description){

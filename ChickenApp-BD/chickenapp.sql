@@ -1,6 +1,10 @@
 -- -----------------------------------------------------
 -- Schema Chickenapp
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema Chickenapp
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Chickenapp` DEFAULT CHARACTER SET utf8 ;
 USE `Chickenapp` ;
 
@@ -21,8 +25,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Chickenapp`.`Users` (
   `idUsers` INT NOT NULL AUTO_INCREMENT,
-  `nameUsers` VARCHAR(45) NOT NULL,
-  `passwordUsers` VARCHAR(45) NOT NULL,
+  `emailUsers` VARCHAR(45) NULL,
+  `passwordUsers` VARCHAR(145) NOT NULL,
   `typeUser` VARCHAR(45) NULL,
   `estateUser` INT NULL,
   PRIMARY KEY (`idUsers`))
@@ -34,7 +38,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `idEmployees` INT NOT NULL AUTO_INCREMENT,
-  `estadoEmployees` INT NOT NULL,
+  `activityEmployees` INT NOT NULL,
   `firstnameEmployees` VARCHAR(45) NOT NULL,
   `lastnameEmployees` VARCHAR(45) NOT NULL,
   `phoneEmployees` VARCHAR(45) NOT NULL,
@@ -45,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `TypeEmployees_idDepartaments` INT NOT NULL,
   `Users_idUsers` INT NOT NULL,
   `estateEmployees` INT NULL,
+  `emailEmployees` VARCHAR(45) NULL,
   PRIMARY KEY (`idEmployees`, `TypeEmployees_idDepartaments`, `Users_idUsers`),
   CONSTRAINT `fk_Employees_TypeEmployees1`
     FOREIGN KEY (`TypeEmployees_idDepartaments`)

@@ -6,6 +6,9 @@ include __DIR__.'/../api/data/DeliveryboyData.class.php';
 include __DIR__.'/../api/data/ClientData.class.php';
 include __DIR__.'/../api/data/CategoryData.class.php';
 include __DIR__.'/../api/data/UserData.class.php';
+include __DIR__.'/../api/data/ProductData.class.php';
+include __DIR__.'/../api/data/ComboData.class.php';
+include __DIR__.'/../api/data/PromoData.class.php';
 
 /* include __DIR__.'/../api/v3/data/MaintenanceData.class.php';
 include __DIR__.'/../api/v3/data/TagData.class.php'; */
@@ -31,6 +34,10 @@ include __DIR__.'/../api/controller/DeliveryboyController.class.php';
 include __DIR__.'/../api/controller/ClientController.class.php';
 include __DIR__.'/../api/controller/CategoryController.class.php';
 include __DIR__.'/../api/controller/UserController.class.php';
+include __DIR__.'/../api/controller/ProductController.class.php';
+include __DIR__.'/../api/controller/ComboController.class.php';
+include __DIR__.'/../api/controller/PromoController.class.php';
+
 
 /* include __DIR__.'/../api/v3/controller/MaintenanceController.class.php';
 include __DIR__.'/../api/v3/controller/TagController.class.php'; */
@@ -43,6 +50,9 @@ include __DIR__.'/../api/handler/DeliveryboyHandler.class.php';
 include __DIR__.'/../api/handler/ClientHandler.class.php';
 include __DIR__.'/../api/handler/CategoryHandler.class.php';
 include __DIR__.'/../api/handler/UserHandler.class.php';
+include __DIR__.'/../api/handler/ProductHandler.class.php';
+include __DIR__.'/../api/handler/ComboHandler.class.php';
+include __DIR__.'/../api/handler/PromoHandler.class.php';
 
 /* include __DIR__.'/../api/v3/handler/CustomerHandler.class.php';
 include __DIR__.'/../api/v3/handler/MaintenanceHandler.class.php';
@@ -61,11 +71,14 @@ use Psr\Http\Message\ResponseInterface as Response; //use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface as Request; //use Slim\Http\Request;
 use Slim\Routing\RouteCollectorProxy;
 
-
+use Chicken\Handler\UserHandler;
 use Chicken\Handler\ChefHandler;
 use Chicken\Handler\DeliveryboyHandler;
 use Chicken\Handler\ClientHandler;
 use Chicken\Handler\CategoryHandler;
+use Chicken\Handler\ProductHandler;
+use Chicken\Handler\ComboHandler;
+use Chicken\Handler\PromoHandler;
 
 
 $app->group('/api/chef', function (RouteCollectorProxy $group) {
@@ -97,6 +110,31 @@ $app->group('/api/category', function (RouteCollectorProxy $group) {
     $group->get('/get/{idCategory}', CategoryHandler::class . ':getCategory');
     //$group->post('/edit/{categoryid}', CategoryHandler::class . ':editCategory');
     $group->post('/delete', CategoryHandler::class . ':deleteCategory');
+});
+
+$app->group('/api/product', function (RouteCollectorProxy $group) {
+    $group->post('/add', ProductHandler::class . ':addProduct');
+    $group->post('/uploadimg', ProductHandler::class . ':uploadImage');
+    $group->get('/select', ProductHandler::class . ':getProducts');
+    $group->get('/get/{idProduct}', ProductHandler::class . ':getProduct');
+    //$group->post('/edit/{idProduct}', ProductHandler::class . ':editProduct');
+    $group->post('/delete', ProductHandler::class . ':deleteProduct');
+});
+
+$app->group('/api/combo', function (RouteCollectorProxy $group) {
+    $group->post('/add', ComboHandler::class . ':addCombo');
+    $group->get('/select', ComboHandler::class . ':getCombos');
+    $group->get('/get/{idCombo}', ComboHandler::class . ':getCombo');
+    //$group->post('/edit/{idCombo}', ComboHandler::class . ':editCombo');
+    $group->post('/delete', ComboHandler::class . ':deleteCombo');
+});
+
+$app->group('/api/promo', function (RouteCollectorProxy $group) {
+    $group->post('/add', PromoHandler::class . ':addPromo');
+    $group->get('/select', PromoHandler::class . ':getPromos');
+    $group->get('/get/{idPromo}', PromoHandler::class . ':getPromo');
+    //$group->post('/edit/{idPromo}', PromoHandler::class . ':editPromo');
+    $group->post('/delete', PromoHandler::class . ':deletePromo');
 });
 
 ?>

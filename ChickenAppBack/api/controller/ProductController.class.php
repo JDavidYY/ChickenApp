@@ -10,16 +10,26 @@ abstract class ProductController{
         return ProductData::getProducts();
     }
     
-    public static function addProduct($name,$description,$price,$categoryid){
-        return ProductData::addProduct($name,$description,$price,$categoryid);
+    public static function getProduct($idproduct)
+	{
+		return ProductData::getProduct($idproduct);
+    }
+    
+    public static function addProduct($name,$description,$price,$idcategory){
+        return ProductData::addProduct($name,$description,$price,$idcategory);
     }
 
-    public static function editProduct($productid,$name,$description,$price,$categoryid){
-        return ProductData::editProduct($productid,$name,$description,$price,$categoryid);
+    public static function saveImageProduct($idproduct , $filename, $fileextension, $tmpfile)
+	{
+		return MaintenanceData::saveImageProduct($idproduct , $filename, $fileextension, $tmpfile);
     }
 
-    public static function deleteProduct($productid){
-        return ProductData::deleteProduct($productid);  
+    public static function editProduct($idproduct,$name,$description,$price,$idcategory){
+        return ProductData::editProduct($idproduct,$name,$description,$price,$idcategory);
+    }
+
+    public static function deleteProduct($idproduct){
+        return ProductData::deleteProduct($idproduct);  
     }
 	
 }

@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `idEmployees` INT NOT NULL AUTO_INCREMENT,
-  `estadoEmployees` INT NOT NULL,
+  `activityEmployees` INT NOT NULL,
   `firstnameEmployees` VARCHAR(45) NOT NULL,
   `lastnameEmployees` VARCHAR(45) NOT NULL,
   `phoneEmployees` VARCHAR(45) NOT NULL,
@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `TypeEmployees_idDepartaments` INT NOT NULL,
   `Users_idUsers` INT NOT NULL,
   `estateEmployees` INT NULL,
+  `emailEmployees` VARCHAR(45) NULL,
   PRIMARY KEY (`idEmployees`, `TypeEmployees_idDepartaments`, `Users_idUsers`),
   CONSTRAINT `fk_Employees_TypeEmployees1`
     FOREIGN KEY (`TypeEmployees_idDepartaments`)
