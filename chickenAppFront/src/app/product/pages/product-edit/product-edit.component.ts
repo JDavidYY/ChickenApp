@@ -176,6 +176,8 @@ export class ProductEditComponent implements OnInit {
             (response) => {
               console.log(response);
               if ( response && response.ok && response.result != 0 )
+                this.id=response.result;
+                this.saveImage();
                 Swal.fire(
                   'Enhorabuena!',
                   'El producto ha sido guardado.',
@@ -197,6 +199,8 @@ export class ProductEditComponent implements OnInit {
   }
 
   saveImage() {
+    console.log(this.file);
+    console.log(this.id);
 		this.productservice.cargarImagen(this.file, this.id)
 			.subscribe(
 				(response) => {
