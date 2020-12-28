@@ -6,8 +6,8 @@ use Chicken\Data\ProductData;
 abstract class ProductController{
 
     
-    public static function getProducts(){
-        return ProductData::getProducts();
+    public static function selectProduct(){
+        return ProductData::selectProduct();
     }
     
     public static function getProduct($idproduct)
@@ -21,7 +21,7 @@ abstract class ProductController{
 
     public static function saveImageProduct($idproduct , $filename, $fileextension, $tmpfile)
 	{
-		return MaintenanceData::saveImageProduct($idproduct , $filename, $fileextension, $tmpfile);
+		return ProductData::saveImageProduct($idproduct , $filename, $fileextension, $tmpfile);
     }
 
     public static function editProduct($idproduct,$name,$description,$price,$idcategory){

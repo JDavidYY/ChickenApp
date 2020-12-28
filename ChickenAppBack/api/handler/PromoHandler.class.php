@@ -39,13 +39,12 @@ class PromoHandler
         $descuento=$data['descuento'];
 
         $result="Error al agregar la promoción";
-        
-		if($idproduct=='')
-		{
-			PromoController::addPromo($idproduct,$descuento);
-		}else{
-			PromoController::editPromo($idproduct,$descuento);
+		if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
 		}
+		
+		PromoController::addPromo($idproduct,$descuento);
 
 		$result="Promoción agregada";
 		$response=self::response($response,TRUE,$result);
@@ -69,8 +68,8 @@ class PromoHandler
 	public function deletePromo(Request $request, Response $response, array $args){
 		$data = (array)$request->getParsedBody();
 
-        $idpromo=$data['idPromo'];
-		$result=PromoController::deletePromo($idpromo);
+        $idproduct=$data['idProduct'];
+		$result=PromoController::deletePromo($idproduct);
 		$result='Promoción eliminada correctamente';
 		$response=self::response($response,TRUE,$result);
 		return $response;

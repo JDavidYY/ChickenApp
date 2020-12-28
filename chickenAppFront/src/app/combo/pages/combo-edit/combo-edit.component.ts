@@ -31,14 +31,22 @@ export class ComboEditComponent implements OnInit {
     nameFormControl = new FormControl('', [
     Validators.required,
     ]);
-  
+
     descriptionFormControl = new FormControl('', [
     Validators.required,
     ]);
 
+    idProductFormControl = new FormControl('', [
+      Validators.required,
+      ]);
+
+    cantidadFormControl = new FormControl('', [
+        Validators.required,
+        ]);
+
   constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private comboservice: ComboService, private productservice: ProductService) { }
-  
-  ngOnInit(): void {   
+
+  ngOnInit(): void {
     this.populateProduct();
     this.combo_id = +this.route.snapshot.paramMap.get('combo_id');
     if ( this.combo_id > 0) {
@@ -63,8 +71,9 @@ export class ComboEditComponent implements OnInit {
 				}
 			);
   }
-  
+
   arrayCombo(){
+    console.log(this.combo);
     this.combo.idproducts.push(this.productSeleccionado);
     this.combo.cantidades.push(this.cantidadSeleccionado);
     this.productSeleccionado = "";
@@ -104,12 +113,12 @@ export class ComboEditComponent implements OnInit {
 
     // validacion de campos para que no sean vacios
     if(this.combo_id>0){
-      if ( !this.combo.name || !this.combo.description || !this.combo.idproducts || 
+      if ( !this.combo.name || !this.combo.description || !this.combo.idproducts ||
         !this.combo.cantidades) {
         return;
     }
   }else{
-      if ( !this.combo.name || !this.combo.description || !this.combo.idproducts || 
+      if ( !this.combo.name || !this.combo.description || !this.combo.idproducts ||
         !this.combo.cantidades ) {
         return;
     }
@@ -117,12 +126,12 @@ export class ComboEditComponent implements OnInit {
  // validacion de campos para que no sean incorrectos mediante FormControl
   if(this.combo_id>0){
     if ( this.nameFormControl.invalid || this.descriptionFormControl.invalid ) {
-   
+
       return;
     }
   }else{
     if ( this.nameFormControl.invalid || this.descriptionFormControl.invalid ){
-   
+
         return;
       }
   }
@@ -137,7 +146,7 @@ export class ComboEditComponent implements OnInit {
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Si, actualizar!' ,
-  
+
         }).then((result) => {
         // llamado sel servicio guardarCombo desde combo.service.ts y se le pasa 2 parametros
         if (result.value) {
@@ -212,7 +221,7 @@ export class ComboEditComponent implements OnInit {
     if (!pattern.test(inputChar)) {
       event.preventDefault();
     }
-    }   
+    }
 
 
 }

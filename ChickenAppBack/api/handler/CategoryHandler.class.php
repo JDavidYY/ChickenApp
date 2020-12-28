@@ -5,6 +5,7 @@ use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 use Chicken\Controller\CategoryController;
+use Chicken\Library\Storage;
 
 class CategoryHandler
 {
@@ -20,6 +21,8 @@ class CategoryHandler
         $customer_id=$args['customerid'];*/
 		$result=CategoryController::getCategories();
 		$response=self::response($response,TRUE,$result);
+		/*$storage= new Storage();
+		$storage->createBucket('mainkra');*/
 		return $response;
 	}
 
@@ -51,7 +54,12 @@ class CategoryHandler
         $name=$data['name'];
         $description=$data['description'];
 
-        $result="Error al agregar la categoría";
+		$result="Error al agregar la categoría";
+	
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
         /*if(!isset($content)){
             $response=self::response($response,FALSE,$result);
             return $response; 

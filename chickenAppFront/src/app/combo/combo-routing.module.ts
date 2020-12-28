@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContainerComponent } from '../shared/components/container/container.component';
 import { ComboEditComponent } from './pages/combo-edit/combo-edit.component';
 import { ComboListComponent } from './pages/combo-list/combo-list.component';
+import { ComboVerproductosComponent } from './pages/combo-verproductos/combo-verproductos.component';
 
 // se declara los componentes que se usaran en el modulo
 export const COMBO_COMPONENTS = [
@@ -25,9 +26,9 @@ const comboRoutes:Routes = [
             component: ComboEditComponent
           },
           {
-            path: 'editar/:combo_id',
-            component: ComboEditComponent
-          }     
+            path: 'verproductos/:combo_id',
+            component: ComboVerproductosComponent
+          }
         ]
   }
 ];

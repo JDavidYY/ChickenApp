@@ -17,11 +17,8 @@ export class ComboListComponent implements OnInit {
   comboSeleccionado:ComboModel = null;
   dataSourceOne: MatTableDataSource<ComboModel>;
   displayedColumnsOne: string[] = [
-    'dni',
-	  'fullnombre',
-    'celular',
-    'email',
-    'turno'];
+    'name',
+	  'description'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -55,6 +52,13 @@ export class ComboListComponent implements OnInit {
                 console.log(err);
             }
         );
+    }
+
+    verProductos()
+    {
+      if (this.comboSeleccionado == null) return;
+      let combo = this.comboSeleccionado;
+      this.router.navigate(['/combo/verproductos', combo.idCombo ]);
     }
 
     //Método para ir a la vista de agregar un combo nuevo

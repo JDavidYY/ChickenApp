@@ -1,8 +1,8 @@
 export class ComboModel
 {
-    idProduct:string = "";
+    idCombo:string = "";
     name: string = "";
     description: string = "";
-    idproducts: string[];
-    cantidades: string[];
+    idproducts: string[] = [];
+    cantidades: string[] = [];
 }
