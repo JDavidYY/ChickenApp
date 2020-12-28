@@ -19,6 +19,7 @@ import { PurchaseModule } from './purchase/purchase.module';
 import { PromotionModule } from './promotion/promotion.module';
 // import { ComboModule } from './combo/combo.module';
 import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ProductModule } from './product/product.module';
     // ComboModule,
     ProductModule,
     ClientModule,
+    OrderModule,
     LoginModule
   ],
   providers: [],

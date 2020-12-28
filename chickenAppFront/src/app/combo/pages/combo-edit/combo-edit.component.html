@@ -1,0 +1,61 @@
+<div class="section-principal" style="padding-bottom: 25px">
+    <div class="container pt-5 principal-cont">
+        <div class="">
+        <h1>Registro de Combo</h1>
+    </div>
+    <!-- Form para guardar los datos del combo y se captura con [(ngModel)] -->
+    <form>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Nombre del producto</mat-label>
+                <input matInput [(ngModel)]="combo.name" [formControl]="nameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="nameFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Descripción del producto</mat-label>
+                <input matInput [(ngModel)]="combo.description" [formControl]="descriptionFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field clsas="col-md-12">
+                <mat-select name="txtCategory" [(ngModel)]="productSeleccionado" [formControl]="idProductFormControl">
+                  <mat-option>-- Seleccione un producto --</mat-option>
+                  <mat-option *ngFor="let product of products" value="{{product.idProduct}}">{{product.name}}</mat-option>
+                </mat-select>
+                <mat-label>Producto</mat-label>
+                <mat-error *ngIf="idProductFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Cantidad</mat-label>
+                <input matInput [(ngModel)]="cantidadSeleccionado" [formControl]="cantidadFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <mat-error *ngIf="cantidadFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <p>Productos agregados: <span> {{combo.idproducts}}</span></p>
+            <p>Cantidades de cada producto agregado: <span>{{combo.cantidades}}}</span></p>
+        </div>
+        <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="arrayCombo()">Agregar producto a combo</button>
+        
+        <!-- Div de botones para regresar o guardar los datos de los campos -->
+        <div class="form-row pt-2">
+            <div class="col-sm-12 text-right">
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarCombo()">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
