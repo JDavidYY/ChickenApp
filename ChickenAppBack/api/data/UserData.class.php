@@ -29,18 +29,17 @@ abstract class UserData{
 		
 		$procedureName = "usp_user_s_rol";
 		$params = array(
-				new MySqlParameter("pemail", $email, 1),
-				new MySqlParameter("oresult", '', 2)
+				new MySqlParameter("pemail", $email, 1)
 			);
 		$db = new DataAccessLayer();
 		$db->connect();
-		$result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
+		$result = $db->ExecuteSelect($procedureName, $params);
 		$db->disconnect();
-		if (isset($result))
-		{
-			$rtn = $result["oresult"];
+
+		if (isset($result)) {
+			$rtn = $result[0];
 		}
-		
+	
 		return $rtn;
     }
 

@@ -4,7 +4,7 @@ namespace Chicken\Handler;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-use Chicken\Controller\ClientController;
+use Chicken\Controller\UserController;
 
 class UserHandler
 {
@@ -25,14 +25,20 @@ class UserHandler
         $password=$data['password'];
 		
         $result="Error al iniciar sesión";
-        if(!isset($content)){
+        if(!isset($data)){
             $response=self::response($response,FALSE,$result);
             return $response; 
         }
-        UserController::login($email,$password);
+        $result=UserController::loginUser($email,$password);
        
-		 $result="Inicio de sesión exitoso";
-		$response=self::response($response,TRUE,$result);
+		 //$result="Inicio de sesión exitoso";
+		 if($result!=NULL)
+		 {
+			$response=self::response($response,TRUE,$result);
+		 }
+		 else {
+			$response=self::response($response,FALSE,$result);
+		 }
 		return $response;
     }
     

@@ -2,12 +2,13 @@
 namespace Chicken\Data;
 use Chicken\Library\DataAccessLayer;
 use Chicken\Library\MySqlParameter;
-abstract class ProductData{
 
-    public static function getProducts(){
+abstract class ComboData{
+
+    public static function getCombos(){
         $rtn = null;
 
-        $procedure_name = "usp_products_s_products";
+        $procedure_name = "usp_combos_s_combos";
         $params = NULL;
 
         $db = new DataAccessLayer();
@@ -24,14 +25,14 @@ abstract class ProductData{
 		return $rtn;
 
     }
-    
-    public static function getProduct($idproduct)
+
+    public static function getCombo($idcombo)
 	{
 		$rtn = NULL;
 
-		$procedureName = "usp_product_f_product";
+		$procedureName = "usp_combo_f_combo";
 		$params =  array(
-			new MySqlParameter("pidproduct", $idproduct, 1)
+			new MySqlParameter("pidcombo", $idcombo, 1)
 		);
 
 		$db = new DataAccessLayer();
@@ -39,29 +40,27 @@ abstract class ProductData{
 		$result = $db->ExecuteSelect($procedureName, $params);
 		$db->disconnect();
 		
-        if (isset($result))
-        {
+		if (isset($result)) {
 			$rtn = $result[0];
 		}
 
 		return $rtn;
-    }
+	}
     
-    public static function addProduct($name,$description,$price,$idcategory) {
+    public static function addCombo($name,$description,$type) {
         $rtn = null;
 
-        $procedureName = "usp_product_i_product"; 
+        $procedureName = "usp_combo_i_combo"; 
         $params = array(
                 new MySqlParameter("pname", $name, 1),
                 new MySqlParameter("pdescription", $description, 1),
-                new MySqlParameter("pprice", $price, 1),
-                new MySqlParameter("pcategoryid", $idcategory, 1),
+                new MySqlParameter("ptype", $type, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
         $db = new DataAccessLayer();
         $db->connect();
         $result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
-       $db->disconnect();
+        $db->disconnect();
         if (isset($result)) {
            $rtn = $result["oresult"];
         }
@@ -69,43 +68,16 @@ abstract class ProductData{
         return $rtn;
     }
 
-    public static function saveImageProduct($idproduct , $filename, $fileextension, $tmpfile)
-	{
-		$rtn = null;
-
-		$procedureName = "usp_product_i_image";
-		$params = array(
-			new MySqlParameter("pidproduct", $idproduct, 1),
-			new MySqlParameter("pfilename", $filename, 1),
-			new MySqlParameter("pfileextension", $fileextension, 1),
-			new MySqlParameter("ptmpfile", $tmpfile, 1),
-			new MySqlParameter("oresult", 0, 2)
-		);
-
-		$db = new MySqlHelper();
-		$db->connect();
-		$result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
-		$db->disconnect();
-		$output = 0;
-		if (isset($result)) {
-			$output = $result["oresult"];
-		}
-		$rtn = $output;
-
-		return $rtn;
-	}
-
-    public static function editProduct($idproduct,$name,$description,$price,$idcategory) {
+    public static function editCombo($idcombo,$name,$description,$type) {
         $rtn = null;
 
-        $procedureName = "usp_product_u_product"; 
+        $procedureName = "usp_combo_u_combo"; 
         $params = array(
-            new MySqlParameter("pproductid", $idproduct, 1),
+            new MySqlParameter("pidcombo", $idcombo, 1),
             new MySqlParameter("pname", $name, 1),
             new MySqlParameter("pdescription", $description, 1),
-            new MySqlParameter("price", $price, 1),
-            new MySqlParameter("pcategoryid", $idcategory, 1),
-             new MySqlParameter("oresult", 0, 2)
+            new MySqlParameter("ptype", $type, 1),
+            new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
         $db->connect();
@@ -118,12 +90,12 @@ abstract class ProductData{
         return $rtn;
     }
 
-    public static function deleteProduct($idproduct) {
+    public static function deleteCombo($idcombo) {
         $rtn = null;
 
-        $procedureName = "usp_product_d_product"; 
+        $procedureName = "usp_combo_d_combo"; 
         $params = array(
-                new MySqlParameter("pproductid", $idproduct, 1),
+                new MySqlParameter("pidcombo", $idcombo, 1),
                 new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
@@ -137,4 +109,5 @@ abstract class ProductData{
         return $rtn;
    }
 }
+
 ?>
