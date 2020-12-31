@@ -97,6 +97,7 @@ $app->group('/api/deliveryboy', function (RouteCollectorProxy $group) {
 
 $app->group('/api/client', function (RouteCollectorProxy $group) {
     $group->post('/add', ClientHandler::class . ':addClient');
+    $group->post('/changepassword', ClientHandler::class . ':changePassword');
     $group->post('/edit', ClientHandler::class . ':editClient');
 });
 

@@ -72,6 +72,26 @@ abstract class ClientData{
         return $rtn;
     }
 
+    public static function changePassword($email, $newpassword) {
+        $rtn = null;
+
+        $procedureName = "usp_client_u_password"; 
+        $params = array(
+            new MySqlParameter("pemail", $email, 1),
+            new MySqlParameter("pnewpassword", $newpassword, 1),
+             new MySqlParameter("oresult", 0, 2)
+            );
+        $db = new DataAccessLayer();
+        $db->connect();
+        $result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
+        $db->disconnect();
+        if (isset($result)) {
+            $rtn = $result["oresult"];
+        }
+
+        return $rtn;
+    }
+
     public static function deleteChef($dni) {
         $rtn = null;
 
