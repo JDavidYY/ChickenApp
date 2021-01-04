@@ -112,8 +112,7 @@ export class ProductListComponent implements OnInit {
     }
 
     mostrarImagenProduct(item:ProductModel){
-      let dialogRef = this.dialog.open(ProductShowimageComponent,{
-        autoFocus: false});
+      let dialogRef = this.dialog.open(ProductShowimageComponent,{autoFocus: false,panelClass: 'myapp-no-padding-dialog'});
     //nuevo codigo
       let instance = dialogRef.componentInstance;
       instance.idProduct = item.idProduct;
