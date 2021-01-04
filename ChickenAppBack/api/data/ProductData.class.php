@@ -93,6 +93,27 @@ abstract class ProductData{
 		$rtn = $output;
 
 		return $rtn;
+    }
+    
+    public static function getImage($idproduct)
+	{
+		$rtn = NULL;
+
+		$procedureName = "usp_product_s_image";
+		$params =  array(
+			new MySqlParameter("pidproduct", $idproduct, 1)
+		);
+
+		$db = new DataAccessLayer();
+		$db->connect();
+		$result = $db->ExecuteSelect($procedureName, $params);
+		$db->disconnect();
+		
+		if (isset($result)) {
+			$rtn = $result[0];
+		}
+
+		return $rtn;
 	}
 
     public static function editProduct($idproduct,$name,$description,$price,$idcategory) {

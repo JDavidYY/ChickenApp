@@ -74,6 +74,34 @@ class ClientHandler
 		
 	}
 
+	public function changePassword(Request $request, Response $response, array $args)
+	{
+
+		$data = (array)$request->getParsedBody();
+		//$client=$data['client'];
+		//$content = $request->getBody();
+		$email=$data['email'];
+		$password=$data['password'];
+		$newpassword=$data['newPassword'];
+		
+        $result="Error al iniciar sesión";
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+        }
+        $result=ClientController::changePassword($email,$password,$newpassword);
+       
+		 //$result="Inicio de sesión exitoso";
+		 if($result!=NULL)
+		 {
+			$response=self::response($response,TRUE,$result);
+		 }
+		 else {
+			$response=self::response($response,FALSE,$result);
+		 }
+		return $response;
+    }
+
 	public function deleteClient(Request $request, Response $response, array $args){
         $id=$args["id"];
 		$result=ClientController::deleteClient($id);
