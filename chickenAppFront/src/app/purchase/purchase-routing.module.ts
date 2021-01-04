@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ContainerComponent } from '../shared/components/container/container.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { OrderEditComponent } from './pages/order-edit/order-edit.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 // se declara los componentes que se usaran en el modulo
 export const PURCHASE_COMPONENTS = [
     MenuComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    OrderEditComponent
 ];
 
 // se arma el path segun el componente que queremos mostrar
@@ -25,6 +27,10 @@ const purchaseRoutes:Routes = [
             path: 'shopping-cart',
             component: ShoppingCartComponent
           },
+          {
+            path: 'order-edit',
+            component: OrderEditComponent
+          }
           // {
           //   path: 'shopping-cart',
           //   component: ShoppingCartComponent
