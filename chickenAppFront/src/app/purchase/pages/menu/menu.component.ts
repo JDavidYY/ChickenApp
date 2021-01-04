@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChangePasswordComponent } from '../../dialogos/change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ClientModel } from 'src/app/client/models/client-info.model';
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MenuComponent implements OnInit {
 
+  client: ClientModel = null;
   constructor(private router:Router, private dialog:MatDialog) { }
 
   ngOnInit(): void {
@@ -30,6 +32,6 @@ export class MenuComponent implements OnInit {
   }
   
   changeData(){
-    
+    this.router.navigate(['/newClient/editar', this.client.idClient ]);
   }
 }

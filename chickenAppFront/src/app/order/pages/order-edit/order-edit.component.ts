@@ -64,14 +64,14 @@ export class OrderEditComponent implements OnInit {
   ngOnInit(): void {   
     this.order_id = +this.route.snapshot.paramMap.get('order_id');
     if ( this.order_id > 0) {
-      this.cargarChef( this.order_id );
+      this.cargarOrder( this.order_id );
       this.actualizarButton = true;
 		  this.guardarButton = false;
     }
   }
 
   cargarOrder(idOrder){
-    this.orderservice.getChef(idOrder)
+    this.orderservice.getOrder(idOrder)
     .subscribe(
       (response) => {
         console.log(response);
