@@ -5,13 +5,17 @@ import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './pages/menu/menu.component';
 import { PurchaseRoutingModule, PURCHASE_COMPONENTS } from './purchase-routing.module';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { OrderEditComponent } from './pages/order-edit/order-edit.component';
+import { ChangePasswordComponent } from './dialogos/change-password/change-password.component';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
     declarations: [
         PURCHASE_COMPONENTS,
         MenuComponent,
-        ShoppingCartComponent
+        ShoppingCartComponent,
+        OrderEditComponent,
+        ChangePasswordComponent
     ],
     imports: [
         CommonModule,

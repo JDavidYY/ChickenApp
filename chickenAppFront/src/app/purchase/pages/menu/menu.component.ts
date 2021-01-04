@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChangePasswordComponent } from '../../dialogos/change-password/change-password.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +20,16 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/purchase/shopping-cart']);
   }
 
+  logout(){
+    this.router.navigate(['/login']);
+    localStorage.clear();
+    }
+  
+  changePassword(){
+    this.dialog.open(ChangePasswordComponent, { disableClose: true, autoFocus:false, width: '800px',panelClass: 'custom-dialog-container' });
+  }
+  
+  changeData(){
+    
+  }
 }
