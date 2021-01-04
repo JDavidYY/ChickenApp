@@ -1,7 +1,9 @@
 CREATE DEFINER=`admin`@`%` PROCEDURE `usp_promo_s_promo`()
 BEGIN
-	if (SELECT EXISTS(select * from Products)) then
-		select idProducts as "idProduct" , nameProducts as "name" , descriptionProducts as "description" , priceProducts as "price" , Categories_idCategories as "categoryid",discountProducts as "descuento" from Products where estateProducts=1;
+	IF (SELECT EXISTS(SELECT * FROM Products)) THEN
+		SELECT idProducts AS "idProduct" , nameProducts AS "name" , descriptionProducts AS "description" , priceProducts AS "price" , Categories_idCategories AS "categoryid",discountProducts AS "descuento" 
+		FROM Products 
+		WHERE estateProducts=1;
 
-    end if;
+    END IF;
 END
