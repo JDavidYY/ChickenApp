@@ -1,5 +1,6 @@
-CREATE DEFINER=`admin`@`%` PROCEDURE `usp_combo_i_combo`(in pnombre varchar(50),in pdescription varchar(100),out oresult int)
+CREATE DEFINER=`admin`@`%` PROCEDURE `usp_combo_i_combo`(in pnombre VARCHAR(50),in pdescription VARCHAR(100),out oresult INT)
 BEGIN
-	insert into Combo (nombreCombo,descriptionCombo) values (pnombre,pnombre);
-    set oresult=(SELECT MAX(idCombos) FROM Combo);
+	INSERT INTO Combo (nombreCombo,descriptionCombo) 
+    VALUES (pnombre,pnombre);
+    SET oresult = (SELECT MAX(idCombos) FROM Combo);
 END
