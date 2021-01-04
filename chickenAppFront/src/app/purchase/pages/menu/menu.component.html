@@ -1,1 +1,277 @@
-<p>menu works!</p>
+<div>
+    <mat-toolbar class="toolbar2 hidden-xs">
+        <div class="row toolbar-menu">
+            <div class="col-sm-12 col-lg-5 col-md-4">
+                <h1 class="h" ><a href="" style="text-decoration: none;color:white;">ChickenApp</a></h1>
+            </div>
+            <div class="col-sm-12 col-lg-7 col-md-8">
+                <nav class="menu-list">
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista"></li>
+                    <li class="lista">
+					   <div class="row col-md-6 justify-content-end">
+						<button mat-button [matMenuTriggerFor]="beforeMenu" style="color: white;font-size: 18px;">Hola, <mat-icon style="margin-bottom: 5px;">more_vert</mat-icon></button>
+							<mat-menu #beforeMenu="matMenu" xPosition="before">
+								<div style="background-color: #e8f0fe;margin: 10px;border-radius: 4px;padding: 0 30px;margin-bottom: 20px;margin-top: -4px;">
+									<p style="font-size: 13px;font-weight: 400;">Gestionada por ChickenApp</p>
+								</div>
+								<div style="padding: 0 8px;margin: 10px;margin-bottom: 20px; ">
+									<div style="text-align: center;color: white;">
+										<img src="https://atento.titalab.com/central/assets/images/ico-avatar.png" style="width: 80px;height:80px;border-radius:50%;margin-left: 5px">
+									</div>
+								</div>
+								<div style="text-align: center;font-size: 16px;margin-bottom: 20px;" >
+									
+								</div>
+								<div style="text-align: center;margin-bottom: 17px;font-size: 16px;">
+									<button class="logout" mat-stroked-button style="border-radius: 20px; font-weight: 400;margin-top: 17px;" (click)="changeData()"> Cambiar datos personales </button>
+								</div>
+								<mat-divider></mat-divider>
+								<div style="text-align: center;margin-bottom: 17px;font-size: 16px;">
+									<button class="logout" mat-stroked-button style="border-radius: 20px; font-weight: 400;margin-top: 17px;" (click)="changePassword()"> Cambiar contraseña </button>
+								</div>
+								<mat-divider></mat-divider>
+								<div style="text-align: center;margin-bottom: 17px;font-size: 16px;">
+									<button class="logout" mat-stroked-button style="border-radius: 20px; font-weight: 400;margin-top: 17px;" (click)="logout()">Cerrar sesión</button>
+								</div>
+								<mat-divider></mat-divider>
+								<div style="text-align: center;margin-top: 17px;">
+									<p style="font-size: 12px;">Políticas de Privacidad</p>
+								</div>
+							</mat-menu>
+						</div>
+			  		</li>
+                    <!--
+					<li class="lista">
+                        <a routerLink="/login">
+                            <div>
+                                <img class="" src="assets/images/backgrounds/iniciar-sesion.png" style="width: 25px; height: 25px;margin-right: 10px;">
+                                Iniciar Sesión
+                            </div>
+                        </a>
+                    </li>
+					-->
+                </nav>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>
+<div class="espacio">
+    <nav class="navbar navbar-dark bg-dark hidden-lg">
+        <a class="tit-m" href="#">
+            <p class="titulo-m">ChickenApp</p>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a routerLink="/login">
+                    <div style="padding-top: 10px;color: black;">
+                        <img class="" src="assets/images/backgrounds/iniciar-sesion.png" style="width: 25px; height: 25px;margin-right: 10px;">
+                        Iniciar Sesión
+                    </div>
+                </a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+</div>
+
+<section class="menu-section">
+	<ul class="nav nav-tabs navs justify-content-center lista-menu" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active pest1" id="promociones-tab" data-toggle="tab" href="#promociones" role="tab" aria-controls="promociones" aria-selected="true">
+						<img class="tab-img" src="assets/images/backgrounds/promociones.png">Promociones</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="combos-tab" data-toggle="tab" href="#combos" role="tab" aria-controls="combos" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/pierna-de-pollo.png">Combos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="parrila-tab" data-toggle="tab" href="#parrila" role="tab" aria-controls="parrila" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/barbacoa.png">Parrillas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="ensalada-tab" data-toggle="tab" href="#ensalada" role="tab" aria-controls="ensalada" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/ensalada.png">Ensaladas</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="postres-tab" data-toggle="tab" href="#postres" role="tab" aria-controls="postres" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/pastel.png">Postres</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link pest1" id="bebidas-tab" data-toggle="tab" href="#bebidas" role="tab" aria-controls="bebidas" aria-selected="false">
+						<img class="tab-img" src="assets/images/backgrounds/agua.png">Bebidas</a>
+				</li>
+	</ul>
+	<div class="col-12 col-lg-10 offset-lg-1">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="promociones" role="tabpanel" aria-labelledby="promociones-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg" (click)="goShoppingCart()">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="combos" role="tabpanel" aria-labelledby="combos-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="parrila" role="tabpanel" aria-labelledby="parrila-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="ensalada" role="tabpanel" aria-labelledby="ensalada-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="postres" role="tabpanel" aria-labelledby="postres-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="bebidas" role="tabpanel" aria-labelledby="bebidas-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont">
+						<a href="" class="menu-a">
+							<img class="menu-img" src="assets/images/backgrounds/cuarto-parrillero.jpg">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">Cuarto Parrillero</p>
+								<p class="menu-desc">1/4 parrilla + papas + ensalada</p>
+								<p class="menu-precio"><strong>S/. 14.00</strong></p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="mifooter">
+	<div class="col-12 col-lg-10 offset-lg-1 section-1 np">
+		<div class="row">
+			<div class="col-12 col-md-3 text-center">
+				<div>
+					<a href=""><img class="logo-pollo" src="assets/imagenlogo.png" style="width: 150px; height: 120px;"></a>
+				</div>
+				<div class="centro">Disfruta de nuestros deliciosos platillos en la comodidad de tu hogar.</div>
+			</div>
+			<div class="col-12 col-md-3 sec-2">
+				<div class="menu"><strong>Menú</strong></div>
+				<div class="submenu"><a href="" class="submenu">Sobre Nosotros</a></div>
+				<div class="submenu"><a href="" class="submenu">Términos y condiciones</a></div>
+				<div class="submenu"><a href="" class="submenu">Políticas de privacidad</a></div>
+			</div>
+			<div class="col-12 col-md-3">
+				<div class="menu"><strong>Datos informativos</strong></div>
+				<div class="submenu">Av. Elmer Faucett San Miguel, Perú</div>
+				<div class="submenu"><strong>Llámanos: +555 5555</strong></div>
+				<div class="submenu">Lun-Sab 8:00 am - 21:00 pm</div>
+			</div>
+			<div class="col-12 col-md-3 sec-4">
+				<div class="menu"><strong>Siguenos en Facebook</strong></div>
+				<div class="row submenu">
+					<div class="submenu-2 vector">
+						<a href="" target="_blank"><img src="assets/images/backgrounds/facebook.png" alt=""></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

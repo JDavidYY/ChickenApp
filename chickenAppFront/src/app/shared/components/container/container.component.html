@@ -9,12 +9,11 @@
 
             </div>
 
-          <!-- <mat-accordion *ngIf=" role_id == 1"> -->
-            <mat-accordion>
+          <mat-accordion *ngIf=" role_id == 2">
               <mat-expansion-panel style="background-color: #eecd86; box-shadow: none;border-radius: 0 0 0 0;" [expanded]="true">
                   <mat-expansion-panel-header style="margin-left: -23px;background-color: #7a3e48;" class="specific-class">
                       <mat-panel-title style="padding-left: 0px !important;">
-                          <span style="color: white;font-size: 14px;margin-left: 15px;">Módulo mantenimiento</span>
+                          <span style="color: rgb(53, 42, 42);font-size: 14px;margin-left: 15px;">Módulo mantenimiento</span>
                       </mat-panel-title>
                   </mat-expansion-panel-header>
                   <!-- <a mat-list-item  (click)="goto('/plan/listado')" *ngIf=" role_id == 1 || role_id == 2" > -->
@@ -30,10 +29,19 @@
                     <img src="assets/images/backgrounds/lista.png" class="logos">
                       <span>Categorías</span>
                   </a>
-                  <!-- <a mat-list-item (click)="goto('/product/listado')" >
-                    <img src="../../../../assets/images/backgrounds/plato.png" class="logos2">
+                  <a mat-list-item (click)="goto('/product/listado')" >
+                    <img src="assets/images/backgrounds/plato.png" class="logos2">
                       <span>Productos</span>
-                  </a> -->
+                  </a>
+                  <a mat-list-item (click)="goto('/promotion/listado')" >
+                    <img src="../../../../assets/images/backgrounds/promotion.png" class="logos2">
+                    <img src="assets/images/backgrounds/plato.png" class="logos2">
+                      <span>Promociones</span>
+                  </a>
+                  <a mat-list-item (click)="goto('/combo/listado')" >
+                    <img src="assets/images/backgrounds/plato.png" class="logos2">
+                      <span>Combos</span>
+                  </a>
               </mat-expansion-panel>
           </mat-accordion>
         </mat-nav-list>

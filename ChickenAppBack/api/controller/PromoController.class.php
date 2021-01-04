@@ -15,9 +15,9 @@ abstract class PromoController{
 		return PromoData::getPromo($idpromo);
 	}
     
-    public static function addPromo($idpromo,$descuento)
+    public static function addPromo($idproduct,$descuento)
     {
-        return PromoData::addPromo($idpromo,$descuento);
+        return PromoData::addPromo($idproduct,$descuento);
     }
 
     public static function editPromo($idpromo,$descuento)

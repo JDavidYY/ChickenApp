@@ -3,6 +3,11 @@ export class ProductModel
     idProduct:string = "";
     name:string = "";
     description:string = "";
-    price:string = "";
+    price:number = 0;
     categoryid:string = "";
+    descuento:string="";
+    image_name: string = "";
+    file_name:string = null;
+    namecategory:string="";
+    cantidad:string="";
 }

@@ -35,16 +35,24 @@ export class ClientService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<ClientListResponse>(url, options);
 	}
-	// api para obtener los datos de un Chef por GET
+	// api para obtener los datos de un cliente por GET
   	getClient(idClient:string):Observable<ClientGetResponse> {
 		const url = this.apiurl + "/get/" + idClient;
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<ClientGetResponse>(url, options);
 	}
-	// api para eliminar a Chef por GET
+	// api para eliminar a Cliente por GET
   	eliminarClient(idClient:string):Observable<ClientGetResponse> {
 		const url = this.apiurl + "/delete/" + idClient;
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.delete<ClientGetResponse>(url, options);
 	}	
+
+	// api para que un cliente cambie su propia contraseña
+	changePasswordClient(client:ClientModel):Observable<ClientPostResponse>{
+		const url = this.apiurl + "/changepassword";
+		var data = { email:client.email, password:client.password, newPassword:client.newPassword }
+		const options = this.httpService.headerOptionsJson(true,true);
+		return this.httpClient.post<ClientPostResponse>(url, data,options);
+	}
 }
