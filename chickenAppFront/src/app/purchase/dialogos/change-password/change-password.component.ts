@@ -22,7 +22,6 @@ export class ChangePasswordComponent implements OnInit {
   ]);
 
 
-
   emailFormControl = new FormControl('', [
   Validators.required,
   Validators.email
