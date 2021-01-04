@@ -1,7 +1,8 @@
-CREATE DEFINER=`admin`@`%` PROCEDURE `usp_product_i_image`(in pidproduct varchar(50),in pfilename varchar(50),in pfileextension varchar(50),in  ptmpfile varchar(50),out oresult int)
+CREATE DEFINER=`admin`@`%` PROCEDURE `usp_product_i_image`(in pidproduct VARCHAR(50),in pfilename VARCHAR(50),in pfileextension VARCHAR(50),in  ptmpfile VARCHAR(50),out oresult INT)
 BEGIN
 
-	insert into Images (idreferenceImages,typeImages,filenameImages,fileextensionImages,tmpImages) values (pidproduct,'product',pfilename,pfileextension,ptmpfile);
-    set oresult=1;
+	INSERT INTO Images (idreferenceImages,typeImages,filenameImages,fileextensionImages,tmpImages) 
+    VALUES (pidproduct,'product',pfilename,pfileextension,ptmpfile);
+    SET oresult=1;
 	
 END
