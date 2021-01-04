@@ -27,7 +27,8 @@ export class ProductEditComponent implements OnInit {
 	file: any;
 	lead_id: number = 0;
 	image_name: string = null;
-	progress = false;
+  progress = false;
+  previmage_name:string=null;
 
 
   nameFormControl = new FormControl('', [
@@ -96,6 +97,9 @@ export class ProductEditComponent implements OnInit {
           // this.product.categoryid= response.result["idCategory"];
           this.product.categoryid= response.result["categoryid"];
           this.categoryid=this.product.categoryid;
+          this.image_name=response.result["file_name"];
+          //this.image_name='gaaa';
+          //this.previmage_name=this.image_name;
         }
       },
       (err) => {
@@ -144,6 +148,8 @@ export class ProductEditComponent implements OnInit {
           (response) => {
             console.log(response);
             if ( response && response.ok && response.result != 0 )
+              this.id=response.result;
+              this.saveImage();
               Swal.fire(
                 'Enhorabuena!',
                 'El producto ha sido actualizado.',
@@ -218,8 +224,7 @@ export class ProductEditComponent implements OnInit {
 
   deletenameImage() {
     this.image_name = null;
-
-		this.product.image_name = null;
+    this.product.image_name = null;
 		//this.nombre_imagen = false;
 		//this.carga_imagen = true;
   }

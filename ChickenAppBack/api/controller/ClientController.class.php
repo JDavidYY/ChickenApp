@@ -11,10 +11,19 @@ abstract class ClientController{
     /*public static function getClients(){
         return ClientData::getClients();
     }*/
+
+    public static function getClient($idclient)
+	{
+		return ClientData::getClient($idclient);
+    }
     
     public static function addClient($firstname,$lastname,$phone,$email,$adress,$password){
         $password_encrypted = SecurityExtensions::encrypt($password);
         return ClientData::addClient($firstname,$lastname,$phone,$email,$adress,$password_encrypted);
+    }
+
+    public static function editClient($idclient,$firstname,$lastname,$phone,$adress){
+        return ClientData::editClient($idclient,$firstname,$lastname,$phone,$adress);
     }
 
     public static function changePassword($email,$password,$newpassword){
@@ -32,11 +41,8 @@ abstract class ClientController{
         return $rtn;
     }
 
-    /*public static function editClient($firstname,$lastname,$phone,$email,$content){
-        return ClientData::editClient($firstname,$lastname,$phone,$email,$content);
-    }
 
-    public static function deleteClient($dni){
+    /*public static function deleteClient($dni){
         return ClientData::deleteClient($dni);  
     }*/
 	

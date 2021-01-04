@@ -30,8 +30,8 @@ abstract class ProductController{
 		return $rtn;
     }
     
-    public static function editImage($idproduct,$filename){
-        return ProductData::editProduct($idproduct,$filename);
+    public static function editImageProduct($idproduct,$filename){
+        return ProductData::editImageProduct($idproduct,$filename);
     }
 
     public static function deleteProduct($idproduct){
