@@ -25,7 +25,8 @@ abstract class ClientController{
         $verify = password_verify($password, $password_encrypt);
         if ($verify===TRUE)
 		{
-			$rtn = ClientData::changePassword($email, $newpassword);
+            $newpassword_encrypted = SecurityExtensions::encrypt($newpassword);
+            $rtn = ClientData::changePassword($email, $newpassword_encrypted);
 		}
         
         return $rtn;

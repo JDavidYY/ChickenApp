@@ -28,7 +28,8 @@ export class ClientService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		let url = this.apiurl + "/add";
 		return this.httpClient.post<ClientPostResponse>(url, client, options);
-	}
+  }
+
 // api para obtener el listado de todoS los chef por GET
 	seleccionarClients():Observable<ClientListResponse> {
 		const url = this.apiurl + "/select";
@@ -46,5 +47,18 @@ export class ClientService {
 		const url = this.apiurl + "/delete/" + idClient;
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.delete<ClientGetResponse>(url, options);
+<<<<<<< Updated upstream
 	}	
 }
+=======
+	}
+
+	// api para que un cliente cambie su propia contraseña
+	changePasswordClient(client:ClientModel):Observable<ClientPostResponse>{
+		const url = this.apiurl + "/changepassword";
+		var data = { email:client.email, password:client.password, newPassword:client.newPassword }
+		const options = this.httpService.headerOptionsJson(true,true);
+		return this.httpClient.post<ClientPostResponse>(url, data,options);
+	}
+}
+>>>>>>> Stashed changes
