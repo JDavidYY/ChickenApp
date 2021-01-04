@@ -138,22 +138,46 @@ class ProductHandler
 			->withStatus(200);*/
 	}
     
-    public function editProduct(Request $request, Response $response, array $args){
+    public function editImage(Request $request, Response $response, array $args){
+
+		$rtn = NULL;
 
 		$data = (array)$request->getParsedBody();
+		$idproduct = $data['idProduct']; 
+		$files = $request->getUploadedFiles();
+		$result="La imagen no se pudo actualizar";
+		if (!isset($files) || !is_array($files)) {
+			$response=self::response($response,FALSE,$result);
+		}
+		$file = $files['image']; //$file = $request->files->get('image');
+		$filename = $file->getClientFilename(); //$filename = $file->getClientOriginalName();
+		$fileextension = substr($filename, strrpos($filename, '.') + 1);
+		$tmpfile = $idproduct . '.' . $fileextension; //$tmpfile = date('YmdHis') . '.' . $fileextension;
+		$storage= new Storage();
+		$storage->uploadObject('mainkra','products/'.$tmpfile,$_FILES['image']['tmp_name']);
 		
-        $idproduct=$data["idProduct"];
-        $name=$data['name'];
-        $description=$data['description'];
-		$price=$data['price'];
-		$idcategory=$data['idCategory'];
-        //$categoryid=$data['categoryid'];
-	
-		$result=ProductController::editProduct($idproduct,$name,$description,$price,$idcategory);
-		$result='Producto actualizado correctamente';
+		$result = ProductController::editImageProduct($idproduct,$filename);
+
 		$response=self::response($response,TRUE,$result);
 		return $response;
 		
+	}
+
+	public function getImage(Request $request, Response $response, array $args)
+	{
+		$idproduct = $args['idProduct'];
+		$result = ProductController::getImage( $idproduct );
+
+		$rtn = array(
+			'ok' => true,
+			'result' => $result
+		);
+
+		//return $app->json($rtn);
+		$response->getBody()->write(json_encode($rtn));
+		return $response
+			->withHeader('Content-Type', 'application/json')
+			->withStatus(200);
 	}
 
 	public function deleteProduct(Request $request, Response $response, array $args){
