@@ -24,6 +24,28 @@ abstract class ClientData{
 		return $rtn;
 
     }
+
+    public static function getClient($idclient)
+	{
+		$rtn = NULL;
+
+		$procedureName = "usp_client_f_client";
+		$params =  array(
+			new MySqlParameter("pidclient", $idclient, 1)
+		);
+
+		$db = new DataAccessLayer();
+		$db->connect();
+		$result = $db->ExecuteSelect($procedureName, $params);
+		$db->disconnect();
+		
+        if (isset($result))
+        {
+			$rtn = $result[0];
+		}
+
+		return $rtn;
+    }
     
     public static function addClient($firstname,$lastname,$phone,$email,$adress,$password) {
         $rtn = null;
@@ -49,16 +71,16 @@ abstract class ClientData{
         return $rtn;
     }
 
-    public static function editClient($dni,$firstname,$lastname,$email,$phone) {
+    public static function editClient($idclient,$firstname,$lastname,$phone,$adress) {
         $rtn = null;
 
-        $procedureName = "usp_chef_u_chef"; 
+        $procedureName = "usp_client_u_client"; 
         $params = array(
-            new MySqlParameter("dni", $dni, 1),
+            new MySqlParameter("pidclient", $idclient, 1),
             new MySqlParameter("pfirstname", $firstname, 1),
             new MySqlParameter("plastname", $lastname, 1),
-            new MySqlParameter("email", $email, 1),
-            new MySqlParameter("phone", $phone, 1),
+            new MySqlParameter("pphone", $phone, 1),
+            new MySqlParameter("padress", $adress, 1),
              new MySqlParameter("oresult", 0, 2)
             );
         $db = new DataAccessLayer();
