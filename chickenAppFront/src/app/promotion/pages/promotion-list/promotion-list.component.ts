@@ -19,7 +19,9 @@ export class PromotionListComponent implements OnInit {
   dataSourceOne: MatTableDataSource<PromotionModel>;
   displayedColumnsOne: string[] = [
     'idProduct',
-	  'descuento'];
+    'name',
+    'descuento',
+	  'price'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -43,8 +45,8 @@ export class PromotionListComponent implements OnInit {
             (response) => {
                 console.log(response);
                 if (response != null && response.ok && response.result != null){
-                    const promotion = response.result;
-                    this.dataSourceOne.data = promotion;
+                    const product = response.result;
+                    this.dataSourceOne.data = product;
                     this.dataSourceOne.paginator = this.tableOnePaginator;
                     this.dataSourceOne.sort = this.tableOneSort;
                 }

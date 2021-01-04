@@ -115,7 +115,7 @@ $app->group('/api/category', function (RouteCollectorProxy $group) {
 $app->group('/api/product', function (RouteCollectorProxy $group) {
     $group->post('/add', ProductHandler::class . ':addProduct');
     $group->post('/uploadimg', ProductHandler::class . ':uploadImage');
-    $group->get('/select', ProductHandler::class . ':getProducts');
+    $group->get('/select', ProductHandler::class . ':selectProduct');
     $group->get('/get/{idProduct}', ProductHandler::class . ':getProduct');
     //$group->post('/edit/{idProduct}', ProductHandler::class . ':editProduct');
     $group->post('/delete', ProductHandler::class . ':deleteProduct');
@@ -124,6 +124,7 @@ $app->group('/api/product', function (RouteCollectorProxy $group) {
 $app->group('/api/combo', function (RouteCollectorProxy $group) {
     $group->post('/add', ComboHandler::class . ':addCombo');
     $group->get('/select', ComboHandler::class . ':getCombos');
+    $group->get('/selectprods/{idCombo}', ComboHandler::class . ':selectProducts');
     $group->get('/get/{idCombo}', ComboHandler::class . ':getCombo');
     //$group->post('/edit/{idCombo}', ComboHandler::class . ':editCombo');
     $group->post('/delete', ComboHandler::class . ':deleteCombo');

@@ -4,7 +4,7 @@
     </div>
     <!-- Form para guardar los datos del promotion y se captura con [(ngModel)] -->
     <form>
-        
+
         <div class="form-row" >
             <mat-form-field clsas="col-md-12">
                 <mat-select name="txtCategory" [(ngModel)]="promotion.idProduct" [formControl]="idProductFormControl">
@@ -19,7 +19,7 @@
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Descuento</mat-label>
+                <mat-label>Descuento (%)</mat-label>
                 <input matInput [(ngModel)]="promotion.descuento" [formControl]="descuentoFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="descuentoFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
@@ -28,10 +28,10 @@
         </div>
         <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
-            <div class="col-sm-12 text-right">     
-                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>   
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarPromotion()">Guardar</button> 
+            <div class="col-sm-12 text-right">
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarPromotion()">Guardar</button>
             </div>
         </div>
-    </form> 
+    </form>
 </div>

@@ -13,11 +13,26 @@ abstract class ComboController{
     public static function getCombo($idcombo)
 	{
 		return ComboData::getCombo($idcombo);
+    }
+    
+    public static function selectProducts($idcombo)
+	{
+		return ComboData::selectProducts($idcombo);
 	}
     
-    public static function addCombo($name,$description,$type)
+    public static function addCombo($name,$description,$idproducts,$cantidades)
     {
-        return ComboData::addCombo($name,$description,$type);
+        $rtn = null;
+
+        $idcombo = ComboData::addCombo($name,$description);
+        if($idcombo>0){
+            for($i=0;$i<count($idproducts);$i++){
+            $rtn = ComboData::addProduct($idcombo,$idproducts[$i],$cantidades[$i]);
+            }
+        }
+
+        return $rtn;
+
     }
 
     public static function editCombo($idcombo,$name,$description,$type)

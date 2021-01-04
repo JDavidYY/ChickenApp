@@ -4,7 +4,7 @@
             <!--titulooo-->
             <h1>Registro de productos</h1>
         </div>
-    
+
     <!-- Form para guardar los datos del product y se captura con [(ngModel)] -->
     <form>
         <div class="form-row" >
@@ -29,7 +29,7 @@
             <mat-form-field clsas="col-sm-6">
                 <mat-select name="txtCategory" [(ngModel)]="categoryid" [formControl]="categoryidFormControl">
                   <mat-option>-- Seleccione una categoría --</mat-option>
-                  <mat-option *ngFor="let category of categories" value="{{category.idCategory}}">{{category.name}}</mat-option>
+                  <mat-option *ngFor="let category of categories" [value]="category.idCategory">{{category.name}}</mat-option>
                 </mat-select>
                 <mat-label>Categoría</mat-label>
                 <mat-error *ngIf="categoryidFormControl.hasError('required')">
@@ -37,7 +37,7 @@
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Precio</mat-label>
+                <mat-label>Precio(Soles)</mat-label>
                 <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;"  required>
                 <mat-error *ngIf="priceFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
@@ -64,11 +64,11 @@
         </div>
         <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
-            <div class="col-sm-12 text-right">     
-                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>   
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarProduct()">Guardar</button> 
+            <div class="col-sm-12 text-right">
+                <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarProduct()">Guardar</button>
             </div>
         </div>
-    </form> 
+    </form>
     </div>
 </div>

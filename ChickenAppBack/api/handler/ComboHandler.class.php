@@ -22,6 +22,14 @@ class ComboHandler
 		return $response;
 	}
 
+	public function selectProducts(Request $request, Response $response, array $args) {
+        
+		$idcombo = $args['idCombo'];
+		$result=ComboController::selectProducts($idcombo);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
 	public function getCombo(Request $request, Response $response, array $args)
 	{
 		$idcombo = $args['idCombo'];
@@ -35,19 +43,19 @@ class ComboHandler
 		
 		$data = (array)$request->getParsedBody();
 				
-		$idcombo=$data['idCombo'];
         $name=$data['name'];
 		$description=$data['description'];
-		$type=$data['type'];
+		$idproducts=$data['idproducts'];
+		$cantidades=$data['cantidades'];
 
-        $result="Error al agregar el combo";
-        
-		if($idcombo=='')
-		{
-			ComboController::addCombo($name,$description,$type);
-		}else{
-			ComboController::editCombo($idcombo,$name,$description,$type);
+		$result="Error al agregar el combo";
+		
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
 		}
+        
+		ComboController::addCombo($name,$description,$idproducts,$cantidades);
 
 		$result="Combo agregado";
 		$response=self::response($response,TRUE,$result);

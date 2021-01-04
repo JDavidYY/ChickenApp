@@ -6,13 +6,15 @@ import { ComboListComponent } from './pages/combo-list/combo-list.component';
 import { ComboEditComponent } from './pages/combo-edit/combo-edit.component';
 import { ComboRoutingModule, COMBO_COMPONENTS } from './combo-routing.module';
 import { ComboService } from './services/combo.service';
+import { ComboVerproductosComponent } from './pages/combo-verproductos/combo-verproductos.component';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
     declarations: [
         COMBO_COMPONENTS,
         ComboListComponent,
-        ComboEditComponent
+        ComboEditComponent,
+        ComboVerproductosComponent
     ],
     imports: [
         CommonModule,

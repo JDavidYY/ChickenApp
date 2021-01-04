@@ -47,12 +47,12 @@ abstract class PromoData{
 		return $rtn;
 	}
     
-    public static function addPromo($idpromo,$descuento) {
+    public static function addPromo($idproduct,$descuento) {
         $rtn = null;
 
         $procedureName = "usp_promo_i_promo"; 
         $params = array(
-                new MySqlParameter("pidpromo", $idpromo, 1),
+                new MySqlParameter("pidproduct", $idproduct, 1),
                 new MySqlParameter("pdescuento", $descuento, 1),
                 new MySqlParameter("oresult", 0, 2)
            );
