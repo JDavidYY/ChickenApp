@@ -88,10 +88,12 @@
 
 <section class="menu-section">
 	<ul class="nav nav-tabs navs justify-content-center lista-menu" id="myTab" role="tablist">
-				<li class="nav-item">
+				<li class="nav-item" *ngFor="let dish of dishes">
 					<a class="nav-link active pest1" id="promociones-tab" data-toggle="tab" href="#promociones" role="tab" aria-controls="promociones" aria-selected="true">
-						<img class="tab-img" src="assets/images/backgrounds/promociones.png">Promociones</a>
+						<!--<img class="tab-img" src="assets/images/backgrounds/promociones.png">{{dish.name}}</a>-->
+						<img class="tab-img" src="assets/images/backgrounds/promociones.png">{{dish.name}}</a>
 				</li>
+				<!-- 
 				<li class="nav-item">
 					<a class="nav-link pest1" id="combos-tab" data-toggle="tab" href="#combos" role="tab" aria-controls="combos" aria-selected="false">
 						<img class="tab-img" src="assets/images/backgrounds/pierna-de-pollo.png">Combos</a>
@@ -112,6 +114,7 @@
 					<a class="nav-link pest1" id="bebidas-tab" data-toggle="tab" href="#bebidas" role="tab" aria-controls="bebidas" aria-selected="false">
 						<img class="tab-img" src="assets/images/backgrounds/agua.png">Bebidas</a>
 				</li>
+				-->
 	</ul>
 	<div class="col-12 col-lg-10 offset-lg-1">
 		<div class="tab-content" id="myTabContent">
