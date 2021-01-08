@@ -4,7 +4,7 @@
        <div class="col-12 col-md-6">
         <div class="container pt-5 cliente-cont">
             <div class="">
-                <h1 class="titulo-registro">Registro de Cliente</h1>
+                <h1 class="titulo-registro">Datos de Cliente</h1>
             </div>
             <!-- Form para guardar los datos del chef y se captura con [(ngModel)] -->
             <form>
@@ -27,7 +27,16 @@
                     </mat-form-field>
                 </div>
                 <div class="form-row" >
-                    <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                        <mat-label>Dirección</mat-label>
+                        <input matInput [(ngModel)]="client.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                        <mat-error *ngIf="adressFormControl.hasError('required')">
+                            Este campo es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row" >
+                    <mat-form-field class="col-md-6" *ngIf="client_id==0" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Correo electrónico</mat-label>
                         <input matInput [(ngModel)]="client.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                         <mat-error *ngIf="emailFormControl.hasError('required')">
@@ -48,7 +57,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="form-row" >
+                <div class="form-row" *ngIf="client_id==0">
                     <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Password</mat-label>
                         <input matInput [(ngModel)]="client.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
@@ -57,15 +66,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="form-row" >
-                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                        <mat-label>Dirección</mat-label>
-                        <input matInput [(ngModel)]="client.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
-                        <mat-error *ngIf="adressFormControl.hasError('required')">
-                            Este campo es <strong>requerido</strong>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                
                 <!-- Div de botones para regresar o guardar los datos de los campos -->
                 <div class="form-row pt-2">
                     <div class="col-sm-12 text-right">

@@ -37,8 +37,8 @@ export class MenuComponent implements OnInit {
   }
   
   changeData(){
-    this.client.idClient = localStorage.getItem("idClient");
-    this.router.navigate(['/client/editar', this.client.idClient ]);
+    let cliente = localStorage.getItem("idClient");
+    this.router.navigate(['/client/editar', cliente ]);
   }
 
   cargarCategorias(){
