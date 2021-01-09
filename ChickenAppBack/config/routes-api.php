@@ -118,6 +118,7 @@ $app->group('/api/product', function (RouteCollectorProxy $group) {
     $group->post('/add', ProductHandler::class . ':addProduct');
     $group->post('/uploadimg', ProductHandler::class . ':uploadImage');
     $group->get('/select', ProductHandler::class . ':selectProduct');
+    $group->get('/select-category/{idCategory}', ProductHandler::class . ':selectProductByCategory');
     $group->get('/get/{idProduct}', ProductHandler::class . ':getProduct');
     //$group->post('/edit/{idProduct}', ProductHandler::class . ':editProduct');
     $group->post('/delete', ProductHandler::class . ':deleteProduct');

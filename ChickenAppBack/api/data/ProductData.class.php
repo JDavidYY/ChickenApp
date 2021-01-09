@@ -7,12 +7,35 @@ abstract class ProductData{
     public static function selectProduct(){
         $rtn = null;
 
-        $procedure_name = "usp_products_s_products";
+        $procedureName = "usp_products_s_products";
         $params = NULL;
 
         $db = new DataAccessLayer();
         $db->connect();
-        $result = $db->ExecuteSelect($procedure_name, $params);
+        $result = $db->ExecuteSelect($procedureName, $params);
+        $db->disconnect();
+        $output = 0;
+        if (isset($result)) 
+        {
+			$output = $result;
+		}
+		$rtn = $output;
+
+		return $rtn;
+
+	}
+	
+	public static function selectProductByCategory($idcategory){
+        $rtn = null;
+
+        $procedureName = "usp_categories_s_products";
+		$params =  array(
+			new MySqlParameter("pidcategory", $idcategory, 1)
+		);
+
+        $db = new DataAccessLayer();
+        $db->connect();
+        $result = $db->ExecuteSelect($procedureName, $params);
         $db->disconnect();
         $output = 0;
         if (isset($result)) 
