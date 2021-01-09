@@ -33,7 +33,10 @@ export class MenuComponent implements OnInit {
     }
   
   changePassword(){
-    this.dialog.open(ChangePasswordComponent, { disableClose: true, autoFocus:false, width: '800px',panelClass: 'custom-dialog-container' });
+    /*antiguo*/
+    /*this.dialog.open(ChangePasswordComponent, { disableClose: true, autoFocus:false, width: '800px',panelClass: 'custom-dialog-container' });*/
+    /*nuevo: se cambio custom-dialog-container por myapp-no-padding-dialog*/
+    this.dialog.open(ChangePasswordComponent, { disableClose: true, autoFocus:false, width: '800px',panelClass: 'myapp-no-padding-dialog' });
   }
   
   changeData(){
