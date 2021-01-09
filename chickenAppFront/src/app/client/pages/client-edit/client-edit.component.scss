@@ -30,6 +30,19 @@
   padding-top: 20px;
 }
 
+@media(max-wight: 1400px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: auto;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}
 @media(max-width:1024px){
   .cliente-img{
     width: 100%;
