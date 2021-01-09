@@ -7,6 +7,7 @@ import { CategoryService } from 'src/app/category/services/category.service';
 import { CategoryModel } from 'src/app/category/models/category-info.model';
 import { ProductModel } from 'src/app/product/models/product-info.model';
 import { ProductService } from 'src/app/product/services/product.service';
+import { AddToCartComponent } from '../../dialogos/add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'app-menu',
@@ -76,5 +77,14 @@ export class MenuComponent implements OnInit {
           console.log(err);
       }
   );
+  }
+
+  pedirProduct(item:ProductModel)
+  {
+    let dialogRef = this.dialog.open(AddToCartComponent,{autoFocus: false,panelClass: 'myapp-no-padding-dialog'});
+    //nuevo codigo
+      let instance = dialogRef.componentInstance;
+      instance.product = item;
+      console.log(instance);
   }
 }

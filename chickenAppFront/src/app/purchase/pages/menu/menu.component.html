@@ -133,7 +133,7 @@
 				<div class="row">
 					<div class="col-12 col-lg-3 col-md-4 menu-cont" *ngFor="let product of products">
 						<a class="menu-a">
-							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}" width="350" height="250" >
+							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}" width="350" height="250" (click)="pedirProduct(product)">
 							<div class="menu-contenedor">
 								<p class="menu-titulo">{{product.name}}</p>
 								<p class="menu-desc">{{product.description}}</p>

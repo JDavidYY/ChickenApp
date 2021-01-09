@@ -7,6 +7,7 @@ import { PurchaseRoutingModule, PURCHASE_COMPONENTS } from './purchase-routing.m
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { OrderEditComponent } from './pages/order-edit/order-edit.component';
 import { ChangePasswordComponent } from './dialogos/change-password/change-password.component';
+import { AddToCartComponent } from './dialogos/add-to-cart/add-to-cart.component';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
@@ -15,7 +16,8 @@ import { ChangePasswordComponent } from './dialogos/change-password/change-passw
         MenuComponent,
         ShoppingCartComponent,
         OrderEditComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        AddToCartComponent
     ],
     imports: [
         CommonModule,
@@ -23,7 +25,7 @@ import { ChangePasswordComponent } from './dialogos/change-password/change-passw
         SharedModule,
         PurchaseRoutingModule
     ],
-    providers: [ 
+    providers: [
         // PurchaseService
     ]
   })
