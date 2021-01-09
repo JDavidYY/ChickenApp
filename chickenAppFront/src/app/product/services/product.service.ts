@@ -35,7 +35,14 @@ export class ProductService {
 		const url = this.apiurl + "/select";
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<ProductListResponse>(url, options);
-	}
+  }
+
+  seleccionarProductsByCategory(idCategory:number):Observable<ProductListResponse> {
+		const url = this.apiurl + "/select-category/"+idCategory;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<ProductListResponse>(url, options);
+  }
+
 	// api para obtener los datos de un Product por GET
   	getProduct(idProduct:string):Observable<ProductGetResponse> {
 		const url = this.apiurl + "/get/" + idProduct;

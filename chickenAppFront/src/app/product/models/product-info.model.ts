@@ -7,6 +7,7 @@ export class ProductModel
     categoryid:string = "";
     descuento:string="";
     image_name: string = "";
+    image_type: string = "";
     file_name:string = null;
     namecategory:string="";
     cantidad:string="";

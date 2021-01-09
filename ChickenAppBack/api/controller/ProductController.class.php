@@ -9,6 +9,10 @@ abstract class ProductController{
     public static function selectProduct(){
         return ProductData::selectProduct();
     }
+
+    public static function selectProductByCategory($idcategory){
+        return ProductData::selectProductByCategory($idcategory);
+    }
     
     public static function getProduct($idproduct)
 	{

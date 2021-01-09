@@ -24,6 +24,15 @@ class ProductHandler
 		return $response;
 	}
 
+	public function selectProductByCategory(Request $request, Response $response, array $args) {
+		/*$client_id=$args['clientid'];
+		$customer_id=$args['customerid'];*/
+		$idcategory = $args['idCategory'];
+		$result=ProductController::selectProductByCategory($idcategory);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
 	public function getProduct(Request $request, Response $response, array $args)
 	{
 		$idproduct = $args['idProduct'];
