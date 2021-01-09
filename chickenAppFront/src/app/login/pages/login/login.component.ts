@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   // Método para ir al registro de un nuevo cliente
   newClient():void
   {
-    this.router.navigate(['/newClient/']);
+    this.router.navigate(['/client/agregar']);
   }
 
   //Método para iniciar sesión
@@ -80,18 +80,18 @@ export class LoginComponent implements OnInit {
 //  Cliente
         }else if ( response.result["typeUser"] == 1){
           localStorage.clear();
-          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("idClient", response.result["idClient"]);
+          localStorage.setItem("usuario", response.result["firstname"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("rol", "Cliente");
           localStorage.setItem("name", response.result["firstname"]);
-          localStorage.setItem("idMaestro", response.result["idMaestro"]);
           localStorage.setItem("email", response.result["email"]);
           this.router.navigate(['/purchase/menu']);
           // Cocinero
         }else if ( response.result["typeUser"] == "3" ){
           localStorage.clear();
           localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
-          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("usuario", response.result["firstname"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
           localStorage.setItem("rol", "Chef");
@@ -102,7 +102,7 @@ export class LoginComponent implements OnInit {
         }else if ( response.result["typeUser"] == "4" ){
           localStorage.clear();
           localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
-          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("usuario", response.result["firstname"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
           localStorage.setItem("rol", "Chef");
@@ -113,7 +113,7 @@ export class LoginComponent implements OnInit {
         }else if ( response.result["typeUser"] == "5" ){
           localStorage.clear();
           localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
-          localStorage.setItem("usuario", response.result["nombre"]);
+          localStorage.setItem("usuario", response.result["firstname"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
           localStorage.setItem("rol", "Chef");

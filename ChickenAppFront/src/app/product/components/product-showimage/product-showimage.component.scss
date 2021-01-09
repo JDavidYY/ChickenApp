@@ -5,14 +5,18 @@
 	position: relative;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center;
+    background-position: center;
+    padding: 15px 30px;
+    margin: auto;
 }
 
-.modal-body{
+.custom-dialog-container .mat-dialog-container {
     padding: 0px !important;
 }
-
-.mat-dialog-container {
+.mat-dialog-container{
+    padding: 0px !important;
+}
+/*.mat-dialog-container {
     display: block !important;
     padding: 0px !important;
     border-radius: 4px !important;
@@ -53,4 +57,4 @@
     max-height: 65vh !important;
     overflow: auto !important;
     -webkit-overflow-scrolling: touch !important;
-}
+}*/
