@@ -107,12 +107,12 @@ color: #e85d1b;
 font-size: 30px;
 }
 .m-d-s-1{
-width: 80%;
+width: 90%;
 margin: auto;
 }
-.menu-desc-img{
+/*.menu-desc-img{
 padding-top: 20px;
-}
+}*/
 .menu-descripcion{
 border: 3px solid #A43A0F;
 border-radius: 20px;
@@ -374,6 +374,13 @@ padding-left: 100px;
     background-size: cover;
     background-position: center;
     }
+  .menu-desc-img{
+    padding-top: 80px;
+  }
+  .menu-imagen{
+    width: 230px;
+    height: 240px;
+  }
   p{
     margin-top: 0;
     margin-bottom: 3px;
@@ -407,6 +414,13 @@ padding-left: 100px;
     padding-top: 50px;
     padding-bottom: 100px;
     }
+  .menu-desc-img{
+    padding-top: 80px;
+  }
+  .menu-imagen{
+    width: 315px;
+    height: 265px;
+  }
   p{
     margin-top: 0;
     margin-bottom: 5px;
