@@ -1,109 +1,59 @@
-<div class="section-principal" style="padding-bottom: 25px">
+
+ <div class="section-principal" style="padding-bottom: 25px">
     <div class="container pt-5 principal-cont">
         <div class="">
-        <h1>Aquí está su pedido</h1>
+        <h1>Aquí están los productos de su carrito</h1>
     </div>
     <!-- Form para guardar los datos del orden y se captura con [(ngModel)] -->
     <form>
         
-        <div class="form-row" >
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Nombres</mat-label>
-                <input matInput [(ngModel)]="order.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
-                <mat-error *ngIf="firstnameFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Apellidos</mat-label>
-                <input matInput [(ngModel)]="order.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
-                <mat-error *ngIf="lastnameFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Número de documento de identidad</mat-label>
-                <input matInput [(ngModel)]="order.dni" maxlength="8" [formControl]="dniFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
-                <mat-error *ngIf="dniFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="dniFormControl.hasError('minlength')">
-                    La cantidad de digitos debe ser <strong>8</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Edad</mat-label>
-                <input matInput [(ngModel)]="order.age" maxlength="8" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
-                <mat-error *ngIf="ageFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="ageFormControl.hasError('minlength')">
-                    La cantidad de digitos debe ser <strong>2</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Correo electrónico</mat-label>
-                <input matInput [(ngModel)]="order.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                    Por favor ingresa una <strong>dirección de correo válida</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Teléfono celular</mat-label>
-                <input matInput [(ngModel)]="order.phone" maxlength="9" [formControl]="phoneFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
-                <mat-error *ngIf="phoneFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="phoneFormControl.hasError('minlength')">
-                    La cantidad de digitos debe ser <strong>9</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" *ngIf="order_id==0">
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="order.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
-                <mat-error *ngIf="passwordFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Turno</mat-label>
-                <mat-select [(ngModel)]="order.workshift" [formControl]="workshiftFormControl" required>
-                    <mat-option value="M">Mañana</mat-option>
-                    <mat-option value="T">Tarde</mat-option>
-                    <mat-option value="N">Noche</mat-option>
-                </mat-select>
-                <mat-error *ngIf="workshiftFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Dirección</mat-label>
-                <input matInput [(ngModel)]="order.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
-                <mat-error *ngIf="adressFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
+        <div class="tabla">
+      <div class="mt-20 user-contenedor-table">
+        <table mat-table matSort [dataSource]="dataSourceOne" class="mat-elevation-z8 user-table" #TableOneSort="matSort" style="width: 100%;">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">Nombre del producto</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="cantidad">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">Cantidad</th>
+            <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Precio(Soles)</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.price }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;"> Descripción</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.description }}</td>
+          </ng-container>
+
+<!--
+          <ng-container matColumnDef="" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;"> Ver imagen </th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;"> {{element.image}}
+              <i class="material-icons" (click)="mostrarImagenProduct(element)" style="margin-right: 5px;color: rgb(48, 48, 235);cursor: pointer;">
+                remove_red_eye
+              </i>
+            </td>
+          </ng-container>
+-->
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarProduct(row)" [style.background]="productSeleccionado == row ? 'lightblue' : ''"></tr>
+        </table>
+      </div>
+    </div>
+    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [pageSizeOptions]="[10, 20, 100]"></mat-paginator>
+        
         <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
             <div class="col-sm-12 text-right">
                 <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarOrder()">Guardar</button>
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="confirmarOrder()">Proceder a confirmar su orden</button>
             </div>
         </div>
     </form>

@@ -1,9 +1,15 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { OrderConfirmationComponent } from '../../dialogos/order-confirmation/order-confirmation.component';
 import { OrderModel } from '../../models/order-info.model';
+import { OrderProductsModel } from '../../models/order-products-info.model';
 import { OrderService } from '../../services/purchase.service';
 
 @Component({
@@ -20,192 +26,54 @@ export class OrderEditComponent implements OnInit {
   actualizarButton: boolean = false;
   guardarButton: boolean = true;
 
-  dniFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(8)
-  ]);
+  data: OrderProductsModel = new OrderProductsModel();
+  // productSeleccionado:ProductModel = null;
+  // ProductArray: [] = null;
+  // orderProductsSeleccionado:OrderProductsModel = null;
+  dataSourceOne: MatTableDataSource<OrderProductsModel>;
+  displayedColumnsOne: string[] = [
+    'name',
+    'cantidad',
+    'price',
+    'description'];
 
-  lastnameFormControl = new FormControl('', [
-  Validators.required,
-  ]);
+  @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
+  @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-  firstnameFormControl = new FormControl('', [
-  Validators.required,
-  ]);
-
-  phoneFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(9)
-  ]);
-
-  ageFormControl = new FormControl('', [
-  Validators.required,
-  Validators.minLength(2)
-  ]);
-
-  workshiftFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  emailFormControl = new FormControl('', [
-  Validators.required,
-  Validators.email
-  ]);
-
-  passwordFormControl = new FormControl('', [
-  Validators.required
-  ]);
-
-  adressFormControl = new FormControl('', [
-    Validators.required
-    ]);
-
-  constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private orderservice: OrderService) { }
+  constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private orderservice: OrderService, private dialog: MatDialog) { 
+    this.dataSourceOne = new MatTableDataSource;
+  }
   
-  ngOnInit(): void {   
-    this.order_id = +this.route.snapshot.paramMap.get('order_id');
-    if ( this.order_id > 0) {
-      this.cargarOrder( this.order_id );
-      this.actualizarButton = true;
-		  this.guardarButton = false;
-    }
+  ngOnInit(): void {
+    this.listarPrueba();  
   }
 
-  cargarOrder(idOrder){
-    this.orderservice.getOrder(idOrder)
-    .subscribe(
-      (response) => {
-        console.log(response);
-        if ( response != null && response.ok && response.result != null){
-          console.log('Order encontrado');
-          console.log(response.result);
-          // this.deliveryboy = response.deliveryboy;
-          this.order.idOrder= response.result["idOrder"];
-        }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+  // seleccionarProduct(row:ProductModel):void {
+  //   this.productSeleccionado = row;
+  // }
+listarPrueba(){
+  // this.data = {idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"};
+  let abc = JSON.stringify([{idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"}])
+  let nodata = JSON.parse(abc);
+  this.dataSourceOne.data = nodata;
+  this.dataSourceOne.paginator = this.tableOnePaginator;
+  this.dataSourceOne.sort = this.tableOneSort;
+}
+//  listarProducts(){
+//   let data = JSON.parse(localStorage.getItem("orderProducts"));
+//   this.dataSourceOne.data = data;
+//   this.dataSourceOne.paginator = this.tableOnePaginator;
+//   this.dataSourceOne.sort = this.tableOneSort;
+//  }
 
-
-  guardarOrder(){
-
-
-    // validacion de campos para que no sean vacios
-    if(this.order_id>0){
-      if ( !this.order.idOrder ) {
-        return;
-    }
-  }else{
-      if ( !this.order.idOrder ) {
-        return;
-    }
-  }
- // validacion de campos para que no sean incorrectos mediante FormControl
-  if(this.order_id>0){
-    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
-      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
-      || this.ageFormControl.invalid || this.adressFormControl.invalid || this.emailFormControl.invalid) {
-   
-      return;
-    }
-  }else{
-    if ( this.dniFormControl.invalid || this.firstnameFormControl.invalid || this.lastnameFormControl.invalid 
-      || this.workshiftFormControl.invalid || this.phoneFormControl.invalid
-      || this.ageFormControl.invalid || this.adressFormControl.invalid || this.passwordFormControl.invalid || this.emailFormControl.invalid){
-   
-        return;
-      }
-  }
-  //modal para que muestre el mensaje para confirmación de guardado del chef mientras se hace el servicio
-    if(this.order_id>0){
-      Swal.fire({
-        title: 'Aviso',
-        text: "¿Estás seguro que deseas actualizar los datos de la orden?",
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualizar!' ,
-  
-        }).then((result) => {
-        // llamado sel servicio guardarChef desde chef.service.ts y se le pasa 2 parametros
-        if (result.value) {
-          this.orderservice.guardarOrder(this.order)
-          .subscribe(
-            (response) => {
-              console.log(response);
-              if ( response && response.ok && response.result != 0 )
-                Swal.fire(
-                  'Enhorabuena!',
-                  'El orden ha sido actualizado.',
-                  'success'
-                  );
-                this.router.navigate(['/purchase/shopping-cart']);
-            },
-            (err) => {
-              console.log(err);
-            }
-          );
-        }
-      });
-    } else {
-      Swal.fire({
-      title: 'Aviso',
-      text: "¿Estás seguro que deseas guardar la orden ?",
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, guardar!' ,
-
-      }).then((result) => {
-      // llamado sel servicio guardarChef desde chef.service.ts y se le pasa 2 parametros
-      if (result.value) {
-        this.orderservice.guardarOrder(this.order)
-        .subscribe(
-          (response) => {
-            console.log(response);
-            if ( response && response.ok && response.result != 0 )
-              Swal.fire(
-                'Enhorabuena!',
-                'El orden ha sido guardado.',
-                'success'
-                );
-              this.router.navigate(['purchase/shopping-cart']);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
-      }
-    });
-    }
+  confirmarOrder(){
+    this.dialog.open(OrderConfirmationComponent, { disableClose: true, autoFocus:false, width: '800px',panelClass: 'myapp-no-padding-dialog' });
   }
 
   regresar(){
-    this.router.navigate(['/purchase/shopping-cart']);
+    this.router.navigate(['/purchase/menu']);
   }
 
-  keypressNumbers(event: any) {
-    const pattern = /[0-9]/;
-    const inputChar = String.fromCharCode(event.charCode);
-    if (!pattern.test(inputChar)) {
-      event.preventDefault();
-    }
-    }
-
-  keypressLetters(event: any) {
-    const pattern = /[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]/;
-    const inputChar = String.fromCharCode(event.charCode);
-    if (!pattern.test(inputChar)) {
-      event.preventDefault();
-    }
-    }   
-
+  
 
 }

@@ -8,6 +8,7 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { OrderEditComponent } from './pages/order-edit/order-edit.component';
 import { ChangePasswordComponent } from './dialogos/change-password/change-password.component';
 import { AddToCartComponent } from './dialogos/add-to-cart/add-to-cart.component';
+import { OrderConfirmationComponent } from './dialogos/order-confirmation/order-confirmation.component';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
@@ -17,7 +18,8 @@ import { AddToCartComponent } from './dialogos/add-to-cart/add-to-cart.component
         ShoppingCartComponent,
         OrderEditComponent,
         ChangePasswordComponent,
-        AddToCartComponent
+        AddToCartComponent,
+        OrderConfirmationComponent
     ],
     imports: [
         CommonModule,

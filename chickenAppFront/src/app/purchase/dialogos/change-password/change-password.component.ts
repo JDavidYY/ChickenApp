@@ -58,7 +58,7 @@ export class ChangePasswordComponent implements OnInit {
                 'La contraseña fue cambiada exitosamente.',
                 'success'
                 );
-              this.router.navigate(['/login']);
+              this.router.navigate(['/purchase/menu']);
             }
             else{
               Swal.fire(
