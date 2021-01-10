@@ -22,11 +22,13 @@ export class ComboEditComponent implements OnInit {
   productSeleccionado: string = "";
 
   products:ProductModel = null;
-
+  id: number = 0;
+  file: any;
   combo: ComboModel = new ComboModel();
   combo_id: number = 0;
   actualizarButton: boolean = false;
   guardarButton: boolean = true;
+  image_name: string = null;
 
     nameFormControl = new FormControl('', [
     Validators.required,
@@ -44,16 +46,15 @@ export class ComboEditComponent implements OnInit {
         Validators.required,
         ]);
 
+    imageFormControl = new FormControl('', [
+        Validators.required
+       ]);
+
   constructor(private route: ActivatedRoute, private router:Router, private datePipe: DatePipe, private comboservice: ComboService, private productservice: ProductService) { }
 
   ngOnInit(): void {
     this.populateProduct();
-    this.combo_id = +this.route.snapshot.paramMap.get('combo_id');
-    if ( this.combo_id > 0) {
-      this.cargarCombo( this.combo_id );
-      this.actualizarButton = true;
-		  this.guardarButton = false;
-    }
+    this.combo.image_name = null;
   }
 
   populateProduct() {
@@ -74,13 +75,17 @@ export class ComboEditComponent implements OnInit {
 
   arrayCombo(){
     console.log(this.combo);
-    this.combo.idproducts.push(this.productSeleccionado);
-    this.combo.cantidades.push(this.cantidadSeleccionado);
-    this.productSeleccionado = "";
-    this.cantidadSeleccionado = "";
+    if(this.productSeleccionado && this.cantidadSeleccionado)
+    {
+      this.combo.idproducts.push(this.productSeleccionado);
+      this.combo.cantidades.push(this.cantidadSeleccionado);
+      this.productSeleccionado = "";
+      this.cantidadSeleccionado = "";
+    }
+    console.log(this.combo);
   }
 
-  cargarCombo(idCombo){
+  /*cargarCombo(idCombo){
     this.comboservice.getCombo(idCombo)
     .subscribe(
       (response) => {
@@ -105,7 +110,7 @@ export class ComboEditComponent implements OnInit {
         console.log(err);
       }
     );
-  }
+  }*/
 
 
   guardarCombo(){
@@ -136,39 +141,6 @@ export class ComboEditComponent implements OnInit {
       }
   }
   //modal para que muestre el mensaje para confirmación de guardado del combo mientras se hace el servicio
-    if(this.combo_id>0){
-      Swal.fire({
-        title: 'Aviso',
-        text: "¿Estás seguro que deseas actualizar los datos del combo?",
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualizar!' ,
-
-        }).then((result) => {
-        // llamado sel servicio guardarCombo desde combo.service.ts y se le pasa 2 parametros
-        if (result.value) {
-          this.comboservice.guardarCombo(this.combo)
-          .subscribe(
-            (response) => {
-              console.log(response);
-              if ( response && response.ok && response.result != 0 )
-                Swal.fire(
-                  'Enhorabuena!',
-                  'El combo ha sido actualizado.',
-                  'success'
-                  );
-                this.router.navigate(['/combo/listado']);
-            },
-            (err) => {
-              console.log(err);
-            }
-          );
-        }
-      });
-    } else {
       Swal.fire({
       title: 'Aviso',
       text: "¿Estás seguro que deseas guardar el combo?",
@@ -187,6 +159,8 @@ export class ComboEditComponent implements OnInit {
           (response) => {
             console.log(response);
             if ( response && response.ok && response.result != 0 )
+            this.id=response.result;
+            this.saveImage();
               Swal.fire(
                 'Enhorabuena!',
                 'El combo ha sido guardado.',
@@ -200,12 +174,39 @@ export class ComboEditComponent implements OnInit {
         );
       }
     });
-    }
   }
 
   regresar(){
     this.router.navigate(['/combo/listado']);
   }
+
+  saveImage() {
+    console.log(this.file);
+    console.log(this.id);
+		this.comboservice.cargarImagen(this.file, this.id)
+			.subscribe(
+				(response) => {
+					//console.log(response);
+					if (response && response.ok) {
+						Swal.fire('Success!', 'Your event has been saved.', 'success');
+						this.regresar();
+					}
+				},
+				(err) => {
+					console.log("Error al guardar imagen");
+				}
+			);
+  }
+
+  showUploadImage() {
+		return (this.image_name != null);
+  }
+
+  loadImage(event: any) {
+		this.file = event.target.files[0];
+    console.log(this.file);
+    this.combo.image_name = this.file
+	}
 
   keypressNumbers(event: any) {
     const pattern = /[0-9]/;

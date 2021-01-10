@@ -7,7 +7,7 @@
     <form>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Nombre del producto</mat-label>
+                <mat-label>Nombre del combo</mat-label>
                 <input matInput [(ngModel)]="combo.name" [formControl]="nameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="nameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
@@ -16,13 +16,31 @@
         </div>
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Descripción del producto</mat-label>
+                <mat-label>Descripción del combo</mat-label>
                 <input matInput [(ngModel)]="combo.description" [formControl]="descriptionFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="descriptionFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
         </div>
+        <div class="form-row" >
+          <mat-form-field class="col-12" appearance="outline" *ngIf="showUploadImage()">
+              <mat-label style="color: black;">Imagen (.jpg, .png)</mat-label>
+              <input matInput type="text" name="image_name" [(ngModel)]="image_name"  readonly />
+              <button mat-button *ngIf="image_name" matSuffix mat-icon-button aria-label="Clear"
+                  (click)="deletenameImage()">
+                  <mat-icon>close</mat-icon>
+              </button>
+          </mat-form-field>
+
+          <mat-form-field class="col-12" appearance="outline" *ngIf="!showUploadImage()">
+              <mat-label style="color: black;">Imagen (.jpg, .png)</mat-label>
+              <ngx-mat-file-input #removableInput (change)="loadImage($event)" required></ngx-mat-file-input>
+              <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+                  <mat-icon>clear</mat-icon>
+              </button>
+          </mat-form-field>
+      </div>
         <div class="form-row" >
             <mat-form-field clsas="col-md-12">
                 <mat-select name="txtCategory" [(ngModel)]="productSeleccionado" [formControl]="idProductFormControl">
@@ -35,8 +53,8 @@
                 </mat-error>
               </mat-form-field>
         </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+        <div class="form-row" *ngIf="productSeleccionado">
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off" >
                 <mat-label>Cantidad</mat-label>
                 <input matInput [(ngModel)]="cantidadSeleccionado" [formControl]="cantidadFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="cantidadFormControl.hasError('required')">
@@ -46,10 +64,12 @@
         </div>
         <div class="form-row">
             <p>Productos agregados: <span> {{combo.idproducts}}</span></p>
+        </div>
+        <div class="form-row">
             <p>Cantidades de cada producto agregado: <span>{{combo.cantidades}}</span></p>
         </div>
         <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="arrayCombo()">Agregar producto a combo</button>
-        
+
         <!-- Div de botones para regresar o guardar los datos de los campos -->
         <div class="form-row pt-2">
             <div class="col-sm-12 text-right">

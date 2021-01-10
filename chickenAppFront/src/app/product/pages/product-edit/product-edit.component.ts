@@ -233,6 +233,7 @@ export class ProductEditComponent implements OnInit {
 		return (this.image_name != null);
   }
 
+  //BORRAR
   clearCarga() {
 		this.file = null;
   }

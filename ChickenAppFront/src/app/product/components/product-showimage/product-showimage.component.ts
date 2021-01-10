@@ -14,6 +14,7 @@ export class ProductShowimageComponent implements OnInit {
 	constructor(public dialogRef: MatDialogRef<ProductShowimageComponent>) { }
 
   ngOnInit(): void {
+    console.log(this.idProduct);
     this.ruta = "https://storage.googleapis.com/mainkra/products/"+this.idProduct+".jpg";
   }
 

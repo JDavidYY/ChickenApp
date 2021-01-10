@@ -5,6 +5,7 @@ use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 use Chicken\Controller\ComboController;
+use Chicken\Library\Storage;
 
 class ComboHandler
 {
@@ -55,12 +56,37 @@ class ComboHandler
             return $response; 
 		}
         
-		ComboController::addCombo($name,$description,$idproducts,$cantidades);
+		$result=ComboController::addCombo($name,$description,$idproducts,$cantidades);
 
-		$result="Combo agregado";
 		$response=self::response($response,TRUE,$result);
 		return $response;
-    }
+	}
+	
+	public function uploadImage(Request $request, Response $response, array $args)
+	{
+		$rtn = NULL;
+
+		$data = (array)$request->getParsedBody();
+		$idcombo = $data['idCombo']; 
+		$files = $request->getUploadedFiles();
+		$result="La imagen no se pudo agregar";
+
+		if (!isset($files) || !is_array($files)) {
+			$response=self::response($response,FALSE,$result);
+			return $app->json($rtn);
+		}
+		$file = $files['image']; 
+		$filename = $file->getClientFilename(); 
+		$fileextension = substr($filename, strrpos($filename, '.') + 1);
+		$tmpfile = $idcombo . '.' . $fileextension; 
+		$storage= new Storage();
+		$storage->uploadObject('mainkra','combos/'.$tmpfile,$_FILES['image']['tmp_name']);
+		
+		$result = ComboController::saveImageCombo($idcombo,$filename,$fileextension,$tmpfile);
+
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
     
     public function editCombo(Request $request, Response $response, array $args){
 

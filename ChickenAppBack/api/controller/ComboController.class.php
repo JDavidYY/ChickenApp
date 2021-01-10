@@ -35,6 +35,11 @@ abstract class ComboController{
 
     }
 
+    public static function saveImageCombo($idcombo , $filename, $fileextension, $tmpfile)
+	{
+		return ComboData::saveImageCombo($idcombo , $filename, $fileextension, $tmpfile);
+    }
+
     public static function editCombo($idcombo,$name,$description,$type)
     {
         return ComboData::editCombo($idcombo,$name,$description,$type);
