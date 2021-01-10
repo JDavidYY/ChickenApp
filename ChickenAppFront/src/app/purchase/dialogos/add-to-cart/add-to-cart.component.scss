@@ -328,3 +328,100 @@ padding-left: 100px;
   margin-left: 20px;
 }
 }
+
+/*tamaño del modal responsive*/
+@media(min-width:320px){
+  .menu-descripcion-section-1{
+    width: 255px;
+    height: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
+  p{
+    margin-top: 0;
+    margin-bottom: 1px;
+    margin-right: 10px;
+  }
+  .titulo{
+    font-size: 16px;
+  }
+  .precio{
+    font-size: 18px;
+  }
+  .text-menu{
+    font-size: 12px;
+  }
+  .añadir{
+    width: 90%;
+    font-size: 10px;
+  }
+  .añadir-text{
+    height: 16px;
+  }
+  .carrito{
+    width: 30px;
+  }
+}
+
+@media(min-width:768px){
+  .menu-descripcion-section-1{
+    width: 610px;
+    height: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    }
+  p{
+    margin-top: 0;
+    margin-bottom: 3px;
+    margin-right: 10px;
+  }
+  .titulo{
+    font-size: 16px;
+  }
+  .precio{
+    font-size: 18px;
+  }
+  .text-menu{
+    font-size: 12px;
+  }
+  .añadir{
+    width: 90%;
+    font-size: 14px;
+  }
+  .añadir-text{
+    height: 20px;
+  }
+  .carrito{
+    width: 30px;
+  }
+}
+
+@media(min-width:1024px){
+  .menu-descripcion-section-1{
+    width: 800px;
+    height: 600px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    }
+  p{
+    margin-top: 0;
+    margin-bottom: 5px;
+    margin-right: 10px;
+  }
+  .titulo{
+    font-size: 18px;
+  }
+  .precio{
+    font-size: 20px;
+  }
+  .text-menu{
+    font-size: 14px;
+  }
+  .añadir{
+    width: 80%;
+  }
+}

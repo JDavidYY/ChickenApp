@@ -2,25 +2,27 @@
 	<div class="m-d-s-1">
 		<p class="listo"><strong>¡Listo para llevar!</strong></p>
 	</div>
-	<div class="row m-d-s-1">
-		<div class="col-12 col-md-6">
-			<div class="menu-desc-img">
-				<img class="menu-imagen" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}">
+	<div class="col-12">
+		<div class="row m-d-s-1">
+			<div class="col-12 col-md-6">
+				<div class="menu-desc-img">
+					<img class="menu-imagen" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}">
+				</div>
 			</div>
-		</div>
-		<div class="col-12 col-md-6">
-			<div class="menu-descripcion">
-				<p class="titulo"><strong>{{product.name}}</strong></p>
-				<p><strong>Descripción</strong></p>
-				<p>{{product.description}}</p>
-				<p><strong>Precio</strong></p>
-				<p class="precio"><strong>S/. {{product.price}}</strong></p>
-				<p><strong>Cantidad</strong></p>
-				<input type="number" name="cantidad"><p></p>
-				<p><strong>Añade o quita ingredientes a tu gusto</strong></p>
-				<textarea type="text" name="texto" rows="5" cols="10" style="width: 80%;"></textarea>><p></p>
-				<div class="añadir">
-					<a href="/purchase/menu"><p class="añadir-text"><img class="carrito" src="assets/images/backgrounds/carrito-de-compras.png"><strong>Añadir al carrito</strong></p></a>
+			<div class="col-12 col-md-6">
+				<div class="menu-descripcion">
+					<p class="titulo"><strong>{{product.name}}</strong></p>
+					<p class="text-menu"><strong>Descripción</strong></p>
+					<p class="text-menu">{{product.description}}</p>
+					<p class="text-menu"><strong>Precio</strong></p>
+					<p class="precio"><strong>S/. {{product.price}}</strong></p>
+					<p class="text-menu"><strong>Cantidad</strong></p>
+					<input type="number" name="cantidad"><p></p>
+					<p class="text-menu"><strong>Añada o quite ingredientes a tu gusto</strong></p>
+					<textarea type="text" name="texto" rows="3" cols="10" style="width: 80%;"></textarea>><p></p>
+					<div class="añadir">
+						<a href="/purchase/menu"><p class="añadir-text"><img class="carrito" src="assets/images/backgrounds/carrito-de-compras.png"><strong>Añadir al carrito</strong></p></a>
+					</div>
 				</div>
 			</div>
 		</div>
