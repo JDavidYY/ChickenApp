@@ -5,7 +5,7 @@
 .client-sec-1{
   background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
   width: 100%;
-  height: 100%;
+  //height: 800px;
 	position: relative;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -30,10 +30,27 @@
   padding-top: 20px;
 }
 
+@media(max-width:1400px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: 800px;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}
 @media(max-width:1024px){
   .cliente-img{
     width: 100%;
     height: auto;
+    position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
     padding-top: 60px;
   }
 }
@@ -70,5 +87,58 @@
   }
   .titulo-registro{
     font-size: 28px;
+  }
+}
+
+@media(min-width: 320px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: 800px;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}
+@media(min-width: 768px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: 800px;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}
+@media(min-width: 1024px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: 712px;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+}
+@media(min-width: 1200px){
+  .client-sec-1{
+    background-image: url("../../../../assets/images/backgrounds/fondo2.jpg");
+    width: 100%;
+    height: 800px;
+	  position: relative;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+    padding-top: 50px;
   }
 }

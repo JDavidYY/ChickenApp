@@ -11,9 +11,21 @@ export const CLIENT_COMPONENTS = [
 // se arma el path segun el componente que queremos mostrar
 const clientRoutes:Routes = [
 	{
-        path: 'newClient',
+        path: 'client',
         component: ClientEditComponent,
-    }
+        children: [
+          {
+            path: 'editar/:client_id',
+            component: ClientEditComponent
+          },
+          {
+            path: 'agregar',
+            component: ClientEditComponent
+          },
+    ]
+        
+    
+  }
 ];
 
 @NgModule({

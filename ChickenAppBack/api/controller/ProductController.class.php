@@ -9,6 +9,10 @@ abstract class ProductController{
     public static function selectProduct(){
         return ProductData::selectProduct();
     }
+
+    public static function selectProductByCategory($idcategory){
+        return ProductData::selectProductByCategory($idcategory);
+    }
     
     public static function getProduct($idproduct)
 	{
@@ -23,9 +27,15 @@ abstract class ProductController{
 	{
 		return ProductData::saveImageProduct($idproduct , $filename, $fileextension, $tmpfile);
     }
-
-    public static function editProduct($idproduct,$name,$description,$price,$idcategory){
-        return ProductData::editProduct($idproduct,$name,$description,$price,$idcategory);
+    
+    public static function getImage($idproduct)
+	{
+		$rtn = ProductData::getImage($idproduct);
+		return $rtn;
+    }
+    
+    public static function editImageProduct($idproduct,$filename){
+        return ProductData::editImageProduct($idproduct,$filename);
     }
 
     public static function deleteProduct($idproduct){

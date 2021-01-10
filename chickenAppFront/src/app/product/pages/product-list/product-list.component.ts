@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ProductShowimageComponent } from '../../components/product-showimage/product-showimage.component';
 import { ProductModel } from '../../models/product-info.model';
 import { ProductService } from '../../services/product.service';
 
@@ -15,19 +16,19 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  
+
   productSeleccionado:ProductModel = null;
   dataSourceOne: MatTableDataSource<ProductModel>;
   displayedColumnsOne: string[] = [
     'name',
     'price',
-    'category'];
-    // 'image'];
+    'category',
+    'image'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private dialog: MatDialog, private productservice:ProductService) { 
+    constructor(private router:Router, private dialog: MatDialog, private productservice:ProductService) {
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -63,12 +64,12 @@ export class ProductListComponent implements OnInit {
     {
       this.router.navigate(['/product/agregar']);
     }
-    
+
     //Método para eliminar categories
     eliminarProduct()
     {
       if (this.productSeleccionado == null) return;
-	
+
       Swal.fire({
         title: 'Estas seguro?',
         text: "El registro seleccionado se eliminará!",
@@ -92,7 +93,7 @@ export class ProductListComponent implements OnInit {
                 'success'
                 );
               this.listarProduct();
-              this.productSeleccionado = null;			
+              this.productSeleccionado = null;
             }
           },
           (err) => {
@@ -108,6 +109,14 @@ export class ProductListComponent implements OnInit {
       if (this.productSeleccionado == null) return;
         let product = this.productSeleccionado;
         this.router.navigate(['/product/editar', product.idProduct ]);
+    }
+
+    mostrarImagenProduct(item:ProductModel){
+      let dialogRef = this.dialog.open(ProductShowimageComponent,{autoFocus: false,panelClass: 'myapp-no-padding-dialog'});
+    //nuevo codigo
+      let instance = dialogRef.componentInstance;
+      instance.idProduct = item.idProduct;
+      console.log(instance);
     }
 
     // showImageArticle() {

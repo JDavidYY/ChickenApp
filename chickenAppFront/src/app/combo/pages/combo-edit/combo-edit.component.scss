@@ -1,17 +1,27 @@
 .mat-form-field{
-    font-size: 12px;
+  font-size: 12px;
+}
+
+.section-principal{
+  padding-top: 80px;
+}
+  .principal-cont{
+    width: 90%;
+    background-color:#f3f3f3ab;
+    border-radius: 10px;
+    border: 1px solid;
   }
 
-  .section-principal{
-    padding-top: 80px;
-    height:100%;
-  }
-    .principal-cont{
-      width: 90%;
-      background-color: #f3f3f3ab;
-      border-radius: 10px;
-      border: 1px solid;
-    }
+.combo-bg{
+background-image: url("../../../../assets/images/Nueva carpeta/principal-combo-1.jpg");
+  max-width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 
-/*F*/
+
+

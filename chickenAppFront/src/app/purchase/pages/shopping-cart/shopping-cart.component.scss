@@ -94,8 +94,8 @@
 	padding-top: 50px;
 	padding-bottom: 100px;
 	background-image: url("../../../../assets/images/backgrounds/delivery.jpg");
-	height: 600px;
 	width: 100%;
+	height: auto;
 	position: relative;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -155,14 +155,18 @@
 .añadir-text{
 	margin: 10px 0px;
 	color: black;
+	height: 30px;
 }
 input[type=number],  input[type=number]:focus{
   border: 2px solid black;
-  border-radius: 50px;
   width: 80px;
   height: 30px;
   padding-left: 20px;
 }
+textarea, input[type=text],  input[type=text]:focus{
+	border: 2px solid black;
+	padding-left: 20px;
+  }
 
 @media(max-width: 768px){
     .añadir{

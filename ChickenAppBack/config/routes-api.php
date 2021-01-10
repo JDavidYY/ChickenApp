@@ -96,7 +96,9 @@ $app->group('/api/deliveryboy', function (RouteCollectorProxy $group) {
 });
 
 $app->group('/api/client', function (RouteCollectorProxy $group) {
+    $group->get('/get/{idClient}', ClientHandler::class . ':getClient');
     $group->post('/add', ClientHandler::class . ':addClient');
+    $group->post('/changepassword', ClientHandler::class . ':changePassword');
     $group->post('/edit', ClientHandler::class . ':editClient');
 });
 
@@ -116,6 +118,7 @@ $app->group('/api/product', function (RouteCollectorProxy $group) {
     $group->post('/add', ProductHandler::class . ':addProduct');
     $group->post('/uploadimg', ProductHandler::class . ':uploadImage');
     $group->get('/select', ProductHandler::class . ':selectProduct');
+    $group->get('/select-category/{idCategory}', ProductHandler::class . ':selectProductByCategory');
     $group->get('/get/{idProduct}', ProductHandler::class . ':getProduct');
     //$group->post('/edit/{idProduct}', ProductHandler::class . ':editProduct');
     $group->post('/delete', ProductHandler::class . ':deleteProduct');

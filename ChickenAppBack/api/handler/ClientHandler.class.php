@@ -32,12 +32,21 @@ class ClientHandler
 		return $response;*/
 	}
 
+	public function getClient(Request $request, Response $response, array $args)
+	{
+		$idclient = $args['idClient'];
+		$result = ClientController::getClient( $idclient);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
     public function addClient(Request $request, Response $response, array $args)
 	{
 
 		$data = (array)$request->getParsedBody();
 		//$client=$data['client'];
 		//$content = $request->getBody();
+		$idclient=$data["idClient"];
 		$firstname=$data['firstname'];
         $lastname=$data['lastname'];
         $phone=$data['phone'];
@@ -45,34 +54,49 @@ class ClientHandler
         $adress=$data['adress'];
 		$password=$data['password'];
 		
-        $result="Error al agregar al cliente";
-        /*if(!isset($content)){
+        //$result="Error al agregar al cliente";
+        if(!isset($data)){
             $response=self::response($response,FALSE,$result);
             return $response; 
-        }*/
-        ClientController::addClient($firstname,$lastname,$phone,$email,$adress,$password);
-       
-		 $result="Cliente agregado";
+		}
+		if($idclient=='')
+		{
+			$result=ClientController::addClient($firstname,$lastname,$phone,$email,$adress,$password);
+		}
+		else{
+			$result=ClientController::editClient($idclient,$firstname,$lastname,$phone,$adress);
+		}
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
 
-	public function editClient(Request $request, Response $response, array $args){
+	public function changePassword(Request $request, Response $response, array $args)
+	{
 
 		$data = (array)$request->getParsedBody();
-		$content = $data['content'];
-
-		$firstname=$args['firstname'];
-		$lastname=$args['lastname'];
-		$phone=$args['phone'];
-		$email=$args['email'];
-	
-		$result=ClientController::editClient($firstname,$lastname,$phone,$email,$content);
-		$result='Cliente actualizado correctamente';
-		$response=self::response($response,TRUE,$result);
-		return $response;
+		//$client=$data['client'];
+		//$content = $request->getBody();
+		$email=$data['email'];
+		$password=$data['password'];
+		$newpassword=$data['newPassword'];
 		
-	}
+        $result="Error al iniciar sesión";
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+        }
+        $result=ClientController::changePassword($email,$password,$newpassword);
+       
+		 //$result="Inicio de sesión exitoso";
+		 if($result!=NULL)
+		 {
+			$response=self::response($response,TRUE,$result);
+		 }
+		 else {
+			$response=self::response($response,FALSE,$result);
+		 }
+		return $response;
+    }
 
 	public function deleteClient(Request $request, Response $response, array $args){
         $id=$args["id"];
