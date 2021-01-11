@@ -1,5 +1,6 @@
-
+<div class="order-edit-section">
  <div class="section-principal" style="padding-bottom: 25px">
+    <img class="logo1" src="assets/imagenlogo.png" alt="logo chicken app">
     <div class="container pt-5 principal-cont">
         <div class="">
         <h1>Aquí están los productos de su carrito</h1>
@@ -12,22 +13,22 @@
         <table mat-table matSort [dataSource]="dataSourceOne" class="mat-elevation-z8 user-table" #TableOneSort="matSort" style="width: 100%;">
 
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">Nombre del producto</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;color: white;">Nombre del producto</th>
             <td mat-cell *matCellDef="let element">{{ element.name }}</td>
           </ng-container>
 
           <ng-container matColumnDef="cantidad">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">Cantidad</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;color: white;">Cantidad</th>
             <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
           </ng-container>
 
           <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Precio(Soles)</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;color: white;">Precio(Soles)</th>
             <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.price }}</td>
           </ng-container>
 
           <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;"> Descripción</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;color: white;"> Descripción</th>
             <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.description }}</td>
           </ng-container>
 
@@ -57,4 +58,5 @@
             </div>
         </div>
     </form>
+  </div>
 </div>
