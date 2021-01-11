@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContainerComponent } from '../shared/components/container/container.component';
-import { PromotionEditComponent } from './pages/promotion-edit/promotion-edit.component';
 import { PromotionListComponent } from './pages/promotion-list/promotion-list.component';
 
 // se declara los componentes que se usaran en el modulo
 export const PROMOTION_COMPONENTS = [
-    PromotionEditComponent,
     PromotionListComponent
 ];
 
@@ -20,14 +18,6 @@ const promotionRoutes:Routes = [
             path: 'listado',
             component: PromotionListComponent
           },
-          {
-            path: 'agregar',
-            component: PromotionEditComponent
-          },
-          {
-            path: 'editar/:promotion_id',
-            component: PromotionEditComponent
-          }
         ]
   }
 ];

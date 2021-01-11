@@ -10,12 +10,16 @@ import { ProductService } from '../../services/product.service';
 export class ProductShowimageComponent implements OnInit {
 
 	ruta: string = "";
-	@Input() idProduct: string = '';
+  @Input() idProduct: string = '';
+  @Input() tipo: string = '';
 	constructor(public dialogRef: MatDialogRef<ProductShowimageComponent>) { }
 
   ngOnInit(): void {
     console.log(this.idProduct);
+    if(this.tipo=='product')
     this.ruta = "https://storage.googleapis.com/mainkra/products/"+this.idProduct+".jpg";
+    else
+    this.ruta = "https://storage.googleapis.com/mainkra/combos/"+this.idProduct+".jpg";
   }
 
   cerrar() {

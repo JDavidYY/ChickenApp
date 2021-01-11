@@ -4,15 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ORDER_COMPONENTS, OrderRoutingModule } from './order-routing.module';
 import { OrderListComponent } from './pages/order-list/order-list.component';
-import { OrderEditComponent } from './pages/order-edit/order-edit.component';
 import { OrderService } from './services/order.service';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
     declarations: [
         ORDER_COMPONENTS,
-        OrderListComponent,
-        OrderEditComponent
+        OrderListComponent
     ],
     imports: [
         CommonModule,
@@ -20,7 +18,7 @@ import { OrderService } from './services/order.service';
         SharedModule,
         OrderRoutingModule
     ],
-    providers: [ 
+    providers: [
         OrderService
     ]
   })

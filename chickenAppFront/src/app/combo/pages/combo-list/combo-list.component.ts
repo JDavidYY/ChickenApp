@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ProductShowimageComponent } from 'src/app/product/components/product-showimage/product-showimage.component';
 import Swal from 'sweetalert2';
 import { ComboModel } from '../../models/combo-info.model';
 import { ComboService } from '../../services/combo.service';
@@ -18,12 +20,13 @@ export class ComboListComponent implements OnInit {
   dataSourceOne: MatTableDataSource<ComboModel>;
   displayedColumnsOne: string[] = [
     'name',
-	  'description'];
+    'description',
+    'image'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private comboservice:ComboService) {
+    constructor(private dialog: MatDialog, private router:Router, private comboservice:ComboService) {
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -105,12 +108,15 @@ export class ComboListComponent implements OnInit {
         }
         })
     }
-    //Método para ir a la vista de un determinado combo
-    editarCombo()
-    {
-      if (this.comboSeleccionado == null) return;
-        let combo = this.comboSeleccionado;
-        this.router.navigate(['/combo/editar', combo.idCombo ]);
+
+    mostrarImagenCombo(item:ComboModel){
+      console.log(item);
+      let dialogRef = this.dialog.open(ProductShowimageComponent,{autoFocus: false,panelClass: 'myapp-no-padding-dialog'});
+    //nuevo codigo
+      let instance = dialogRef.componentInstance;
+      instance.idProduct = item.idCombo;
+      instance.tipo = 'combo';
+      console.log(instance);
     }
 
 

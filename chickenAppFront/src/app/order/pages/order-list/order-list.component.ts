@@ -19,11 +19,12 @@ export class OrderListComponent implements OnInit {
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
-    'dni',
+    'idorder',
 	  'fullnombre',
-    'celular',
-    'email',
-    'turno'];
+    'type',
+    'price',
+    'estate',
+    'date'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
