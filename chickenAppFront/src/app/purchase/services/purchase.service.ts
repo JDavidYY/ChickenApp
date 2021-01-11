@@ -16,7 +16,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class OrderService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "promo";
+  apiurl:string = environment.apiUrl + "order";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
