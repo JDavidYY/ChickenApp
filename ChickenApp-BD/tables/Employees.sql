@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `Chickenapp`.`Employees` (
   `TypeEmployees_idDepartaments` INT NOT NULL,
   `Users_idUsers` INT NOT NULL,
   `estateEmployees` INT NULL,
+  `nroPedidos` INT NULL,
   PRIMARY KEY (`idEmployees`, `TypeEmployees_idDepartaments`, `Users_idUsers`),
   CONSTRAINT `fk_Employees_TypeEmployees1`
     FOREIGN KEY (`TypeEmployees_idDepartaments`)
