@@ -83,7 +83,7 @@ export class OrderListComponent implements OnInit {
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
-        this.orderservice.eliminarOrder(this.orderSeleccionado.idOrder)
+        this.orderservice.eliminarOrder(this.orderSeleccionado.idOrders)
         .subscribe(
           (response) => {
             console.log(response);
@@ -103,13 +103,6 @@ export class OrderListComponent implements OnInit {
         );
         }
         })
-    }
-    //Método para ir a la vista de un determinado order
-    editarOrder()
-    {
-      if (this.orderSeleccionado == null) return;
-        let order = this.orderSeleccionado;
-        this.router.navigate(['/order/editar', order.idOrder ]);
     }
 
   }
