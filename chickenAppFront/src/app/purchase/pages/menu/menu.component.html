@@ -1,12 +1,11 @@
 <div>
     <mat-toolbar class="toolbar2 hidden-xs">
         <div class="row toolbar-menu">
-            <div class="col-sm-12 col-lg-5 col-md-4">
+            <div class="col-12 col-lg-5 col-sm-4">
                 <h1 class="h" ><a href="" style="text-decoration: none;color:white;">ChickenApp</a></h1>
             </div>
-            <div class="col-sm-12 col-lg-7 col-md-8">
+            <div class="col-12 col-lg-7 col-sm-8">
                 <nav class="menu-list">
-                    <li class="lista"></li>
                     <li class="lista"></li>
                     <li class="lista"></li>
                     <li class="lista"></li>
@@ -16,7 +15,7 @@
                     <li class="lista"></li>
                     <li class="lista">
 					   <div class="row col-md-6 justify-content-end">
-						<button mat-button [matMenuTriggerFor]="beforeMenu" style="color: white;font-size: 18px;">Hola, <mat-icon style="margin-bottom: 5px;">more_vert</mat-icon></button>
+						<button mat-button [matMenuTriggerFor]="beforeMenu" style="font-size: 18px;">Hola, <mat-icon style="margin-bottom: 5px;">more_vert</mat-icon></button>
 							<mat-menu #beforeMenu="matMenu" xPosition="before">
 								<div style="background-color: #e8f0fe;margin: 10px;border-radius: 4px;padding: 0 30px;margin-bottom: 20px;margin-top: -4px;">
 									<p style="font-size: 13px;font-weight: 400;">Gestionada por ChickenApp</p>
@@ -46,7 +45,12 @@
 								</div>
 							</mat-menu>
 						</div>
-			  		</li>
+					  </li>
+					<li class="lista2">
+						<div class="row">
+							<img class="" src="assets/images/backgrounds/carrito-de-compras.png" style="width: 25px; height: 25px;margin-right: 10px;"><p>[#]</p>
+						</div>
+					</li>
                     <!--
 					<li class="lista">
                         <a routerLink="/login">
@@ -87,6 +91,7 @@
 </div>
 
 <section class="menu-section">
+	<p class="categorias">Elige entre nuestras Categorías</p>
 	<ul class="nav nav-tabs navs justify-content-center lista-menu" id="myTab" role="tablist">
 				<li class="nav-item" *ngFor="let category of categories">
 					<a class="nav-link active pest1" id="promociones-tab" data-toggle="tab" href="#promociones" role="tab" aria-controls="promociones" aria-selected="true" (click)="cargarProducts(category.idCategory)">
