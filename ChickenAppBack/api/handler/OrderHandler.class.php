@@ -40,27 +40,9 @@ class OrderHandler
 		return $response;
 	}
 
-	public function selectOrder(Request $request, Response $response, array $args)
-	{
-		
-		$data = (array)$request->getParsedBody();
-				
-		$idclient=$data['idClient'];
-		$typeorder=$data['typeOrder'];
-		$idproducts=$data['idproducts'];
-        $cantidades=$data['cantidades'];
-        $types=$data['types'];
-        $comments=$data['comments'];
-
-		$result="Error al agregar la orden";
-		
-        if(!isset($data)){
-            $response=self::response($response,FALSE,$result);
-            return $response; 
-		}
+    public function getOrders(Request $request, Response $response, array $args) {
         
-		$result=ComboController::addCombo($idclient,$typeorder,$idproducts,$cantidades,$types,$comments);
-
+		$result=OrderController::getOrders();
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
