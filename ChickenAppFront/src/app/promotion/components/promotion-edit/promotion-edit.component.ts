@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/product/models/product-info.model';
 import { ProductService } from 'src/app/product/services/product.service';
@@ -14,6 +15,7 @@ import { PromotionService } from '../../services/promotion.service';
   styleUrls: ['./promotion-edit.component.scss']
 })
 export class PromotionEditComponent implements OnInit {
+
   products:ProductModel = null;
 
   promotion: PromotionModel = new PromotionModel();
@@ -29,7 +31,7 @@ export class PromotionEditComponent implements OnInit {
     Validators.required,
     ]);
 
-  constructor(private route:ActivatedRoute, private router:Router, private datePipe: DatePipe, private promotionservice: PromotionService, private productservice: ProductService) { }
+  constructor(public dialogRef: MatDialogRef<PromotionEditComponent>, private route:ActivatedRoute, private router:Router, private datePipe: DatePipe, private promotionservice: PromotionService, private productservice: ProductService) { }
 
   ngOnInit(): void {
     this.populateProduct();
@@ -79,7 +81,7 @@ export class PromotionEditComponent implements OnInit {
   guardarPromotion(){
 
     // validacion de campos para que no sean vacios
-    
+
       if ( !this.promotion.idProduct || !this.promotion.descuento) {
         return;
       }
@@ -146,7 +148,7 @@ export class PromotionEditComponent implements OnInit {
                 'La promoción ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/promotion/listado']);
+                this.onClose(true);
           },
           (err) => {
             console.log(err);
@@ -158,7 +160,11 @@ export class PromotionEditComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate(['/promotion/listado']);
+    this.dialogRef.close();
+  }
+
+  onClose(rtn) {
+    this.dialogRef.close(rtn);
   }
 
   keypressNumbers(event: any) {

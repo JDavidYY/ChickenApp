@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,6 +7,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PromotionModel } from '../../models/promotion-info.model';
 import { PromotionService } from '../../services/promotion.service';
+import { PromotionEditComponent } from '../../components/promotion-edit/promotion-edit.component';
 
 @Component({
   selector: 'app-promotion-list',
@@ -26,7 +28,7 @@ export class PromotionListComponent implements OnInit {
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
 
-    constructor(private router:Router, private promotionservice:PromotionService) {
+    constructor(private dialog:MatDialog, private promotionservice:PromotionService) {
       this.dataSourceOne = new MatTableDataSource;
     }
 
@@ -60,7 +62,15 @@ export class PromotionListComponent implements OnInit {
     //Método para ir a la vista de agregar un promotion nuevo
     agregarPromotion():void
     {
-      this.router.navigate(['/promotion/agregar']);
+      let dialogRef=this.dialog.open(PromotionEditComponent,{
+        autoFocus:false});
+
+      dialogRef.afterClosed().subscribe((result)=>{
+        if (result == true)
+        {
+          this.listarPromotion();
+        }
+      });
     }
 
     //Método para eliminar promotions

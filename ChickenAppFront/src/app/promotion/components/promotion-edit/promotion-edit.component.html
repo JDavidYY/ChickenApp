@@ -1,0 +1,32 @@
+<mat-dialog-content class="animated zoomIn" >
+  <div class="form-row" style="background-color: #f5f5f5;width: 99%;margin-left: 1px;border-radius: 4px;">
+      <span style="margin-left: 5px;"><strong>AGREGAR PROMOCIÓN</strong></span>
+  </div>
+  <div class="form-row">
+      <mat-form-field clsas="col-md-12">
+        <mat-select name="txtCategory" [(ngModel)]="promotion.idProduct" [formControl]="idProductFormControl">
+          <mat-option>-- Seleccione un producto --</mat-option>
+          <mat-option *ngFor="let product of products" value="{{product.idProduct}}">{{product.name}}</mat-option>
+        </mat-select>
+        <mat-label>Producto</mat-label>
+        <mat-error *ngIf="idProductFormControl.hasError('required')">
+            Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+        <mat-label>Descuento (%)</mat-label>
+        <input matInput [(ngModel)]="promotion.descuento" [formControl]="descuentoFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+        <mat-error *ngIf="descuentoFormControl.hasError('required')">
+            Este campo es <strong>requerido</strong>
+        </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="text-right" style="margin-top: 8px;">
+    <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
+    <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarPromotion()">Guardar</button>
+  </div>
+
+</mat-dialog-content>
+
+
+
