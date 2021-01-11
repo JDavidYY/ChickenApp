@@ -1,6 +1,7 @@
 export class ComboModel
 {
     idCombo:string = "";
+    image_name:string = "";
     name: string = "";
     description: string = "";
     idproducts: string[] = [];

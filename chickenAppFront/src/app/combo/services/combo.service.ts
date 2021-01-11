@@ -7,6 +7,7 @@ import { ComboPostResponse } from '../models/combo-post-response.model';
 import { ComboGetResponse } from '../models/combo-get-response.model';
 import { ComboListResponse } from '../models/combo-list-response.model';
 import { ComboModel } from '../models/combo-info.model';
+import { FilePostResponse } from 'src/app/product/models/file-post-response';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -53,5 +54,16 @@ export class ComboService {
 		var data = { idCombo: idCombo }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<ComboPostResponse>(url,data, options);
+  }
+
+  cargarImagen(file: File, idCombo: any) {
+		const options = this.httpService.headerOptionsForm(true);
+		const formData: FormData = new FormData();
+		//console.log(file);
+		//console.log(file.name);
+		formData.append('image', file, file.name);
+		formData.append('idCombo', idCombo);
+		const url = this.apiurl + '/uploadimg';
+		return this.httpClient.post<FilePostResponse>(url, formData, options);
 	}
 }
