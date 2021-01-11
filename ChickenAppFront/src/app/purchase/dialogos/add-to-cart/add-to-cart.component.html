@@ -7,7 +7,13 @@
 			<div class="col-12 col-md-6">
 				<div class="menu-desc-img">
 					<img class="menu-imagen" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}">
-				</div>
+        </div>
+        <div *ngIf="esCombo==true">
+          <p class="text-menu"><strong>Lista de platos</strong></p>
+          <li class="nav-item" *ngFor="let producto of productos">
+            Nombre: {{producto.name}} - Precio: S/.{{producto.price}} - Cantidad: {{producto.cantidad}}
+          </li>
+        </div>
 			</div>
 			<div class="col-12 col-md-6">
 				<div class="menu-descripcion">
@@ -25,6 +31,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+    </div>
 	</div>
 </section>

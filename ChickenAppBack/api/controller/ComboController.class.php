@@ -31,7 +31,7 @@ abstract class ComboController{
             }
         }
 
-        return $rtn;
+        return $idcombo;
 
     }
 

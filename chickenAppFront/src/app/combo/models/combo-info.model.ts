@@ -6,4 +6,5 @@ export class ComboModel
     description: string = "";
     idproducts: string[] = [];
     cantidades: string[] = [];
+    image_type:string = "";
 }

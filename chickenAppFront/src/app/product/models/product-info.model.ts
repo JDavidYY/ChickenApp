@@ -1,6 +1,7 @@
 export class ProductModel
 {
     idProduct:string = "";
+    idCombo:string = "";
     name:string = "";
     description:string = "";
     price:number = 0;

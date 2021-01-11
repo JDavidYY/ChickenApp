@@ -22,7 +22,7 @@ export class ComboEditComponent implements OnInit {
   productSeleccionado: string = "";
 
   products:ProductModel = null;
-  id: number = 0;
+  id: number;
   file: any;
   combo: ComboModel = new ComboModel();
   combo_id: number = 0;
