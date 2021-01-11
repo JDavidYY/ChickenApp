@@ -8,6 +8,8 @@ import { CategoryModel } from 'src/app/category/models/category-info.model';
 import { ProductModel } from 'src/app/product/models/product-info.model';
 import { ProductService } from 'src/app/product/services/product.service';
 import { AddToCartComponent } from '../../dialogos/add-to-cart/add-to-cart.component';
+import { ComboService } from 'src/app/combo/services/combo.service';
+import { ComboModel } from 'src/app/combo/models/combo-info.model';
 
 @Component({
   selector: 'app-menu',
@@ -19,8 +21,10 @@ export class MenuComponent implements OnInit {
   client: ClientModel = null;
   categories: CategoryModel = null;
   products: ProductModel = null;
+  combos: ComboModel = null;
+  mostrarCombos:boolean=false;
 
-  constructor(private router:Router, private dialog:MatDialog, private categoryservice: CategoryService, private productservice: ProductService) { }
+  constructor(private router:Router, private dialog:MatDialog, private categoryservice: CategoryService, private productservice: ProductService, private comboservice:ComboService) { }
 
   ngOnInit(): void {
     this.cargarCategories();
@@ -71,6 +75,7 @@ export class MenuComponent implements OnInit {
           console.log(response);
           if (response != null && response.ok && response.result != null){
               this.products = response.result;
+              this.mostrarCombos=false;
           }
       },
       (err) => {
@@ -86,5 +91,22 @@ export class MenuComponent implements OnInit {
       let instance = dialogRef.componentInstance;
       instance.product = item;
       console.log(instance);
+  }
+
+  cargarCombos()
+  {
+    this.mostrarCombos=true;
+    this.comboservice.seleccionarCombos()
+    .subscribe(
+        (response) => {
+            console.log(response);
+            if (response != null && response.ok && response.result != null){
+                this.combos=response.result;
+            }
+        },
+        (err) => {
+            console.log(err);
+        }
+    );
   }
 }

@@ -93,6 +93,11 @@
 						<!--<img class="tab-img" src="assets/images/backgrounds/promociones.png">{{dish.name}}</a>-->
 						<img class="tab-img" src="assets/images/backgrounds/promociones.png">{{category.name}}</a>
         </li>
+        <li class="nav-item">
+					<a class="nav-link active pest1" id="promociones-tab" data-toggle="tab" href="#promociones" role="tab" aria-controls="promociones" aria-selected="true" (click)="cargarCombos()">
+						<!--<img class="tab-img" src="assets/images/backgrounds/promociones.png">{{dish.name}}</a>-->
+						<img class="tab-img" src="assets/images/backgrounds/promociones.png">Combos</a>
+        </li>
 
         <!--<li class="nav-item" *ngFor="let product of products">
 					<a class="nav-link active pest1" id="promociones-tab" data-toggle="tab" href="#promociones" role="tab" aria-controls="promociones" aria-selected="true">
@@ -127,7 +132,7 @@
 				</li>
 				-->
 	</ul>
-	<div class="col-12 col-lg-10 offset-lg-1">
+	<div *ngIf="mostrarCombos==false" class="col-12 col-lg-10 offset-lg-1">
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="promociones" role="tabpanel" aria-labelledby="promociones-tab">
 				<div class="row">
@@ -138,6 +143,24 @@
 								<p class="menu-titulo">{{product.name}}</p>
 								<p class="menu-desc">{{product.description}}</p>
 								<p class="menu-precio"><strong>S/. {{product.price}}</strong></p>
+							</div>
+            </a>
+          </div>
+        </div>
+			</div>
+		</div>
+  </div>
+  <div *ngIf="mostrarCombos==true" class="col-12 col-lg-10 offset-lg-1">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="promociones" role="tabpanel" aria-labelledby="promociones-tab">
+				<div class="row">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont" *ngFor="let combo of combos">
+						<a class="menu-a">
+							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{combo.image_type}}s/{{combo.file_name}}" width="350" height="250" (click)="pedirProduct(combo)">
+							<div class="menu-contenedor">
+								<p class="menu-titulo">{{combo.name}}</p>
+								<p class="menu-desc">{{combo.description}}</p>
+								<p class="menu-precio"><strong>S/. {{combo.price}}</strong></p>
 							</div>
             </a>
           </div>
