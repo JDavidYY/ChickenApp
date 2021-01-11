@@ -105,4 +105,8 @@ export class AddToCartComponent implements OnInit {
         );
   }
 
+  cerrarModal(){
+    this.dialogRef.close();
+	}
+
 }

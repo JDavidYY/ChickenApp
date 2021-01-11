@@ -83,7 +83,9 @@ export class MenuComponent implements OnInit {
       }
   );
   }
-
+goToOrder(){
+  this.router.navigate(['/purchase/order-edit']);
+}
   pedirProduct(item:ProductModel)
   {
     let dialogRef = this.dialog.open(AddToCartComponent,{autoFocus: false,panelClass: 'myapp-no-padding-dialog'});

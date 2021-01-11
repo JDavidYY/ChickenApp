@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router, private route:ActivatedRoute,private loginService:LoginService) { }
 
 	ngOnInit() {
-
+    localStorage.clear();
 	}
 
 	goto(url):void
