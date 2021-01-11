@@ -118,7 +118,7 @@
 }
 
 .menu-section{
-  background-image: url("../../../../assets/images/backgrounds/fondo4-3.jpg");
+  background-image: url("../../../../assets/images/backgrounds/fondo4.jpg");
   width: 100%;
   height: auto;
   position: relative;
@@ -286,6 +286,25 @@ text-align: center;
 padding-left: 100px;
 }
 }
+
+@media(max-width: 425px) {
+  .nav-item{
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media(min-width: 320px) {
+  .menu-img{
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
+  .menu-contenedor{
+    width: 80%;
+    margin: auto;
+  }
+}
 @media (min-width: 375px) {
 .vector{
 padding-left: 130px;
@@ -321,6 +340,15 @@ padding-left: 40px;
 }
 .vector{
 padding-left: 0px;
+}
+.menu-img{
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+.menu-contenedor{
+  width: 100%;
+  margin: auto;
 }
 }
 @media (min-width: 1024px) {
