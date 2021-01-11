@@ -9,6 +9,7 @@ include __DIR__.'/../api/data/UserData.class.php';
 include __DIR__.'/../api/data/ProductData.class.php';
 include __DIR__.'/../api/data/ComboData.class.php';
 include __DIR__.'/../api/data/PromoData.class.php';
+include __DIR__.'/../api/data/OrderData.class.php';
 
 /* include __DIR__.'/../api/v3/data/MaintenanceData.class.php';
 include __DIR__.'/../api/v3/data/TagData.class.php'; */
@@ -37,6 +38,7 @@ include __DIR__.'/../api/controller/UserController.class.php';
 include __DIR__.'/../api/controller/ProductController.class.php';
 include __DIR__.'/../api/controller/ComboController.class.php';
 include __DIR__.'/../api/controller/PromoController.class.php';
+include __DIR__.'/../api/controller/OrderController.class.php';
 
 
 /* include __DIR__.'/../api/v3/controller/MaintenanceController.class.php';
@@ -53,6 +55,7 @@ include __DIR__.'/../api/handler/UserHandler.class.php';
 include __DIR__.'/../api/handler/ProductHandler.class.php';
 include __DIR__.'/../api/handler/ComboHandler.class.php';
 include __DIR__.'/../api/handler/PromoHandler.class.php';
+include __DIR__.'/../api/handler/OrderHandler.class.php';
 
 /* include __DIR__.'/../api/v3/handler/CustomerHandler.class.php';
 include __DIR__.'/../api/v3/handler/MaintenanceHandler.class.php';
@@ -79,6 +82,7 @@ use Chicken\Handler\CategoryHandler;
 use Chicken\Handler\ProductHandler;
 use Chicken\Handler\ComboHandler;
 use Chicken\Handler\PromoHandler;
+use Chicken\Handler\OrderHandler;
 
 
 $app->group('/api/chef', function (RouteCollectorProxy $group) {
@@ -132,6 +136,10 @@ $app->group('/api/combo', function (RouteCollectorProxy $group) {
     $group->get('/get/{idCombo}', ComboHandler::class . ':getCombo');
     //$group->post('/edit/{idCombo}', ComboHandler::class . ':editCombo');
     $group->post('/delete', ComboHandler::class . ':deleteCombo');
+});
+
+$app->group('/api/order', function (RouteCollectorProxy $group) {
+    $group->post('/add', OrderHandler::class . ':addOrder');
 });
 
 $app->group('/api/promo', function (RouteCollectorProxy $group) {
