@@ -51,24 +51,34 @@ export class AddToCartComponent implements OnInit {
         
       } else{
         if(this.product.image_type=="combo"){
-          // let data = [JSON.parse(localStorage.getItem("orderProducts"))];
-          let data = [];
+          
+          let data = [JSON.parse(localStorage.getItem("orderProducts"))];
           data.push({idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
           
           localStorage.setItem("orderProducts", JSON.stringify(data));
+          
         } else {
           let data = [JSON.parse(localStorage.getItem("orderProducts"))];
           data.push({idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
           
           localStorage.setItem("orderProducts", JSON.stringify(data));
+          
         }
         
 
       }
 
     } else {
-      let data = {idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type};
-      localStorage.setItem("orderProducts", JSON.stringify(data));
+      if(this.product.image_type=="combo"){
+        let data = {idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type};
+        localStorage.setItem("orderProducts", JSON.stringify(data));
+        console.log(data)
+      }else{
+        let data = {idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type};
+        localStorage.setItem("orderProducts", JSON.stringify(data));
+        console.log(data)
+      }
+      
     }
 
     this.dialogRef.close();
