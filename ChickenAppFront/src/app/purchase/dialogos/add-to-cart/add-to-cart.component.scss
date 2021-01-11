@@ -111,8 +111,10 @@ padding-bottom: 50px;
   font-size: 20px;
   color: #e85d1b;
 }
-.cerrar a{
-  color: #007bff00;
+
+.cerrar a:focus, .cerrar a:hover{
+  color: #e85d1b;
+  text-decoration: none;
 }
 .m-d-s-1{
 width: 90%;
@@ -140,7 +142,13 @@ background-size: cover;
 background-position: center;
 }
 .menu-imagen{
-width: 100%;
+  border-top: 3px solid #A43A0F;
+  border-left: 3px solid #A43A0F;
+  border-right: 3px solid #A43A0F;
+  border-bottom: 3px solid #A43A0F;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  width: 100%;
 }
 .titulo{
 color: #e85d1b;
@@ -187,7 +195,10 @@ padding-left: 20px;
       height: 900px;
   }
   .menu-desc-img{
-      padding-bottom: 20px;
+      padding-bottom: 0px;
+  }
+  .listo{
+    font-size: 27px;
   }
 }
 
@@ -403,13 +414,16 @@ padding-left: 100px;
   .menu-descripcion-section-1{
     width: 610px;
     height: 500px;
-    padding-top: 20px;
+    padding-top: 5px;
     padding-bottom: 20px;
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     }
+  .m-d-s-1{
+    height: 40px;
+  }
   .menu-desc-img{
     padding-top: 0px;
   }
@@ -424,6 +438,9 @@ padding-left: 100px;
   }
   .titulo{
     font-size: 16px;
+  }
+  .listo{
+    font-size: 24px;
   }
   .precio{
     font-size: 18px;
@@ -441,12 +458,22 @@ padding-left: 100px;
   .carrito{
     width: 30px;
   }
+  .combo-contenido{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .combo-info{
+    font-size: 12px;
+  }
 }
 
 @media(min-width:1024px){
   .menu-descripcion-section-1{
     width: 800px;
     height: 600px;
+    }
+    .m-d-s-1{
+      height: 80px;
     }
   .menu-predesc{
     padding-top: 0px;
@@ -455,13 +482,16 @@ padding-left: 100px;
     padding-top: 0px;
   }
   .menu-imagen{
-    width: 318px;
+    width: 317px;
     height: 265px;
   }
   p{
     margin-top: 0;
     margin-bottom: 5px;
     margin-right: 10px;
+  }
+  .listo{
+    font-size: 30px;
   }
   .titulo{
     font-size: 18px;
@@ -474,5 +504,9 @@ padding-left: 100px;
   }
   .añadir{
     width: 80%;
+  }
+  .combo-contenido{
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
