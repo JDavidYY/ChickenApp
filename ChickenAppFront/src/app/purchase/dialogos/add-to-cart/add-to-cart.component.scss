@@ -91,8 +91,6 @@ h1 {
 /*fin header*/
 /*body*/
 .menu-descripcion-section-1{
-padding-top: 50px;
-padding-bottom: 100px;
 background-image: url("../../../../assets/images/backgrounds/delivery.jpg");
 width: 100%;
 height: auto;
@@ -105,10 +103,21 @@ background-position: center;
 .listo{
 color: #e85d1b;
 font-size: 30px;
+padding-bottom: 50px;
+}
+.cerrar{
+  text-align: right;
+  font-weight: bold;
+  font-size: 20px;
+  color: #e85d1b;
+}
+.cerrar a{
+  color: #007bff00;
 }
 .m-d-s-1{
 width: 90%;
 margin: auto;
+height: 80px;
 }
 /*.menu-desc-img{
 padding-top: 20px;
@@ -181,6 +190,7 @@ padding-left: 20px;
       padding-bottom: 20px;
   }
 }
+
 /*fin body*/
 
 /*footer*/
@@ -329,6 +339,32 @@ padding-left: 100px;
 }
 }
 
+/*contenido del combo*/
+.combo-contenido{
+  border-left: 3px solid #A43A0F;
+  border-right: 3px solid #A43A0F;
+  border-bottom: 3px solid #A43A0F;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #f3f3f3ab;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.nav-item{
+  font-size: 14px;
+}
+.combo-info{
+  font-weight: bold;
+}
+.combo-precio{
+  font-weight: bold;
+  color: #e85d1b;
+  font-size: 16px;
+}
+/*fin del contenido del combo*/
+
 /*tamaño del modal responsive*/
 @media(min-width:320px){
   .menu-descripcion-section-1{
@@ -375,7 +411,7 @@ padding-left: 100px;
     background-position: center;
     }
   .menu-desc-img{
-    padding-top: 80px;
+    padding-top: 0px;
   }
   .menu-imagen{
     width: 230px;
@@ -411,14 +447,15 @@ padding-left: 100px;
   .menu-descripcion-section-1{
     width: 800px;
     height: 600px;
-    padding-top: 50px;
-    padding-bottom: 100px;
     }
+  .menu-predesc{
+    padding-top: 0px;
+  }
   .menu-desc-img{
-    padding-top: 20px;
+    padding-top: 0px;
   }
   .menu-imagen{
-    width: 315px;
+    width: 318px;
     height: 265px;
   }
   p{
