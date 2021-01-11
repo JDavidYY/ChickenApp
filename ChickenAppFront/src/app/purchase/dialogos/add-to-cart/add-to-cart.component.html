@@ -1,4 +1,7 @@
 <section class="menu-descripcion-section-1">
+	<a href="_blank">
+		<p class="cerrar">X &nbsp;&nbsp;</p>
+	</a>
 	<div class="m-d-s-1">
 		<p class="listo"><strong>¡Listo para llevar!</strong></p>
 	</div>
@@ -7,15 +10,15 @@
 			<div class="col-12 col-md-6">
 				<div class="menu-desc-img">
 					<img class="menu-imagen" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}">
-        </div>
-        <div *ngIf="esCombo==true">
-          <p class="text-menu"><strong>Lista de platos</strong></p>
-          <li class="nav-item" *ngFor="let producto of productos">
-            Nombre: {{producto.name}} - Precio: S/.{{producto.price}} - Cantidad: {{producto.cantidad}}
-          </li>
-        </div>
+        		</div>
+        		<div *ngIf="esCombo==true" class="combo-contenido">
+          			<p class="text-menu"><strong>Lista de platos</strong></p>
+          			<p class="nav-item" *ngFor="let producto of productos">
+            			<span class="combo-info">Nombre: </span>{{producto.name}} <br> <span class="combo-info">Precio: </span> <span class="combo-precio">S/.{{producto.price}} &nbsp;&nbsp; </span> <span class="combo-info">Cantidad: </span>{{producto.cantidad}}
+					  </p>
+        		</div>
 			</div>
-			<div class="col-12 col-md-6">
+			<div class="col-12 col-md-6 menu-predesc">
 				<div class="menu-descripcion">
 					<p class="titulo"><strong>{{product.name}}</strong></p>
 					<p class="text-menu"><strong>Descripción</strong></p>

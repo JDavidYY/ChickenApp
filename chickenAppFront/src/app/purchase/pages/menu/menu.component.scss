@@ -113,8 +113,18 @@
 }
 
 .menu-section{
-    padding-top: 70px;
-    
+  background-image: url("../../../../assets/images/backgrounds/fondo-menu-2.jpg");
+  width: 100%;
+  height: auto;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.categorias{
+  padding-top: 30px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 .menu-lista{
 	width: 90%;
@@ -154,7 +164,9 @@
 	text-align: center;
 	margin: auto;
 }
-
+.nav-tabs {
+  border-bottom: 0px solid #9e9e9e00 !important;
+}
 
 @media(max-width: 425px){
 	.menu-section{
