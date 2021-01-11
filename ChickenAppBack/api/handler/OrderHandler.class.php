@@ -6,7 +6,7 @@ use Slim\Psr7\Response;
 
 use Chicken\Controller\OrderController;
 
-class ComboHandler
+class OrderHandler
 {
     private $responder;
 
@@ -20,7 +20,8 @@ class ComboHandler
 		
 		$data = (array)$request->getParsedBody();
 				
-        $typeorder=$data['typeOrder'];
+		$idclient=$data['idClient'];
+		$typeorder=$data['typeOrder'];
 		$idproducts=$data['idproducts'];
         $cantidades=$data['cantidades'];
         $types=$data['types'];
@@ -33,7 +34,32 @@ class ComboHandler
             return $response; 
 		}
         
-		$result=ComboController::addCombo($typeorder,$idproducts,$cantidades,$types,$comments);
+		$result=OrderController::addOrder($idclient,$typeorder,$idproducts,$cantidades,$types,$comments);
+
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function selectOrder(Request $request, Response $response, array $args)
+	{
+		
+		$data = (array)$request->getParsedBody();
+				
+		$idclient=$data['idClient'];
+		$typeorder=$data['typeOrder'];
+		$idproducts=$data['idproducts'];
+        $cantidades=$data['cantidades'];
+        $types=$data['types'];
+        $comments=$data['comments'];
+
+		$result="Error al agregar la orden";
+		
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
+        
+		$result=ComboController::addCombo($idclient,$typeorder,$idproducts,$cantidades,$types,$comments);
 
 		$response=self::response($response,TRUE,$result);
 		return $response;
