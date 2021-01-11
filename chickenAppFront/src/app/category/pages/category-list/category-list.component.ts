@@ -18,7 +18,7 @@ export class CategoryListComponent implements OnInit {
   categorySeleccionado:CategoryModel = null;
   dataSourceOne: MatTableDataSource<CategoryModel>;
   displayedColumnsOne: string[] = [
-    'categoryid',
+    // 'categoryid',
 	  'name',
     'description'];
 

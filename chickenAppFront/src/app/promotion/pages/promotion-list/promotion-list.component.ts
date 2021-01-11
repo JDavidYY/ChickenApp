@@ -20,7 +20,7 @@ export class PromotionListComponent implements OnInit {
   promotionSeleccionado:PromotionModel = null;
   dataSourceOne: MatTableDataSource<PromotionModel>;
   displayedColumnsOne: string[] = [
-    'idProduct',
+    // 'idProduct',
     'name',
     'descuento',
 	  'price'];
