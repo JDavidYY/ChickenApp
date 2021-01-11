@@ -71,6 +71,7 @@ export class ComboVerproductosComponent implements OnInit {
       //nuevo codigo
       let instance = dialogRef.componentInstance;
       instance.idProduct = item.idProduct;
+      instance.tipo = 'product';
       console.log(instance);
     }
 
