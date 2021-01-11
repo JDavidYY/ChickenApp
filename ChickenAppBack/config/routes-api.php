@@ -139,6 +139,7 @@ $app->group('/api/combo', function (RouteCollectorProxy $group) {
 });
 
 $app->group('/api/order', function (RouteCollectorProxy $group) {
+    $group->get('/select', OrderHandler::class . ':getOrders');
     $group->post('/add', OrderHandler::class . ':addOrder');
 });
 

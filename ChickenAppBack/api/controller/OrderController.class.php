@@ -19,6 +19,11 @@ abstract class OrderController{
         return $idorder;
 
     }
+
+    public static function getOrders()
+    {
+        return OrderData::getOrders();
+    }
 }
 
 ?>
