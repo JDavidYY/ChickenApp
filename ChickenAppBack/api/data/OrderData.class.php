@@ -8,7 +8,7 @@ abstract class OrderData{
     public static function addOrder($typeorder) {
         $rtn = null;
 
-        $procedureName = "usp_order_i_order"; 
+        $procedureName = "usp_orders_i_orders"; 
         $params = array(
                 new MySqlParameter("ptypeorder", $typeorder, 1),
                 new MySqlParameter("oresult", 0, 2)
@@ -27,7 +27,7 @@ abstract class OrderData{
     public static function addProduct($idorder,$idproduct,$cantidad,$type,$comment) {
         $rtn = null;
 
-        $procedureName = "usp_order_i_product"; 
+        $procedureName = "usp_orders_i_product"; 
         $params = array(
             new MySqlParameter("pidorder", $idorder, 1),
             new MySqlParameter("pidproduct", $idproduct, 1),
