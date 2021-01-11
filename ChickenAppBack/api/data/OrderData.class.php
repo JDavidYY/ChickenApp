@@ -5,11 +5,12 @@ use Chicken\Library\MySqlParameter;
 
 abstract class OrderData{
 
-    public static function addOrder($typeorder) {
+    public static function addOrder($typeorder,$idclient) {
         $rtn = null;
 
         $procedureName = "usp_orders_i_orders"; 
         $params = array(
+                new MySqlParameter("pidclient", $idclient, 1),
                 new MySqlParameter("ptypeorder", $typeorder, 1),
                 new MySqlParameter("oresult", 0, 2)
            );

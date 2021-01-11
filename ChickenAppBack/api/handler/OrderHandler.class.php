@@ -20,7 +20,8 @@ class ComboHandler
 		
 		$data = (array)$request->getParsedBody();
 				
-        $typeorder=$data['typeOrder'];
+		$idclient=$data['idClient'];
+		$typeorder=$data['typeOrder'];
 		$idproducts=$data['idproducts'];
         $cantidades=$data['cantidades'];
         $types=$data['types'];
@@ -33,7 +34,7 @@ class ComboHandler
             return $response; 
 		}
         
-		$result=ComboController::addCombo($typeorder,$idproducts,$cantidades,$types,$comments);
+		$result=ComboController::addCombo($idclient,$typeorder,$idproducts,$cantidades,$types,$comments);
 
 		$response=self::response($response,TRUE,$result);
 		return $response;
