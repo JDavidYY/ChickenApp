@@ -22,26 +22,26 @@ export class OrderService {
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
 	}
-	//api para guardar los datos del order por POST
+	//api para guardar los datos de la orden por POST
 	guardarOrder(order:OrderModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
 		let url = this.apiurl + "/add";
 		return this.httpClient.post<OrderPostResponse>(url, order, options);
 	}
-// api para obtener el listado de todoS los order por GET
+	// api para obtener el listado de todas las ordenes por GET
 	seleccionarOrders():Observable<OrderListResponse> {
 		const url = this.apiurl + "/select";
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<OrderListResponse>(url, options);
 	}
-	// api para obtener los datos de un Order por GET
+	// api para obtener los datos de una Orden por GET
   	getOrder(idOrder:string):Observable<OrderGetResponse> {
 		const url = this.apiurl + "/get/" + idOrder;
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<OrderGetResponse>(url, options);
 	}
-	// api para eliminar a Order por GET
+	// api para eliminar una Orden por GET
   	eliminarOrder(idOrder:string):Observable<OrderPostResponse> {
 		const url = this.apiurl + "/delete";
 		var data = { idOrder: idOrder }
