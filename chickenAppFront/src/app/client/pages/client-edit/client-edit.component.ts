@@ -194,7 +194,7 @@ export class ClientEditComponent implements OnInit {
                 'El cliente ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/login']);
+              this.router.navigate(['/purchase/menu']);
             }
           },
           (err) => {
@@ -207,7 +207,7 @@ export class ClientEditComponent implements OnInit {
 }
 
   regresar(){
-    this.router.navigate(['/login']);
+    this.router.navigate(['/purchase/menu']);
   }
 
   keypressNumbers(event: any) {
