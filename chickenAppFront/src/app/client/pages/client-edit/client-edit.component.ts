@@ -19,16 +19,27 @@ export class ClientEditComponent implements OnInit {
   actualizarButton: boolean = false;
   guardarButton: boolean = true;
 
+  private emailPattern: any = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+  private palabra: any = /[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]/;
+
   lastnameFormControl = new FormControl('', [
   Validators.required,
+  Validators.minLength(5),
+  Validators.maxLength(70),
+  Validators.pattern(this.palabra)
   ]);
 
   passwordFormControl = new FormControl('', [
   Validators.required,
+  Validators.minLength(4),
+  Validators.maxLength(70)
   ]);
 
   firstnameFormControl = new FormControl('', [
-  Validators.required
+  Validators.required,
+  Validators.minLength(5),
+  Validators.maxLength(60),
+  Validators.pattern(this.palabra)
   ]);
 
   phoneFormControl = new FormControl('', [
@@ -38,11 +49,16 @@ export class ClientEditComponent implements OnInit {
 
   emailFormControl = new FormControl('', [
   Validators.required,
-  Validators.email
+  Validators.email,
+  Validators.minLength(13),
+  Validators.maxLength(40),
+  Validators.pattern(this.emailPattern)
   ]);
 
   adressFormControl = new FormControl('', [
-  Validators.required
+  Validators.required,
+  Validators.minLength(20),
+  Validators.maxLength(60)
   ]);
 
 
