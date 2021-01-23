@@ -38,7 +38,7 @@
             </mat-form-field>
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Edad</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.age" maxlength="8" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="deliveryboy.age" maxlength="2" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="ageFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
