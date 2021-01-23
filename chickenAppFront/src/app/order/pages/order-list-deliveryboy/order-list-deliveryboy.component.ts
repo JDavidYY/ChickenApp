@@ -10,11 +10,11 @@ import { OrderModel } from '../../models/order-info.model';
 import { OrderService } from '../../services/order.service';
 
 @Component({
-  selector: 'app-order-list-chef',
-  templateUrl: './order-list-chef.component.html',
-  styleUrls: ['./order-list-chef.component.scss']
+  selector: 'app-order-list-deliveryboy',
+  templateUrl: './order-list-deliveryboy.component.html',
+  styleUrls: ['./order-list-deliveryboy.component.scss']
 })
-export class OrderListChefComponent implements OnInit {
+export class OrderListDeliveryboyComponent implements OnInit {
 
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
@@ -80,7 +80,7 @@ export class OrderListChefComponent implements OnInit {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualizar!'
+        confirmButtonText: 'Si, eliminar!'
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
@@ -115,7 +115,7 @@ export class OrderListChefComponent implements OnInit {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualizar!'
+        confirmButtonText: 'Si, eliminar!'
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
