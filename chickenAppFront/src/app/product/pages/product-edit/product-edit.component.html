@@ -38,7 +38,7 @@
               </mat-form-field>
               <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Precio(Soles)</mat-label>
-                <input matInput [(ngModel)]="product.price" maxlength="9" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;"  required>
+                <input matInput [(ngModel)]="product.price" maxlength="3" [formControl]="priceFormControl" autocomplete="off" type="text" style="color: black !important;"  (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="priceFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
