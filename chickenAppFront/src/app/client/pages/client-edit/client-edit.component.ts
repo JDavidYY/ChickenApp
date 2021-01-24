@@ -160,7 +160,7 @@ export class ClientEditComponent implements OnInit {
                 'El cliente ha sido guardado.',
                 'success'
                 );
-              this.router.navigate(['/login']);
+              this.router.navigate(['/purchase/menu']);
             }
           },
           (err) => {
