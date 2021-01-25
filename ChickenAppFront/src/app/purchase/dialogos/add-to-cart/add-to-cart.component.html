@@ -30,12 +30,27 @@
 					<p class="text-menu">{{product.description}}</p>
 					<p class="text-menu"><strong>Precio</strong></p>
 					<p class="precio"><strong>S/. {{product.price}}</strong></p>
-					<p class="text-menu"><strong>Cantidad</strong></p>
-					<input type="number" name="cantidad" [(ngModel)]="orderProducts.cantidad"><p></p>
+					
+					<mat-form-field>
+					<mat-label class="text-menu"><strong>Cantidad</strong></mat-label>
+					<input [(ngModel)]="orderProducts.cantidad"  name="cantidad" maxlength="2"  [formControl]="cantidadFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+					<mat-error *ngIf="cantidadFormControl.hasError('required')">
+						Este campo es <strong>requerido</strong>
+					</mat-error>
+					<mat-error *ngIf="cantidadFormControl.hasError('min')">
+						<strong>Ingrese una cantidad correcta</strong>
+					</mat-error>
+					<mat-error *ngIf="cantidadFormControl.hasError('max')">
+						<strong>Maximo 40 platos</strong>
+					</mat-error>
+					</mat-form-field>
+					
 					<p class="text-menu"><strong>Añada o quite ingredientes a tu gusto</strong></p>
 					<textarea type="text" name="texto" rows="3" cols="10" style="width: 80%;" [(ngModel)]="orderProducts.description"></textarea><p></p>
 					<div class="añadir">
-						<a href="javascript:void(0)" (click)="addToCart()"><p class="añadir-text"><img class="carrito" src="assets/images/backgrounds/carrito-de-compras.png"><strong>Añadir al carrito</strong></p></a>
+						
+						<a href="javascript:void(0)" (click)="addToCart()" ><p class="añadir-text" ><img class="carrito" src="assets/images/backgrounds/carrito-de-compras.png"><strong>Añadir al carrito</strong></p></a>
+						
 					</div>
 				</div>
 			</div>

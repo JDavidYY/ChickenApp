@@ -15,9 +15,15 @@
       </mat-form-field>
       <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
         <mat-label>Descuento (%)</mat-label>
-        <input matInput [(ngModel)]="promotion.descuento" [formControl]="descuentoFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+        <input matInput [(ngModel)]="promotion.descuento" maxlength="2" [formControl]="descuentoFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
         <mat-error *ngIf="descuentoFormControl.hasError('required')">
             Este campo es <strong>requerido</strong>
+        </mat-error>
+        <mat-error *ngIf="descuentoFormControl.hasError('min')">
+          <strong>El descuento minimo es 10</strong>
+        </mat-error>
+        <mat-error *ngIf="descuentoFormControl.hasError('max')">
+        <strong>El descuento maximo es 50</strong>
         </mat-error>
     </mat-form-field>
   </div>

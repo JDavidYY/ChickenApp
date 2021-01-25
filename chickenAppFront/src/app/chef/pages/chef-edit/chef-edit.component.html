@@ -37,12 +37,15 @@
             </mat-form-field>
             <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Edad</mat-label>
-                <input matInput [(ngModel)]="chef.age" maxlength="8" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
+                <input matInput [(ngModel)]="chef.age" maxlength="2" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="ageFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
-                <mat-error *ngIf="ageFormControl.hasError('minlength')">
-                    La cantidad de digitos debe ser <strong>2</strong>
+                <mat-error *ngIf="ageFormControl.hasError('min')">
+                    <strong>La edad minima es 18 años</strong>
+                </mat-error>
+                <mat-error *ngIf="ageFormControl.hasError('max')">
+                    <strong>La edad maxima es 60 años</strong>
                 </mat-error>
             </mat-form-field>
         </div>

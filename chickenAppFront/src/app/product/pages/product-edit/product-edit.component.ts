@@ -42,7 +42,7 @@ export class ProductEditComponent implements OnInit {
   priceFormControl = new FormControl('', [
   Validators.required,
   Validators.min(1),
-  Validators.max(100),
+  Validators.max(120),
   Validators.maxLength(3)
   ]);
 

@@ -11,38 +11,47 @@
                 <div class="form-row" >
                     <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Apellidos</mat-label>
-                        <input matInput [(ngModel)]="client.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                        <input matInput [(ngModel)]="client.lastname" maxlength="50" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                         <mat-error *ngIf="lastnameFormControl.hasError('required')">
                             Este campo es <strong>requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="lastnameFormControl.hasError('minlength')">
+                            <strong>La cantidad minima de caracteres es 3</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="form-row" >
                     <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Nombres</mat-label>
-                        <input matInput [(ngModel)]="client.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                        <input matInput [(ngModel)]="client.firstname" maxlength="50" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                         <mat-error *ngIf="firstnameFormControl.hasError('required')">
                             Este campo es <strong>requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="firstnameFormControl.hasError('minlength')">
+                            <strong>La cantidad minima de caracteres es 3</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="form-row" >
                     <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Dirección</mat-label>
-                        <input matInput [(ngModel)]="client.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                        <input matInput [(ngModel)]="client.adress" maxlength="70" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                         <mat-error *ngIf="adressFormControl.hasError('required')">
                             Este campo es <strong>requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="adressFormControl.hasError('minlength')">
+                            <strong>La cantidad minima de caracteres es 20</strong>
                         </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="form-row" >
                     <mat-form-field class="col-md-6" *ngIf="client_id==0" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Correo electrónico</mat-label>
-                        <input matInput [(ngModel)]="client.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                        <input matInput [(ngModel)]="client.email" maxlength="40" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                         <mat-error *ngIf="emailFormControl.hasError('required')">
                             Este campo es <strong>requerido</strong>
                         </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        <mat-error *ngIf="emailFormControl.hasError('email')">
                             Por favor ingresa una <strong>dirección de correo válida</strong>
                         </mat-error>
                     </mat-form-field>
@@ -60,10 +69,13 @@
                 <div class="form-row" *ngIf="client_id==0">
                     <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Password</mat-label>
-                        <input matInput [(ngModel)]="client.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                        <input matInput [(ngModel)]="client.password" maxlength="50" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
                         <mat-error *ngIf="passwordFormControl.hasError('required')">
                             Este campo es <strong>requerido</strong>
-                        </mat-error>
+                        </mat-error> 
+                        <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+                            <strong>Escribir un password de al menos 4 caracteres</strong>
+                        </mat-error> 
                     </mat-form-field>
                 </div>
                 

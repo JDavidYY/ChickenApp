@@ -42,6 +42,12 @@
                 <mat-error *ngIf="ageFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
+                <mat-error *ngIf="ageFormControl.hasError('min')">
+                    <strong>La edad minima es 18 añós</strong>
+                </mat-error>
+                <mat-error *ngIf="ageFormControl.hasError('max')">
+                    <strong>La edad maxima es 50 añós</strong>
+                </mat-error>
                 <mat-error *ngIf="ageFormControl.hasError('minlength')">
                     La cantidad de digitos debe ser <strong>2</strong>
                 </mat-error>

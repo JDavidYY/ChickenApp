@@ -41,7 +41,7 @@ export class DeliveryboyEditComponent implements OnInit {
     Validators.required,
     Validators.maxLength(2),
     Validators.min(18),
-    Validators.max(40)
+    Validators.max(50)
     ]);
 
     workshiftFormControl = new FormControl('', [

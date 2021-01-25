@@ -42,6 +42,12 @@
                 <mat-error *ngIf="priceFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
+                <mat-error *ngIf="priceFormControl.hasError('min')">
+                    <strong>El precio minimo es 1 sol</strong>
+                </mat-error>
+                <mat-error *ngIf="priceFormControl.hasError('max')">
+                    <strong>El precio maximo es 120 soles</strong>
+                </mat-error>
             </mat-form-field>
         </div>
         <div class="form-row" >

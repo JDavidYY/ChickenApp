@@ -1,6 +1,7 @@
 import { convertMetaToOutput } from '@angular/compiler/src/render3/util';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FormControl, Validators } from '@angular/forms';
 import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
 import { ComboService } from 'src/app/combo/services/combo.service';
@@ -21,7 +22,15 @@ export class AddToCartComponent implements OnInit {
   productos: ProductModel = null;
   esCombo:boolean=false;
 
+  //private rango: any  = /^([1-9]{1}|[1-3][0-9]|(40))$/g;
+
   constructor(public dialogRef: MatDialogRef<AddToCartComponent>, private router:Router, private comboservice: ComboService) { }
+
+  cantidadFormControl = new FormControl('', [
+    Validators.required,
+    Validators.min(1),
+    Validators.max(40)
+    ]);
 
   ngOnInit(): void {
     console.log(this.product);
@@ -35,6 +44,26 @@ export class AddToCartComponent implements OnInit {
 
   addToCart()
   {
+
+    // validacion de campos para que no sean vacios
+    if(!this.orderProducts.cantidad){  
+        return;
+    }
+    else {
+      if (!this.orderProducts.cantidad ) {
+        return;
+    }
+ // validacion de campos para que no sean incorrectos mediante FormControl
+  if(this.cantidadFormControl.invalid){
+      return;
+  }
+  else{
+    if (this.cantidadFormControl.invalid)
+        return;
+      }
+  }
+
+
     // this.data = {idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"};
     if (localStorage.getItem("orderProducts")!= null){
       if((JSON.parse(localStorage.getItem("orderProducts")) instanceof Array)){
@@ -107,6 +136,14 @@ export class AddToCartComponent implements OnInit {
 
   cerrarModal(){
     this.dialogRef.close();
-	}
+  }
+  
+  keypressNumbers(event: any) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+    }
 
 }

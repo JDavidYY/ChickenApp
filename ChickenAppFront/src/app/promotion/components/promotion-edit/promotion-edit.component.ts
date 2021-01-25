@@ -28,7 +28,10 @@ export class PromotionEditComponent implements OnInit {
   ]);
 
   descuentoFormControl = new FormControl('', [
-    Validators.required,Validators.min(10),Validators.max(50)
+    Validators.required,
+    Validators.min(10),
+    Validators.max(50),
+    Validators.maxLength(2)
     ]);
 
   constructor(public dialogRef: MatDialogRef<PromotionEditComponent>, private route:ActivatedRoute, private router:Router, private datePipe: DatePipe, private promotionservice: PromotionService, private productservice: ProductService) { }

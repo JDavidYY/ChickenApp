@@ -24,21 +24,21 @@ export class ClientEditComponent implements OnInit {
 
   lastnameFormControl = new FormControl('', [
   Validators.required,
-  Validators.minLength(5),
-  Validators.maxLength(70),
+  Validators.minLength(3),
+  Validators.maxLength(50),
   Validators.pattern(this.palabra)
   ]);
 
   passwordFormControl = new FormControl('', [
   Validators.required,
   Validators.minLength(4),
-  Validators.maxLength(70)
+  Validators.maxLength(50)
   ]);
 
   firstnameFormControl = new FormControl('', [
   Validators.required,
-  Validators.minLength(5),
-  Validators.maxLength(60),
+  Validators.minLength(3),
+  Validators.maxLength(50),
   Validators.pattern(this.palabra)
   ]);
 
@@ -50,7 +50,7 @@ export class ClientEditComponent implements OnInit {
   emailFormControl = new FormControl('', [
   Validators.required,
   Validators.email,
-  Validators.minLength(13),
+  Validators.minLength(10),
   Validators.maxLength(40),
   Validators.pattern(this.emailPattern)
   ]);
@@ -58,7 +58,7 @@ export class ClientEditComponent implements OnInit {
   adressFormControl = new FormControl('', [
   Validators.required,
   Validators.minLength(20),
-  Validators.maxLength(60)
+  Validators.maxLength(70)
   ]);
 
 
