@@ -56,4 +56,12 @@ export class OrderService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<ProductListResponse>(url, options);
   }
+	
+	// api para cambiar un estado
+	cambiarEstado(idOrder:string):Observable<OrderPostResponse> {
+		const url = this.apiurl + "/change-state";
+		var data = { idOrder: idOrder }
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.post<OrderPostResponse>(url,data, options);
+	}
 }
