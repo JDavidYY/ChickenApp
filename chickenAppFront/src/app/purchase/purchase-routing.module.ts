@@ -30,6 +30,10 @@ const purchaseRoutes:Routes = [
           {
             path: 'order-edit',
             component: OrderEditComponent
+          },
+          {
+            path: 'order-edit',
+            component: OrderEditComponent
           }
           // {
           //   path: 'shopping-cart',
