@@ -24,7 +24,8 @@ export class OrderListComponent implements OnInit {
     'type',
     'price',
     'estate',
-    'date'];
+    'date',
+    'detalle'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -103,6 +104,12 @@ export class OrderListComponent implements OnInit {
         );
         }
         })
+    }
+
+    mostrarDetalle(idOrders:string)
+    {
+        if (idOrders == null) return;
+          this.router.navigate(['/order/detail/', idOrders]);
     }
 
   }

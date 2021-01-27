@@ -24,6 +24,11 @@ abstract class OrderController{
     {
         return OrderData::getOrders();
     }
+
+    public static function selectProducts($idorder)
+	{
+		return OrderData::selectProducts($idorder);
+	}
 }
 
 ?>

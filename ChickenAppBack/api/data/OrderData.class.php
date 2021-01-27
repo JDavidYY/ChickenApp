@@ -69,5 +69,28 @@ abstract class OrderData{
         return $rtn;
     }
 
+    public static function selectProducts($idorder){
+        $rtn = null;
+
+        $procedure_name = "usp_orders_f_orders";
+        $params = array(
+			new MySqlParameter("pidorder", $idorder, 1)
+		);
+
+        $db = new DataAccessLayer();
+        $db->connect();
+        $result = $db->ExecuteSelect($procedure_name, $params);
+        $db->disconnect();
+        $output = 0;
+        if (isset($result)) 
+        {
+			$output = $result;
+		}
+		$rtn = $output;
+
+		return $rtn;
+
+    }
+
 }
 ?>

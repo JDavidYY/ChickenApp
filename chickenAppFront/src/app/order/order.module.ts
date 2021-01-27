@@ -6,7 +6,9 @@ import { ORDER_COMPONENTS, OrderRoutingModule } from './order-routing.module';
 import { OrderListComponent } from './pages/order-list/order-list.component';
 import { OrderService } from './services/order.service';
 import { OrderListChefComponent } from './pages/order-list-chef/order-list-chef.component';
-import { OrderListDeliveryboyComponent } from './pages/order-list-deliveryboy/order-list-deliveryboy.component';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { DetalleProductComponent } from './dialogos/detalle-product/detalle-product.component';
+//import { OrderListDeliveryboyComponent } from './pages/order-list-deliveryboy/order-list-deliveryboy.component';
 
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
@@ -14,7 +16,9 @@ import { OrderListDeliveryboyComponent } from './pages/order-list-deliveryboy/or
         ORDER_COMPONENTS,
         OrderListComponent,
         OrderListChefComponent,
-        OrderListDeliveryboyComponent
+        OrderDetailComponent,
+        DetalleProductComponent
+        //OrderListDeliveryboyComponent
     ],
     imports: [
         CommonModule,

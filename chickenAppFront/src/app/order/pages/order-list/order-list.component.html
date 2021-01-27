@@ -38,6 +38,15 @@
             <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.dateOrders }}</td>
           </ng-container>
 
+          <ng-container matColumnDef="detalle" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;"> Ver detalle </th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">
+              <i class="material-icons" (click)="mostrarDetalle(element.idOrders)" style="margin-right: 5px;color: rgb(48, 48, 235);cursor: pointer;">
+                remove_red_eye
+              </i>
+            </td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarOrder(row)" [style.background]="orderSeleccionado == row ? 'lightblue' : ''"></tr>
         </table>

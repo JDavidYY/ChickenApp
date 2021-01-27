@@ -8,6 +8,7 @@ import { OrderModel } from '../models/order-info.model';
 import { OrderGetResponse } from '../models/order-get-response.model';
 import { OrderListResponse } from '../models/order-list-response.model';
 import { OrderPostResponse } from '../models/order-post-response.model';
+import { ProductListResponse } from 'src/app/product/models/product-list-response.model';
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
 
@@ -47,5 +48,12 @@ export class OrderService {
 		var data = { idOrder: idOrder }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<OrderPostResponse>(url,data, options);
-	}
+  }
+
+  cargarProducts(idOrder:string):Observable<ProductListResponse>
+  {
+    const url = this.apiurl + "/selectprods/"+idOrder;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<ProductListResponse>(url, options);
+  }
 }

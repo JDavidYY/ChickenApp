@@ -47,6 +47,41 @@ class OrderHandler
 		return $response;
 	}
 
+	public function selectProducts(Request $request, Response $response, array $args){
+		$idorder=$args['idOrder'];
+		$result=OrderController::selectProducts($idorder);
+		
+		if(empty($result))
+		{
+			$response=self::response($response,FALSE,$result);
+		}
+		else
+		{
+			$response=self::response($response,TRUE,$result);
+		}
+		
+		return $response;
+	}
+
+	public function changeState(Request $request, Response $response, array $args)
+	{
+		$data = (array)$request->getParsedBody();
+				
+		$idorder=$data['idOrder'];
+
+		$result="Error al cambiar de estado";
+		
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
+        
+		$result=OrderController::changeState($idorder);
+
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
     public static function response(Response $response ,$ok,$result){
 		$data = array(
 			'ok' => $ok,
@@ -58,6 +93,8 @@ class OrderHandler
 			->withHeader('Content-Type', 'application/json')
 			->withStatus(201);
 	}
+
+
 
 }
 
