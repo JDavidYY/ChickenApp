@@ -34,6 +34,19 @@ class DeliveryboyHandler
 		return $response;
 	}
 
+	public function changeAvailability(Request $request, Response $response, array $args){
+
+		$data = (array)$request->getParsedBody();
+
+		$iddeliveryboy=$data['idDeliveryboy'];
+	
+		$result=DeliveryboyController::changeAvailability($iddeliveryboy);
+		$result='Actualizacion de disponibilidad cambiada correctamente';
+		$response=self::response($response,TRUE,$result);
+		return $response;
+		
+	}
+
     public function addDeliveryboy(Request $request, Response $response, array $args)
 	{
 		

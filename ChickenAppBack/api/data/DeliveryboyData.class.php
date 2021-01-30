@@ -44,7 +44,26 @@ abstract class DeliveryboyData{
 		}
 
 		return $rtn;
-	}
+    }
+    
+    public static function changeAvailability($iddeliveryboy) {
+        $rtn = null;
+
+        $procedureName = "usp_activity_u_delivery"; 
+        $params = array(
+            new MySqlParameter("piddeliveryboy", $iddeliveryboy, 1),
+            new MySqlParameter("oresult", 0, 2)
+            );
+        $db = new DataAccessLayer();
+        $db->connect();
+        $result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
+        $db->disconnect();
+        if (isset($result)) {
+            $rtn = $result["oresult"];
+        }
+
+        return $rtn;
+    }
     
     public static function addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age) {
         $rtn = null;

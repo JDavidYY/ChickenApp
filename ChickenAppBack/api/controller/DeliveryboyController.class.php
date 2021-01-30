@@ -13,8 +13,12 @@ abstract class DeliveryboyController{
 
     public static function getDeliveryboy( $iddeliveryboy)
 	{
-		return DeliveryboyData::getDeliveryboy( $iddeliveryboy);;
-	}
+		return DeliveryboyData::getDeliveryboy( $iddeliveryboy);
+    }
+    
+    public static function changeAvailability($iddeliveryboy){
+        return DeliveryboyData::changeAvailability($iddeliveryboy);
+    }
     
     public static function addDeliveryboy($firstname,$lastname,$phone,$email,$adress,$password,$dni,$workshift,$age){
         $password_encrypted = SecurityExtensions::encrypt($password);
