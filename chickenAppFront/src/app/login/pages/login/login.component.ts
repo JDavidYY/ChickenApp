@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
           // Cocinero
         }else if ( response.result["typeUser"] == "3" ){
           localStorage.clear();
-          localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
+          localStorage.setItem("idEmpleado", response.result["idChef"]);
           localStorage.setItem("usuario", response.result["firstname"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
           // Delivery
         }else if ( response.result["typeUser"] == "4" ){
           localStorage.clear();
-          localStorage.setItem("idEmpleado", response.result["idEmpleado"]);
+          localStorage.setItem("idDeliveryboy", response.result["idDeliveryboy"]);
           localStorage.setItem("usuario", response.result["firstname"]);
           localStorage.setItem("role_id", response.result["typeUser"]);
           localStorage.setItem("nombreCompleto", response.result["nombre"]+ ' '+ response.result["apellidoPat"] + ' ' + response.result["apellidoMat"]);
