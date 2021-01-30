@@ -1,36 +1,36 @@
 <div class="container pt-5 animated fadeIn">
     <div class="pt-5">
         <!--titulo-->
-        <h1 style="color: white;">Historial de Ordenes</h1>
+        <h1 style="color: black;">Historial de Ordenes</h1>
     </div>
      <!-- Tabla que muestra el listado de todos los pedidos del cliente que están registrado en el sistema -->
     <div class="tabla">
       <div class="mt-20 user-contenedor-table">
         <table mat-table matSort [dataSource]="dataSourceOne" class="mat-elevation-z8 user-table" #TableOneSort="matSort" style="width: 100%;">
 
-          <ng-container matColumnDef="dni">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">DNI</th>
-            <td mat-cell *matCellDef="let element">{{ element.dni }}</td>
+          <ng-container matColumnDef="idpedido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  style="padding-right: 5px;">ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.idpedido }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="fullnombre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Nombres y apellidos</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.firstname }} {{ element.lastname }} </td>
+          <ng-container matColumnDef="fechapedido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Fecha</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.fechapedido }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="celular">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Celular</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.phone }}</td>
+          <ng-container matColumnDef="tipopedido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Tipo de pedido</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.tipopedido }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Email</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.email }}</td>
+          <ng-container matColumnDef="preciopedido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Precio del pedido</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.preciopedido }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="turno">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Turno</th>
-            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.workshift }}</td>
+          <ng-container matColumnDef="estadopedido">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="padding-left: 5px;">Estado</th>
+            <td mat-cell *matCellDef="let element" style="padding-left: 5px;text-align: justify;">{{ element.estadopedido }}</td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>

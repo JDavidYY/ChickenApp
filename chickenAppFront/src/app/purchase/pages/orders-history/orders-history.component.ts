@@ -17,11 +17,11 @@ export class OrdersHistoryComponent implements OnInit {
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
-    'dni',
-	  'fullnombre',
-    'celular',
-    'email',
-    'turno'];
+    'idpedido',
+	  'preciopedido',
+    'tipopedido',
+    'fechapedido',
+    'estadopedido'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -40,7 +40,8 @@ export class OrdersHistoryComponent implements OnInit {
     //Método para llamar al api correspondiente a la api seleccionarOrders pasándole un parámetro y listar al order
     listarOrder()
     {
-        this.orderservice.seleccionarOrders()
+        let idClient = localStorage.getItem("idClient")
+        this.orderservice.seleccionarOrdersClientHistory(idClient)
         .subscribe(
             (response) => {
                 console.log(response);
