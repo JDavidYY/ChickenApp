@@ -11,8 +11,15 @@
                     <li class="lista"></li>
                     <li class="lista"></li>
                     <li class="lista"></li>
-                    <li class="lista"></li>
-                    <li class="lista"></li>
+                    <li class="lista">
+					<span (click)="goToOrderActive()">
+							Ordenes activas
+						</span></li>
+                    <li class="lista">
+						<span (click)="goToHistory()">
+							Historial
+						</span>
+					</li>
                     <li class="lista">
 					   <div class="row col-md-6 justify-content-end">
 						<button mat-button [matMenuTriggerFor]="beforeMenu" style="font-size: 18px;">Hola <mat-icon style="margin-bottom: 5px;">more_vert</mat-icon></button>
