@@ -19,12 +19,13 @@ export class OrderListDeliveryboyComponent implements OnInit {
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
-    'idorder',
-	  'fullnombre',
-    'type',
-    'price',
-    'date',
-    'estate',
+    'idpedido',
+	  'fullnombreCliente',
+    'fechapedido',
+    'phonecliente',
+    'preciopedido',
+    'direccioncliente',
+    'estadopedido',
     'detalle'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
@@ -44,7 +45,8 @@ export class OrderListDeliveryboyComponent implements OnInit {
     //Método para llamar al api correspondiente a la api seleccionarOrders pasándole un parámetro y listar al order
     listarOrder()
     {
-        this.orderservice.seleccionarOrders()
+        let idDeliveryboy = localStorage.getItem("idDeliveryboy")
+        this.orderservice.seleccionarOrdersDeliveryboy(idDeliveryboy)
         .subscribe(
             (response) => {
                 console.log(response);
@@ -117,9 +119,9 @@ export class OrderListDeliveryboyComponent implements OnInit {
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Si, eliminar!'
         }).then((result) => {
-          // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
+          // llamados el servicio de cambiar estado pedido
         if (result.value) {
-        this.orderservice.cambiarEstado(item.idOrders)
+        this.orderservice.cambiarEstado(item.idpedido)
         .subscribe(
           (response) => {
             console.log(response);
@@ -138,6 +140,12 @@ export class OrderListDeliveryboyComponent implements OnInit {
         );
         }
         })
+    }
+
+    mostrarDetalle(idOrders:string)
+    {
+        if (idOrders == null) return;
+          this.router.navigate(['/order/detail/', idOrders]);
     }
 
 }

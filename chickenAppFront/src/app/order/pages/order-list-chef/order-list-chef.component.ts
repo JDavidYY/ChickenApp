@@ -19,12 +19,9 @@ export class OrderListChefComponent implements OnInit {
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
-    'idorder',
-	  'fullnombre',
-    'type',
-    'price',
-    'date',
-    'estate',
+    'idpedido',
+	  'fechapedido',
+    'estadopedido',
     'detalle'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
@@ -44,7 +41,7 @@ export class OrderListChefComponent implements OnInit {
     //Método para llamar al api correspondiente a la api seleccionarOrders pasándole un parámetro y listar al order
     listarOrder()
     {
-        this.orderservice.seleccionarOrders()
+        this.orderservice.seleccionarOrdersChef()
         .subscribe(
             (response) => {
                 console.log(response);
@@ -119,7 +116,7 @@ export class OrderListChefComponent implements OnInit {
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
-        this.orderservice.cambiarEstado(item.idOrders)
+        this.orderservice.cambiarEstado(item.idpedido)
         .subscribe(
           (response) => {
             console.log(response);
@@ -140,4 +137,9 @@ export class OrderListChefComponent implements OnInit {
         })
     }
 
+    mostrarDetalle(idOrders:string)
+    {
+        if (idOrders == null) return;
+          this.router.navigate(['/order/detail/', idOrders]);
+    }
 }

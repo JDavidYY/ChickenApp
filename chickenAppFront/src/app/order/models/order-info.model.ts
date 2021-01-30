@@ -5,4 +5,12 @@ export class OrderModel
     typeOrders:string="";
     estateOrders:string="";
     priceOrders:string="";
+    idpedido:string="";
+    fechapedido:string="";
+    estadopedido:string="";
+    preciopedido:string = "";
+    nombrecliente:string = "";
+    apellidocliente:string = "";
+    direccioncliente:string="";
+    phonecliente:string="";
 }

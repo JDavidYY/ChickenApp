@@ -36,6 +36,18 @@ export class OrderService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<OrderListResponse>(url, options);
 	}
+	seleccionarOrdersChef():Observable<OrderListResponse> {
+		const url = this.apiurl + "/select/chef";
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<OrderListResponse>(url, options);
+	}
+	
+	seleccionarOrdersDeliveryboy(idDeliveryboy:string):Observable<OrderListResponse> {
+		const url = this.apiurl + "/select/deliveryboy/"+idDeliveryboy;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<OrderListResponse>(url, options);
+	}
+
 	// api para obtener los datos de una Orden por GET
   	getOrder(idOrder:string):Observable<OrderGetResponse> {
 		const url = this.apiurl + "/get/" + idOrder;
@@ -59,7 +71,7 @@ export class OrderService {
 	
 	// api para cambiar un estado
 	cambiarEstado(idOrder:string):Observable<OrderPostResponse> {
-		const url = this.apiurl + "/change-state";
+		const url = this.apiurl + "/change-state/chef";
 		var data = { idOrder: idOrder }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<OrderPostResponse>(url,data, options);
