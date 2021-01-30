@@ -86,6 +86,12 @@ export class MenuComponent implements OnInit {
 goToOrder(){
   this.router.navigate(['/purchase/order-edit']);
 }
+goToHistory(){
+  this.router.navigate(['/purchase/orders-history']);
+}
+goToOrderActive(){
+  this.router.navigate(['/purchase/order-active']);
+}
   pedirProduct(item:ProductModel)
   {
     let dialogRef = this.dialog.open(AddToCartComponent,{autoFocus: false,panelClass: 'myapp-no-padding-dialog'});

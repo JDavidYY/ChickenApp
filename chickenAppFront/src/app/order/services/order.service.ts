@@ -48,6 +48,11 @@ export class OrderService {
 		return this.httpClient.get<OrderListResponse>(url, options);
 	}
 
+	seleccionarOrdersClient(idClient:string):Observable<OrderListResponse> {
+		const url = this.apiurl + "/select/client/"+idClient;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<OrderListResponse>(url, options);
+	}
 	// api para obtener los datos de una Orden por GET
   	getOrder(idOrder:string):Observable<OrderGetResponse> {
 		const url = this.apiurl + "/get/" + idOrder;
