@@ -44,17 +44,37 @@
 -->
 
           <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarProduct(row)" [style.background]="productSeleccionado == row ? 'lightblue' : ''"></tr>
+          <!--<tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarProduct(row)" [style.background]="productSeleccionado == row ? 'lightblue' : ''"></tr>-->
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" ></tr>
         </table>
       </div>
     </div>
     <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [pageSizeOptions]="[10, 20, 100]"></mat-paginator>
         
         <!-- Div de botones para regresar o guardar los datos de los campos -->
+        <div class="form-row">
+            <div class="col-sm-12 text-right">
+                <p>Este es el precio total <strong> {{precioTotal}} </strong></p>
+            </div>
+        </div>
+        
+        <div class="form-row" >
+            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Tipo de pedido</mat-label>
+                <mat-select [(ngModel)]="order.typeOrder" [formControl]="typeOrderFormControl" required>
+                    <mat-option value="D">Delivery</mat-option>
+                    <mat-option value="R">Recojo en tienda</mat-option>
+                </mat-select>
+                <mat-error *ngIf="typeOrderFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        
         <div class="form-row pt-2">
             <div class="col-sm-12 text-right">
                 <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
-                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="confirmarOrder()">Proceder a confirmar su orden</button>
+                <button mat-raised-button color="primary" style="margin-bottom: 15px;" (click)="guardarOrder()">Proceder a confirmar su orden</button>
             </div>
         </div>
     </form>

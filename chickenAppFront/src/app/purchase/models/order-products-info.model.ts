@@ -5,5 +5,5 @@ export class OrderProductsModel
     cantidad: string = "";
     price: string ="";
     description: string = "";
-    image_name: string = "";
+    image_type: string = "";
 }

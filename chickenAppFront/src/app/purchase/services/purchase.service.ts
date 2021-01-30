@@ -16,7 +16,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class OrderService {
 	//construccion del api para llamar el servicio del back
-  apiurl:string = environment.apiUrl + "promo";
+  apiurl:string = environment.apiUrl + "order";
 
 	constructor(private httpClient:HttpClient, private httpService:HttpService) {
 
@@ -34,6 +34,19 @@ export class OrderService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<OrderListResponse>(url, options);
 	}
+
+	seleccionarOrdersClientHistory(idClient:string):Observable<OrderListResponse> {
+		const url = this.apiurl + "/select/client-history/"+idClient;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<OrderListResponse>(url, options);
+	}
+
+	seleccionarOrdersClient(idClient:string):Observable<OrderListResponse> {
+		const url = this.apiurl + "/select/client/"+idClient;
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<OrderListResponse>(url, options);
+	}
+
 	// api para obtener los datos de un Order por GET
   	getOrder(idOrder:string):Observable<OrderGetResponse> {
 		const url = this.apiurl + "/get/" + idOrder;

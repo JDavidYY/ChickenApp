@@ -1,13 +1,17 @@
 export class OrderModel
 {
     idOrder:string = "";
-    firstname:string = "";
-    lastname:string = "";
-    dni: string = "";
-    phone:string = "";
-    workshift: string = "";
-    age: string = "";
-    email:string = "";
-    password: string = "";
-    adress:string = "";
+    idproducts: string[] = [];
+    cantidades: string[] = [];
+    types: string[] = [];
+    comments: string[] = [];
+    typeOrder: string = "";
+    idClient: string = "";
+
+    //historial de pedidos
+    idpedido:string="";
+	preciopedido:string="";
+    tipopedido:string="";
+    fechapedido:string="";
+    estadopedido:string = "";
 }

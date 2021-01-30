@@ -1,38 +1,27 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
-import { Router} from  '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
-import { FormControl, Validators } from '@angular/forms';
 import { OrderModel } from '../../models/order-info.model';
-import { OrderService } from '../../services/order.service';
+import { OrderService } from '../../services/purchase.service';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss']
+  selector: 'app-orders-history',
+  templateUrl: './orders-history.component.html',
+  styleUrls: ['./orders-history.component.scss']
 })
-export class OrderListComponent implements OnInit {
+export class OrdersHistoryComponent implements OnInit {
 
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
     'idpedido',
-    
-    'preciopedido',
+	  'preciopedido',
     'tipopedido',
-    
-    'iddelivery',
-    'nombredelivery',
-    
-    'idcliente',
-    'nombrecliente',
-    
     'fechapedido',
-    'estadopedido',
-    'detalle'];
+    'estadopedido'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
     @ViewChild('TableOneSort', {static: true}) tableOneSort: MatSort;
@@ -51,7 +40,8 @@ export class OrderListComponent implements OnInit {
     //Método para llamar al api correspondiente a la api seleccionarOrders pasándole un parámetro y listar al order
     listarOrder()
     {
-        this.orderservice.seleccionarOrders()
+        let idClient = localStorage.getItem("idClient")
+        this.orderservice.seleccionarOrdersClientHistory(idClient)
         .subscribe(
             (response) => {
                 console.log(response);
@@ -91,7 +81,7 @@ export class OrderListComponent implements OnInit {
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
-        this.orderservice.eliminarOrder(this.orderSeleccionado.idOrders)
+        this.orderservice.eliminarOrder(this.orderSeleccionado.idOrder)
         .subscribe(
           (response) => {
             console.log(response);
@@ -112,45 +102,12 @@ export class OrderListComponent implements OnInit {
         }
         })
     }
-
-    cambiarEstado(item:OrderModel){
-      Swal.fire({
-        title: 'Estas seguro que desea actualizar el estado del pedido?',
-        text: "El estado se actualizará!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualizar!'
-        }).then((result) => {
-          // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
-        if (result.value) {
-        this.orderservice.cambiarEstado(item.idpedido)
-        .subscribe(
-          (response) => {
-            console.log(response);
-            if (response.ok){
-              Swal.fire(
-                'Estado actualizado!',
-                'El pedido cambió de estado.',
-                'success'
-                );
-              this.listarOrder();
-            }
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
-        }
-        })
-    }
-
-    mostrarDetalle(idOrders:string)
+    //Método para ir a la vista de un determinado order
+    editarOrder()
     {
-        if (idOrders == null) return;
-          this.router.navigate(['/order/detail/', idOrders]);
+      if (this.orderSeleccionado == null) return;
+        let order = this.orderSeleccionado;
+        this.router.navigate(['/order/editar', order.idOrder ]);
     }
 
-  }
+}

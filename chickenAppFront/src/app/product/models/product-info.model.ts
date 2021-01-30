@@ -12,4 +12,5 @@ export class ProductModel
     file_name:string = null;
     namecategory:string="";
     cantidad:string="";
+    type:string="";
 }

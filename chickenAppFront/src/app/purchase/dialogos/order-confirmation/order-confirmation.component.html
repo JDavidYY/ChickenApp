@@ -1,1 +1,60 @@
-<p>order-confirmation works!</p>
+<!--
+<div>
+    <div class="form-row col-md-12" style="padding: 0px;margin: auto;justify-content: center;">   
+        <div class="registroLogin col-md-5" style="text-align: center;padding-left: 20px;">
+            <div class="form-row" style="margin: auto;justify-content: center;">
+                <div class="col-md-12" style="text-align: end;">
+                    <span mat-dialog-close class="material-icons" style="font-size: 28px;font-weight: bold;margin-top: 10px;">close</span>
+                </div>
+            </div>
+            <div class="animated fadeIn">
+                <img class="logoapp" src="assets/imagenlogo.png" alt="logo chicken app">
+                <p style="font-weight: lighter;font-size: 24px;text-align: center;margin-bottom: 20px;">Barriga llena corazón contento</p>
+                <p class="ingresar" style="font-weight: bold;">Este es su pedido</p>
+                <form>
+                   <div class="form-row" >
+                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                        <mat-label>Definir tipo de pedido</mat-label>
+                        <input matInput [(ngModel)]="client.orderType" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Este campo es <strong>requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Por favor ingresa una <strong>dirección de correo válida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row" >
+                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                        <mat-label>Password</mat-label>
+                        <input matInput [(ngModel)]="client.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Este campo es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-row" >
+                    <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+                        <mat-label>Password</mat-label>
+                        <input matInput [(ngModel)]="client.newPassword" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Este campo es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                    <div class="loginbox form-row" style="margin: auto;justify-content: center;">
+                        <div class="col-md-11" style="text-align: center;padding-top: 10px">
+                            <button mat-flat-button class="login" style="width: 100%;background-color:#e85d1b;color: white;border-radius: 2px;
+                            padding-top: 10px;padding-bottom: 10px;font-size: 16px;" (click)="changePassword()">Cambiar contraseña</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>                 
+        </div>
+        <div class="imageLogin col-md-7 hidden-xs" style="width:600px;height:700px;text-align:center;overflow:hidden;">
+            <img src="assets/images/backgrounds/cambiar-contraseña.jpg" style=" min-width:100px;height:700px;margin-left: -25%;">
+        </div>
+    </div>
+</div>
+-->

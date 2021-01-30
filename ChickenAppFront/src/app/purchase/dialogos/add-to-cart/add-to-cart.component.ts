@@ -5,7 +5,7 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
 import { ComboService } from 'src/app/combo/services/combo.service';
 import { ProductModel } from 'src/app/product/models/product-info.model';
-//import { runInThisContext } from 'vm';
+// import { runInThisContext } from 'vm';
 import { OrderProductsModel } from '../../models/order-products-info.model';
 
 @Component({
@@ -38,34 +38,47 @@ export class AddToCartComponent implements OnInit {
     // this.data = {idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"};
     if (localStorage.getItem("orderProducts")!= null){
       if((JSON.parse(localStorage.getItem("orderProducts")) instanceof Array)){
-        let data = JSON.parse(localStorage.getItem("orderProducts"));
-        data.push({idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_name:this.product.image_name});
-        console.log("aqui vab kis oriductis");
-        console.log(this.product.idProduct);
-        console.log("aqui va la cantidad");
-        console.log(this.orderProducts.cantidad);
-        console.log("aqui termnina la pruebna");
-        localStorage.setItem("orderProducts", JSON.stringify(data));
+        if(this.product.image_type=="combo"){
+          let data = JSON.parse(localStorage.getItem("orderProducts"));
+          data.push({idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
+          localStorage.setItem("orderProducts", JSON.stringify(data));
+        } else {
+          let data = JSON.parse(localStorage.getItem("orderProducts"));
+          data.push({idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type}); 
+          localStorage.setItem("orderProducts", JSON.stringify(data));
+        }
+        
+        
       } else{
-        let data = [JSON.parse(localStorage.getItem("orderProducts"))];
-        data.push({idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_name:this.product.image_name});
-        console.log("aqui vab kis oriductis");
-        console.log(this.product.idProduct);
-        console.log("aqui va la cantidad");
-        console.log(this.orderProducts.cantidad);
-        console.log("aqui termnina la pruebna");
-        localStorage.setItem("orderProducts", JSON.stringify(data));
+        if(this.product.image_type=="combo"){
+          
+          let data = [JSON.parse(localStorage.getItem("orderProducts"))];
+          data.push({idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
+          
+          localStorage.setItem("orderProducts", JSON.stringify(data));
+          
+        } else {
+          let data = [JSON.parse(localStorage.getItem("orderProducts"))];
+          data.push({idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
+          
+          localStorage.setItem("orderProducts", JSON.stringify(data));
+          
+        }
+        
 
       }
 
     } else {
-      let data = {idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_name:this.product.image_name};
-      localStorage.setItem("orderProducts", JSON.stringify(data));
-      console.log("aqui vab kis oriductis");
-      console.log(this.product.idProduct);
-      console.log("aqui va la cantidad");
-      console.log(this.orderProducts.cantidad);
-      console.log("aqui termnina la pruebna");
+      if(this.product.image_type=="combo"){
+        let data = {idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type};
+        localStorage.setItem("orderProducts", JSON.stringify(data));
+        console.log(data)
+      }else{
+        let data = {idProduct:this.product.idProduct, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type};
+        localStorage.setItem("orderProducts", JSON.stringify(data));
+        console.log(data)
+      }
+      
     }
 
     this.dialogRef.close();
@@ -91,5 +104,9 @@ export class AddToCartComponent implements OnInit {
             }
         );
   }
+
+  cerrarModal(){
+    this.dialogRef.close();
+	}
 
 }

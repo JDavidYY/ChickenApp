@@ -10,27 +10,21 @@ import { OrderModel } from '../../models/order-info.model';
 import { OrderService } from '../../services/order.service';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss']
+  selector: 'app-order-list-deliveryboy',
+  templateUrl: './order-list-deliveryboy.component.html',
+  styleUrls: ['./order-list-deliveryboy.component.scss']
 })
-export class OrderListComponent implements OnInit {
+export class OrderListDeliveryboyComponent implements OnInit {
 
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
     'idpedido',
-    
-    'preciopedido',
-    'tipopedido',
-    
-    'iddelivery',
-    'nombredelivery',
-    
-    'idcliente',
-    'nombrecliente',
-    
+	  'fullnombreCliente',
     'fechapedido',
+    'phonecliente',
+    'preciopedido',
+    'direccioncliente',
     'estadopedido',
     'detalle'];
 
@@ -51,7 +45,8 @@ export class OrderListComponent implements OnInit {
     //Método para llamar al api correspondiente a la api seleccionarOrders pasándole un parámetro y listar al order
     listarOrder()
     {
-        this.orderservice.seleccionarOrders()
+        let idDeliveryboy = localStorage.getItem("idDeliveryboy")
+        this.orderservice.seleccionarOrdersDeliveryboy(idDeliveryboy)
         .subscribe(
             (response) => {
                 console.log(response);
@@ -122,9 +117,9 @@ export class OrderListComponent implements OnInit {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualizar!'
+        confirmButtonText: 'Si, eliminar!'
         }).then((result) => {
-          // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
+          // llamados el servicio de cambiar estado pedido
         if (result.value) {
         this.orderservice.cambiarEstado(item.idpedido)
         .subscribe(
@@ -153,4 +148,4 @@ export class OrderListComponent implements OnInit {
           this.router.navigate(['/order/detail/', idOrders]);
     }
 
-  }
+}

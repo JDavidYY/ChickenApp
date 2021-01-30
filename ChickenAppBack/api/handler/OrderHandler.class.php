@@ -40,26 +40,43 @@ class OrderHandler
 		return $response;
 	}
 
-	public function selectOrder(Request $request, Response $response, array $args)
-	{
+    public function getOrders(Request $request, Response $response, array $args) {
+        
+		$result=OrderController::getOrders();
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function selectProducts(Request $request, Response $response, array $args){
+		$idorder=$args['idOrder'];
+		$result=OrderController::selectProducts($idorder);
 		
+		if(empty($result))
+		{
+			$response=self::response($response,FALSE,$result);
+		}
+		else
+		{
+			$response=self::response($response,TRUE,$result);
+		}
+		
+		return $response;
+	}
+
+	public function changeState(Request $request, Response $response, array $args)
+	{
 		$data = (array)$request->getParsedBody();
 				
-		$idclient=$data['idClient'];
-		$typeorder=$data['typeOrder'];
-		$idproducts=$data['idproducts'];
-        $cantidades=$data['cantidades'];
-        $types=$data['types'];
-        $comments=$data['comments'];
+		$idorder=$data['idOrder'];
 
-		$result="Error al agregar la orden";
+		$result="Error al cambiar de estado";
 		
         if(!isset($data)){
             $response=self::response($response,FALSE,$result);
             return $response; 
 		}
         
-		$result=ComboController::addCombo($idclient,$typeorder,$idproducts,$cantidades,$types,$comments);
+		$result=OrderController::changeState($idorder);
 
 		$response=self::response($response,TRUE,$result);
 		return $response;
@@ -76,6 +93,8 @@ class OrderHandler
 			->withHeader('Content-Type', 'application/json')
 			->withStatus(201);
 	}
+
+
 
 }
 

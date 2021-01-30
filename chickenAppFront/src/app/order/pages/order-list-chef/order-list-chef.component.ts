@@ -10,27 +10,17 @@ import { OrderModel } from '../../models/order-info.model';
 import { OrderService } from '../../services/order.service';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss']
+  selector: 'app-order-list-chef',
+  templateUrl: './order-list-chef.component.html',
+  styleUrls: ['./order-list-chef.component.scss']
 })
-export class OrderListComponent implements OnInit {
+export class OrderListChefComponent implements OnInit {
 
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
     'idpedido',
-    
-    'preciopedido',
-    'tipopedido',
-    
-    'iddelivery',
-    'nombredelivery',
-    
-    'idcliente',
-    'nombrecliente',
-    
-    'fechapedido',
+	  'fechapedido',
     'estadopedido',
     'detalle'];
 
@@ -51,7 +41,7 @@ export class OrderListComponent implements OnInit {
     //Método para llamar al api correspondiente a la api seleccionarOrders pasándole un parámetro y listar al order
     listarOrder()
     {
-        this.orderservice.seleccionarOrders()
+        this.orderservice.seleccionarOrdersChef()
         .subscribe(
             (response) => {
                 console.log(response);
@@ -87,7 +77,7 @@ export class OrderListComponent implements OnInit {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, eliminar!'
+        confirmButtonText: 'Si, actualizar!'
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
@@ -152,5 +142,4 @@ export class OrderListComponent implements OnInit {
         if (idOrders == null) return;
           this.router.navigate(['/order/detail/', idOrders]);
     }
-
-  }
+}
