@@ -40,13 +40,6 @@ class OrderHandler
 		return $response;
 	}
 
-    public function getOrders(Request $request, Response $response, array $args) {
-        
-		$result=OrderController::getOrders();
-		$response=self::response($response,TRUE,$result);
-		return $response;
-	}
-
 	public function selectProducts(Request $request, Response $response, array $args){
 		$idorder=$args['idOrder'];
 		$result=OrderController::selectProducts($idorder);
@@ -63,7 +56,52 @@ class OrderHandler
 		return $response;
 	}
 
-	public function changeState(Request $request, Response $response, array $args)
+    public function getOrders(Request $request, Response $response, array $args) {
+        
+		$result=OrderController::getOrders();
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function getOrdersChef(Request $request, Response $response, array $args) {
+        
+		$result=OrderController::getOrdersChef();
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function getOrdersDeliveryboy(Request $request, Response $response, array $args) {
+        
+		$iddeliveryboy=$args['idDeliveryboy'];
+		$result=OrderController::getOrdersDeliveryboy($iddeliveryboy);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function getOrdersClient(Request $request, Response $response, array $args) {
+        
+		$idclient=$args['idClient'];
+		$result=OrderController::getOrdersClient($idclient);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function getOrdersClientHistory(Request $request, Response $response, array $args) {
+        
+		$idclient=$args['idClient'];
+		$result=OrderController::getOrdersClientHistory($idclient);
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function getOrdersAdmin(Request $request, Response $response, array $args) {
+        
+		$result=OrderController::getOrdersAdmin();
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function changeStateChef(Request $request, Response $response, array $args)
 	{
 		$data = (array)$request->getParsedBody();
 				
@@ -76,7 +114,45 @@ class OrderHandler
             return $response; 
 		}
         
-		$result=OrderController::changeState($idorder);
+		$result=OrderController::changeStateChef($idorder);
+
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function changeStateDeliveryboy(Request $request, Response $response, array $args)
+	{
+		$data = (array)$request->getParsedBody();
+				
+		$idorder=$data['idOrder'];
+
+		$result="Error al cambiar de estado";
+		
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
+        
+		$result=OrderController::changeStateDeliveryboy($idorder);
+
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
+
+	public function changeStateAdmin(Request $request, Response $response, array $args)
+	{
+		$data = (array)$request->getParsedBody();
+				
+		$idorder=$data['idOrder'];
+
+		$result="Error al cambiar de estado";
+		
+        if(!isset($data)){
+            $response=self::response($response,FALSE,$result);
+            return $response; 
+		}
+        
+		$result=OrderController::changeStateAdmin($idorder);
 
 		$response=self::response($response,TRUE,$result);
 		return $response;

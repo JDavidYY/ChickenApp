@@ -25,6 +25,43 @@ abstract class OrderController{
         return OrderData::getOrders();
     }
 
+    public static function getOrdersChef()
+    {
+        return OrderData::getOrdersChef();
+    }
+
+    public static function getOrdersDeliveryboy($iddeliveryboy)
+    {
+        return OrderData::getOrdersDeliveryboy($iddeliveryboy);
+    }
+
+    public static function getOrdersClient($idclient)
+    {
+        return OrderData::getOrdersClient($idclient);
+    }
+
+    public static function getOrdersClientHistory($idclient)
+    {
+        return OrderData::getOrdersClientHistory($idclient);
+    }
+
+    public static function getOrdersAdmin()
+    {
+        return OrderData::getOrdersAdmin();
+    }
+
+    public static function changeStateChef($idorder){
+        return OrderData::changeStateChef($idorder);
+    }
+
+    public static function changeStateDeliveryboy($idorder){
+        return OrderData::changeStateDeliveryboy($idorder);
+    }
+
+    public static function changeStateAdmin($idorder){
+        return OrderData::changeStateAdmin($idorder);
+    }
+
     public static function selectProducts($idorder)
 	{
 		return OrderData::selectProducts($idorder);

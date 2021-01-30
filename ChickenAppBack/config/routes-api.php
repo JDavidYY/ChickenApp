@@ -10,6 +10,8 @@ include __DIR__.'/../api/data/ProductData.class.php';
 include __DIR__.'/../api/data/ComboData.class.php';
 include __DIR__.'/../api/data/PromoData.class.php';
 include __DIR__.'/../api/data/OrderData.class.php';
+include __DIR__.'/../api/data/CompanyData.class.php';
+include __DIR__.'/../api/data/SalesData.class.php';
 
 /* include __DIR__.'/../api/v3/data/MaintenanceData.class.php';
 include __DIR__.'/../api/v3/data/TagData.class.php'; */
@@ -39,6 +41,8 @@ include __DIR__.'/../api/controller/ProductController.class.php';
 include __DIR__.'/../api/controller/ComboController.class.php';
 include __DIR__.'/../api/controller/PromoController.class.php';
 include __DIR__.'/../api/controller/OrderController.class.php';
+include __DIR__.'/../api/controller/CompanyController.class.php';
+include __DIR__.'/../api/controller/SalesController.class.php';
 
 
 /* include __DIR__.'/../api/v3/controller/MaintenanceController.class.php';
@@ -56,6 +60,8 @@ include __DIR__.'/../api/handler/ProductHandler.class.php';
 include __DIR__.'/../api/handler/ComboHandler.class.php';
 include __DIR__.'/../api/handler/PromoHandler.class.php';
 include __DIR__.'/../api/handler/OrderHandler.class.php';
+include __DIR__.'/../api/handler/CompanyHandler.class.php';
+include __DIR__.'/../api/handler/SalesHandler.class.php';
 
 /* include __DIR__.'/../api/v3/handler/CustomerHandler.class.php';
 include __DIR__.'/../api/v3/handler/MaintenanceHandler.class.php';
@@ -83,6 +89,8 @@ use Chicken\Handler\ProductHandler;
 use Chicken\Handler\ComboHandler;
 use Chicken\Handler\PromoHandler;
 use Chicken\Handler\OrderHandler;
+use Chicken\Handler\CompanyHandler;
+use Chicken\Handler\SalesHandler;
 
 
 $app->group('/api/chef', function (RouteCollectorProxy $group) {
@@ -96,6 +104,7 @@ $app->group('/api/deliveryboy', function (RouteCollectorProxy $group) {
     $group->post('/add', DeliveryboyHandler::class . ':addDeliveryboy');
     $group->get('/select', DeliveryboyHandler::class . ':getDeliveryboys');
     $group->get('/get/{idDeliveryboy}', DeliveryboyHandler::class . ':getDeliveryboy');
+    $group->post('/change-availability', DeliveryboyHandler::class . ':changeAvailability');
     $group->post('/delete', DeliveryboyHandler::class . ':deleteDeliveryboy');
 });
 
@@ -142,6 +151,14 @@ $app->group('/api/order', function (RouteCollectorProxy $group) {
     $group->get('/select', OrderHandler::class . ':getOrders');
     $group->post('/add', OrderHandler::class . ':addOrder');
     $group->get('/selectprods/{idOrder}', OrderHandler::class . ':selectProducts');
+    $group->get('/select/chef', OrderHandler::class . ':getOrdersChef');
+    $group->get('/select/deliveryboy/{idDeliveryboy}', OrderHandler::class . ':getOrdersDeliveryboy');
+    $group->get('/select/client/{idClient}', OrderHandler::class . ':getOrdersClient');
+    $group->get('/select/client-history/{idClient}', OrderHandler::class . ':getOrdersClientHistory');
+    $group->get('/select/admin', OrderHandler::class . ':getOrdersAdmin');
+    $group->post('/change-state/chef', OrderHandler::class . ':changeStateChef');
+    $group->post('/change-state/deliveryboy', OrderHandler::class . ':changeStateDeliveryboy');
+    $group->post('/change-state/admin', OrderHandler::class . ':changeStateAdmin');
 });
 
 $app->group('/api/promo', function (RouteCollectorProxy $group) {
@@ -150,6 +167,15 @@ $app->group('/api/promo', function (RouteCollectorProxy $group) {
     $group->get('/get/{idPromo}', PromoHandler::class . ':getPromo');
     //$group->post('/edit/{idPromo}', PromoHandler::class . ':editPromo');
     $group->post('/delete', PromoHandler::class . ':deletePromo');
+});
+
+$app->group('/api/company', function (RouteCollectorProxy $group) {
+    $group->post('/change-availability', CompanyHandler::class . ':changeAvailability');
+});
+
+$app->group('/api/sales', function (RouteCollectorProxy $group) {
+    $group->post('/select', SalesHandler::class . ':getSales');
+    $group->post('/select-top', SalesHandler::class . ':getTopSales');
 });
 
 ?>
