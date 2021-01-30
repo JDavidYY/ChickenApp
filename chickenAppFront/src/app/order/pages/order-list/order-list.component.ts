@@ -19,12 +19,19 @@ export class OrderListComponent implements OnInit {
   orderSeleccionado:OrderModel = null;
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
-    'idorder',
-	  'fullnombre',
-    'type',
-    'price',
-    'estate',
-    'date',
+    'idpedido',
+    
+    'preciopedido',
+    'tipopedido',
+    
+    'iddelivery',
+    'nombredelivery',
+    
+    'idcliente',
+    'nombrecliente',
+    
+    'fechapedido',
+    'estadopedido',
     'detalle'];
 
     @ViewChild('TableOnePaginator', {static: true}) tableOnePaginator: MatPaginator;
@@ -96,6 +103,40 @@ export class OrderListComponent implements OnInit {
                 );
               this.listarOrder();
               this.orderSeleccionado = null;
+            }
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+        }
+        })
+    }
+
+    cambiarEstado(item:OrderModel){
+      Swal.fire({
+        title: 'Estas seguro que desea actualizar el estado del pedido?',
+        text: "El estado se actualizará!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, actualizar!'
+        }).then((result) => {
+          // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
+        if (result.value) {
+        this.orderservice.cambiarEstado(item.idpedido)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            if (response.ok){
+              Swal.fire(
+                'Estado actualizado!',
+                'El pedido cambió de estado.',
+                'success'
+                );
+              this.listarOrder();
             }
           },
           (err) => {
