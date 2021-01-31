@@ -38,9 +38,8 @@
 						Este campo es <strong>requerido</strong>
 					</mat-error>
 					</mat-form-field>
-					
 					<p class="text-menu"><strong>Añada o quite ingredientes a tu gusto</strong></p>
-					<textarea type="text" name="texto" rows="3" cols="10" style="width: 80%;" [(ngModel)]="orderProducts.description"></textarea><p></p>
+					<textarea type="text" name="texto" maxlength="90" rows="4" cols="10" style="width: 80%;" [(ngModel)]="orderProducts.description" (keypress)="keypressLetters($event)" required></textarea><p></p>
 					<div class="añadir">
 						
 						<a href="javascript:void(0)" (click)="addToCart()" ><p class="añadir-text" ><img class="carrito" src="assets/images/backgrounds/carrito-de-compras.png"><strong>Añadir al carrito</strong></p></a>

@@ -136,7 +136,13 @@ export class AddToCartComponent implements OnInit {
   cerrarModal(){
     this.dialogRef.close();
   }
-  
+  keypressLetters(event: any) {
+    const pattern = /[0-9a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
   keypressNumbers(event: any) {
     const pattern = /[1-9]/;
     const inputChar = String.fromCharCode(event.charCode);
