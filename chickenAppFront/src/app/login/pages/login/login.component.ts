@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 	{
 		this.router.navigate([url]);
   }
-  
+
   // Método para ir al registro de un nuevo cliente
   newClient():void
   {
@@ -108,6 +108,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("rol", "Chef");
           localStorage.setItem("name", response.result["firstname"]);
           localStorage.setItem("email", response.result["email"]);
+          localStorage.setItem("state", response.result["state"]);
           this.router.navigate(['/principal/dashboard']);
           // Gerente
         }else if ( response.result["typeUser"] == "5" ){

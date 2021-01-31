@@ -39,7 +39,11 @@
                   </a>
                   <a mat-list-item (click)="goto('/order/listado')" >
                     <img src="assets/images/backgrounds/orden.png" class="logos2">
-                      <span>Orders</span>
+                      <span>Ordenes</span>
+                  </a>
+                  <a mat-list-item (click)="goto('/sales/listado')" >
+                    <img src="assets/images/backgrounds/comida-rapida.png" class="logos2">
+                      <span>Ventas</span>
                   </a>
                   <a mat-list-item (click)="goto('/combo/listado')" >
                     <img src="assets/images/backgrounds/comida-rapida.png" class="logos2">
@@ -73,6 +77,11 @@
                   <a mat-list-item (click)="goto('/order/listado-deliveryboy')" >
                     <img src="assets/images/backgrounds/orden.png" class="logos">
                       <span>Pedidos</span>
+                  </a>
+                  <a mat-list-item (click)="cambiarDisponibilidad()" >
+                    <img src="assets/images/backgrounds/orden.png" class="logos">
+                      <span>Cambiar Disponibilidad</span>
+                      <span class="badge badge-success">{{state}}</span>
                   </a>
                 </mat-expansion-panel>
             </mat-accordion>

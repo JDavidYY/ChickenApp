@@ -174,8 +174,8 @@ $app->group('/api/company', function (RouteCollectorProxy $group) {
 });
 
 $app->group('/api/sales', function (RouteCollectorProxy $group) {
-    $group->post('/select', SalesHandler::class . ':getSales');
-    $group->post('/select-top', SalesHandler::class . ':getTopSales');
+    $group->get('/select', SalesHandler::class . ':getSales');
+    $group->get('/select-top', SalesHandler::class . ':getTopSales');
 });
 
 ?>

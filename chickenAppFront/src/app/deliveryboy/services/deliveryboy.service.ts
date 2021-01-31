@@ -47,5 +47,12 @@ export class DeliveryboyService {
 		var data = { idDeliveryboy: idDeliveryboy }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<DeliveryboyPostResponse>(url,data, options);
-	}
+  }
+
+  cambiarDisponibilidad(idDeliveryboy:string):Observable<DeliveryboyPostResponse>{
+		const url = this.apiurl + "/change-availability";
+		var data = { idDeliveryboy: idDeliveryboy }
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.post<DeliveryboyPostResponse>(url,data, options);
+  }
 }
