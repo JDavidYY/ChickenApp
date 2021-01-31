@@ -20,16 +20,16 @@ export class OrderListComponent implements OnInit {
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
     'idpedido',
-    
+
     'preciopedido',
     'tipopedido',
-    
+
     'iddelivery',
     'nombredelivery',
-    
+
     'idcliente',
     'nombrecliente',
-    
+
     'fechapedido',
     'estadopedido',
     'detalle'];
@@ -126,7 +126,7 @@ export class OrderListComponent implements OnInit {
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
-        this.orderservice.cambiarEstado(item.idpedido)
+        this.orderservice.cambiarEstadoAdmin(item.idpedido)
         .subscribe(
           (response) => {
             console.log(response);

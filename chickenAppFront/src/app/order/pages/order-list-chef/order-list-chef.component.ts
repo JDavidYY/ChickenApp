@@ -116,7 +116,7 @@ export class OrderListChefComponent implements OnInit {
         }).then((result) => {
           // llamados el servicio eliminarOrder desde order.service.ts y se le pasa 1 parámetro
         if (result.value) {
-        this.orderservice.cambiarEstado(item.idpedido)
+        this.orderservice.cambiarEstadoChef(item.idpedido)
         .subscribe(
           (response) => {
             console.log(response);
