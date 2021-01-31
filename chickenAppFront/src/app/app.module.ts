@@ -21,6 +21,7 @@ import { PromotionModule } from './promotion/promotion.module';
 import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
 import { ComboModule } from './combo/combo.module';
+import { SalesModule } from './sales/sales.module';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ComboModule } from './combo/combo.module';
     ProductModule,
     ClientModule,
     OrderModule,
-    LoginModule
+    LoginModule,
+    SalesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
