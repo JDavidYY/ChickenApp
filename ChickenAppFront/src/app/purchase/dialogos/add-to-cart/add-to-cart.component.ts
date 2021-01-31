@@ -22,14 +22,13 @@ export class AddToCartComponent implements OnInit {
   productos: ProductModel = null;
   esCombo:boolean=false;
 
-  //private rango: any  = /^([1-9]{1}|[1-3][0-9]|(40))$/g;
-
   constructor(public dialogRef: MatDialogRef<AddToCartComponent>, private router:Router, private comboservice: ComboService) { }
 
   cantidadFormControl = new FormControl('', [
     Validators.required,
     Validators.min(1),
-    Validators.max(40)
+    Validators.max(9),
+    Validators.maxLength(1)
     ]);
 
   ngOnInit(): void {
@@ -67,7 +66,7 @@ export class AddToCartComponent implements OnInit {
     // this.data = {idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"};
     if (localStorage.getItem("orderProducts")!= null){
       if((JSON.parse(localStorage.getItem("orderProducts")) instanceof Array)){
-        if(this.product.image_type=="combo"){
+        if(this.product.image_type=="combo" && this.orderProducts.cantidad<"10"){
           let data = JSON.parse(localStorage.getItem("orderProducts"));
           data.push({idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
           localStorage.setItem("orderProducts", JSON.stringify(data));
@@ -79,7 +78,7 @@ export class AddToCartComponent implements OnInit {
         
         
       } else{
-        if(this.product.image_type=="combo"){
+        if(this.product.image_type=="combo" ){
           
           let data = [JSON.parse(localStorage.getItem("orderProducts"))];
           data.push({idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
@@ -98,7 +97,7 @@ export class AddToCartComponent implements OnInit {
       }
 
     } else {
-      if(this.product.image_type=="combo"){
+      if(this.product.image_type=="combo" && this.orderProducts.cantidad<"10"){
         let data = {idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type};
         localStorage.setItem("orderProducts", JSON.stringify(data));
         console.log(data)
@@ -139,7 +138,7 @@ export class AddToCartComponent implements OnInit {
   }
   
   keypressNumbers(event: any) {
-    const pattern = /[0-9]/;
+    const pattern = /[1-9]/;
     const inputChar = String.fromCharCode(event.charCode);
     if (!pattern.test(inputChar)) {
       event.preventDefault();
