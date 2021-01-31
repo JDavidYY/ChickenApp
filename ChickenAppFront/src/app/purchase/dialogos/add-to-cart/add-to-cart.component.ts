@@ -78,7 +78,7 @@ export class AddToCartComponent implements OnInit {
         
         
       } else{
-        if(this.product.image_type=="combo" ){
+        if(this.product.image_type=="combo" && this.orderProducts.cantidad<"10"){
           
           let data = [JSON.parse(localStorage.getItem("orderProducts"))];
           data.push({idProduct:this.product.idCombo, name:this.product.name,price:this.product.price, cantidad: this.orderProducts.cantidad, description:this.orderProducts.description, image_type:this.product.image_type});
