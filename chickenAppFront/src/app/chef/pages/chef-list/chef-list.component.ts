@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import Swal from 'sweetalert2';
 
+import {MatPaginatorIntl, PageEvent} from "@angular/material/paginator";
+
 import { FormControl, Validators } from '@angular/forms';
 import { ChefModel } from '../../models/chef-info.model';
 import { ChefService } from '../../services/chef.service';

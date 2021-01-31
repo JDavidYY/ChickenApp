@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ClientModel } from 'src/app/client/models/client-info.model';
 import { ClientService } from 'src/app/client/services/client.service';
 import Swal from 'sweetalert2';
@@ -28,7 +29,7 @@ export class ChangePasswordComponent implements OnInit {
   ]);
 
 
-  constructor(private router:Router, private clientservice: ClientService) { }
+  constructor(public dialogRef: MatDialogRef<ChangePasswordComponent>,private router:Router, private clientservice: ClientService) { }
 
   ngOnInit(): void {
   }
@@ -75,5 +76,6 @@ export class ChangePasswordComponent implements OnInit {
         );
       }
     });
-  }
+    this.dialogRef.close();
+  } 
 }

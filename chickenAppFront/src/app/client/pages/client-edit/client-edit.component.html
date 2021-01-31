@@ -68,7 +68,7 @@
                 </div>
                 <div class="form-row" *ngIf="client_id==0">
                     <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                        <mat-label>Password</mat-label>
+                        <mat-label>Contraseña</mat-label>
                         <input matInput [(ngModel)]="client.password" maxlength="50" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
                         <mat-error *ngIf="passwordFormControl.hasError('required')">
                             Este campo es <strong>requerido</strong>
