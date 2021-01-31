@@ -10,7 +10,7 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Nombres</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.firstname" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <input matInput [(ngModel)]="deliveryboy.firstname" minlength="3" maxlength="50" [formControl]="firstnameFormControl"  autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="firstnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
@@ -19,14 +19,14 @@
         <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Apellidos</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.lastname" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
+                <input matInput [(ngModel)]="deliveryboy.lastname" minlength="3" maxlength="50" [formControl]="lastnameFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressLetters($event)" required>
                 <mat-error *ngIf="lastnameFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
                 </mat-error>
             </mat-form-field>
         </div>
         <div class="form-row" >
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+            <mat-form-field class="col-md-3" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Número de documento de identidad</mat-label>
                 <input matInput [(ngModel)]="deliveryboy.dni" maxlength="8" [formControl]="dniFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="dniFormControl.hasError('required')">
@@ -36,7 +36,7 @@
                     La cantidad de digitos debe ser <strong>8</strong>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+            <mat-form-field class="col-md-3" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Edad</mat-label>
                 <input matInput [(ngModel)]="deliveryboy.age" maxlength="2" [formControl]="ageFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="ageFormControl.hasError('required')">
@@ -52,19 +52,7 @@
                     La cantidad de digitos debe ser <strong>2</strong>
                 </mat-error>
             </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Correo electrónico</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.email" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                    Por favor ingresa una <strong>dirección de correo válida</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+            <mat-form-field class="col-md-3" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Teléfono celular</mat-label>
                 <input matInput [(ngModel)]="deliveryboy.phone" maxlength="9" [formControl]="phoneFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                 <mat-error *ngIf="phoneFormControl.hasError('required')">
@@ -74,19 +62,7 @@
                     La cantidad de digitos debe ser <strong>9</strong>
                 </mat-error>
             </mat-form-field>
-        </div>
-        <div class="form-row" *ngIf="deliveryboy_id==0">
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
-                <mat-label>Password</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.password" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
-                <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
-                <mat-error *ngIf="passwordFormControl.hasError('required')">
-                    Este campo es <strong>requerido</strong>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-row" >
-            <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
+            <mat-form-field class="col-md-3" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Turno</mat-label>
                 <mat-select [(ngModel)]="deliveryboy.workshift" [formControl]="workshiftFormControl" required>
                     <mat-option value="M">Mañana</mat-option>
@@ -99,11 +75,42 @@
             </mat-form-field>
         </div>
         <div class="form-row" >
+            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput [(ngModel)]="deliveryboy.email" maxlength="50" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Por favor ingresa una <strong>dirección de correo válida</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+                <mat-label>Password</mat-label>
+                <input matInput [(ngModel)]="deliveryboy.password" minlength="4" maxlength="20" type="password" [formControl]="passwordFormControl" autocomplete="off" style="color: black !important;" required>
+                <mat-icon matSuffix style="cursor: pointer;"></mat-icon>
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    Este campo es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+                    <strong>contraseña minima de 4 caracteres</strong>
+                </mat-error>
+                <mat-error *ngIf="passwordFormControl.hasError('maxlength')">
+                    <strong>contraseña maxima de 20 caracteres</strong>
+                </mat-error>
+            </mat-form-field>
+            
+            
+        </div>
+        <div class="form-row" >
             <mat-form-field class="col-md-12" appearance="outline" style="width: 100%;" autocomplete="off">
                 <mat-label>Dirección</mat-label>
-                <input matInput [(ngModel)]="deliveryboy.adress" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
+                <input matInput [(ngModel)]="deliveryboy.adress" minlength="15" maxlength="80" [formControl]="adressFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                 <mat-error *ngIf="adressFormControl.hasError('required')">
                     Este campo es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="adressFormControl.hasError('minlength')">
+                    <strong>Describa su dirección completa</strong>
                 </mat-error>
             </mat-form-field>
         </div>

@@ -26,10 +26,12 @@ export class DeliveryboyEditComponent implements OnInit {
 
   lastnameFormControl = new FormControl('', [
     Validators.required,
+    Validators.maxLength(50)
     ]);
 
     firstnameFormControl = new FormControl('', [
     Validators.required,
+    Validators.maxLength(50)
     ]);
 
     phoneFormControl = new FormControl('', [
@@ -50,15 +52,20 @@ export class DeliveryboyEditComponent implements OnInit {
 
     emailFormControl = new FormControl('', [
     Validators.required,
-    Validators.email
+    Validators.email,
+    Validators.maxLength(50)
     ]);
 
     passwordFormControl = new FormControl('', [
-    Validators.required
+    Validators.required,
+    Validators.minLength(4),
+    Validators.maxLength(20)
     ]);
 
     adressFormControl = new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.maxLength(80),
+      Validators.minLength(15)
       ]);
 
   constructor(private route:ActivatedRoute, private router:Router, private datePipe: DatePipe, private deliveryboyservice: DeliveryboyService) { }
