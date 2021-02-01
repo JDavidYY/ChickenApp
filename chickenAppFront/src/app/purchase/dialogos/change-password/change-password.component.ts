@@ -60,6 +60,7 @@ export class ChangePasswordComponent implements OnInit {
                 'success'
                 );
               this.router.navigate(['/purchase/menu']);
+              this.dialogRef.close();
             }
             else{
               Swal.fire(
@@ -76,6 +77,6 @@ export class ChangePasswordComponent implements OnInit {
         );
       }
     });
-    this.dialogRef.close();
+    
   } 
 }

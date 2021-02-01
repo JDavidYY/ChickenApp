@@ -69,12 +69,12 @@ export class OrderEditComponent implements OnInit {
     
   }
 listarPrueba(){
-  // this.data = {idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"};
-  let abc = JSON.stringify([{idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_type:"a"}])
-  let nodata = JSON.parse(abc);
-  this.dataSourceOne.data = nodata;
-  this.dataSourceOne.paginator = this.tableOnePaginator;
-  this.dataSourceOne.sort = this.tableOneSort;
+  //this.data = {idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_name:"a"};
+  //let abc = JSON.stringify([{idProduct:"1", name:"comida",price:"5", cantidad: "65", description:"hola mundo", image_type:"a"}])
+  //let nodata = JSON.parse(abc);
+  //this.dataSourceOne.data = nodata;
+  //this.dataSourceOne.paginator = this.tableOnePaginator;
+  //this.dataSourceOne.sort = this.tableOneSort;
 }
 
  listarProducts(){
@@ -86,16 +86,18 @@ listarPrueba(){
 
  guardarOrder(){
    
-  console.log("que fue")
+  console.log("no ocurre nada")
   
     let data = JSON.parse(localStorage.getItem("orderProducts"));
     console.log(data);
-    for(let i=0;i< data.length;i++){
+    
+      for(let i=0;i< data.length;i++){
       this.order.idproducts.push(data[i].idProduct)
       this.order.cantidades.push(data[i].cantidad)
       this.order.types.push(data[i].image_type)
       this.order.comments.push(data[i].description)
-    }
+      }
+    
     // data.forEach(element => {
     //   this.order.idproducts.push(element.idProduct)
     //   this.order.cantidades.push(element.cantidad)
@@ -103,7 +105,7 @@ listarPrueba(){
     //   this.order.comments.push(element.description)
     // });
     this.order.idClient = localStorage.getItem("idClient");
-  console.log("que fue")
+  console.log("no ocurrio nada")
   // validacion de campos para que no sean vacios
       if ( !this.order.typeOrder || !this.order.idproducts || !this.order.cantidades ||
         !this.order.comments || !this.order.types || !this.order.idClient) {
@@ -115,7 +117,8 @@ listarPrueba(){
       }
 
   //modal para que muestre el mensaje para confirmación de guardado del combo mientras se hace el servicio
-      Swal.fire({
+  if(this.precioTotal<500 && this.precioTotal>0){    
+  Swal.fire({
       title: 'Aviso',
       text: "¿Estás seguro que deseas confirmar la orden?",
       icon: 'info',
@@ -139,6 +142,8 @@ listarPrueba(){
                 'success'
                 );
               this.router.navigate(['/purchase/menu']);
+              //localStorage.clear();
+              
           },
           (err) => {
             console.log(err);
@@ -147,6 +152,7 @@ listarPrueba(){
       }
     });
   }
+  }
 
   confirmarOrder(){
     this.dialog.open(OrderConfirmationComponent, { disableClose: true, autoFocus:false, width: '800px',panelClass: 'myapp-no-padding-dialog' });
@@ -154,8 +160,6 @@ listarPrueba(){
 
   regresar(){
     this.router.navigate(['/purchase/menu']);
-  }
-
-  
+  } 
 
 }

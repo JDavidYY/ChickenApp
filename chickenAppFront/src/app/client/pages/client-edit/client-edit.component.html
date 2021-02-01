@@ -45,7 +45,7 @@
                     </mat-form-field>
                 </div>
                 <div class="form-row" >
-                    <mat-form-field class="col-md-6" *ngIf="client_id==0" appearance="outline" style="width: 100%;" autocomplete="off">
+                    <mat-form-field class="col-md-9" *ngIf="client_id==0" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Correo electrónico</mat-label>
                         <input matInput [(ngModel)]="client.email" maxlength="40" [formControl]="emailFormControl" autocomplete="off" type="text" style="color: black !important;" required>
                         <mat-error *ngIf="emailFormControl.hasError('required')">
@@ -55,7 +55,7 @@
                             Por favor ingresa una <strong>dirección de correo válida</strong>
                         </mat-error>
                     </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" style="width: 100%;" autocomplete="off">
+                    <mat-form-field class="col-md-3" appearance="outline" style="width: 100%;" autocomplete="off">
                         <mat-label>Teléfono celular</mat-label>
                         <input matInput [(ngModel)]="client.phone" maxlength="9" [formControl]="phoneFormControl" autocomplete="off" type="text" style="color: black !important;" (keypress)="keypressNumbers($event)" required>
                         <mat-error *ngIf="phoneFormControl.hasError('required')">

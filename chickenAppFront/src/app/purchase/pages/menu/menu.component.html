@@ -2,7 +2,7 @@
     <mat-toolbar class="toolbar2 hidden-xs">
         <div class="row toolbar-menu">
             <div class="col-12 col-lg-5 col-sm-4">
-                <h1 class="h" ><a href="" style="text-decoration: none;color:white;">ChickenApp</a></h1>
+                <h1 class="h" ><a  style="text-decoration: none;color:white;">ChickenApp</a></h1>
             </div>
             <div class="col-12 col-lg-7 col-sm-8">
                 <nav class="menu-list">
@@ -68,7 +68,7 @@
 </div>
 <div class="espacio">
     <nav class="navbar navbar-dark bg-dark hidden-lg">
-        <a class="tit-m" href="#">
+        <a class="tit-m" href="">
             <p class="titulo-m">ChickenApp</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,14 +142,14 @@
 			<div class="tab-pane fade show active" id="promociones" role="tabpanel" aria-labelledby="promociones-tab">
 				<div class="row">
 					<div class="col-12 col-lg-3 col-md-4 menu-cont" *ngFor="let product of products">
-						<a class="menu-a">
-							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}" width="350" height="250" (click)="pedirProduct(product)">
+						<a class="menu-a" >
+							<img  class="menu-img" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}" width="350" height="200" (click)="pedirProduct(product)">
 							<div class="menu-contenedor">
 								<p class="menu-titulo">{{product.name}}</p>
 								<p class="menu-desc">{{product.description}}</p>
-								<p class="menu-precio"><strong>S/. {{product.price}}</strong></p>
+								<p class="menu-precio" ><strong>S/. {{product.price}}</strong></p>
 							</div>
-            </a>
+            			</a>
           </div>
         </div>
 			</div>
@@ -161,11 +161,11 @@
 				<div class="row">
 					<div class="col-12 col-lg-3 col-md-4 menu-cont" *ngFor="let combo of combos">
 						<a class="menu-a">
-							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{combo.image_type}}s/{{combo.file_name}}" width="350" height="250" (click)="pedirProduct(combo)">
+							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{combo.image_type}}s/{{combo.file_name}}" width="350" height="200" (click)="pedirProduct(combo)">
 							<div class="menu-contenedor">
 								<p class="menu-titulo">{{combo.name}}</p>
 								<p class="menu-desc">{{combo.description}}</p>
-								<p class="menu-precio"><strong>S/. {{combo.price}}</strong></p>
+								<p class="menu-precio"  ><strong>S/. {{combo.price}}</strong></p>
 							</div>
             </a>
           </div>

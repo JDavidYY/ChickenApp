@@ -18,11 +18,13 @@ import { ComboModel } from 'src/app/combo/models/combo-info.model';
 })
 export class MenuComponent implements OnInit {
 
+  precio: number = 0;
   client: ClientModel = null;
   categories: CategoryModel = null;
   products: ProductModel = null;
   combos: ComboModel = null;
   mostrarCombos:boolean=false;
+  
 
   constructor(private router:Router, private dialog:MatDialog, private categoryservice: CategoryService, private productservice: ProductService, private comboservice:ComboService) { }
 
@@ -69,11 +71,12 @@ export class MenuComponent implements OnInit {
   }
 
   cargarProducts(idCategory:number){
+    
     this.productservice.seleccionarProductsByCategory(idCategory)
     .subscribe(
       (response) => {
           console.log(response);
-          if (response != null && response.ok && response.result != null){
+          if (response != null && response.ok && response.result != null ){
               this.products = response.result;
               this.mostrarCombos=false;
           }

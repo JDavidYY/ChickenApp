@@ -94,6 +94,7 @@ export class PromotionEditComponent implements OnInit {
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del promotion mientras se hace el servicio
+   
     if(this.promotion_id>0){
       Swal.fire({
         title: 'Aviso',

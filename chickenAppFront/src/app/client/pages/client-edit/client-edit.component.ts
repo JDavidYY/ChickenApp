@@ -207,7 +207,12 @@ export class ClientEditComponent implements OnInit {
 }
 
   regresar(){
-    this.router.navigate(['/purchase/menu']);
+    if(this.client_id>0){
+      this.router.navigate(['/purchase/menu']);
+    }else{
+      this.router.navigate(['/login']);
+    }
+    
   }
 
   keypressNumbers(event: any) {
