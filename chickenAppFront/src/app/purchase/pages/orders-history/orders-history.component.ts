@@ -109,5 +109,8 @@ export class OrdersHistoryComponent implements OnInit {
         let order = this.orderSeleccionado;
         this.router.navigate(['/order/editar', order.idOrder ]);
     }
-
+    
+    regresar(){
+      this.router.navigate(['/purchase/menu']);
+    }
 }

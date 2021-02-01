@@ -39,16 +39,15 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumnsOne"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsOne" (click)="seleccionarOrder(row)" [style.background]="orderSeleccionado == row ? 'lightblue' : ''"></tr>
           </table>
+    </div>
+    <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [pageSizeOptions]="[5, 10]"></mat-paginator>
+     <!-- Grupo de botones para manipular el listado de orders -->
+    <div class="row pt-2">
+        <div class="col-12 text-right">
+            <button mat-raised-button color="accent" style="margin-bottom: 15px;margin-right: 8px;" (click)="regresar()">Regresar</button>
+            <button mat-raised-button (click)="editarOrder()" [disabled]="orderSeleccionado == null" color="accent" style="margin-left: 5px;" disabled>Ver detalle de orden</button>
+
         </div>
-      </div>
-      <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10" [pageSizeOptions]="[5, 10]"></mat-paginator>
-       <!-- Grupo de botones para manipular el listado de orders -->
-      <div class="row pt-2">
-          <div class="col-12 text-right subseccion">
-              <button mat-raised-button (click)="editarOrder()" [disabled]="orderSeleccionado == null" color="accent" style="margin-left: 5px;" disabled>Ver detalle de orden</button>
-              <button mat-raised-button (click)="eliminarOrder()" [disabled]="orderSeleccionado == null" color="warn"  style="margin-left: 5px;" disabled>Eliminar</button>
-              <button mat-raised-button  (click)="agregarOrder()" color="primary"  style="margin-left: 5px;">Agregar</button>
-          </div>
       </div>
     </div>
   </div>
