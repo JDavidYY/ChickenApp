@@ -140,11 +140,12 @@
 	margin: auto;
 }
 .menu-a {
-	color: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 .menu-cont{
 	border-radius: 20px;
-	padding-bottom: 50px;
+	margin-bottom: 50px;
 }
 .menu-cont a{
     text-decoration: none;
@@ -457,4 +458,16 @@ padding-left: 100px;
     width: 50%;
     margin: auto;
   }
-} 
+}
+
+/*agrandar el menu al pasar el mouse*/
+.hvr-grow {
+  vertical-align: middle;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  transform: scale(1.1);
+}

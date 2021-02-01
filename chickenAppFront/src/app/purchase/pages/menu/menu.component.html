@@ -12,13 +12,18 @@
                     <li class="lista"></li>
                     <li class="lista"></li>
                     <li class="lista">
-					<span (click)="goToOrderActive()" class="nombrelista mat-button-wrapper">
+						<a class="menu-a">
+						<span (click)="goToOrderActive()" class="nombrelista mat-button-wrapper">
 							Ordenes activas
-						</span></li>
-                    <li class="lista">
-						<span (click)="goToHistory()" class="nombrelista mat-button-wrapper">
-							Historial
 						</span>
+						</a>
+					</li>
+                    <li class="lista">
+						<a class="menu-a">
+							<span (click)="goToHistory()" class="nombrelista mat-button-wrapper">
+								Historial
+							</span>
+						</a>
 					</li>
                     <li class="lista">
 					   <div class="row justify-content-end">
@@ -54,9 +59,11 @@
 						</div>
 					  </li>
 					<li class="lista">
-						<div (click)="goToOrder()">
-							<img class="" src="assets/images/backgrounds/carrito-de-compras.png" style="width: 25px; height: 25px;margin-right: 10px;">
-						</div>
+						<a class="menu-a">
+							<div (click)="goToOrder()">
+								<img class="" src="assets/images/backgrounds/carrito-de-compras.png" style="width: 25px; height: 25px;margin-right: 10px;">
+							</div>
+						</a>
 					</li>
                     <!--
 					<li class="lista">
@@ -188,7 +195,7 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="promociones" role="tabpanel" aria-labelledby="promociones-tab">
 				<div class="row">
-					<div class="col-12 col-lg-3 col-md-4 menu-cont" *ngFor="let product of products">
+					<div class="col-12 col-lg-3 col-md-4 menu-cont hvr-grow" *ngFor="let product of products">
 						<a class="menu-a">
 							<img class="menu-img" src="https://storage.googleapis.com/mainkra/{{product.image_type}}s/{{product.file_name}}" width="350" height="250" (click)="pedirProduct(product)">
 							<div class="menu-contenedor">
@@ -196,9 +203,9 @@
 								<p class="menu-desc">{{product.description}}</p>
 								<p class="menu-precio"><strong>S/. {{product.price}}</strong></p>
 							</div>
-            </a>
-          </div>
-        </div>
+           				 </a>
+          			</div>
+        		</div>
 			</div>
 		</div>
   </div>
