@@ -138,6 +138,7 @@ listarPrueba(){
                 'La orden ha sido guardada.',
                 'success'
                 );
+              localStorage.removeItem('orderProducts');
               this.router.navigate(['/purchase/menu']);
           },
           (err) => {
