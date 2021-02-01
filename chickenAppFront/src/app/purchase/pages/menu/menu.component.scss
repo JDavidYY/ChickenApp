@@ -230,6 +230,11 @@ padding-bottom: 50px;
   height: 55px;
 }
 }
+@media(min-width: 992px){
+  .lista{
+    margin-left: 25px;
+  }
+}
 @media(min-width: 1024px){
 .section-1{
 padding-top: 100px;
