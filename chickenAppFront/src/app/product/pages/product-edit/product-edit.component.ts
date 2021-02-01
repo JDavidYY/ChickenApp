@@ -93,6 +93,7 @@ export class ProductEditComponent implements OnInit {
           console.log('Product encontrado');
           console.log(response.result);
           // this.deliveryboy = response.deliveryboy;
+          
           this.product.idProduct= response.result["idProduct"];
           this.product.name= response.result["name"];
           this.product.description= response.result["description"];
@@ -101,6 +102,7 @@ export class ProductEditComponent implements OnInit {
           this.product.categoryid= response.result["categoryid"];
           this.categoryid=this.product.categoryid;
           this.image_name=response.result["file_name"];
+          
           //this.image_name='gaaa';
           //this.previmage_name=this.image_name;
         }

@@ -16,7 +16,7 @@ import { PromotionService } from '../../services/promotion.service';
 })
 export class PromotionEditComponent implements OnInit {
 
-  products:ProductModel = null;
+  products:ProductModel []= null;
 
   promotion: PromotionModel = new PromotionModel();
   promotion_id: number = 0;
@@ -94,17 +94,25 @@ export class PromotionEditComponent implements OnInit {
       return;
     }
   //modal para que muestre el mensaje para confirmación de guardado del promotion mientras se hace el servicio
-   
-    if(this.promotion_id>0){
+    let descuentodeproduct;
+    for(let product of this.products){
+      if(product.idProduct==this.promotion.idProduct)
+      {
+        descuentodeproduct=product.discount;
+      }
+    }
+
+    if(descuentodeproduct>0){
+      
       Swal.fire({
         title: 'Aviso',
-        text: "¿Estás seguro que deseas actualizar los datos del promotion?",
+        text: "Este producto ya tiene descuento¿Quieres actualizarlo?",
         icon: 'info',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, actualziar!' ,
+        confirmButtonText: 'Si, actualizar!' ,
 
         }).then((result) => {
         // llamado sel servicio guardarPromotion desde promotion.service.ts y se le pasa 2 parametros
