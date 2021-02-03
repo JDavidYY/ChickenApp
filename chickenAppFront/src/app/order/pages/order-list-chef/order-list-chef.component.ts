@@ -65,7 +65,7 @@ export class OrderListChefComponent implements OnInit {
     }
 
     //Método para eliminar orders
-    eliminarOrder()
+    /*eliminarOrder()
     {
       if (this.orderSeleccionado == null) return;
 
@@ -101,7 +101,7 @@ export class OrderListChefComponent implements OnInit {
         );
         }
         })
-    }
+    }*/
 
     cambiarEstado(item:OrderModel){
       Swal.fire({

@@ -20,17 +20,13 @@ export class OrderListComponent implements OnInit {
   dataSourceOne: MatTableDataSource<OrderModel>;
   displayedColumnsOne: string[] = [
     'idpedido',
-
     'preciopedido',
     'tipopedido',
-
+    'fechapedido',
     'iddelivery',
     'nombredelivery',
-
     'idcliente',
     'nombrecliente',
-
-    'fechapedido',
     'estadopedido',
     'detalle'];
 
@@ -75,7 +71,7 @@ export class OrderListComponent implements OnInit {
     }
 
     //Método para eliminar orders
-    eliminarOrder()
+    /*eliminarOrder()
     {
       if (this.orderSeleccionado == null) return;
 
@@ -111,7 +107,7 @@ export class OrderListComponent implements OnInit {
         );
         }
         })
-    }
+    }*/
 
     cambiarEstado(item:OrderModel){
       Swal.fire({

@@ -23,7 +23,7 @@ export class SalesService {
   }
 
   seleccionarTops():Observable<SalesListResponse> {
-		const url = this.apiurl + "/tops";
+		const url = this.apiurl + "/select-top";
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<SalesListResponse>(url, options);
   }

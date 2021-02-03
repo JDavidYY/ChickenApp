@@ -4,7 +4,7 @@ export class OrderModel
     dateOrders:string="";
     typeOrders:string="";
     estateOrders:string="";
-    priceOrders:string="";
+    priceOrders:number=0;
     idpedido:string="";
     fechapedido:string="";
     estadopedido:string="";

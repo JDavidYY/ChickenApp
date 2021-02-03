@@ -70,7 +70,7 @@ export class OrderListDeliveryboyComponent implements OnInit {
     }
 
     //Método para eliminar orders
-    eliminarOrder()
+    /*eliminarOrder()
     {
       if (this.orderSeleccionado == null) return;
 
@@ -106,7 +106,7 @@ export class OrderListDeliveryboyComponent implements OnInit {
         );
         }
         })
-    }
+    }*/
 
     cambiarEstado(item:OrderModel){
       Swal.fire({

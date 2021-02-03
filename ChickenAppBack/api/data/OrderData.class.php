@@ -119,7 +119,7 @@ abstract class OrderData{
     public static function getOrdersAdmin(){
         $rtn = null;
 
-        $procedure_name = "usp_order_s_admin";
+        $procedure_name = "usp_orders_s_admin";
         $params = NULL;
 
         $db = new DataAccessLayer();
