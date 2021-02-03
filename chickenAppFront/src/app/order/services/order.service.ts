@@ -27,7 +27,7 @@ export class OrderService {
 	guardarOrder(order:OrderModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
-		let url = this.apiurl + "/add";
+		let url = this.apiurl + "/anadir";
 		return this.httpClient.post<OrderPostResponse>(url, order, options);
 	}
 	// api para obtener el listado de todas las ordenes por GET

@@ -22,4 +22,10 @@ export class SalesService {
 		return this.httpClient.get<SalesListResponse>(url, options);
   }
 
+  seleccionarTops():Observable<SalesListResponse> {
+		const url = this.apiurl + "/tops";
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.get<SalesListResponse>(url, options);
+  }
+
 }

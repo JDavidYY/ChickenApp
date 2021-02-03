@@ -29,7 +29,7 @@ abstract class SalesData{
     public static function getTopSales(){
         $rtn = null;
 
-        $procedure_name = "usp_sales_s_top";
+        $procedure_name = "usp_sale_top_product";
         $params = NULL;
 
         $db = new DataAccessLayer();

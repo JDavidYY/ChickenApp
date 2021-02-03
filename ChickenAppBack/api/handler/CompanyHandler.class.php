@@ -22,6 +22,13 @@ class CompanyHandler
 		$response=self::response($response,TRUE,$result);
 		return $response;
 	}
+
+	public function getState(Request $request, Response $response, array $args)
+	{
+		$result=CompanyController::getState();
+		$response=self::response($response,TRUE,$result);
+		return $response;
+	}
     
     public static function response(Response $response ,$ok,$result){
 		$data = array(

@@ -20,5 +20,22 @@ abstract class CompanyData{
         return $rtn;
     }
 
+    public static function getState()
+    {
+        $rtn = null;
+
+        $procedureName = "usp_company_s_state"; 
+        $params = NULL;
+        $db = new DataAccessLayer();
+        $db->connect();
+        $result = $db->ExecuteNonQueryWithOutput($procedureName, $params);
+        $db->disconnect();
+        if (isset($result)) {
+            $rtn = $result["oresult"];
+        }
+
+        return $rtn;
+    }
+
 }
 ?>
