@@ -55,4 +55,5 @@ export class DeliveryboyService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<DeliveryboyPostResponse>(url,data, options);
   }
+
 }

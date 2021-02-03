@@ -8,4 +8,12 @@ import { environment } from '../../../environments/environment';
     providedIn: 'root'
   })
   export class HomeService {
+    	//construccion del api para llamar el servicio del back
+
+	constructor(private httpClient:HttpClient, private httpService:HttpService) {
+
+  }
+  
+  
+  
   }

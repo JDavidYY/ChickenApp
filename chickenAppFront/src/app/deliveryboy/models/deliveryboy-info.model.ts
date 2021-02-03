@@ -10,4 +10,5 @@ export class DeliveryboyModel
     email:string = "";
     password: string = "";
     adress:string = "";
+    stateTienda:string ="";
 }

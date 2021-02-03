@@ -49,6 +49,11 @@
                     <img src="assets/images/backgrounds/comida-rapida.png" class="logos2">
                       <span>Combos</span>
                   </a>
+                  <a mat-list-item (click)="cambiarDisponibilidadTienda()" >
+                    <img src="assets/images/backgrounds/orden.png" class="logos">
+                      <span>Cambiar Disponibilidad de la tienda</span>
+                      <span class="badge badge-success">{{stateTienda}}</span>
+                  </a>
               </mat-expansion-panel>
           </mat-accordion>
 

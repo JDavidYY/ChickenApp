@@ -6,7 +6,7 @@ import { DeliveryboyService } from './services/deliveryboy.service';
 import { DeliveryboyEditComponent } from './pages/deliveryboy-edit/deliveryboy-edit.component';
 import { DeliveryboyListComponent } from './pages/deliveryboy-list/deliveryboy-list.component';
 import { DeliveryboyRoutingModule, DELIVERYBOY_COMPONENTS } from './deliveryboy-routing.module';
-
+import { CompanyService } from './services/company.service';
 // se declara la constante componentes , shared module para el material , el servicio y el formsmodule para el formulario
 @NgModule({
     declarations: [
@@ -21,7 +21,8 @@ import { DeliveryboyRoutingModule, DELIVERYBOY_COMPONENTS } from './deliveryboy-
         DeliveryboyRoutingModule
     ],
     providers: [ 
-        DeliveryboyService
+        DeliveryboyService,
+        CompanyService
     ]
   })
   // se hace un module propio del modulo que vamos a trabajar y se exportara en el app.module.ts de la raiz

@@ -53,6 +53,7 @@ export class OrderService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<OrderListResponse>(url, options);
 	}
+	
 	// api para obtener los datos de una Orden por GET
   	getOrder(idOrder:string):Observable<OrderGetResponse> {
 		const url = this.apiurl + "/get/" + idOrder;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeliveryboyService } from 'src/app/deliveryboy/services/deliveryboy.service';
+import { CompanyService } from 'src/app/deliveryboy/services/company.service';
 import Swal from 'sweetalert2';
 import { environment } from '../../../../environments/environment';
 
@@ -17,10 +18,11 @@ export class ContainerComponent implements OnInit {
 	rol: string = "";
   opened = true;
   state: string = "";
+  stateTienda: string = "";
 
 	appVersion = environment.appVersion;
 
-	constructor(private router:Router, private deliveryboyservice: DeliveryboyService) {
+	constructor(private router:Router, private deliveryboyservice: DeliveryboyService, private companyservice: CompanyService) {
 	}
 
 	ngOnDestroy(): void {
@@ -94,4 +96,37 @@ export class ContainerComponent implements OnInit {
       })
   }
 
+  cambiarDisponibilidadTienda()
+  {
+    Swal.fire({
+      title: 'Estas seguro que desea actualizar la disponibilidad de la tienda?',
+      text: "La disponibilidad se actualizará!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, cambiar!'
+      }).then((result) => {
+      if (result.value) {
+      this.companyservice.cambiarDisponibilidadTienda()
+      .subscribe(
+        (response) => {
+          console.log(response);
+          if (response.ok){
+            Swal.fire(
+              'Disponibilidad actualizada!',
+              '',
+              'success'
+              );
+              this.ngOnInit();
+          }
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      }
+      })
+  }
 }
