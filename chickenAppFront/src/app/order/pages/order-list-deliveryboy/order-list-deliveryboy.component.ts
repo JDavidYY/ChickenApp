@@ -117,11 +117,11 @@ export class OrderListDeliveryboyComponent implements OnInit {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, eliminar!'
+        confirmButtonText: 'Si, actualizar!'
         }).then((result) => {
           // llamados el servicio de cambiar estado pedido
         if (result.value) {
-        this.orderservice.cambiarEstado(item.idpedido)
+        this.orderservice.cambiarEstadoDeliveryboy(item.idpedido)
         .subscribe(
           (response) => {
             console.log(response);

@@ -149,7 +149,7 @@ $app->group('/api/combo', function (RouteCollectorProxy $group) {
 
 $app->group('/api/order', function (RouteCollectorProxy $group) {
     $group->get('/select', OrderHandler::class . ':getOrders');
-    $group->post('/add', OrderHandler::class . ':addOrder');
+    $group->post('/anadir', OrderHandler::class . ':addOrder');
     $group->get('/selectprods/{idOrder}', OrderHandler::class . ':selectProducts');
     $group->get('/select/chef', OrderHandler::class . ':getOrdersChef');
     $group->get('/select/deliveryboy/{idDeliveryboy}', OrderHandler::class . ':getOrdersDeliveryboy');
@@ -171,6 +171,7 @@ $app->group('/api/promo', function (RouteCollectorProxy $group) {
 
 $app->group('/api/company', function (RouteCollectorProxy $group) {
     $group->post('/change-availability', CompanyHandler::class . ':changeAvailability');
+    $group->get('/getstate', CompanyHandler::class . ':getState');
 });
 
 $app->group('/api/sales', function (RouteCollectorProxy $group) {

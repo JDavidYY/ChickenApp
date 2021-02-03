@@ -27,7 +27,7 @@ export class OrderService {
 	guardarOrder(order:OrderModel)
 	{
 		const options = this.httpService.headerOptionsJson(true, true);
-		let url = this.apiurl + "/add";
+		let url = this.apiurl + "/anadir";
 		return this.httpClient.post<OrderPostResponse>(url, order, options);
 	}
 	// api para obtener el listado de todas las ordenes por GET
@@ -41,7 +41,7 @@ export class OrderService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<OrderListResponse>(url, options);
 	}
-	
+
 	seleccionarOrdersDeliveryboy(idDeliveryboy:string):Observable<OrderListResponse> {
 		const url = this.apiurl + "/select/deliveryboy/"+idDeliveryboy;
 		const options = this.httpService.headerOptionsJson(true, true);
@@ -74,10 +74,26 @@ export class OrderService {
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.get<ProductListResponse>(url, options);
   }
-	
+
 	// api para cambiar un estado
-	cambiarEstado(idOrder:string):Observable<OrderPostResponse> {
+	cambiarEstadoChef(idOrder:string):Observable<OrderPostResponse> {
 		const url = this.apiurl + "/change-state/chef";
+		var data = { idOrder: idOrder }
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.post<OrderPostResponse>(url,data, options);
+  }
+
+  	// api para cambiar un estado
+	cambiarEstadoDeliveryboy(idOrder:string):Observable<OrderPostResponse> {
+		const url = this.apiurl + "/change-state/deliveryboy";
+		var data = { idOrder: idOrder }
+		const options = this.httpService.headerOptionsJson(true, true);
+		return this.httpClient.post<OrderPostResponse>(url,data, options);
+  }
+
+    	// api para cambiar un estado
+	cambiarEstadoAdmin(idOrder:string):Observable<OrderPostResponse> {
+		const url = this.apiurl + "/change-state/admin";
 		var data = { idOrder: idOrder }
 		const options = this.httpService.headerOptionsJson(true, true);
 		return this.httpClient.post<OrderPostResponse>(url,data, options);
